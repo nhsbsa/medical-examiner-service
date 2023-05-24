@@ -31,16 +31,16 @@
 {%- from 'summary-list/macro.njk' import summaryList %}
 {%- from 'tag/macro.njk' import tag %}
 {%- from 'textarea/macro.njk' import textarea %}
-
+    
 <!DOCTYPE html>
-<html lang="en">
+<!--[if lt IE 9]><html class="ie8" lang="en"><![endif]--><!--[if IE 9]><html class="ie9" lang="en"><![endif]--><!--[if gt IE 9]><!--><html lang="en"><!--<![endif]-->
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
 
-    <title>{% block pageTitle %}Medical Examiner Office - Manage my caseload{% endblock %}</title>
+    <title>{% block pageTitle %}NHS.UK prototype kit{% endblock %}</title>
 
     <link href="https://www.nhs.uk/" rel="preconnect">
     <link href="https://assets.nhs.uk/" rel="preconnect" crossorigin>
@@ -50,9 +50,6 @@
 
     {% block headCSS %}
       <link href="/css/main.css" rel="stylesheet">
-    {% endblock %}
-
-    {% block customStyles %}
     {% endblock %}
 
     <script src="/nhsuk-frontend/nhsuk.min.js" defer></script>
@@ -69,9 +66,6 @@
     <meta name="msapplication-wide310x150logo" content="/nhsuk-frontend/assets/favicons/widetile-310x150.png">
     <meta name="msapplication-square310x310logo" content="/nhsuk-frontend/assets/favicons/largetile-310x310.png">
     {% endblock %}
-
-    {% block head %}{% endblock %}
-    
   </head>
 
   <body class="{{ bodyClasses }}">
@@ -93,19 +87,20 @@
       {% block beforeContent %}{% endblock %}
 
       {% block main %}
-        <div class="nhsuk-width-container {{ containerClasses }}">
-          {% block outerContent %}{% endblock %}
-          <main class="nhsuk-main-wrapper {{ mainClasses }}" id="maincontent" role="main">
-            {% block content %}{% endblock %}
-          </main>
-        </div>
+          <div class="nhsuk-width-container-fluid {{ containerClasses }}">
+            <main class="nhsuk-main-wrapper {{ mainClasses }}" id="maincontent" role="main">
+              {% block content %}{% endblock %}
+            </main>
+          </div>
       {% endblock %}
 
       {% block footer %}
-        {{ footer() }}
+        {{ footer({
+          "showLogo": "false"
+        })}}
       {% endblock %}
 
     {% block bodyEnd %}{% endblock %}
-
+    
   </body>
 </html>

@@ -1,0 +1,24 @@
+//NHS BSA Full Width Header
+
+.NHSBSA-full-width-header {
+
+    .nhsuk-width-container {
+        @include nhsuk-width-container-fluid;
+
+        @include mq($until: tablet) {
+            padding-left: nhsuk-spacing(0);
+            padding-right: nhsuk-spacing(0);
+        }
+    }
+
+}
+
+//NHS BSA Full Width Footer
+
+.NHSBSA-full-width-footer {
+
+    .nhsuk-width-container {
+        @include nhsuk-width-container-fluid
+    }
+
+} 

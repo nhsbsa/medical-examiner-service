@@ -12,7 +12,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-  NHS.UK prototype kit
+  Medical Examiner Office - Manage my caseload
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -29,60 +29,90 @@
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
   <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-two-thirds">
+    <div class="nhsuk-grid-column-full-width">
 
-      <!-- Change the page title here -->
-      <h1>
-        NHS.UK prototype kit
-        <span class="nhsuk-caption-xl nhsuk-caption--bottom">Version {{version}}</span>
-      </h1>
+      <span class="nhsuk-caption-xl">Manage my caseload</span>
+      <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-3">Medical Examiner Service</h1>
+      <p>Medical Examiners and Medical Examiner Officers and Attending Practitioners will use to log cases, record their scrutiny of non-coronial deaths, and refer to a coroner if necessary.</p>
 
-      <!-- Add your content here -->
-      <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
+      <!-- ======================================= -->
+      <!-- CURRENT VERSION -->
+      <!-- ======================================= -->
 
-      <p class="nhsuk-lede-text">
-        This kit lets you rapidly create HTML prototypes of NHS services.
-      </p>
+      <h2 class="nhsuk-heading-l">Current version</h2>
+      <p>This version of the prototype is matching as close as possible to what is currently live.</p>
+
+      <div class="nhsuk-action-link">
+        <a class="nhsuk-action-link__link" href="current/index?journey=meo">
+          <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" width="36" height="36">
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+          </svg>
+          <span class="nhsuk-action-link__text">Medical Examiner Officers Journey</span>
+        </a>
+      </div>
+
+      <div class="nhsuk-action-link">
+        <a class="nhsuk-action-link__link" href="current/index?journey=me">
+          <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" width="36" height="36">
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+          </svg>
+          <span class="nhsuk-action-link__text">Medical Examiner Journey</span>
+        </a>
+      </div>
+
+      <div class="nhsuk-hint" id="contact-hint">Last updated: 24 May 2023</div>
 
       <hr>
 
-      <h2>
-        About this page
-      </h2>
+      <!-- ======================================= -->
+      <!-- ITERATIONS -->
+      <!-- ======================================= -->
 
-      <p>
-        Use this page as the index for your project.
-      </p>
-      
-      <p>
-        You'll find the code for this page at <strong>/app/views/index.html</strong>.
-      </p>
+      <h2 class="nhsuk-heading-l">Iterations</h2>
 
-      <p>
-        There is also an <a href="/page-example">example page</a>, which contains a selection of NHS.UK frontend styles and components.
-      </p>
+      <details class="nhsuk-details" data-module="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Version 13
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <h2 class="nhsuk-heading-l nhsuk-u-margin-bottom-1">Save as draft</h2>
+          <p class="nhsuk-caption-m nhsuk-caption--bottom nhsuk-u-margin-bottom-3">Implement the feature for users to save a case as draft</p>
+          <h3 class="nhsuk-heading-s">What we created</h3>
+          <ul>
+            <li>...</li>
+          </ul>
+          <h3 class="nhsuk-heading-s">What we plan to test</h3>
+          <ul>
+            <li>...</li>
+
+          </ul>
+          <h3 class="nhsuk-heading-s">What we found</h3>
+          <ul>
+            <li>...</li>
+          </ul>
+          <h3 class="nhsuk-heading-s">Any known issues</h3>
+          <ul>
+            <li>...</li>
+          </ul>
+          <p><a href="current/auth/login-page?account-creation-journey=no">Medical Examiner Officers Journey</a></p>
+          <p><a href="current/auth/login-page?account-creation-journey=no">Medical Examiner Journey</a></p>
+
+        </div>
+      </details>
 
       <hr>
 
-      <h2>
-        Get started
-      </h2>
+      <!-- ======================================= -->
+      <!-- HISTORIC VERSION -->
+      <!-- ======================================= -->
 
-      <p>Get started by using the:</p>
-
-      <ul>
-        <li>
-          <a href="/docs/how-tos">how to guides</a>
-        </li>
-        <li>
-          <a href="/docs/page-templates">page templates</a>
-        </li>
-        <li>
-          code snippets for styles and components from the <a href="https://service-manual.nhs.uk/design-system">NHS digital service manual</a>
-        </li>
-      </ul>
-
-      <!-- End of content -->
+      <h2 class="nhsuk-heading-l">Historic versions</h2>
+      <p>To view previous versions go to the old <a href="https://medical-examiners.herokuapp.com/">Medical Examiners Prototype</a>.</p>
+      <p><strong>Username and Password:</strong> medex</p>
 
     </div>
   </div>

@@ -5,20 +5,20 @@
 -->
 
 <!-- Extends the layout from /docs/views/template.html -->
-{% extends "template.html" %}
+{% extends "template-admin-interface.html" %}
 
 <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 {% block headCSS %}
   <link href="/css/main.css" rel="stylesheet">
 {% endblock %}
 
-<!-- Set the page title -->
+<!-- Set the page title inside the pageTitle block -->
 {% block pageTitle %}
-  Medical Examiner Office - Manage my caseload
+Medical Examiner Office - Manage my caseload
 {% endblock %}
 
-<!-- Edit the header -->
-<!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
+<!-- Header goes inside the header block -->
+<!-- More info and code for the header can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/header -->
 {% block header %}
   {{ header({
     "service": {
@@ -26,13 +26,14 @@
         "href": "/"
       },
       "showNav": "false",
-      "showSearch": "false"
+      "showSearch": "false",
+      "classes": "NHSBSA-full-width-header"
     })
   }}
 {% endblock %}
 
-<!-- Edit the footer -->
-<!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
+<!-- Footer goes inside the footer block -->
+<!-- More info and code for the footer can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/footer -->
 {% block footer %}
   {{ footer({
     "links": [
@@ -44,7 +45,8 @@
         "URL": "/page-example",
         "label": "Example page"
       }
-    ]
+    ],
+    "classes": "NHSBSA-full-width-footer"
   })}}
 {% endblock %}
 

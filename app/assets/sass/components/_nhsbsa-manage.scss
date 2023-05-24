@@ -1,0 +1,207 @@
+// NEW SIDEBAR
+
+
+.nhsBSA-sidebar-container {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 99px);
+    margin: 0;
+    padding: 0;
+    @media (min-width: 48.0525em) {
+      min-height: calc(100vh - 80px);
+    }
+    
+    .nhsBSA-sidebar-wrapper {
+      flex: 1 0 auto;
+      display: flex;
+      
+      .nhsBSA-sidebar-content {
+        flex: 1 0 auto;
+        background-color: $color_nhsuk-grey-5;
+        padding: 0px;
+        margin: 0px;
+
+
+        .nhsuk-main-wrapper {
+          padding-top: 40px;
+          padding-bottom: 40px;
+          display: block;
+
+          @media (min-width: 40.0625em) {
+              padding-top: 32px;
+          }
+          @media (min-width: 40.0625em) {
+              padding-bottom: 32px;
+          }
+        }
+
+      }
+      
+      .nhsBSA-sidebar-nav {
+        width: 300px;
+        order: -1;
+        background-color: $color_nhsuk-grey-4;
+        margin: 0;
+
+        .nhsuk-back-link {
+          padding: 16px;
+          margin: 0;
+          @media (min-width: 48.0525em) {
+            padding: 32px;
+            margin: 0;
+          }
+        }
+      }
+      
+  
+    }
+
+    
+    @media (max-width: 48.0525em) {
+      .nhsBSA-sidebar-wrapper {
+         flex-direction: column;
+        
+        .nhsBSA-sidebar-nav {
+          width: 100%;
+        }
+      }
+    }
+    
+  }
+
+  // side nav
+
+
+
+.side-nav {
+
+h3 {
+  padding: 16px;
+  margin: 0;
+  @media (min-width: 48.0525em) {
+  padding: 32px;
+  }
+}
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0px;
+}
+li {
+  margin: 0px;
+}
+
+li a {
+  display: block;
+  color: #005EB8;
+  font-size: 18px;
+  text-decoration: none;
+  border-top: #ccc 1px solid;
+  border-bottom: #ccc 1px solid;
+  padding: 16px;
+  @media (min-width: 48.0525em) {
+  padding: 16px 32px;
+  }
+}
+
+li a.active {
+  background-color:#005EB8;
+  color: white;
+  font-weight: 600;
+  border-top: #005EB8 1px solid;
+  border-bottom: #005EB8 1px solid;
+}
+
+li a:hover:not(.active) {
+  background-color: #005EB8;
+  color: white;
+}
+
+.action-buttons {
+  padding: 16px;
+  @media (min-width: 48.0525em) {
+    padding: 32px;
+    }
+}
+
+}
+
+@media (min-width: 40.0625em) {
+.nhsuk-summary-list {
+table-layout: auto;
+}
+}
+
+
+.nhsBSA-align-right {
+text-align: left;
+@media (min-width: 48.0525em) {
+  text-align: right;
+}
+}
+
+.nhsBSA-breadcrumb {
+border-bottom: #ccc 1px solid;
+}
+
+
+// NHSBSA - HEADER
+
+.nhsuk-header__signedin-link {
+    @include nhsuk-font(16);
+    border-bottom: 4px solid transparent;
+    border-top: 4px solid transparent;
+    color: $color_nhsuk-white;
+    display: block;
+    padding: 6px nhsuk-spacing(3);
+    text-decoration: none;
+  
+    .nhsuk-icon__chevron-right {
+      fill: $color_nhsuk-grey-3;
+      position: absolute;
+      right: nhsuk-spacing(1);
+      top: 11px;
+    }
+  
+    &:visited {
+      @include mq($from: large-desktop) {
+        color: $color_nhsuk-white;
+      }
+    }
+  
+    &:hover {
+      background-color: $color_shade_nhsuk-blue-35;
+      box-shadow: none;
+      color: $color_nhsuk-white;
+      text-decoration: underline;
+  
+      .nhsuk-icon__chevron-right {
+        fill: $color_nhsuk-blue;
+      }
+  
+    }
+  
+    &:active,
+    &:focus {
+      background-color: $nhsuk-focus-color;
+      border-bottom: $nhsuk-focus-width solid $nhsuk-focus-text-color;
+      box-shadow: none;
+      color: $nhsuk-focus-text-color;
+      outline: $nhsuk-focus-width solid transparent;
+      outline-offset: $nhsuk-focus-width;
+      text-decoration: none;
+  
+      &:hover {
+        background-color: $nhsuk-focus-color;
+        color: $nhsuk-focus-text-color;
+      }
+  
+      &:visited {
+        background-color: $nhsuk-focus-color;
+        color: $nhsuk-focus-text-color;
+      }
+    }
+  
+  }
