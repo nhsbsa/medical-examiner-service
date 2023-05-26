@@ -1,0 +1,128 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+{% block breadcrumbs %}
+<nav class="nhsuk-breadcrumb nhsuk-u-padding-bottom-0" aria-label="Breadcrumb">
+    <ol class="nhsuk-breadcrumb__list">
+      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="../open-cases">Open cases</a></li>
+      <li class="nhsuk-breadcrumb__item">Case scrutiny - Emmit Mar</li>
+    </ol>
+    <p class="nhsuk-breadcrumb__back">
+      <a class="nhsuk-breadcrumb__backlink" href="/level-one/level-two/level-three">
+        <span class="nhsuk-u-visually-hidden">Back to &nbsp;</span>
+        Level three
+      </a>
+    </p>
+</nav>
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-one-half">
+        <h1 class="nhsuk-u-margin-bottom-7">
+            Case scrutiny
+        </h1>
+    </div>
+
+    <!-- ================================================== -->
+    <!-- ADDITIONAL DETAILS -->
+    <!-- ================================================== -->
+
+    <div class="nhsuk-grid-column-full">
+        <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Pre-scrutiny notes</h2>
+        <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key nhsuk-u-font-weight-normal">
+                <a href="pre-scrutiny-note">Add pre-scrutiny note</a>
+              </dt>
+              <dd class="nhsuk-summary-list__actions">
+                <strong class="nhsuk-tag nhsuk-tag--white align-right">
+                    Not started
+                </strong>
+              </dd>
+            </div>
+        </dl>
+  
+        <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Attending practitioner's (AP) proposed cause of death</h2>
+        <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key nhsuk-u-font-weight-normal">
+                <a href="ap-prop-cause-of-death">Add AP's proposed cause of death</a>
+              </dt>
+              <dd class="nhsuk-summary-list__actions">
+                <strong class="nhsuk-tag nhsuk-tag--white align-right">
+                    Not started
+                </strong>
+              </dd>
+            </div>
+        </dl>
+
+        <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Medical examiner's independent review</h2>
+        <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key nhsuk-u-font-weight-normal">
+                <a href="record-review">Add medical examiner's independant review</a>
+              </dt>
+              <dd class="nhsuk-summary-list__actions">
+                <strong class="nhsuk-tag nhsuk-tag--white align-right">
+                    Not started
+                </strong>
+              </dd>
+            </div>
+        </dl>
+
+        <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Discussion with the AP about the cause of death</h2>
+        <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key nhsuk-u-font-weight-normal">
+                AP's proposed cause of death and Medical Examiners independent review must be complete before you can start this section
+              </dt>
+              <dd class="nhsuk-summary-list__actions">
+                <strong class="nhsuk-tag nhsuk-tag--red align-right">
+                    Cannot start
+                </strong>
+              </dd>
+            </div>
+        </dl>
+      </div>
+
+
+</div>
+
+{% endblock %}
+
+{% block sideNav %}
+<div class="side-nav">
+    <h3>Emmit Mar
+        <span class="nhsuk-caption-m nhsuk-caption--bottom nhsuk-u-margin-top-2">
+            <strong class="nhsuk-tag nhsuk-tag--blue">Routine</strong>
+        </span>
+    </h3>
+    <ul>
+        <div id="options" class="options">
+            <li><a href="case-details">Case details</a></li>
+            <li><a class="active" href="case-scrutiny">Case scrutiny</a></li>
+            <li><a href="comms-concerns">Communication and concerns</a></li>
+            <li><a href="coroner-notification">Coroner notification</a></li>
+        </div>
+    </ul>
+</div>
+{% endblock %}

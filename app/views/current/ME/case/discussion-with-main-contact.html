@@ -1,0 +1,175 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-full-width.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+        {% from 'back-link/macro.njk' import backLink %}
+
+        {{ backLink({
+        "href": "javascript:history.back()",
+        "text": "Go back"
+        }) }}
+
+        <h1>
+            <span class="nhsuk-caption-m nhsuk-caption--bottom">
+                Discussion with the main contact about the cause of death - Emmit Mar
+            </span>
+            Record discussion
+        </h1>
+
+        <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="contactFirstNames">
+                What's the first name of the person the discussion was with?
+            </label>
+            <input class="nhsuk-input nhsuk-u-width-one-half" id="contactFirstNames" name="contactFirstNames"
+                type="text">
+        </div>
+
+        <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="contactLastName">
+                What's the last name of the person the discussion was with?
+            </label>
+            <input class="nhsuk-input nhsuk-u-width-one-half" id="contactLastName" name="contactLastName" type="text">
+        </div>
+
+        <div class="nhsuk-form-group">
+            <fieldset class="nhsuk-fieldset" aria-describedby="dateOfDiscussion-hint" role="group">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+                    Date of discussion
+                </legend>
+                <div class="nhsuk-hint" id="dateOfDiscussion-hint">
+                    For example, 22 3 2021
+                </div>
+                <div class="nhsuk-date-input" id="dateOfDiscussion">
+                    <div class="nhsuk-date-input__item">
+                        <div class="nhsuk-form-group">
+                            <label class="nhsuk-label nhsuk-date-input__label" for="dateOfDiscussion-day">
+                                Day
+                            </label>
+                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                                id="dateOfDiscussion-day" name="dodDay" type="text" pattern="[0-9]*"
+                                inputmode="numeric">
+                        </div>
+                    </div>
+                    <div class="nhsuk-date-input__item">
+                        <div class="nhsuk-form-group">
+                            <label class="nhsuk-label nhsuk-date-input__label" for="dateOfDiscussion-dodMonth">
+                                Month
+                            </label>
+                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                                id="dateOfDiscussion-dodMonth" name="dodMonth" type="text" pattern="[0-9]*"
+                                inputmode="numeric">
+                        </div>
+                    </div>
+                    <div class="nhsuk-date-input__item">
+                        <div class="nhsuk-form-group">
+                            <label class="nhsuk-label nhsuk-date-input__label" for="dateOfDiscussion-dodYear">
+                                Year
+                            </label>
+                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+                                id="dateOfDiscussion-dodYear" name="dodYear" type="text" pattern="[0-9]*"
+                                inputmode="numeric">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="nhsuk-form-group">
+            <fieldset class="nhsuk-fieldset" aria-describedby="timeOfDiscussion-hint" role="group">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+                    Time of discussion
+                </legend>
+                <div class="nhsuk-hint" id="timeOfDiscussion-hint">
+                    Use 24 hour format. For example, 16 23
+                </div>
+                <div class="nhsuk-date-input" id="timeOfDiscussion">
+                    <div class="nhsuk-date-input__item">
+                        <div class="nhsuk-form-group">
+                            <label class="nhsuk-label nhsuk-date-input__label" for="timeOfDiscussion-hour">
+                                Hour
+                            </label>
+                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                                id="timeOfDiscussion-hour" name="todHour" type="text" pattern="[0-9]*"
+                                inputmode="numeric">
+                        </div>
+                    </div>
+                    <div class="nhsuk-date-input__item">
+                        <div class="nhsuk-form-group">
+                            <label class="nhsuk-label nhsuk-date-input__label" for="timeOfDiscussion-todMinute">
+                                Minutes
+                            </label>
+                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                                id="timeOfDiscussion-todMinute" name="todMinute" type="text" pattern="[0-9]*"
+                                inputmode="numeric">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-u-width-two-thirds" for="detailsOfDiscussion">
+                Details of the discussion
+            </label>
+            <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="detailsOfDiscussion"
+                name="detailsOfDiscussion" rows="5"></textarea>
+        </div>
+
+        <div class="nhsuk-form-group">
+            <fieldset class="nhsuk-fieldset" aria-describedby="recordAsConcern-hint">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+                    Do you want to record this as a concern?
+                </legend>
+                <div class="nhsuk-hint" id="recordAsConcern-hint">
+                    A medical examiner will review concerns before any action is taken.
+                </div>
+                <div class="nhsuk-radios">
+                    <div class="nhsuk-radios__item">
+                        <input class="nhsuk-radios__input" id="recordAsConcern" name="recordAsConcern" type="radio"
+                            value="YES">
+                        <label class="nhsuk-label nhsuk-radios__label" for="recordAsConcern">
+                            Yes
+                        </label>
+                    </div>
+                    <div class="nhsuk-radios__item">
+                        <input class="nhsuk-radios__input" id="recordAsConcernNo" name="recordAsConcern" type="radio"
+                            value="NO">
+                        <label class="nhsuk-label nhsuk-radios__label" for="recordAsConcernNo">
+                            No
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <a class="nhsuk-button" id="save-and-continue-button" href="discussion-main-cya">
+            Save and continue
+        </a>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,157 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-full-width.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+        <h1>
+            <span class="nhsuk-caption-m nhsuk-caption--bottom">
+
+                Communication and concerns
+                - Emmit Mar
+            </span>
+            Check discussion details
+        </h1>
+        <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row summary-list__details-list">
+                <dt class="nhsuk-summary-list__key">
+                    Raised by
+                </dt>
+                <dd class="nhsuk-summary-list__value" id="raised-by-value">
+                    Lou Mar
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a id="raised-by-change-link" href="#">Change <span class="nhsuk-u-visually-hidden">who raised the
+                            concern</span></a>
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row summary-list__details-list">
+                <dt class="nhsuk-summary-list__key">
+                    Date and time raised
+                </dt>
+                <dd class="nhsuk-summary-list__value" id="date-time-value">
+                    26/05/2023<br>11:30:00
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a id="date-time-raised-change-link" href="#">Change <span class="nhsuk-u-visually-hidden">date and
+                            time raised</span></a>
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row summary-list__details-list">
+                <dt class="nhsuk-summary-list__key">
+                    Conversation details
+                </dt>
+                <dd class="nhsuk-summary-list__value" id="conversation-details-value">
+                    details of the discussion
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a id="conversation-details-change-link" href="#">Change <span
+                            class="nhsuk-u-visually-hidden">discussion detais</span></a>
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row summary-list__details-list">
+                <dt class="nhsuk-summary-list__key">
+                    Recommended for case record review?
+                </dt>
+                <dd class="nhsuk-summary-list__value" id="recommend-for-review-value">
+                    Yes
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a id="recommend-for-review-change-link" href="#">Change <span
+                            class="nhsuk-u-visually-hidden">recommended for case record review</span></a>
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row summary-list__details-list">
+                <dt class="nhsuk-summary-list__key">
+                    Recommended for other clinical governance process review?
+                </dt>
+                <dd class="nhsuk-summary-list__value" id="recommended-other-process-value">
+                    Yes
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a id="recommended-other-process-change-link" href="">Change <span
+                            class="nhsuk-u-visually-hidden">recommended for other clinical governance process</span></a>
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row summary-list__details-list">
+                <dt class="nhsuk-summary-list__key">
+                    Patient safety incident?
+                </dt>
+                <dd class="nhsuk-summary-list__value" id="patient-saftey-value">
+                    Yes
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a id="patient-safety-change-link" href="#">Change <span class="nhsuk-u-visually-hidden">patient
+                            safety incident</span></a>
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row summary-list__details-list">
+                <dt class="nhsuk-summary-list__key">
+                    Recommended for referral to PALS?
+                </dt>
+                <dd class="nhsuk-summary-list__value" id="PALS-referral-value">
+                    Yes
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a id="PALS-referral-change-link" href="#">Change <span class="nhsuk-u-visually-hidden">recommended
+                            for PALS referral</span></a>
+                </dd>
+            </div>
+        </dl>
+
+        <div class="nhsuk-form-group">
+            <fieldset class="nhsuk-fieldset">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+                    Does this concern require any further action?
+                </legend>
+                <div class="nhsuk-radios">
+                    <div class="nhsuk-radios__item">
+                        <input class="nhsuk-radios__input" id="coronerAction-yes" name="coronerAction" type="radio"
+                            value="YES">
+                        <label class="nhsuk-label nhsuk-radios__label" for="coronerAction-yes">
+                            Yes, the coroner needs to be notified
+                        </label>
+                    </div>
+                    <div class="nhsuk-radios__item">
+                        <input class="nhsuk-radios__input" id="coronerAction-no" name="coronerAction" type="radio"
+                            value="NO">
+                        <label class="nhsuk-label nhsuk-radios__label" for="coronerAction-no">
+                            No action needed
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <a class="nhsuk-button" id="save-and-continue-button" href="comms-concerns">
+            Save and continue
+        </a><br>
+
+        <a id="return-to-communicaition-concerns-link" href="comms-concerns">Return to Communication and concerns</a>
+
+    </div>
+</div>
+
+{% endblock %}

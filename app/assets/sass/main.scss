@@ -7,8 +7,44 @@
 @import 'components/full-width';
 @import 'components/nhsbsa-manage';
 @import 'components/govuk-warning';
+@import 'components/phase-banner';
+@import 'components/pagination';
 
 ///////////////////////////////////////////
 // Add your custom CSS/Sass styles below...
 ///////////////////////////////////////////
-  
+
+.blue-divider {
+    border-bottom: 4px solid #005eb8;
+    margin: 0;
+    clear: both;
+}
+
+.align-right {
+    float: right;
+}
+
+// Flex override
+.nhsBSA-sidebar-container .nhsBSA-sidebar-wrapper .nhsBSA-sidebar-content {
+    flex: 1;
+}
+
+// Open cases - custom table headers
+.blue-link-header {
+    background-color: transparent;
+    border-width: 0;
+    white-space: nowrap;
+    -webkit-box-shadow: 0 0 0 0;
+    -moz-box-shadow: 0 0 0 0;
+    box-shadow: 0 0 0 0;
+    color: #005ea5;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    padding: 0 10px 0 0;
+    position: relative;
+    text-align: inherit;
+    font-size: 1em;
+    margin: 0;
+}

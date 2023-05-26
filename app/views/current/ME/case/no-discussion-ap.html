@@ -1,0 +1,140 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-full-width.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+        {% from 'back-link/macro.njk' import backLink %}
+
+        {{ backLink({
+        "href": "javascript:history.back()",
+        "text": "Go back"
+        }) }}
+
+        <h1>
+            <span class="nhsuk-caption-m nhsuk-caption--bottom">
+                Discussion with the attending practitioner about the cause of death - Emmit Mar
+            </span>
+            No discussion
+        </h1>
+
+
+
+        <div class="nhsuk-inset-text">
+            <span class="nhsuk-u-visually-hidden">Information: </span>
+            <p class="nhsuk-body">
+                You have chosen not to communicate with the attending practitioner (AP) before generating
+                the MCCD (medical certificate of cause of death). This means that the proposed cause of death
+                provided
+                by the AP will appear on the MCCD exactly as stated.
+            </p>
+        </div>
+
+        <div class="nhsuk-form-group">
+            <fieldset class="nhsuk-fieldset">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading--l">
+                    Why is a discussion with the attending practitioner (AP) not needed?
+                </legend>
+                <div class="nhsuk-radios nhsuk-radios--conditional nhsuk-u-width-two-thirds">
+                    <div class="nhsuk-radios__item">
+                        <input class="nhsuk-radios__input" id="reasonForNonDiscussion" name="reasonForNonDiscussion"
+                            type="radio" value="AGREE_WITH_AP_CORRESPONDENCE">
+                        <label class="nhsuk-label nhsuk-radios__label" for="reasonForNonDiscussion">
+                            Agree with written correspondence recieved from AP
+                        </label>
+                    </div>
+                    <div class="nhsuk-radios__item">
+                        <input class="nhsuk-radios__input" id="discussionHasTakenPlaceBetweenAPAndMEO"
+                            name="reasonForNonDiscussion" type="radio" value="DISCUSSION_BETWEEN_AP_AND_MEO">
+                        <label class="nhsuk-label nhsuk-radios__label" for="discussionHasTakenPlaceBetweenAPAndMEO">
+                            Discussion has taken place between AP and MEO
+                        </label>
+                    </div>
+                    <div class="nhsuk-radios__item">
+                        <input class="nhsuk-radios__input" id="noAPAvailable" name="reasonForNonDiscussion" type="radio"
+                            value="NO_AP_AVAILABLE">
+                        <label class="nhsuk-label nhsuk-radios__label" for="noAPAvailable">
+                            No AP available
+                        </label>
+                    </div>
+                    <div class="nhsuk-radios__item">
+                        <input class="nhsuk-radios__input" id="MENotAvailable" name="reasonForNonDiscussion"
+                            type="radio" value="NO_ME_AVAILABLE">
+                        <label class="nhsuk-label nhsuk-radios__label" for="MENotAvailable">
+                            ME not available
+                        </label>
+                    </div>
+                    <div class="nhsuk-radios__item">
+                        <input class="nhsuk-radios__input" id="Other" name="reasonForNonDiscussion" type="radio"
+                            value="OTHER" aria-controls="conditional-Other" aria-expanded="false">
+                        <label class="nhsuk-label nhsuk-radios__label" for="Other">
+                            Other
+                        </label>
+                    </div>
+                    <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-Other">
+                        <div class="nhsuk-form-group">  
+                            <label class="nhsuk-label nhsuk-u-width-two-thirds" for="otherDetails">
+                                Give details
+                            </label>
+                            <input class="nhsuk-input nhsuk-u-width-two-thirds" id="otherDetails" name="otherDetails" type="text">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="nhsuk-form-group">
+            <div class="govuk-warning-text nhsuk-form-group">
+                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                <span class="govuk-warning-text__text">
+                    <span class="visually-hidden">Warning</span>
+                    You must agree to the declaration to mark this section as complete.
+                </span>
+            </div>
+        </div>
+
+        <div class="nhsuk-form-group">
+            <div class="nhsuk-checkboxes">
+                <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="confirmation" name="satisfiedWithQAPCauseOfDeath"
+                        type="checkbox" value="YES">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="confirmation">
+                        I am satisfied that:
+                        <ul>
+                            <li>the AP's original proposed cause of death will appear on the MCCD</li>
+                            <li>no change or discussion with the medical examiner is necessary</li>
+                        </ul>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <a class="nhsuk-button" id="save-and-continue-button" href="case-scrutiny">
+            Save and continue
+        </a>
+
+    </div>
+</div>
+
+{% endblock %}

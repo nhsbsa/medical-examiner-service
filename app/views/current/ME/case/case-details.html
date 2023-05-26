@@ -1,0 +1,248 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+{% block breadcrumbs %}
+<nav class="nhsuk-breadcrumb nhsuk-u-padding-bottom-0" aria-label="Breadcrumb">
+    <ol class="nhsuk-breadcrumb__list">
+      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="../open-cases">Open cases</a></li>
+      <li class="nhsuk-breadcrumb__item">Case details - Emmit Mar</li>
+    </ol>
+    <p class="nhsuk-breadcrumb__back">
+      <a class="nhsuk-breadcrumb__backlink" href="/level-one/level-two/level-three">
+        <span class="nhsuk-u-visually-hidden">Back to &nbsp;</span>
+        Level three
+      </a>
+    </p>
+</nav>
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-one-half">
+        <h1 class="nhsuk-u-margin-bottom-7">
+            Case details
+        </h1>
+    </div>
+
+    <!-- ================================================== -->
+    <!-- DECEASED PERSONS DETAILS -->
+    <!-- ================================================== -->
+    
+    <div class="nhsuk-grid-column-three-quarters">
+        <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Deceased person's details</h2>
+    </div>
+    <div class="nhsuk-grid-column-one-quarter">
+        <strong class="nhsuk-tag nhsuk-tag align-right">
+            Complete
+        </strong>
+    </div>
+
+    <div class="nhsuk-grid-column-full">
+        <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Name
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {% if data['deceased-first-name'] and data['deceased-last-name'] %}
+                {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
+                {% else %}
+                    Karen Francis
+                {% endif %}
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="#">
+                  Change<span class="nhsuk-u-visually-hidden"> name</span>
+                </a>
+              </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Date of death
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                25 May 2023
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="#">
+                  Change<span class="nhsuk-u-visually-hidden"> date of death</span>
+                </a>
+              </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Time of death
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                15:30
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="#">
+                  Change<span class="nhsuk-u-visually-hidden"> time of death</span>
+                </a>
+              </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Rapid release
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                No
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="#">
+                  Change<span class="nhsuk-u-visually-hidden"> rapid release</span>
+                </a>
+              </dd>
+            </div>
+          </dl>
+    </div>
+
+    <!-- ================================================== -->
+    <!-- CASE ASSIGNMENT -->
+    <!-- ================================================== -->
+
+    <div class="nhsuk-grid-column-three-quarters">
+        <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Case assignment</h2>
+    </div>
+    <div class="nhsuk-grid-column-one-quarter">
+        <strong class="nhsuk-tag nhsuk-tag align-right">
+            Complete
+        </strong>
+    </div>
+
+    <div class="nhsuk-grid-column-full">
+        <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Medical examiner
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                DC
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="#">
+                  Change<span class="nhsuk-u-visually-hidden"> assigned medical examiner</span>
+                </a>
+              </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Medical examiner officer
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                CD
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="#">
+                  Change<span class="nhsuk-u-visually-hidden"> assigned medical examiner officer</span>
+                </a>
+              </dd>
+            </div>
+          </dl>
+    </div>
+
+    <!-- ================================================== -->
+    <!-- ADDITIONAL DETAILS -->
+    <!-- ================================================== -->
+
+    <div class="nhsuk-grid-column-full">
+      <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Additional details</h2>
+      <dl class="nhsuk-summary-list">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key nhsuk-u-font-weight-normal">
+              <a href="additional-details">Add additional details about the deceased person</a>
+            </dt>
+            <dd class="nhsuk-summary-list__actions">
+              <strong class="nhsuk-tag nhsuk-tag--white align-right">
+                  Not started
+              </strong>
+            </dd>
+          </div>
+      </dl>
+
+      <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Location of death</h2>
+      <dl class="nhsuk-summary-list">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key nhsuk-u-font-weight-normal">
+              <a href="location-of-death">Add the location of death</a>
+            </dt>
+            <dd class="nhsuk-summary-list__actions">
+              <strong class="nhsuk-tag nhsuk-tag--white align-right">
+                  Not started
+              </strong>
+            </dd>
+          </div>
+      </dl>
+    </div>
+
+    <!-- <div class="nhsuk-grid-column-full">
+        <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Medical examiner
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                DC
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="#">
+                  Change<span class="nhsuk-u-visually-hidden"> assigned medical examiner</span>
+                </a>
+              </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Medical examiner officer
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                CD
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="#">
+                  Change<span class="nhsuk-u-visually-hidden"> assigned medical examiner officer</span>
+                </a>
+              </dd>
+            </div>
+          </dl>
+    </div> -->
+
+</div>
+
+{% endblock %}
+
+{% block sideNav %}
+<div class="side-nav">
+    <h3>Emmit Mar
+        <span class="nhsuk-caption-m nhsuk-caption--bottom nhsuk-u-margin-top-2">
+            <strong class="nhsuk-tag nhsuk-tag--blue">Routine</strong>
+        </span>
+    </h3>
+    <ul>
+        <div id="options" class="options">
+            <li><a class="active" href="case-details">Case details</a></li>
+            <li><a href="case-scrutiny">Case scrutiny</a></li>
+            <li><a href="comms-concerns">Communication and concerns</a></li>
+            <li><a href="coroner-notification">Coroner notification</a></li>
+        </div>
+    </ul>
+</div>
+{% endblock %}

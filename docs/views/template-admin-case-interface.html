@@ -93,18 +93,11 @@
                 <div class="nhsuk-width-container-fluid">
                   <div class="nhsuk-grid-row">
                     <div class="nhsuk-grid-column-full">
-                      <div class="govuk-phase-banner">
-                        <p class="govuk-phase-banner__content">
-                          <strong class="govuk-tag govuk-phase-banner__content__tag">
-                            beta
-                          </strong>
-                          <span class="govuk-phase-banner__text">
-                            This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
-                          </span>
-                        </p>
-                      </div>
-                      
-                      {% block breadcrumbs %}{% endblock %}
+              
+                      <ol class="nhsuk-breadcrumb__list">
+                        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="#">Home</a></li>
+                        <li class="nhsuk-breadcrumb__item">Joe Bloggs</li>
+                      </ol>
               
                     </div>
                   </div>
@@ -120,16 +113,44 @@
                     <div class="nhsuk-width-container-fluid">
               
                       <div class="nhsuk-main-wrapper" id="maincontent">
+                        <div class="nhsuk-grid-row">
+                          <div class="nhsuk-grid-column-full">
               
-                        {% block content %}{% endblock %}
+                            {% block content %}{% endblock %}
               
+                          </div>
+                        </div>
                       </div>
               
                     </div>
                   </div>
                   <div class="nhsBSA-sidebar-nav">
               
-                    {% block sideNav %}{% endblock %}
+                    <div class="side-nav">
+              
+                      <h3>Joe Bloggs
+                        <span class="nhsuk-caption-m nhsuk-caption--bottom nhsuk-u-margin-top-2">
+                          <span class="nhsuk-u-visually-hidden">
+                            -
+                          </span>
+                          <span class="nhsuk-caption-m nhsuk-caption--bottom">Ref: HDJ2123F</span>
+                          <span class="nhsuk-u-visually-hidden">
+                            -
+                          </span>
+                          <strong class="nhsuk-tag nhsuk-u-margin-top-2">STATUS: ACTIVE</strong>
+                        </span>
+                      </h3>
+              
+                      <ul>
+                        <div id="options" class="options">
+                          <li><a class="active" href="#">Item 1</a></li>
+                          <li><a href="#">Item 2</a></li>
+                          <li><a href="#">Item 3</a></li>
+                          <li><a href="#">Item 4</a></li>
+                        </div>
+                      </ul>
+                    </div>
+              
               
                   </div>
                 </div>

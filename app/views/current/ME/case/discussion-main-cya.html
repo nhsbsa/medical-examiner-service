@@ -1,0 +1,94 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-full-width.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+        <h1>
+            <span class="nhsuk-caption-m nhsuk-caption--bottom">
+
+                Communication and concerns
+                - Emmit Mar
+            </span>
+            Check discussion details
+        </h1>
+
+        <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row summary-list__details-list">
+                <dt class="nhsuk-summary-list__key">
+                    Raised by
+                </dt>
+                <dd class="nhsuk-summary-list__value" id="raised-by-value">
+                    Lou Mar
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a id="raised-by-change-link" href="#">Change
+                        <span class="nhsuk-u-visually-hidden">who raised the concern</span></a>
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row summary-list__details-list">
+                <dt class="nhsuk-summary-list__key">
+                    Date and time raised
+                </dt>
+                <dd class="nhsuk-summary-list__value" id="date-time-value">
+                    26/05/2023<br>11:30:00
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a id="date-time-raised-change-link" href="#">Change
+                        <span class="nhsuk-u-visually-hidden">date and time raised</span></a>
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row summary-list__details-list">
+                <dt class="nhsuk-summary-list__key">
+                    Conversation details
+                </dt>
+                <dd class="nhsuk-summary-list__value" id="conversation-details-value">
+                    details of the discussion
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a id="conversation-details-change-link" href="#">Change
+                        <span class="nhsuk-u-visually-hidden">discussion detais</span></a>
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row summary-list__details-list">
+                <dt class="nhsuk-summary-list__key">
+                    Concern raised?
+                </dt>
+                <dd class="nhsuk-summary-list__value" id="concern-raised-value">
+                    No
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a id="concern-raised-change-link" href="#">Change
+                        <span class="nhsuk-u-visually-hidden">concern raised</span></a>
+                </dd>
+            </div>
+        </dl>
+
+        <p><a id="raise-concern-link" href="main-raise-concern">Raise concern</a></p>
+        <a id="return-to-communicaition-concerns-link" href="#">Return to Communication and concerns</a>
+
+    </div>
+</div>
+
+{% endblock %}
