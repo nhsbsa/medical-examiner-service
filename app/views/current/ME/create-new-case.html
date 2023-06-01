@@ -18,8 +18,8 @@ Create new case
 {% from 'back-link/macro.njk' import backLink %}
 
 {{ backLink({
-  "href": "javascript:history.back()",
-  "text": "Go back"
+"href": "javascript:history.back()",
+"text": "Go back"
 }) }}
 
 <div class="nhsuk-grid-row">
@@ -32,6 +32,8 @@ Create new case
       </span>
       Deceased person's details
     </h1>
+
+    <form action="create-new-case" method="post">
 
       <div class="nhsuk-form-group">
         <label class="nhsuk-label nhsuk-u-width-one-half" for="firstNames">
@@ -63,7 +65,7 @@ Create new case
                   Day
                 </label>
                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dateOfDeath-day"
-                  name="dodDay" type="text" pattern="[0-9]*" inputmode="numeric">
+                  name="dodDayCreate" type="text" pattern="[0-9]*" inputmode="numeric">
               </div>
             </div>
             <div class="nhsuk-date-input__item">
@@ -72,7 +74,7 @@ Create new case
                   Month
                 </label>
                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dateOfDeath-dodMonth"
-                  name="dodMonth" type="text" pattern="[0-9]*" inputmode="numeric">
+                  name="dodMonthCreate" type="text" pattern="[0-9]*" inputmode="numeric">
               </div>
             </div>
             <div class="nhsuk-date-input__item">
@@ -81,7 +83,7 @@ Create new case
                   Year
                 </label>
                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="dateOfDeath-dodYear"
-                  name="dodYear" type="text" pattern="[0-9]*" inputmode="numeric">
+                  name="dodYearCreate" type="text" pattern="[0-9]*" inputmode="numeric">
               </div>
             </div>
           </div>
@@ -103,7 +105,7 @@ Create new case
                   Hour
                 </label>
                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="timeOfDeath-hour"
-                  name="todHour" type="text" pattern="[0-9]*" inputmode="numeric">
+                  name="todHourCreate" type="text" pattern="[0-9]*" inputmode="numeric">
               </div>
             </div>
             <div class="nhsuk-date-input__item">
@@ -112,7 +114,7 @@ Create new case
                   Minutes
                 </label>
                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="timeOfDeath-todMinute"
-                  name="todMinute" type="text" pattern="[0-9]*" inputmode="numeric">
+                  name="todMinuteCreate" type="text" pattern="[0-9]*" inputmode="numeric">
               </div>
             </div>
           </div>
@@ -128,14 +130,14 @@ Create new case
 
             <div class="nhsuk-radios__item">
               <input class="nhsuk-radios__input" id="requestForRapidRelease" name="requestForRapidRelease" type="radio"
-                value="YES">
+                value="yes">
               <label class="nhsuk-label nhsuk-radios__label" for="requestForRapidRelease">
                 Yes
               </label>
             </div>
             <div class="nhsuk-radios__item">
               <input class="nhsuk-radios__input" id="requestForRapidRelease-no" name="requestForRapidRelease"
-                type="radio" value="NO">
+                type="radio" value="no">
               <label class="nhsuk-label nhsuk-radios__label" for="requestForRapidRelease-no">
                 No
               </label>
@@ -145,10 +147,11 @@ Create new case
         </fieldset>
       </div>
 
-      <a href="assign-case" class="nhsuk-button">
+      <button class="nhsuk-button" type="submit">
         Save and continue
-      </a>
+      </button>
 
+    </form>
 
   </div>
 </div>

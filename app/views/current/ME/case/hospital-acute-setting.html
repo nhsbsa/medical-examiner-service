@@ -34,10 +34,12 @@ Case details
 
         <h1>
             <span class="nhsuk-caption-m nhsuk-caption--bottom">
-                Location of death - Emmit Mar
+                Location of death - {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
             </span>
             Hospital or acute setting
         </h1>
+
+        <form action="hospital-acute-setting" method="post">
 
             <div class="nhsuk-form-group">
                 <label class="nhsuk-label nhsuk-u-width-one-half" for="healthcareProvider">
@@ -112,9 +114,11 @@ Case details
                     rows="5" aria-describedby="admissionDetails-hint"></textarea>
             </div>
 
-            <a class="nhsuk-button" id="save-and-continue-button" href="case-details">
+            <button class="nhsuk-button" id="save-and-continue-button" type="submit">
                 Save and continue
-            </a>
+            </button>
+
+        </form>
 
     </div>
 </div>

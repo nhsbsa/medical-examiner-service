@@ -32,46 +32,32 @@ Case details
         "text": "Go back"
         }) }}
 
+        <h1>Close this case</h1>
 
-        <h1>
-            <span class="nhsuk-caption-m nhsuk-caption--bottom">
-                Coroner notification - {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
-            </span>
-            Record response
-        </h1>
-    
-        <form action="coroner-response" method="post">
+        <form action="close-case" method="post">
 
             <div class="nhsuk-form-group">
-
                 <fieldset class="nhsuk-fieldset">
-                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend">
-                        Did the coroner accept the case?
+                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading--m nhsuk-u-width-two-thirds">
+                        Do you want to close this case?
                     </legend>
-
                     <div class="nhsuk-radios">
-
                         <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="coronerAcceptedCase" name="coronerAcceptedCase"
-                                type="radio" value="yes">
-                            <label class="nhsuk-label nhsuk-radios__label" for="coronerAcceptedCase">
+                            <input class="nhsuk-radios__input" id="closeCaseYes" name="closeCase" type="radio" value="yes">
+                            <label class="nhsuk-label nhsuk-radios__label" for="closeCaseYes">
                                 Yes
                             </label>
                         </div>
                         <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="coronerAcceptedCaseNo" name="coronerAcceptedCase"
-                                type="radio" value="no">
-                            <label class="nhsuk-label nhsuk-radios__label" for="coronerAcceptedCaseNo">
+                            <input class="nhsuk-radios__input" id="closeCaseNo" name="closeCase" type="radio" value="no">
+                            <label class="nhsuk-label nhsuk-radios__label" for="closeCaseNo">
                                 No
                             </label>
                         </div>
-
                     </div>
                 </fieldset>
-
             </div>
-
-            <button class="nhsuk-button" type="submit">
+            <button class="nhsuk-button" id="save-and-continue-button" type="submit">
                 Save and continue
             </button>
 

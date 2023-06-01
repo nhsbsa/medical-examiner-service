@@ -25,10 +25,13 @@ Case details
 
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
-
+        {{ backLink({
+        "href": "javascript:history.back()",
+        "text": "Go back"
+        }) }}
         <h1>
             <span class="nhsuk-caption-m nhsuk-caption--bottom">
-                Attending practitioner's proposed cause of death - Emmit Mar
+                Attending practitioner's proposed cause of death - {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
             </span>
             Record proposed cause of death
         </h1>
@@ -44,130 +47,138 @@ Case details
             </p>
         </div>
 
-        <div class="nhsuk-form-group">
-            <label class="nhsuk-label nhsuk-u-width-one-half" for="qapFirstNames">
-                First name of the AP who proposed the cause of death
-            </label>
-            <input class="nhsuk-input nhsuk-u-width-one-half" id="qapFirstNames" name="qapFirstNames" type="text">
-        </div>
+        <form action="ap-prop-cause-of-death" method="post">
 
-        <div class="nhsuk-form-group">
-            <label class="nhsuk-label nhsuk-u-width-one-half" for="qapLastName">
-                Last name of the AP who proposed the cause of death
-            </label>
-            <input class="nhsuk-input nhsuk-u-width-one-half" id="qapLastName" name="qapLastName" type="text">
-        </div>
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-u-width-one-half" for="qapFirstNames">
+                    First name of the AP who proposed the cause of death
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-one-half" id="qapFirstNames" name="qapFirstNames" type="text">
+            </div>
 
-        <div class="nhsuk-form-group">
-            <label class="nhsuk-label nhsuk-u-width-two-thirds" for="causeOfDeathSummary">
-                Cause of death summary
-            </label>
-            <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="causeOfDeathSummary"
-                name="causeOfDeathSummary" rows=" 10 "></textarea>
-        </div>
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-u-width-one-half" for="qapLastName">
+                    Last name of the AP who proposed the cause of death
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-one-half" id="qapLastName" name="qapLastName" type="text">
+            </div>
 
-        <div class="nhsuk-u-margin-bottom-8">
             <div class="nhsuk-form-group">
-                <label class="nhsuk-label nhsuk-u-width-one-half" for="causeOfDeath1a">
-                    1(a) disease or condition directly leading to death (required)
+                <label class="nhsuk-label nhsuk-u-width-two-thirds" for="causeOfDeathSummary">
+                    Cause of death summary
                 </label>
-                <input class="nhsuk-input nhsuk-u-width-one-half" id="causeOfDeath1a" name="causeOfDeath1a" type="text">
+                <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="causeOfDeathSummary"
+                    name="causeOfDeathSummary" rows=" 10 "></textarea>
             </div>
-            <div class="nhsuk-form-group">
-                <label class="nhsuk-label nhsuk-u-width-one-third" for="onsetInterval1a">
-                    Approximate interval between onset of 1(a) and death
-                </label>
-                <input class="nhsuk-input nhsuk-u-width-one-third" id="onsetInterval1a" name="onsetInterval1a"
-                    type="text">
-            </div>
-        </div>
-        <div class="nhsuk-u-margin-bottom-8">
-            <div class="nhsuk-form-group">
-                <label class="nhsuk-label nhsuk-u-width-one-half" for="causeOfDeath1b">
-                    1(b) other disease or condition leading to 1(a) (optional)
-                </label>
-                <input class="nhsuk-input nhsuk-u-width-one-half" id="causeOfDeath1b" name="causeOfDeath1b" type="text">
-            </div>
-            <div class="nhsuk-form-group">
-                <label class="nhsuk-label nhsuk-u-width-one-third" for="onsetInterval1b">
-                    Approximate interval between onset of 1(b) and death
-                </label>
-                <input class="nhsuk-input nhsuk-u-width-one-third" id="onsetInterval1b" name="onsetInterval1b"
-                    type="text">
-            </div>
-        </div>
-        <div class="nhsuk-u-margin-bottom-8">
-            <div class="nhsuk-form-group">
-                <label class="nhsuk-label nhsuk-u-width-one-half" for="causeOfDeath1c">
-                    1(c) other disease or condition leading to 1(b) (optional)
-                </label>
-                <input class="nhsuk-input nhsuk-u-width-one-half" id="causeOfDeath1c" name="causeOfDeath1c" type="text">
-            </div>
-            <div class="nhsuk-form-group">
-                <label class="nhsuk-label nhsuk-u-width-one-third" for="onsetInterval1c">
-                    Approximate interval between onset of 1(c) and death
-                </label>
-                <input class="nhsuk-input nhsuk-u-width-one-third" id="onsetInterval1c" name="onsetInterval1c"
-                    type="text">
-            </div>
-        </div>
-        <div class="nhsuk-u-margin-bottom-8">
-            <div class="nhsuk-form-group">
-                <label class="nhsuk-label nhsuk-u-width-one-half" for="causeOfDeath2">
-                    2 - Other significant conditions (optional)
-                </label>
-                <input class="nhsuk-input nhsuk-u-width-one-half" id="causeOfDeath2" name="causeOfDeath2" type="text">
-            </div>
-            <div class="nhsuk-form-group">
-                <label class="nhsuk-label hsuk-u-width-one-half" for="onsetInterval2">
-                    Approximate interval between onset of 2 and death
-                </label>
-                <input class="nhsuk-input nhsuk-u-width-one-third" id="onsetInterval2" name="onsetInterval2"
-                    type="text">
-            </div>
-        </div>
 
-        <div class="nhsuk-form-group">
-            <div class="govuk-warning-text nhsuk-form-group nhsuk-u-padding-bottom-5">
-                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-                <span class="govuk-warning-text__text">
-                    <span class="visually-hidden"> Warning </span>
-                    You must agree to both declarations in order to mark this section as complete.
-                </span>
-            </div>
-        </div>
-
-        <div class="nhsuk-form-group">
-            <fieldset class="nhsuk-fieldset">
-                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading--l visually-hidden">
-                    Declaration
-                </legend>
-                <div class="nhsuk-checkboxes nhsuk-u-width-two-thirds">
-                    <div class="nhsuk-checkboxes__item">
-                        <input class="nhsuk-checkboxes__input" id="confirmationOfProposal" name="declarations"
-                            type="checkbox" value="confirmationOfProposal">
-                        <label class="nhsuk-label nhsuk-checkboxes__label" for="confirmationOfProposal">
-                            I can confirm that I have:
-                            <ul>
-                                <li>received electronic instruction from the AP proposing the cause of death</li>
-                                <li>entered the cause of death proposed by the AP exactly as stated</li>
-                            </ul>
-                        </label>
-                    </div>
-                    <div class="nhsuk-checkboxes__item">
-                        <input class="nhsuk-checkboxes__input" id="readyForDiscussion" name="declarations"
-                            type="checkbox" value="readyForDiscussion">
-                        <label class="nhsuk-label nhsuk-checkboxes__label" for="readyForDiscussion">
-                            I confirm that this section is complete and ready for the discussion between the AP and
-                            the medical examiner or medical examiner officer
-                        </label>
-                    </div>
+            <div class="nhsuk-u-margin-bottom-8">
+                <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-u-width-one-half" for="causeOfDeath1a">
+                        1(a) disease or condition directly leading to death (required)
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-one-half" id="causeOfDeath1a" name="causeOfDeath1a"
+                        type="text">
                 </div>
-            </fieldset>
-        </div>
-        <a class="nhsuk-button" id="save-and-continue-button" href="case-scrutiny">
-            Save and continue
-        </a>
+                <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-u-width-one-third" for="onsetInterval1a">
+                        Approximate interval between onset of 1(a) and death
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-one-third" id="onsetInterval1a" name="onsetInterval1a"
+                        type="text">
+                </div>
+            </div>
+            <div class="nhsuk-u-margin-bottom-8">
+                <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-u-width-one-half" for="causeOfDeath1b">
+                        1(b) other disease or condition leading to 1(a) (optional)
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-one-half" id="causeOfDeath1b" name="causeOfDeath1b"
+                        type="text">
+                </div>
+                <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-u-width-one-third" for="onsetInterval1b">
+                        Approximate interval between onset of 1(b) and death
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-one-third" id="onsetInterval1b" name="onsetInterval1b"
+                        type="text">
+                </div>
+            </div>
+            <div class="nhsuk-u-margin-bottom-8">
+                <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-u-width-one-half" for="causeOfDeath1c">
+                        1(c) other disease or condition leading to 1(b) (optional)
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-one-half" id="causeOfDeath1c" name="causeOfDeath1c"
+                        type="text">
+                </div>
+                <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-u-width-one-third" for="onsetInterval1c">
+                        Approximate interval between onset of 1(c) and death
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-one-third" id="onsetInterval1c" name="onsetInterval1c"
+                        type="text">
+                </div>
+            </div>
+            <div class="nhsuk-u-margin-bottom-8">
+                <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-u-width-one-half" for="causeOfDeath2">
+                        2 - Other significant conditions (optional)
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-one-half" id="causeOfDeath2" name="causeOfDeath2"
+                        type="text">
+                </div>
+                <div class="nhsuk-form-group">
+                    <label class="nhsuk-label hsuk-u-width-one-half" for="onsetInterval2">
+                        Approximate interval between onset of 2 and death
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-one-third" id="onsetInterval2" name="onsetInterval2"
+                        type="text">
+                </div>
+            </div>
+
+            <div class="nhsuk-form-group">
+                <div class="govuk-warning-text nhsuk-form-group nhsuk-u-padding-bottom-5">
+                    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                    <span class="govuk-warning-text__text">
+                        <span class="visually-hidden"> Warning </span>
+                        You must agree to both declarations in order to mark this section as complete.
+                    </span>
+                </div>
+            </div>
+
+            <div class="nhsuk-form-group">
+                <fieldset class="nhsuk-fieldset">
+                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading--l visually-hidden">
+                        Declaration
+                    </legend>
+                    <div class="nhsuk-checkboxes nhsuk-u-width-two-thirds">
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="confirmationOfProposal" name="declaration1"
+                                type="checkbox" value="confirmationOfProposal">
+                            <label class="nhsuk-label nhsuk-checkboxes__label" for="confirmationOfProposal">
+                                I can confirm that I have:
+                                <ul>
+                                    <li>received electronic instruction from the AP proposing the cause of death</li>
+                                    <li>entered the cause of death proposed by the AP exactly as stated</li>
+                                </ul>
+                            </label>
+                        </div>
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="readyForDiscussion" name="declaration2"
+                                type="checkbox" value="readyForDiscussion">
+                            <label class="nhsuk-label nhsuk-checkboxes__label" for="readyForDiscussion">
+                                I confirm that this section is complete and ready for the discussion between the AP and
+                                the medical examiner or medical examiner officer
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <button class="nhsuk-button" id="save-and-continue-button" type="submit">
+                Save and continue
+            </button>
+
+        </form>
 
     </div>
 

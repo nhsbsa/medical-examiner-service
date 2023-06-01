@@ -31,12 +31,12 @@ Case details
             }) }}
         <h1>
             <span class="nhsuk-caption-m nhsuk-caption--bottom">
-                Emmit Mar
+                {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
             </span>
             Discussion with the attending practitioner about the cause of death
         </h1>
 
-        <form id="disucssion-with-qap-form" name="qapDiscussionForm" action="ap-prop-cod-discussion" method="post" novalidate="">
+        <form action="ap-prop-cod-discussion" method="post">
 
             <div class="nhsuk-form-group">
                 <fieldset class="nhsuk-fieldset">
@@ -63,7 +63,7 @@ Case details
                 </fieldset>
             </div>
 
-            <button class="nhsuk-button" id="save-and-continue-button" type="submit">
+            <button class="nhsuk-button" type="submit">
                 Save and continue
             </button>
 

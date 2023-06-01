@@ -31,7 +31,7 @@ Case details
                 Communication and concerns
                 - {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
             </span>
-            Check discussion details
+            Check communication details
         </h1>
 
         <dl class="nhsuk-summary-list">
@@ -40,7 +40,7 @@ Case details
                     Raised by
                 </dt>
                 <dd class="nhsuk-summary-list__value" id="raised-by-value">
-                    {{ data['contactFirstNamesMain'] }} {{ data['contactLastNameMain'] }}
+                    {{ data['contactFirstNames'] }} {{ data['contactLastName'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                     <a id="raised-by-change-link" href="#">Change
@@ -49,12 +49,24 @@ Case details
             </div>
             <div class="nhsuk-summary-list__row summary-list__details-list">
                 <dt class="nhsuk-summary-list__key">
+                    Relationship
+                </dt>
+                <dd class="nhsuk-summary-list__value" id="raised-by-value">
+                    {{ data['contactRole'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a id="raised-by-change-link" href="#">Change
+                        <span class="nhsuk-u-visually-hidden">Relationship</span></a>
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row summary-list__details-list">
+                <dt class="nhsuk-summary-list__key">
                     Date and time raised
                 </dt>
                 <dd class="nhsuk-summary-list__value" id="date-time-value">
-                    {{ data['dodDayMain'] }}/{{ data['dodMonthMain'] }}/{{ data['dodYearMain'] }}
+                    {{ data['dodDayCommsConcern'] }}/{{ data['dodMonthCommsConcern'] }}/{{ data['dodYearCommsConcern'] }}
                     <br>
-                    {{ data['todHourMain'] }}:{{ data['todMinuteMain'] }}
+                    {{ data['todHourCommsConcern'] }}:{{ data['todMinuteCommsConcern'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                     <a id="date-time-raised-change-link" href="#">Change
@@ -66,7 +78,7 @@ Case details
                     Conversation details
                 </dt>
                 <dd class="nhsuk-summary-list__value" id="conversation-details-value">
-                    {{ data['detailsOfDiscussionMain'] }}
+                    {{ data['detailsOfDiscussionCommsConcern'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                     <a id="conversation-details-change-link" href="#">Change
@@ -79,7 +91,7 @@ Case details
                         Concern raised?
                     </dt>
                     <dd class="nhsuk-summary-list__value" id="concern-raised-value">
-                        {{ data['recordAsConcernMain'] }}
+                        {{ data['recordAsCommsConcern'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
                         <a id="concern-raised-change-link" href="#">Change
@@ -89,13 +101,13 @@ Case details
             {% endif %}
             
             <!-- If raise as concern answers have been provided (radio buttons) -->
-            {% if data['recordAsConcernMain'] == 'yes' %}
+            {% if data['recordAsConcernComms'] == 'yes' %}
                 <div class="nhsuk-summary-list__row summary-list__details-list">
                     <dt class="nhsuk-summary-list__key">
                         Recommended for case record review?
                     </dt>
                     <dd class="nhsuk-summary-list__value" id="concern-raised-value">
-                        {{ data['caseReviewRecommended'] }}
+                        {{ data['commscaseReviewRecommended'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
                         <a id="concern-raised-change-link" href="#">Change
@@ -107,7 +119,7 @@ Case details
                         Recommended for other clinical governance process review?
                     </dt>
                     <dd class="nhsuk-summary-list__value" id="concern-raised-value">
-                        {{ data['clinicalReviewRecommended'] }}
+                        {{ data['commsclinicalReviewRecommended'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
                         <a id="concern-raised-change-link" href="#">Change
@@ -119,7 +131,7 @@ Case details
                         Patient safety incident?
                     </dt>
                     <dd class="nhsuk-summary-list__value" id="concern-raised-value">
-                        {{ data['patientSafetyIncident'] }}
+                        {{ data['commspatientSafetyIncident'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
                         <a id="concern-raised-change-link" href="#">Change
@@ -131,7 +143,7 @@ Case details
                         Recommended for referral to PALS?
                     </dt>
                     <dd class="nhsuk-summary-list__value" id="concern-raised-value">
-                        {{ data['referToPals'] }}
+                        {{ data['commsreferToPals'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
                         <a id="concern-raised-change-link" href="#">Change

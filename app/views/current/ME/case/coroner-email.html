@@ -34,7 +34,7 @@ Case details
 
         <h1>
             <span class="nhsuk-caption-m nhsuk-caption--bottom">
-                Coroner notification - Emmit Mar
+                Coroner notification - {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
             </span>
             Coroner's email address
         </h1>
@@ -43,16 +43,21 @@ Case details
             send the notification to.</h2>
         <p class="nhsuk-hint" id="coroner-email-hint">We'll use this to send the notification to the coroner</p>
 
-        <div class="nhsuk-form-group">
-            <label class="nhsuk-label nhsuk-u-width-one-third" for="emailAddress">
-                Email
-            </label>
-            <input class="nhsuk-input nhsuk-u-width-one-third" id="emailAddress" name="coronerEmailAddress" type="text">
-        </div>
+        <form action="coroner-email" method="post">
 
-        <a class="nhsuk-button" id="save-and-continue-button" href="coroner-email-cya">
-            Save and continue
-        </a>
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-u-width-one-third" for="emailAddress">
+                    Email
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-one-third" id="emailAddress" name="coronerEmailAddress"
+                    type="text">
+            </div>
+
+            <button class="nhsuk-button" type="submit">
+                Save and continue
+            </button>
+
+        </form>
 
     </div>
 </div>

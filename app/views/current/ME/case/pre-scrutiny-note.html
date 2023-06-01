@@ -34,10 +34,12 @@ Case details
 
         <h1>
             <span class="nhsuk-caption-m nhsuk-caption--bottom ">
-                Pre-scrutiny notes - Emmit Mar
+                Pre-scrutiny notes - {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
             </span>
             Add a note
         </h1>
+
+        <form action="pre-scrutiny-note" method="post">
 
         <div class="nhsuk-form-group">
             <label class="nhsuk-label nhsuk-u-width-two-thirds" for="noteText">
@@ -60,9 +62,11 @@ Case details
                 </div>
             </div>
         </div>
-        <a class="nhsuk-button" id="save-and-continue-button" href="case-scrutiny">
+        <button class="nhsuk-button" id="save-and-continue-button" type="submit">
             Save and continue
-        </a>
+        </button>
+
+        </form>
 
     </div>
 </div>
