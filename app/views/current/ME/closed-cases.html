@@ -49,6 +49,23 @@ Closed cases
         </tr>
       </thead>
       <tbody class="nhsuk-table__body">
+        {% if data['close-case'] == 'yes' %}
+          <tr class="nhsuk-table__row">
+            <td class="nhsuk-table__cell">
+              <a href="case/case-details">{{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}</a>
+            </td>
+            <td class="nhsuk-table__cell">{{ data['dodDayCreate'] }}/{{ data['dodMonthCreate'] }}/{{ data['dodYearCreate'] }}</td>
+            <td class="nhsuk-table__cell">{{ data['nhsNumber'] }}</td>
+            <td class="nhsuk-table__cell">{{ data['assign-medical-examiner'] }}</td>
+            <td class="nhsuk-table__cell">{{ data['assign-medical-examiner-officer'] }}</td>
+            <td class="nhsuk-table__cell">Complete</td>
+            <td class="nhsuk-table__cell">Complete</td>
+            <td class="nhsuk-table__cell">Complete</td>
+            <td class="nhsuk-table__cell">
+              <span class="nhsuk-tag nhsuk-tag--blue">Routine</span>
+            </td>
+          </tr>
+        {% endif %}
         <tr class="nhsuk-table__row">
           <td class="nhsuk-table__cell">
             <a href="case-overview-martin-lincoln3">Martin Lincoln</a>

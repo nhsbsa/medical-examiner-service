@@ -42,9 +42,7 @@ Case details
   <!-- IF all sections are complete, display 'Close this case' button -->
   {% if data['create-and-assign-section'] and data['additional-details-section'] and data['location-of-death-section'] and data['pre-scrutiny-note-section'] and data['ap-prop-cause-of-death-section'] and data['me-independent-review-section'] and data['ap-discussion-section'] and data['discussion-with-main-section'] and data['coroner-notification-section'] and data['coroner-response-section'] %}
   <div class="nhsuk-grid-column-one-quarter">
-    <form action="close-case" method="post">
-      <button class="nhsuk-button nhsbsa-button--right-align" type="submit">Close this case</button>
-    </form>
+    <a class="nhsuk-button nhsbsa-button--right-align" href="close-case">Close this case</a>
   </div>
   {% endif %}
 
