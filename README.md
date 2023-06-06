@@ -7,14 +7,14 @@
 Medical Examiners and Medical Examiner Officers and Attending Practitioners will use to log cases, record their scrutiny of non-coronial deaths, and refer to a coroner if necessary.
 
 ## Access the prototype
-**Prototype:** [Medical Examiner Service Prototype](https://medical-examiner-service.herokuapp.com/)
+**Prototype:** [Medical Examiner Service Prototype](https://medical-examiner-service.herokuapp.com)
 
 **Username and Password:** NHSBSA    
 
 ## Historic prototype
 The historic version of the prototype is still being used but updates to how the prototype is built have changed and formed a new prototype.
 
-**Historic prototype:** [Historic Medical Examiner Service Prototype](https://medical-examiner-service.herokuapp.com/)
+**Historic prototype:** [Historic Medical Examiner Service Prototype](https://medical-examiners.herokuapp.com)
 
 **Username and Password:** medex
 
