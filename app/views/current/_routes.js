@@ -311,4 +311,24 @@ router.post(/close-case/, (req, res) => {
 
 })
 
+// ========================================================================
+// REOPEN CASE
+// ========================================================================
+
+// Reopen case
+router.post(/reopen-case/, (req, res) => {
+
+    const deceasedFullName = req.session.data['deceased-full-name']
+
+    if (deceasedFullName == 'Kia Ravi') {
+        req.session.data['reopen-this-case'] = 'yes'
+    } else {
+        req.session.data['reopen-this-case'] = 'no'
+    }
+
+    res.redirect('case-details');
+
+})
+
+
 module.exports = router;

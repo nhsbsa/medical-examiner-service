@@ -51,14 +51,28 @@ Reporting
 {% endblock %}
 
 {% block sideNav %}
-<div class="side-nav">
-    <ul>
+  <!-- IF user has selected to Reopen a case then change the numbering -->
+  {% if data['reopen-this-case'] == 'yes' %}
+    <div class="side-nav">
+      <ul>
         <div id="options" class="options">
-            <li><a href="open-cases">Open cases 6</a></li>
-            <li><a href="closed-cases">Closed cases 4</a></li>
-            <li><a href="reopened-cases">Reopened cases 10</a></li>
-            <li><a class="active" href="reporting">Reporting</a></li>
+          <li><a href="open-cases">Open cases 3</a></li>
+          <li><a href="closed-cases">Closed cases 0</a></li>
+          <li><a href="reopened-cases">Reopened cases 2</a></li>
+          <li><a class="active" href="reporting">Reporting</a></li>
         </div>
-    </ul>
-</div>
+      </ul>
+    </div>
+  {% else %}
+    <div class="side-nav">
+      <ul>
+        <div id="options" class="options">
+          <li><a href="open-cases">Open cases 3</a></li>
+          <li><a href="closed-cases">Closed cases 1</a></li>
+          <li><a href="reopened-cases">Reopened cases 1</a></li>
+          <li><a class="active" href="reporting">Reporting</a></li>
+        </div>
+      </ul>
+    </div>
+  {% endif %}
 {% endblock %}

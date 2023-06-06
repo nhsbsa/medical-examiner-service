@@ -54,9 +54,9 @@ Open cases
       <tbody class="nhsuk-table__body">
         <tr class="nhsuk-table__row">
           <td class="nhsuk-table__cell">
-            <a href="#">Amara Brett</a>
+            <a href="view-or-reopen/case-details?deceased-full-name=Milo Brett">Milo Brett</a>
           </td>
-          <td class="nhsuk-table__cell">11/04/2023</td>
+          <td class="nhsuk-table__cell">06/06/2023</td>
           <td class="nhsuk-table__cell">123 456 789</td>
           <td class="nhsuk-table__cell"> </td>
           <td class="nhsuk-table__cell"> </td>
@@ -65,6 +65,36 @@ Open cases
           <td class="nhsuk-table__cell">Complete</td>
           <td class="nhsuk-table__cell">
             <span class="nhsuk-tag nhsuk-tag--red">Urgent</span>
+          </td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="view-or-reopen/case-details?deceased-full-name=Idris Felba">Idris Felba</a>
+          </td>
+          <td class="nhsuk-table__cell">03/06/2023</td>
+          <td class="nhsuk-table__cell">123 456 723</td>
+          <td class="nhsuk-table__cell"> </td>
+          <td class="nhsuk-table__cell"> </td>
+          <td class="nhsuk-table__cell">Complete</td>
+          <td class="nhsuk-table__cell">Complete</td>
+          <td class="nhsuk-table__cell">Complete</td>
+          <td class="nhsuk-table__cell">
+            <span class="nhsuk-tag nhsuk-tag--blue">Routine</span>
+          </td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="view-or-reopen/case-details?deceased-full-name=Mika Low">Mika Low</a>
+          </td>
+          <td class="nhsuk-table__cell">02/06/2023</td>
+          <td class="nhsuk-table__cell">321 423 789</td>
+          <td class="nhsuk-table__cell"> </td>
+          <td class="nhsuk-table__cell"> </td>
+          <td class="nhsuk-table__cell">Complete</td>
+          <td class="nhsuk-table__cell">Complete</td>
+          <td class="nhsuk-table__cell">Complete</td>
+          <td class="nhsuk-table__cell">
+            <span class="nhsuk-tag nhsuk-tag--blue">Routine</span>
           </td>
         </tr>
       </tbody>
@@ -76,7 +106,7 @@ Open cases
       <ul class="nhsbsa-pagination__list">
               <li class="nhsbsa-pagination__item nhsbsa-pagination__item--active"><span class="nhsuk-u-visually-hidden">Page </span> 1</li>
             </ul>
-        <p class="nhsbsa-pagination__results">Showing <b>1</b> to <b>6</b> of <b>6</b> results</p>
+        <p class="nhsbsa-pagination__results">Showing <b>1</b> to <b>3</b> of <b>3</b> results</p>
       </nav>
 
   </div>
@@ -84,14 +114,28 @@ Open cases
 
 {% endblock %}
 {% block sideNav %}
-<div class="side-nav">
-  <ul>
-    <div id="options" class="options">
-      <li><a class="active" href="open-cases">Open cases 6</a></li>
-      <li><a href="closed-cases">Closed cases 4</a></li>
-      <li><a href="reopened-cases">Reopened cases 10</a></li>
-      <li><a href="reporting">Reporting</a></li>
+  <!-- IF user has selected to Reopen a case then change the numbering -->
+  {% if data['reopen-this-case'] == 'yes' %}
+    <div class="side-nav">
+      <ul>
+        <div id="options" class="options">
+          <li><a class="active" href="open-cases">Open cases 3</a></li>
+          <li><a href="closed-cases">Closed cases 0</a></li>
+          <li><a href="reopened-cases">Reopened cases 2</a></li>
+          <li><a href="reporting">Reporting</a></li>
+        </div>
+      </ul>
     </div>
-  </ul>
-</div>
+  {% else %}
+    <div class="side-nav">
+      <ul>
+        <div id="options" class="options">
+          <li><a class="active" href="open-cases">Open cases 3</a></li>
+          <li><a href="closed-cases">Closed cases 1</a></li>
+          <li><a href="reopened-cases">Reopened cases 1</a></li>
+          <li><a href="reporting">Reporting</a></li>
+        </div>
+      </ul>
+    </div>
+  {% endif %}
 {% endblock %}

@@ -64,49 +64,64 @@ Closed cases
             <td class="nhsuk-table__cell">
               <span class="nhsuk-tag nhsuk-tag--blue">Routine</span>
             </td>
-          </tr>
+          </tr> 
         {% endif %}
-        <tr class="nhsuk-table__row">
-          <td class="nhsuk-table__cell">
-            <a href="case-overview-martin-lincoln3">Martin Lincoln</a>
-          </td>
-          <td class="nhsuk-table__cell">16/08/2023</td>
-          <td class="nhsuk-table__cell">123 456 720</td>
-          <td class="nhsuk-table__cell"> </td>
-          <td class="nhsuk-table__cell"> </td>
-          <td class="nhsuk-table__cell">Complete</td>
-          <td class="nhsuk-table__cell">Complete</td>
-          <td class="nhsuk-table__cell">Complete</td>
-          <td class="nhsuk-table__cell">
-            <span class="nhsuk-tag nhsuk-tag--grey">Urgent</span>
-          </td>
-        </tr>
+          {% if data['reopen-this-case'] !== 'yes' %}
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell">
+                <a href="view-or-reopen/case-details?deceased-full-name=Kia Ravi">Kia Ravi</a>
+              </td>
+              <td class="nhsuk-table__cell">15/05/2023</td>
+              <td class="nhsuk-table__cell">123 456 720</td>
+              <td class="nhsuk-table__cell">DC</td>
+              <td class="nhsuk-table__cell">FL</td>
+              <td class="nhsuk-table__cell">Complete</td>
+              <td class="nhsuk-table__cell">Complete</td>
+              <td class="nhsuk-table__cell">Complete</td>
+              <td class="nhsuk-table__cell">
+                <span class="nhsuk-tag nhsuk-tag--blue">Routine</span>
+              </td>
+            </tr>
+          {% endif %}
       </tbody>
     </table>
-    <nav class="nhsbsa-pagination" id="pagination-label">
-
-      <p class="nhsuk-u-visually-hidden">Pagination navigation</p>
-    
-      <ul class="nhsbsa-pagination__list">
-              <li class="nhsbsa-pagination__item nhsbsa-pagination__item--active"><span class="nhsuk-u-visually-hidden">Page </span> 1</li>
-            </ul>
-        <p class="nhsbsa-pagination__results">Showing <b>1</b> to <b>6</b> of <b>6</b> results</p>
+    {% if data['reopen-this-case'] !== 'yes' %}
+      <nav class="nhsbsa-pagination" id="pagination-label">
+        <p class="nhsuk-u-visually-hidden">Pagination navigation</p>
+        <ul class="nhsbsa-pagination__list">
+          <li class="nhsbsa-pagination__item nhsbsa-pagination__item--active"><span class="nhsuk-u-visually-hidden">Page </span> 1</li>
+        </ul>
+        <p class="nhsbsa-pagination__results">Showing <b>1</b> to <b>1</b> of <b>1</b> results</p>
       </nav>
-
+    {% endif %}
   </div>
 </div>
 
 {% endblock %}
 
 {% block sideNav %}
-<div class="side-nav">
-    <ul>
-      <div id="options" class="options">
-        <li><a  href="open-cases">Open cases 6</a></li>
-        <li><a class="active" href="closed-cases">Closed cases 4</a></li>
-        <li><a href="reopened-cases">Reopened cases 10</a></li>
-        <li><a href="reporting">Reporting</a></li>
-      </div>
-    </ul>
-  </div>
+  <!-- IF user has selected to Reopen a case then change the numbering -->
+  {% if data['reopen-this-case'] == 'yes' %}
+    <div class="side-nav">
+      <ul>
+        <div id="options" class="options">
+          <li><a href="open-cases">Open cases 3</a></li>
+          <li><a class="active" href="closed-cases">Closed cases 0</a></li>
+          <li><a href="reopened-cases">Reopened cases 2</a></li>
+          <li><a href="reporting">Reporting</a></li>
+        </div>
+      </ul>
+    </div>
+  {% else %}
+    <div class="side-nav">
+      <ul>
+        <div id="options" class="options">
+          <li><a href="open-cases">Open cases 3</a></li>
+          <li><a class="active" href="closed-cases">Closed cases 1</a></li>
+          <li><a href="reopened-cases">Reopened cases 1</a></li>
+          <li><a href="reporting">Reporting</a></li>
+        </div>
+      </ul>
+    </div>
+  {% endif %}
 {% endblock %}
