@@ -1,0 +1,193 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+{% block breadcrumbs %}
+<nav class="nhsuk-breadcrumb nhsuk-u-padding-bottom-0" aria-label="Breadcrumb">
+  <ol class="nhsuk-breadcrumb__list">
+    <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="../open-cases">Open cases</a></li>
+    <li class="nhsuk-breadcrumb__item">Communication and concerns - {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}</li>
+  </ol>
+  <p class="nhsuk-breadcrumb__back">
+    <a class="nhsuk-breadcrumb__backlink" href="#">
+      <span class="nhsuk-u-visually-hidden">Back to &nbsp;</span>
+      Level three
+    </a>
+  </p>
+</nav>
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h1 class="nhsuk-heading-xl">Communication and concerns</h1>
+  </div>
+  <!-- IF all sections are complete, display 'Close this case' button -->
+  {% if data['create-and-assign-section'] and data['additional-details-section'] and data['location-of-death-section'] and data['pre-scrutiny-note-section'] and data['ap-prop-cause-of-death-section'] and data['me-independent-review-section'] and data['ap-discussion-section'] and data['discussion-with-main-section'] and data['coroner-notification-section'] and data['coroner-response-section'] %}
+  <div class="nhsuk-grid-column-one-quarter">
+    <a class="nhsuk-button nhsbsa-button--right-align" href="close-case">Close this case</a>
+  </div>
+  {% endif %}
+
+  <!-- ================================================== -->
+  <!-- DISCUSSION WITH THE MAIN CONTACT -->
+  <!-- ================================================== -->
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Discussion with the main contact about the cause of
+      death</h2>
+  </div>
+  {% if data['discussion-with-main-section'] == 'complete' %}
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag align-right">
+      Complete
+    </strong>
+  </div>
+  {% endif %}
+
+  {% if data['discussion-with-main-section'] == 'complete' %}
+    {% if data['discussionWithMain'] == 'yes' %}
+      <div class="nhsuk-grid-column-full">
+        <dl class="nhsuk-summary-list" id="main-contact-discussion">
+          <div class="nhsuk-summary-list__row summary-list__details-list">
+            <dt class="nhsuk-summary-list__key">
+              Discussion with main contact took place, concern raised
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong class="nhsuk-tag nhsuk-tag--green">Reviewed</strong>
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+                <a id="view-details-link" href="#"> View details of discussion</a>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    {% else %}
+      <div class="nhsuk-grid-column-full">
+        <dl class="nhsuk-summary-list" id="main-contact-discussion">
+          <div class="nhsuk-summary-list__row summary-list__details-list">
+            <dt class="nhsuk-summary-list__key nhsuk-u-font-weight-normal">
+              Discussion with main contact did not take place
+            </dt>
+            <dd class="nhsuk-summary-list__actions">
+                <a id="view-details-link" href="#"> View why discussion did not take place</a>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    {% endif %}
+  {% else %}
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-hint">
+      The main contact is often the next of kin but does not have to be.
+    </div>
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key nhsuk-u-font-weight-normal">
+          <a href="discussion-with-main">Add discussion with main contact about the cause of death</a>
+        </dt>
+        <dd class="nhsuk-summary-list__actions">
+          <strong class="nhsuk-tag nhsuk-tag--white align-right">
+            Not started
+          </strong>
+        </dd>
+      </div>
+    </dl>
+  </div>
+  {% endif %}
+  <div class="nhsuk-grid-column-full">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Other communication and concerns</h2>
+    {% if data['record-communication-concern-section'] == 'complete' %}
+
+      <p><a href="record-comm-or-concern">Record communication or a concern</a></p>
+
+      <div class="nhsuk-table-responsive nhsuk-u-margin-top-0 table-wrap">
+        <table id="sortable" class="nhsuk-table nhsuk-table-responsive">
+          <thead class="nhsuk-table__head">
+            <tr class="nhsuk-table__row">
+                <th role="columnheader" class="govuk-table__header">Name</th>
+                <th role="columnheader" class="govuk-table__header">Type</th>
+                <th role="columnheader" class="govuk-table__header">Date</th>
+                <th role="columnheader" class="govuk-table__header">Status</th>
+                <th role="columnheader" class="govuk-table__header">Action</th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Name </span>
+                    {{ data['contactFirstNames'] }} {{ data['contactLastName'] }}
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Type </span>
+                      {% if data['recordAsCommsConcern'] == 'yes' %}
+                        Concern
+                      {% else %}
+                        Communication
+                      {% endif %}
+                    </td>
+                  <td class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Date </span>
+                    {{ data['dodDayCommsConcern'] }}/{{ data['dodMonthCommsConcern'] }}/{{ data['dodYearCommsConcern'] }}
+                  </td>
+                  <td class="nhsuk-table__cell" data-label="Status">
+                    <span class="nhsuk-table-responsive__heading">Status </span>
+                       <strong class="nhsuk-tag nhsuk-tag--green">Reviewed</strong>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Action </span>
+                    <a data-test-id="view-communication-link" href="#">
+                        View details of communication
+                    </a>
+                    </td>
+                </tr>
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key nhsuk-u-font-weight-normal">
+            No communication or concerns have been added to this case. <a href="record-comm-or-concern">Record
+              communication or a concern</a>
+          </dt>
+        </div>
+      </dl>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}
+
+{% block sideNav %}
+<div class="side-nav">
+  <h3>{{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
+    <span class="nhsuk-caption-m nhsuk-caption--bottom nhsuk-u-margin-top-2">
+      <strong class="nhsuk-tag nhsuk-tag--blue">Routine</strong>
+    </span>
+  </h3>
+  <ul>
+    <div id="options" class="options">
+      <li><a href="case-details">Case details</a></li>
+      <li><a href="case-scrutiny">Case scrutiny</a></li>
+      <li><a class="active" href="comms-concerns">Communication and concerns</a></li>
+      <li><a href="coroner-notification">Coroner notification</a></li>
+    </div>
+  </ul>
+</div>
+{% endblock %}

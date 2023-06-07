@@ -1,0 +1,663 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+{% block breadcrumbs %}
+<nav class="nhsuk-breadcrumb nhsuk-u-padding-bottom-0" aria-label="Breadcrumb">
+  <ol class="nhsuk-breadcrumb__list">
+    <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="../open-cases">Open cases</a></li>
+    <li class="nhsuk-breadcrumb__item">Case scrutiny - {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}</li>
+  </ol>
+  <p class="nhsuk-breadcrumb__back">
+    <a class="nhsuk-breadcrumb__backlink" href="#">
+      <span class="nhsuk-u-visually-hidden">Back to &nbsp;</span>
+      Level three
+    </a>
+  </p>
+</nav>
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h1 class="nhsuk-heading-xl">Case scrutiny</h1>
+  </div>
+  <!-- IF all sections are complete, display 'Close this case' button -->
+  {% if data['create-and-assign-section'] and data['additional-details-section'] and data['location-of-death-section'] and data['pre-scrutiny-note-section'] and data['ap-prop-cause-of-death-section'] and data['me-independent-review-section'] and data['ap-discussion-section'] and data['discussion-with-main-section'] and data['coroner-notification-section'] and data['coroner-response-section'] %}
+  <div class="nhsuk-grid-column-one-quarter">
+    <a class="nhsuk-button nhsbsa-button--right-align" href="close-case">Close this case</a>
+  </div>
+  {% endif %}
+
+  <!-- ================================================== -->
+  <!-- PRE-SCRUTINY NOTES -->
+  <!-- ================================================== -->
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Pre-scrutiny notes</h2>
+  </div>
+  {% if data['pre-scrutiny-note-section'] == 'complete' %}
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag align-right">
+      Complete
+    </strong>
+  </div>
+  {% endif %}
+  {% if data['pre-scrutiny-note-section'] == 'incomplete' %}
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag--grey align-right">
+      In progress
+    </strong>
+  </div>
+  {% endif %}
+
+  <div class="nhsuk-grid-column-full">
+    {% if data['pre-scrutiny-note-section'] == 'complete' or data['pre-scrutiny-note-section'] == 'incomplete' %}
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Added by
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          your-email@nhs.net
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Details
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['noteText'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="pre-scrutiny-note">
+            Change<span class="nhsuk-u-visually-hidden"> details</span>
+          </a>
+        </dd>
+      </div>
+    </dl>
+    {% else %}
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key nhsuk-u-font-weight-normal">
+          <a href="pre-scrutiny-note">Add pre-scrutiny note</a>
+        </dt>
+        <dd class="nhsuk-summary-list__actions">
+          <strong class="nhsuk-tag nhsuk-tag--white align-right">
+            Not started
+          </strong>
+        </dd>
+      </div>
+    </dl>
+    {% endif %}
+  </div>
+
+  <!-- ================================================== -->
+  <!-- AP PROPOSED CAUSE OF DEATH -->
+  <!-- ================================================== -->
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Attending practitioner's (AP) proposed cause of
+      death</h2>
+  </div>
+  {% if data['ap-prop-cause-of-death-section'] == 'complete' %}
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag align-right">
+      Complete
+    </strong>
+  </div>
+  {% endif %}
+  {% if data['ap-prop-cause-of-death-section'] == 'incomplete' %}
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag--grey align-right">
+      In progress
+    </strong>
+  </div>
+  {% endif %}
+
+  <div class="nhsuk-grid-column-full">
+    {% if data['ap-prop-cause-of-death-section'] == 'complete' or data['ap-prop-cause-of-death-section'] == 'incomplete'
+    %}
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          AP who proposed the cause of death
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['qapFirstNames'] }} {{ data['qapLastName'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="ap-prop-cause-of-death">
+            Change<span class="nhsuk-u-visually-hidden"> ap who proposed the cause of death</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Cause of death summary
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['causeOfDeathSummary'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> cause of death summary</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          1(a) disease or condition directly leading to death
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['causeOfDeath1a'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> 1(a) disease or condition directly leading to death</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Approximate interval between onset of 1(a) and death
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['onsetInterval1a'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> Approximate interval between onset of 1(a) and death</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          1(b) other disease or condition leading to 1(a)
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['causeOfDeath1b'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> 1(b) other disease or condition leading to 1(a)</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Approximate interval between onset of 1(b) and death
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['onsetInterval1b'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> Approximate interval between onset of 1(b) and death</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          1(c) other disease or condition leading to 1(b)
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['causeOfDeath1c'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> 1(c) other disease or condition leading to 1(b)</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Approximate interval between onset of 1(c) and death
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['onsetInterval1c'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> Approximate interval between onset of 1(c) and death</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          2 - Other significant conditions
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['causeOfDeath2'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> 2 - Other significant conditions</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Approximate interval between onset of 2 and death
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['onsetInterval2'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> Approximate interval between onset of 2 and death</span>
+          </a>
+        </dd>
+      </div>
+    </dl>
+    {% else %}
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key nhsuk-u-font-weight-normal">
+          <a href="ap-prop-cause-of-death">Add AP's proposed cause of death</a>
+        </dt>
+        <dd class="nhsuk-summary-list__actions">
+          <strong class="nhsuk-tag nhsuk-tag--white align-right">
+            Not started
+          </strong>
+        </dd>
+      </div>
+    </dl>
+    {% endif %}
+  </div>
+
+  <!-- ================================================== -->
+  <!-- ME INDEPENDENT REVIEW -->
+  <!-- ================================================== -->
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Medical examiner's independent review</h2>
+  </div>
+  {% if data['me-independent-review-section'] == 'complete' %}
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag align-right">
+      Complete
+    </strong>
+  </div>
+  {% endif %}
+  {% if data['me-independent-review-section'] == 'incomplete' %}
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag--grey align-right">
+      In progress
+    </strong>
+  </div>
+  {% endif %}
+
+  <div class="nhsuk-grid-column-full">
+    {% if data['me-independent-review-section'] == 'complete' or data['me-independent-review-section'] == 'incomplete'
+    %}
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Access to required documentation
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['accessToRequestedDocumentation'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="record-review">
+            Change<span class="nhsuk-u-visually-hidden"> Access to required documentation</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Review details
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['reviewDetails'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> Review details</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Cause of death summary
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['reviewCauseOfDeathSummary'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> cause of death summary</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          1(a) disease or condition directly leading to death
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['reviewCauseOfDeath1a'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> 1(a) disease or condition directly leading to death</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Approximate interval between onset of 1(a) and death
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['reviewOnsetInterval1a'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> Approximate interval between onset of 1(a) and death</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          1(b) other disease or condition leading to 1(a)
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['reviewCauseOfDeath1b'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> 1(b) other disease or condition leading to 1(a)</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Approximate interval between onset of 1(b) and death
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['reviewOnsetInterval1b'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> Approximate interval between onset of 1(b) and death</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          1(c) other disease or condition leading to 1(b)
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['reviewCauseOfDeath1c'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> 1(c) other disease or condition leading to 1(b)</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Approximate interval between onset of 1(c) and death
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['reviewOnsetInterval1c'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> Approximate interval between onset of 1(c) and death</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          2 - Other significant conditions
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['reviewCauseOfDeath2'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> 2 - Other significant conditions</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Approximate interval between onset of 2 and death
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['reviewOnsetInterval2'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> Approximate interval between onset of 2 and death</span>
+          </a>
+        </dd>
+      </div>
+    </dl>
+    {% else %}
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key nhsuk-u-font-weight-normal">
+          <a href="record-review">Add medical examiner's independant review</a>
+        </dt>
+        <dd class="nhsuk-summary-list__actions">
+          <strong class="nhsuk-tag nhsuk-tag--white align-right">
+            Not started
+          </strong>
+        </dd>
+      </div>
+    </dl>
+    {% endif %}
+  </div>
+
+  <!-- ================================================== -->
+  <!-- DISCUSSION WITH THE AP ABOUT THE CAUSE OF DEATH -->
+  <!-- ================================================== -->
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Discussion with the AP about the cause of death
+    </h2>
+  </div>
+  {% if data['ap-discussion-section'] == 'complete' %}
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag align-right">
+      Complete
+    </strong>
+  </div>
+  {% endif %}
+  {% if data['ap-discussion-section'] == 'incomplete' %}
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag--grey align-right">
+      In progress
+    </strong>
+  </div>
+  {% endif %}
+
+  <div class="nhsuk-grid-column-full">
+    {% if data['ap-discussion-section'] == 'complete' or data['ap-discussion-section'] == 'incomplete' %}
+    {% if data['ap-prop-cod-discussion'] == 'yes' %}
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Discussion occured
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['ap-prop-cod-discussion'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="ap-prop-cod-discussion">
+            Change<span class="nhsuk-u-visually-hidden"> discussion had</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          AP involved in the discussion
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['ap-prop-first-name'] }} {{ data['ap-prop-last-name'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> AP involved in the discussion</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Date of discussion
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['dodDay'] }}/{{ data['dodMonth'] }}/{{ data['dodYear'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> date of discussion</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Time of discussion
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['todHour'] }}:{{ data['todMinute'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> time of discussion</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Details of the discussion
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['detailsOfDiscussion'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> details of the discussion</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Agreed outcome of discussion
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['agreedOutcome'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> agreed outcome of the discussion</span>
+          </a>
+        </dd>
+      </div>
+    </dl>
+    {% else %}
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Discussion occured
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['ap-prop-cod-discussion'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="ap-prop-cod-discussion">
+            Change<span class="nhsuk-u-visually-hidden"> discussion had</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Reason for no discussion
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {% if data['reasonForNonDiscussion'] == 'Other' %}
+            {{ data['otherDetails'] }}
+          {% else %}
+            {{ data['reasonForNonDiscussion'] }}
+          {% endif %}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> reason for no discussion</span>
+          </a>
+        </dd>
+      </div>
+    </dl>
+    {% endif %}
+    {% else %}
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key nhsuk-u-font-weight-normal">
+          {% if data['ap-prop-cause-of-death-section'] == 'complete'
+          and data['me-independent-review-section'] == 'complete' %}
+          <a href="ap-prop-cod-discussion">Add discussion with the AP about the cause of death</a>
+          {% else %}
+          AP's proposed cause of death and Medical Examiners independent review must be complete before you can start
+          this section
+          {% endif %}
+        </dt>
+        <dd class="nhsuk-summary-list__actions">
+          {% if data['ap-prop-cause-of-death-section'] == 'complete'
+          and data['me-independent-review-section'] == 'complete' %}
+          <strong class="nhsuk-tag nhsuk-tag--white align-right">
+            Not started
+          </strong>
+          {% else %}
+          <strong class="nhsuk-tag nhsuk-tag--red align-right">
+            Cannot start
+          </strong>
+          {% endif %}
+        </dd>
+      </div>
+    </dl>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}
+
+{% block sideNav %}
+<div class="side-nav">
+  <h3>{{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
+    <span class="nhsuk-caption-m nhsuk-caption--bottom nhsuk-u-margin-top-2">
+      <strong class="nhsuk-tag nhsuk-tag--blue">Routine</strong>
+    </span>
+  </h3>
+  <ul>
+    <div id="options" class="options">
+      <li><a href="case-details">Case details</a></li>
+      <li><a class="active" href="case-scrutiny">Case scrutiny</a></li>
+      <li><a href="comms-concerns">Communication and concerns</a></li>
+      <li><a href="coroner-notification">Coroner notification</a></li>
+    </div>
+  </ul>
+</div>
+{% endblock %}
