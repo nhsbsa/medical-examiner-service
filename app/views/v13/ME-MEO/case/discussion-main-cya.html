@@ -95,7 +95,8 @@ Case details
                         Recommended for case record review?
                     </dt>
                     <dd class="nhsuk-summary-list__value" id="concern-raised-value">
-                        {{ data['caseReviewRecommended'] }}
+                        {{ data['caseReviewRecommended'] }}<br>
+                        {{ data['main-record-review-email'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
                         <a id="concern-raised-change-link" href="#">Change
@@ -107,7 +108,8 @@ Case details
                         Recommended for other clinical governance process review?
                     </dt>
                     <dd class="nhsuk-summary-list__value" id="concern-raised-value">
-                        {{ data['clinicalReviewRecommended'] }}
+                        {{ data['clinicalReviewRecommended'] }}<br>
+                        {{ data['main-governance-process-email'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
                         <a id="concern-raised-change-link" href="#">Change
@@ -119,7 +121,8 @@ Case details
                         Patient safety incident?
                     </dt>
                     <dd class="nhsuk-summary-list__value" id="concern-raised-value">
-                        {{ data['patientSafetyIncident'] }}
+                        {{ data['patientSafetyIncident'] }}<br>
+                        {{ data['main-patient-safety-email'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
                         <a id="concern-raised-change-link" href="#">Change
@@ -128,7 +131,7 @@ Case details
                 </div>
                 <div class="nhsuk-summary-list__row summary-list__details-list">
                     <dt class="nhsuk-summary-list__key">
-                        Recommended for referral to PALS?
+                        Main contact been made aware of PALS?
                     </dt>
                     <dd class="nhsuk-summary-list__value" id="concern-raised-value">
                         {{ data['referToPals'] }}

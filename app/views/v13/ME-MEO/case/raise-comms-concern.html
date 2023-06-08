@@ -24,7 +24,7 @@ Case details
 {% block content %}
 
 <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-grid-column-two-thirds">
         {% from 'back-link/macro.njk' import backLink %}
 
         {{ backLink({
@@ -51,13 +51,20 @@ Case details
                     <div class="nhsuk-hint" id="commscaseReviewRecommended-hint">
                         For example, structured judgement review or equivalent
                     </div>
-                    <div class="nhsuk-radios nhsuk-radios--inline">
+                    <div class="nhsuk-radios nhsuk-radios--conditional">
                         <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="commscaseReviewRecommended" name="commscaseReviewRecommended"
-                                type="radio" value="yes">
+                            <input class="nhsuk-radios__input" id="commscaseReviewRecommended" name="commscaseReviewRecommended" type="radio" value="yes" aria-controls="comms-record-review-email" aria-expanded="false">
                             <label class="nhsuk-label nhsuk-radios__label" for="commscaseReviewRecommended">
                                 Yes
                             </label>
+                        </div>
+                        <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="comms-record-review-email">
+                            <div class="nhsuk-form-group">
+                              <label class="nhsuk-label" for="email">
+                                Email address
+                              </label>
+                              <input class="nhsuk-input nhsuk-input--width-20" id="email" name="comms-record-review-email" type="text">
+                            </div>
                         </div>
                         <div class="nhsuk-radios__item">
                             <input class="nhsuk-radios__input" id="commscaseReviewRecommendedNo" name="commscaseReviewRecommended"
@@ -78,13 +85,21 @@ Case details
                     <div class="nhsuk-hint" id="commsclinicalReviewRecommended-hint">
                         For example, safeguarding or mortality and morbidity (M&amp;M) meetings
                     </div>
-                    <div class="nhsuk-radios nhsuk-radios--inline">
+                    <div class="nhsuk-radios nhsuk-radios--conditional">
                         <div class="nhsuk-radios__item">
                             <input class="nhsuk-radios__input" id="commsclinicalReviewRecommended"
-                                name="commsclinicalReviewRecommended" type="radio" value="yes">
+                                name="commsclinicalReviewRecommended" type="radio" value="yes" aria-controls="comms-governance-process-email" aria-expanded="false">
                             <label class="nhsuk-label nhsuk-radios__label" for="commsclinicalReviewRecommended">
                                 Yes
                             </label>
+                        </div>
+                        <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="comms-governance-process-email">
+                            <div class="nhsuk-form-group">
+                              <label class="nhsuk-label" for="email">
+                                Email address
+                              </label>
+                              <input class="nhsuk-input nhsuk-input--width-20" id="email" name="comms-governance-process-email" type="text">
+                            </div>
                         </div>
                         <div class="nhsuk-radios__item">
                             <input class="nhsuk-radios__input" id="commsclinicalReviewRecommendedNo"
@@ -102,13 +117,20 @@ Case details
                     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
                         Is this a patient safety incident?
                     </legend>
-                    <div class="nhsuk-radios nhsuk-radios--inline">
+                    <div class="nhsuk-radios nhsuk-radios--conditional">
                         <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="commspatientSafetyIncident" name="commspatientSafetyIncident"
-                                type="radio" value="yes">
+                            <input class="nhsuk-radios__input" id="commspatientSafetyIncident" name="commspatientSafetyIncident" type="radio" value="yes" aria-controls="comms-patient-safety-email" aria-expanded="false">
                             <label class="nhsuk-label nhsuk-radios__label" for="commspatientSafetyIncident">
                                 Yes
                             </label>
+                        </div>
+                        <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="comms-patient-safety-email">
+                            <div class="nhsuk-form-group">
+                              <label class="nhsuk-label" for="email">
+                                Email address
+                              </label>
+                              <input class="nhsuk-input nhsuk-input--width-20" id="email" name="comms-patient-safety-email" type="text">
+                            </div>
                         </div>
                         <div class="nhsuk-radios__item">
                             <input class="nhsuk-radios__input" id="commspatientSafetyIncidentNo" name="commspatientSafetyIncident"
@@ -124,9 +146,9 @@ Case details
             <div class="nhsuk-form-group">
                 <fieldset class="nhsuk-fieldset">
                     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
-                        Is this case recommended for referral to PALS?
+                        Has the main contact of the deceased been made aware of the Patient Advice and Liaison Service or equivalent service?
                     </legend>
-                    <div class="nhsuk-radios nhsuk-radios--inline">
+                    <div class="nhsuk-radios">
                         <div class="nhsuk-radios__item">
                             <input class="nhsuk-radios__input" id="commsreferToPals" name="commsreferToPals" type="radio"
                                 value="yes">
