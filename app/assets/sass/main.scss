@@ -53,3 +53,12 @@
 .nhsbsa-button--right-align {
     float: right;
 }
+
+// Header
+.nhsuk-icon__search {
+    fill: white !important;
+    margin-bottom: -10px;
+}
+.nhsuk-header__navigation-link:hover, .nhsuk-header__navigation-link:active, .nhsuk-header__navigation-link.is-active {
+    background-color: #004b93;
+}

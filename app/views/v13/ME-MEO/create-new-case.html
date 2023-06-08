@@ -48,58 +48,103 @@ Create new case
         <input class="nhsuk-input nhsuk-u-width-one-half" id="lastName" name="deceased-last-name" type="text">
       </div>
 
-      <div class="nhsuk-form-group">
-        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint" role="group">
-          <legend class="nhsuk-fieldset__legend">
-            <p class="nhsuk-fieldset__heading">
-              Date of birth
-            </p>
-          </legend>
-          <div class="nhsuk-hint" id="example-hint">
-            For example, 15 3 1984
-          </div>
+      <h2 id="date-time-death-header">Date and time death was verified</h2>
 
-          <div class="nhsuk-date-input" id="date-of-birth">
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="dateOfDeath-hint" role="group">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+            Date of death
+          </legend>
+          <div class="nhsuk-hint" id="dateOfDeath-hint">
+            For example, 15 3 2021
+          </div>
+          <div class="nhsuk-date-input" id="dateOfDeath">
             <div class="nhsuk-date-input__item">
               <div class="nhsuk-form-group">
-                <label class="nhsuk-label nhsuk-date-input__label" for="dob-day">
+                <label class="nhsuk-label nhsuk-date-input__label" for="dateOfDeath-day">
                   Day
                 </label>
-                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dob-day" name="dob-day"
-                  type="text" pattern="[0-9]*" inputmode="numeric">
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dateOfDeath-day"
+                  name="dodDayCreate" type="text" pattern="[0-9]*" inputmode="numeric">
               </div>
             </div>
             <div class="nhsuk-date-input__item">
               <div class="nhsuk-form-group">
-                <label class="nhsuk-label nhsuk-date-input__label" for="dob-month">
+                <label class="nhsuk-label nhsuk-date-input__label" for="dateOfDeath-dodMonth">
                   Month
                 </label>
-                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dob-month" name="dob-month"
-                  type="text" pattern="[0-9]*" inputmode="numeric">
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dateOfDeath-dodMonth"
+                  name="dodMonthCreate" type="text" pattern="[0-9]*" inputmode="numeric">
               </div>
             </div>
             <div class="nhsuk-date-input__item">
               <div class="nhsuk-form-group">
-                <label class="nhsuk-label nhsuk-date-input__label" for="dob-year">
+                <label class="nhsuk-label nhsuk-date-input__label" for="dateOfDeath-dodYear">
                   Year
                 </label>
-                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="dob-year" name="dob-year"
-                  type="text" pattern="[0-9]*" inputmode="numeric">
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="dateOfDeath-dodYear"
+                  name="dodYearCreate" type="text" pattern="[0-9]*" inputmode="numeric">
               </div>
             </div>
           </div>
         </fieldset>
       </div>
-      
+
       <div class="nhsuk-form-group">
-        <label class="nhsuk-label" for="nhsNumber">
-          NHS number
-        </label>
-        <div class="nhsuk-hint nhsuk-u-width-one-half" id="nhsNumber-hint">
-          NHS numbers are 10 digits long. For example, 485 777 3456.
-        </div>
-        <input class="nhsuk-input nhsuk-u-width-one-half" id="nhsNumber" name="nhsNumber" type="text"
-          aria-describedby="nhsNumber-hint">
+        <fieldset class="nhsuk-fieldset" aria-describedby="timeOfDeath-hint" role="group">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+            Time of death
+          </legend>
+          <div class="nhsuk-hint" id="timeOfDeath-hint">
+            Use 24 hour format. For example, 16 23
+          </div>
+          <div class="nhsuk-date-input" id="timeOfDeath">
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="timeOfDeath-hour">
+                  Hour
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="timeOfDeath-hour"
+                  name="todHourCreate" type="text" pattern="[0-9]*" inputmode="numeric">
+              </div>
+            </div>
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="timeOfDeath-todMinute">
+                  Minutes
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="timeOfDeath-todMinute"
+                  name="todMinuteCreate" type="text" pattern="[0-9]*" inputmode="numeric">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+            Request for rapid release?
+          </legend>
+          <div class="nhsuk-radios">
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="requestForRapidRelease" name="requestForRapidRelease" type="radio"
+                value="yes">
+              <label class="nhsuk-label nhsuk-radios__label" for="requestForRapidRelease">
+                Yes
+              </label>
+            </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="requestForRapidRelease-no" name="requestForRapidRelease"
+                type="radio" value="no">
+              <label class="nhsuk-label nhsuk-radios__label" for="requestForRapidRelease-no">
+                No
+              </label>
+            </div>
+
+          </div>
+        </fieldset>
       </div>
 
       <button class="nhsuk-button" type="submit">

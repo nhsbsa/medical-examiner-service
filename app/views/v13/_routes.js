@@ -12,6 +12,14 @@ const router = express.Router();
 // Deceased person's details
 router.post(/create-new-case/, (req, res) => {
 
+    res.redirect('assign-case')
+
+})
+
+// Assign someone to case
+router.post(/assign-case-to-someone/, (req, res) => {
+
+    req.session.data['create-and-assign-section'] = 'complete'
     res.redirect('case/case-details')
 
 })
@@ -66,21 +74,6 @@ router.post(/community-non-acute/, (req, res) => {
 // ========================================================================
 // CASE SCRUTINY
 // ========================================================================
-
-// Was the death more than 28 days after birth
-router.post(/case-scrutiny-link/, (req, res) => {
-    
-    req.session.data['runOnce'] = 'yes'
-    res.redirect('28-days')
-
-})
-
-// Was the death more than 28 days after birth
-router.post(/28-days/, (req, res) => {
-    
-    res.redirect('case-scrutiny')
-
-})
 
 // Add a note
 router.post(/pre-scrutiny-note/, (req, res) => {
@@ -254,17 +247,35 @@ router.post(/raise-comms-concern/, (req, res) => {
 
 // Notification method
 router.post(/notification-method/, (req, res) => {
+    
+    const userType = req.session.data['user-type']
+    const meCompleted = req.session.data['me-independent-review-section']
 
     const usingServiceToNotiftyCoroner = req.session.data['internalNotification']
     req.session.data['notify-coroner'] = 'yes'
 
-    if (usingServiceToNotiftyCoroner == 'yes') {
-        req.session.data['using-service-notify-coroner'] = 'yes'
-        res.redirect('me-comms-coroner')
-    } else {
-        req.session.data['using-service-notify-coroner'] = 'no'
+    if (userType == 'me') {
+        if (usingServiceToNotiftyCoroner == 'yes') {
+            req.session.data['using-service-notify-coroner'] = 'yes'
+            res.redirect('me-comms-coroner')
+        } else {
+            req.session.data['using-service-notify-coroner'] = 'no'
+            res.redirect('notification-details')
+        }
+    } else if (userType == 'meo' && meCompleted == 'complete') {
+        if (usingServiceToNotiftyCoroner == 'yes') {
+            req.session.data['using-service-notify-coroner'] = 'yes'
+            res.redirect('me-comms-coroner')
+        } else {
+            req.session.data['using-service-notify-coroner'] = 'no'
+            res.redirect('notification-details')
+        }
+    } else if (userType == 'meo' && usingServiceToNotiftyCoroner == 'no' ){
         res.redirect('notification-details')
+    } else {
+        res.redirect('cannot-notify-coroner')
     }
+    
 
 })
 

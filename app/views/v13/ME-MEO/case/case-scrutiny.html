@@ -76,7 +76,7 @@ Case details
           Added by
         </dt>
         <dd class="nhsuk-summary-list__value">
-          Your Name
+          your-email@nhs.net
         </dd>
         <dd class="nhsuk-summary-list__actions">
 
@@ -290,6 +290,28 @@ Case details
   <!-- ME INDEPENDENT REVIEW -->
   <!-- ================================================== -->
 
+  {% if data['user-type'] == 'meo' %}
+
+  <!-- show when user is MEO -->
+  <div class="nhsuk-grid-column-full">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Medical examiner's independent review</h2>
+  
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key nhsuk-u-font-weight-normal">
+          This section can only be completed by a medical examiner
+        </dt>
+        <dd class="nhsuk-summary-list__actions">
+          <strong class="nhsuk-tag nhsuk-tag--white align-right">
+            Not started
+          </strong>
+        </dd>
+      </div>
+    </dl>
+  </div>
+
+  {% else %}
+
   <div class="nhsuk-grid-column-three-quarters">
     <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Medical examiner's independent review</h2>
   </div>
@@ -471,6 +493,8 @@ Case details
     </dl>
     {% endif %}
   </div>
+
+  {% endif %}
 
   <!-- ================================================== -->
   <!-- DISCUSSION WITH THE AP ABOUT THE CAUSE OF DEATH -->
@@ -654,16 +678,7 @@ Case details
   <ul>
     <div id="options" class="options">
       <li><a href="case-details">Case details</a></li>
-      
-      <!-- First time Case Scrutiny link is clicked direct to 28 days screen and set 'runOnce' as yes, then next time this is clicked it will direct to case scrutiny page -->
-      {% if data['runOnce'] == 'yes' %}
-        <li><a class="active" href="case-scrutiny">Case scrutiny</a></li>
-      {% else %}
-      <form action="case-scrutiny-link" method="post" id="run-28-days-once">
-        <li><a class="active" href="#" onclick="document.getElementById('run-28-days-once').submit(); return false;">Case scrutiny</a></li>
-      </form>
-      {% endif %}
-
+      <li><a class="active" href="case-scrutiny">Case scrutiny</a></li>
       <li><a href="comms-concerns">Communication and concerns</a></li>
       <li><a href="coroner-notification">Coroner notification</a></li>
     </div>
