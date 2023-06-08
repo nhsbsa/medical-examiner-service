@@ -290,6 +290,28 @@ Case details
   <!-- ME INDEPENDENT REVIEW -->
   <!-- ================================================== -->
 
+  {% if data['user-type'] == 'meo' %}
+
+  <!-- show when user is MEO -->
+  <div class="nhsuk-grid-column-full">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Medical examiner's independent review</h2>
+  
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key nhsuk-u-font-weight-normal">
+          This section can only be completed by a medical examiner
+        </dt>
+        <dd class="nhsuk-summary-list__actions">
+          <strong class="nhsuk-tag nhsuk-tag--white align-right">
+            Not started
+          </strong>
+        </dd>
+      </div>
+    </dl>
+  </div>
+
+  {% else %}
+
   <div class="nhsuk-grid-column-three-quarters">
     <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Medical examiner's independent review</h2>
   </div>
@@ -471,6 +493,8 @@ Case details
     </dl>
     {% endif %}
   </div>
+
+  {% endif %}
 
   <!-- ================================================== -->
   <!-- DISCUSSION WITH THE AP ABOUT THE CAUSE OF DEATH -->

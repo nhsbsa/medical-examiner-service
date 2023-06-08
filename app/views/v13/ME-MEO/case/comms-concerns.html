@@ -184,7 +184,16 @@ Case details
   <ul>
     <div id="options" class="options">
       <li><a href="case-details">Case details</a></li>
-      <li><a href="case-scrutiny">Case scrutiny</a></li>
+      
+      <!-- First time Case Scrutiny link is clicked direct to 28 days screen and set 'runOnce' as yes, then next time this is clicked it will direct to case scrutiny page -->
+      {% if data['runOnce'] == 'yes' %}
+        <li><a href="case-scrutiny">Case scrutiny</a></li>
+      {% else %}
+      <form action="case-scrutiny-link" method="post" id="run-28-days-once">
+        <li><a href="#" onclick="document.getElementById('run-28-days-once').submit(); return false;">Case scrutiny</a></li>
+      </form>
+      {% endif %}
+      
       <li><a class="active" href="comms-concerns">Communication and concerns</a></li>
       <li><a href="coroner-notification">Coroner notification</a></li>
     </div>

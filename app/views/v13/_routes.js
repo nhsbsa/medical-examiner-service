@@ -12,14 +12,6 @@ const router = express.Router();
 // Deceased person's details
 router.post(/create-new-case/, (req, res) => {
 
-    res.redirect('assign-case')
-
-})
-
-// Assign someone to case
-router.post(/assign-case-to-someone/, (req, res) => {
-
-    req.session.data['create-and-assign-section'] = 'complete'
     res.redirect('case/case-details')
 
 })
@@ -74,6 +66,21 @@ router.post(/community-non-acute/, (req, res) => {
 // ========================================================================
 // CASE SCRUTINY
 // ========================================================================
+
+// Was the death more than 28 days after birth
+router.post(/case-scrutiny-link/, (req, res) => {
+    
+    req.session.data['runOnce'] = 'yes'
+    res.redirect('28-days')
+
+})
+
+// Was the death more than 28 days after birth
+router.post(/28-days/, (req, res) => {
+    
+    res.redirect('case-scrutiny')
+
+})
 
 // Add a note
 router.post(/pre-scrutiny-note/, (req, res) => {
