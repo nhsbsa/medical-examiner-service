@@ -75,6 +75,21 @@ router.post(/community-non-acute/, (req, res) => {
 // CASE SCRUTINY
 // ========================================================================
 
+// Was the death more than 28 days after birth
+router.post(/case-scrutiny-link/, (req, res) => {
+    
+    req.session.data['runOnce'] = 'yes'
+    res.redirect('under-28/28-days')
+
+})
+
+// Was the death more than 28 days after birth
+router.post(/28-days/, (req, res) => {
+    
+    res.redirect('../case-scrutiny')
+
+})
+
 // Add a note
 router.post(/pre-scrutiny-note/, (req, res) => {
 
@@ -89,6 +104,14 @@ router.post(/pre-scrutiny-note/, (req, res) => {
     }
     
 
+})
+
+// Attending practitioner's (AP) details
+router.post(/ap-details/, (req, res) => {
+
+    req.session.data['ap-details-section'] = 'complete'
+    res.redirect('case-scrutiny')
+    
 })
 
 // Record proposed cause of death

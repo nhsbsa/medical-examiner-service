@@ -81,66 +81,105 @@ Case details
                 name="reviewCauseOfDeathSummary" rows=" 10 "></textarea>
         </div>
 
-        <div class="nhsuk-u-margin-bottom-8">
+        <!-- Under 28 days after birth form -->
+        {% if data['over-under-28'] == 'under' %}
+
             <div class="nhsuk-form-group">
-                <label class="nhsuk-label" for="reviewCauseOfDeath1a">
-                    1(a) disease or condition directly leading to death (required)
+                <label class="nhsuk-label" for="a-me-cod-infant">
+                    (a) Main diseases or conditions in infant
                 </label>
-                <input class="nhsuk-input nhsuk-u-width-one-half" id="reviewCauseOfDeath1a" name="reviewCauseOfDeath1a" type="text">
+                <input class="nhsuk-input nhsuk-u-width-one-half" id="a-me-cod-infant" name="a-me-cod-infant" type="text">
             </div>
             <div class="nhsuk-form-group">
-                <label class="nhsuk-label" for="reviewOnsetInterval1a">
-                    Approximate interval between onset of 1(a) and death
+                <label class="nhsuk-label" for="b-me-cod-infant">
+                    (b) Other diseases or conditions in infant
                 </label>
-                <input class="nhsuk-input nhsuk-u-width-one-third" id="reviewOnsetInterval1a" name="reviewOnsetInterval1a"
-                    type="text">
-            </div>
-        </div>
-        <div class="nhsuk-u-margin-bottom-8">
-            <div class="nhsuk-form-group">
-                <label class="nhsuk-label" for="reviewCauseOfDeath1b">
-                    1(b) other disease or condition directly leading to 1(a) (optional)
-                </label>
-                <input class="nhsuk-input nhsuk-u-width-one-half" id="reviewCauseOfDeath1b" name="reviewCauseOfDeath1b" type="text">
+                <input class="nhsuk-input nhsuk-u-width-one-half" id="b-me-cod-infant" name="b-me-cod-infant" type="text">
             </div>
             <div class="nhsuk-form-group">
-                <label class="nhsuk-label" for="reviewOnsetInterval1b">
-                    Approximate interval between onset of 1(b) and death
+                <label class="nhsuk-label" for="c-me-cod-infant">
+                    (c) Main maternal diseases or conditions affecting infant
                 </label>
-                <input class="nhsuk-input nhsuk-u-width-one-third" id="reviewOnsetInterval1b" name="reviewOnsetInterval1b"
-                    type="text">
-            </div>
-        </div>
-        <div class="nhsuk-u-margin-bottom-8">
-            <div class="nhsuk-form-group">
-                <label class="nhsuk-label" for="reviewCauseOfDeath1c">
-                    1(c) other disease or condition directly leading to 1(b) (optional)
-                </label>
-                <input class="nhsuk-input nhsuk-u-width-one-half" id="reviewCauseOfDeath1c" name="reviewCauseOfDeath1c" type="text">
+                <input class="nhsuk-input nhsuk-u-width-one-half" id="c-me-cod-infant" name="c-me-cod-infant" type="text">
             </div>
             <div class="nhsuk-form-group">
-                <label class="nhsuk-label" for="reviewOnsetInterval1c">
-                    Approximate interval between onset of 1(c) and death
+                <label class="nhsuk-label" for="d-me-cod-infant">
+                    (d) Other maternal diseases or conditions affecting infant
                 </label>
-                <input class="nhsuk-input nhsuk-u-width-one-third" id="reviewOnsetInterval1c" name="reviewOnsetInterval1c"
-                    type="text">
+                <input class="nhsuk-input nhsuk-u-width-one-half" id="d-me-cod-infant" name="d-me-cod-infant" type="text">
             </div>
-        </div>
-        <div class="nhsuk-u-margin-bottom-8">
-            <div class="nhsuk-form-group">
-                <label class="nhsuk-label" for="reviewCauseOfDeath2">
-                    2 - other significant conditions (optional)
+            <div class="nhsuk-form-group nhsuk-u-margin-bottom-8">
+                <label class="nhsuk-label" for="e-me-cod-infant">
+                    (e) Other relevant causes
                 </label>
-                <input class="nhsuk-input nhsuk-u-width-one-half" id="reviewCauseOfDeath2" name="reviewCauseOfDeath2" type="text">
+                <input class="nhsuk-input nhsuk-u-width-one-half" id="e-me-cod-infant" name="e-me-cod-infant" type="text">
             </div>
-            <div class="nhsuk-form-group">
-                <label class="nhsuk-label" for="reviewOnsetInterval2">
-                    Approximate interval between onset of 2 and death
-                </label>
-                <input class="nhsuk-input nhsuk-u-width-one-third" id="reviewOnsetInterval2" name="reviewOnsetInterval2"
-                    type="text">
+
+        <!-- Over 28 days after birth form -->
+        {% else %}
+
+            <div class="nhsuk-u-margin-bottom-8">
+                <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="reviewCauseOfDeath1a">
+                        1(a) disease or condition directly leading to death (required)
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-one-half" id="reviewCauseOfDeath1a" name="reviewCauseOfDeath1a" type="text">
+                </div>
+                <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="reviewOnsetInterval1a">
+                        Approximate interval between onset of 1(a) and death
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-one-third" id="reviewOnsetInterval1a" name="reviewOnsetInterval1a"
+                        type="text">
+                </div>
             </div>
-        </div>
+            <div class="nhsuk-u-margin-bottom-8">
+                <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="reviewCauseOfDeath1b">
+                        1(b) other disease or condition directly leading to 1(a) (optional)
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-one-half" id="reviewCauseOfDeath1b" name="reviewCauseOfDeath1b" type="text">
+                </div>
+                <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="reviewOnsetInterval1b">
+                        Approximate interval between onset of 1(b) and death
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-one-third" id="reviewOnsetInterval1b" name="reviewOnsetInterval1b"
+                        type="text">
+                </div>
+            </div>
+            <div class="nhsuk-u-margin-bottom-8">
+                <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="reviewCauseOfDeath1c">
+                        1(c) other disease or condition directly leading to 1(b) (optional)
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-one-half" id="reviewCauseOfDeath1c" name="reviewCauseOfDeath1c" type="text">
+                </div>
+                <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="reviewOnsetInterval1c">
+                        Approximate interval between onset of 1(c) and death
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-one-third" id="reviewOnsetInterval1c" name="reviewOnsetInterval1c"
+                        type="text">
+                </div>
+            </div>
+            <div class="nhsuk-u-margin-bottom-8">
+                <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="reviewCauseOfDeath2">
+                        2 - other significant conditions (optional)
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-one-half" id="reviewCauseOfDeath2" name="reviewCauseOfDeath2" type="text">
+                </div>
+                <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="reviewOnsetInterval2">
+                        Approximate interval between onset of 2 and death
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-one-third" id="reviewOnsetInterval2" name="reviewOnsetInterval2"
+                        type="text">
+                </div>
+            </div>
+
+        {% endif %}
 
         <div class="nhsuk-form-group">
             <div class="govuk-warning-text nhsuk-form-group nhsuk-u-padding-bottom-5">

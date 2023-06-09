@@ -430,7 +430,16 @@ Case details
   <ul>
     <div id="options" class="options">
       <li><a class="active" href="case-details">Case details</a></li>
-      <li><a href="case-scrutiny">Case scrutiny</a></li>
+
+      <!-- If an answer has been provided already for Over or Under 28 days after birth then show case scrutiny screen otherwise if no answer provided show Over or Under 28 days screen -->
+      {% if data['over-under-28'] %}
+        <li><a href="case-scrutiny">Case scrutiny</a></li>
+      {% else %}
+      <form action="case-scrutiny-link" method="post" id="run-28-days-once">
+        <li><a href="#" onclick="document.getElementById('run-28-days-once').submit(); return false;">Case scrutiny</a></li>
+      </form>
+      {% endif %}
+
       <li><a href="comms-concerns">Communication and concerns</a></li>
       <li><a href="coroner-notification">Coroner notification</a></li>
     </div>
