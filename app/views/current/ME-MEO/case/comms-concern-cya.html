@@ -153,6 +153,31 @@ Case details
             {% endif %}
         </dl>
 
+        <form action="any-further-action" method="post">
+            <div class="nhsuk-form-group">
+                <fieldset class="nhsuk-fieldset">
+                    <legend class="nhsuk-fieldset__legend">
+                        Does this concern require any further action?
+                    </legend>
+                    <div class="nhsuk-radios">
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
+                            <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+                            Yes
+                            </label>
+                        </div>
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
+                            <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+                            No
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <button class="nhsuk-button" type="submit">Save and continue</button>
+        </form>
+
         {% if data['recordAsConcernMain'] == 'no' %}
         <p><a id="raise-concern-link" href="main-raise-concern">Raise concern</a></p>
         {% endif %}
