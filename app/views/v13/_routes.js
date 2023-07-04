@@ -392,5 +392,11 @@ router.post(/concerns-notification-resend/, (req, res) => {
 
 })
 
+router.post(/remove-concern-notification/, (req, res) => {
+
+    res.redirect('../../statics/comms-concerns')
+
+})
+
 
 module.exports = router;
