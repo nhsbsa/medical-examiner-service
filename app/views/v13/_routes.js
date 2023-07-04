@@ -394,7 +394,14 @@ router.post(/concerns-notification-resend/, (req, res) => {
 
 router.post(/remove-concern-notification/, (req, res) => {
 
-    res.redirect('../../statics/comms-concerns')
+    const removeNotification = req.session.data['remove-notification']
+
+    if (removeNotification == 'yes') {
+        res.redirect('../concerns/concern-notification-removed')
+    } else {
+        res.redirect('../../statics/comms-concerns')
+    }
+    
 
 })
 

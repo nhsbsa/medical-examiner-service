@@ -36,7 +36,7 @@ Case details
 
   <div class="nhsuk-grid-column-three-quarters">
     
-    {% if data['comms-patient-safety-email'] %}
+    {% if data['comms-patient-safety-email'] or data['remove-notification'] == 'yes' %}
       
     {% else %}
     <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
@@ -198,7 +198,7 @@ Case details
         <span class="nhsuk-details__summary-text">
           Discussion with Emmit Felba
         </span>
-        {% if data['comms-patient-safety-email'] %}
+        {% if data['comms-patient-safety-email'] or data['remove-notification'] == 'yes' %}
         
         {% else %}
           <strong class="nhsuk-tag nhsuk-tag--red nhsbsa-tag--custom">
@@ -247,14 +247,14 @@ Case details
 
 
         <!-- validation example - if a new email hasnt been provided then show validation -->
-        {% if data['comms-patient-safety-email'] %}
+        {% if data['comms-patient-safety-email'] or data['remove-notification'] == 'yes' %}
       
         {% else %}
         <div class="nhsuk-form-group--error">
         {% endif %}
           <h3 class="nhsuk-heading-l">Concerns notification</h3>
           <!-- validation message -->
-          {% if data['comms-patient-safety-email'] %}
+          {% if data['comms-patient-safety-email'] or data['remove-notification'] == 'yes' %}
       
           {% else %}
           <span class="nhsuk-error-message" id="email-error">
@@ -341,7 +341,7 @@ Case details
             </table>
           </div>
         <!-- close div for validation -->
-        {% if data['comms-patient-safety-email'] %}
+        {% if data['comms-patient-safety-email'] or data['remove-notification'] == 'yes' %}
       
         {% else %}
         </div>
