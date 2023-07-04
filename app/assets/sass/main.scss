@@ -62,3 +62,9 @@
 .nhsuk-header__navigation-link:hover, .nhsuk-header__navigation-link:active, .nhsuk-header__navigation-link.is-active {
     background-color: #004b93;
 }
+
+// float status for discussions and concerns expanders
+.nhsbsa-tag--custom {
+    float: right;
+    margin-top: 5px;
+}

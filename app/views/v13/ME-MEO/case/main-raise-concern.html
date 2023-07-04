@@ -44,103 +44,33 @@ Case details
         <form action="main-raise-concern" method="post">
 
             <div class="nhsuk-form-group">
-                <fieldset class="nhsuk-fieldset" aria-describedby="caseReviewRecommended-hint">
-                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
-                        Is this case recommended for case record reviews?
-                    </legend>
-                    <div class="nhsuk-hint" id="caseReviewRecommended-hint">
-                        For example, structured judgement review or equivalent
-                    </div>
-                    <div class="nhsuk-radios nhsuk-radios--conditional">
-                        <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="caseReviewRecommended" name="caseReviewRecommended" type="radio" value="yes" aria-controls="main-record-review-email" aria-expanded="false">
-                            <label class="nhsuk-label nhsuk-radios__label" for="caseReviewRecommended">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="main-record-review-email">
-                            <div class="nhsuk-form-group">
-                              <label class="nhsuk-label" for="email">
-                                Email address
-                              </label>
-                              <input class="nhsuk-input nhsuk-input--width-20" id="email" name="main-record-review-email" type="text">
-                            </div>
-                        </div>
-                        <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="caseReviewRecommendedNo" name="caseReviewRecommended"
-                                type="radio" value="no">
-                            <label class="nhsuk-label nhsuk-radios__label" for="caseReviewRecommendedNo">
-                                No
-                            </label>
-                        </div>
-                    </div>
-                </fieldset>
+                <label class="nhsuk-label" for="email">
+                    Send email notification for case record review (optional)
+                </label>
+                <div class="nhsuk-hint" id="example-with-hint-text-hint">
+                    For example, structured judgemenet review or equivalent
+                  </div>
+                <input class="nhsuk-input nhsuk-input--width-20" id="email" name="main-record-review-email" type="text">
             </div>
 
             <div class="nhsuk-form-group">
-                <fieldset class="nhsuk-fieldset" aria-describedby="clinicalReviewRecommended-hint">
-                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
-                        Is this case recommended for other clinical governance processes review?
-                    </legend>
-                    <div class="nhsuk-hint" id="clinicalReviewRecommended-hint">
-                        For example, safeguarding or mortality and morbidity (M&amp;M) meetings
-                    </div>
-                    <div class="nhsuk-radios nhsuk-radios--conditional">
-                        <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="clinicalReviewRecommended"
-                                name="clinicalReviewRecommended" type="radio" value="yes" aria-controls="main-governance-process-email" aria-expanded="false">
-                            <label class="nhsuk-label nhsuk-radios__label" for="clinicalReviewRecommended">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="main-governance-process-email">
-                            <div class="nhsuk-form-group">
-                              <label class="nhsuk-label" for="email">
-                                Email address
-                              </label>
-                              <input class="nhsuk-input nhsuk-input--width-20" id="email" name="main-governance-process-email" type="text">
-                            </div>
-                        </div>
-                        <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="clinicalReviewRecommendedNo"
-                                name="clinicalReviewRecommended" type="radio" value="no">
-                            <label class="nhsuk-label nhsuk-radios__label" for="clinicalReviewRecommendedNo">
-                                No
-                            </label>
-                        </div>
-                    </div>
-                </fieldset>
+                <label class="nhsuk-label" for="email">
+                    Send email notification for other clinical governance process review
+                </label>
+                <div class="nhsuk-hint" id="example-with-hint-text-hint">
+                    For example, safeguarding or mortality and morbidity (M&M) meetings
+                  </div>
+                <input class="nhsuk-input nhsuk-input--width-20" id="email" name="main-governance-process-email" type="text">
             </div>
 
             <div class="nhsuk-form-group">
-                <fieldset class="nhsuk-fieldset">
-                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
-                        Is this a patient safety incident?
-                    </legend>
-                    <div class="nhsuk-radios nhsuk-radios--conditional">
-                        <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="patientSafetyIncident" name="patientSafetyIncident" type="radio" value="yes" aria-controls="main-patient-safety-email" aria-expanded="false">
-                            <label class="nhsuk-label nhsuk-radios__label" for="patientSafetyIncident">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="main-patient-safety-email">
-                            <div class="nhsuk-form-group">
-                              <label class="nhsuk-label" for="email">
-                                Email address
-                              </label>
-                              <input class="nhsuk-input nhsuk-input--width-20" id="email" name="main-patient-safety-email" type="text">
-                            </div>
-                        </div>
-                        <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="patientSafetyIncidentNo" name="patientSafetyIncident"
-                                type="radio" value="no">
-                            <label class="nhsuk-label nhsuk-radios__label" for="patientSafetyIncidentNo">
-                                No
-                            </label>
-                        </div>
-                    </div>
-                </fieldset>
+                <label class="nhsuk-label" for="email">
+                    Send email notification for a patient safety incident
+                </label>
+                <div class="nhsuk-hint" id="example-with-hint-text-hint">
+                    For example, safeguarding or mortality and morbidity (M&M) meetings
+                </div>
+                <input class="nhsuk-input nhsuk-input--width-20" id="email" name="main-patient-safety-email" type="text">
             </div>
 
             <div class="nhsuk-form-group">

@@ -41,26 +41,32 @@ Case details
             Record concern
         </h1>
 
-        <form action="raise-comms-concern" method="post">
+        <form action="resend-raise-comms-concern" method="post">
 
             <div class="nhsuk-form-group">
-                <label class="nhsuk-label" for="email">
+                <p class="nhsuk-label">
                     Send email notification for case record review (optional)
-                </label>
+                </p>
                 <div class="nhsuk-hint" id="example-with-hint-text-hint">
                     For example, structured judgemenet review or equivalent
                   </div>
-                <input class="nhsuk-input nhsuk-input--width-20" id="email" name="comms-record-review-email" type="text">
+                  <div class="nhsuk-inset-text nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-3">
+                    <span class="nhsuk-u-visually-hidden">Email recipient: </span>
+                    <p>record-reviewer@example.com</p>
+                  </div>
             </div>
 
             <div class="nhsuk-form-group">
-                <label class="nhsuk-label" for="email">
+                <p class="nhsuk-label">
                     Send email notification for other clinical governance process review
-                </label>
+                </p>
                 <div class="nhsuk-hint" id="example-with-hint-text-hint">
                     For example, safeguarding or mortality and morbidity (M&M) meetings
                   </div>
-                <input class="nhsuk-input nhsuk-input--width-20" id="email" name="comms-governance-process-email" type="text">
+                  <div class="nhsuk-inset-text nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-3">
+                    <span class="nhsuk-u-visually-hidden">Email recipient: </span>
+                    <p>governence-officer@example.com</p>
+                  </div>
             </div>
 
             <div class="nhsuk-form-group">
@@ -87,8 +93,7 @@ Case details
                             </label>
                         </div>
                         <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="commsreferToPalsNo" name="commsreferToPals" type="radio"
-                                value="no">
+                            <input class="nhsuk-radios__input" id="commsreferToPalsNo" name="commsreferToPals" type="radio" value="no" checked>
                             <label class="nhsuk-label nhsuk-radios__label" for="commsreferToPalsNo">
                                 No
                             </label>

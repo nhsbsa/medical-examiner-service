@@ -251,7 +251,7 @@ router.post(/record-comm-or-concern/, (req, res) => {
     if (recordCommsConcern == 'yes') {
         res.redirect('raise-comms-concern')
     } else {
-        res.redirect('discussion-main-cya')
+        res.redirect('comms-concern-cya')
     }
     
 })
@@ -372,6 +372,23 @@ router.post(/reopen-case/, (req, res) => {
     }
 
     res.redirect('case-details');
+
+})
+
+// ========================================================================
+// RESEND OR REMOVE CONCERN NOTIFICATION
+// ========================================================================
+
+
+router.post(/resend-raise-comms-concern/, (req, res) => {
+
+    res.redirect('concerns/comms-concern-cya')
+
+})
+
+router.post(/concerns-notification-resend/, (req, res) => {
+
+    res.redirect('../../statics/comms-concerns')
 
 })
 
