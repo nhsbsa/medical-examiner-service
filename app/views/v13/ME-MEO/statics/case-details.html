@@ -339,10 +339,38 @@ Case details
   </h3>
   <ul>
     <div id="options" class="options">
-      <li><a class="active" href="case-details">Case details</a></li>
-      <li><a href="case-scrutiny">Case scrutiny</a></li>
-      <li><a href="comms-concerns">Communications</a></li>
-      <li><a href="coroner-notification">Coroner</a></li>
+      <li>
+        <a class="active" href="case-details">Case details
+        <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+          Complete
+        </strong>
+        </a>
+      </li>
+      <li>
+        <a href="case-scrutiny">Case scrutiny
+          <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+            Complete
+          </strong>
+        </a>
+      </li>
+      <li>
+        <a href="comms-concerns">Communications
+          {% if data['comms-patient-safety-email'] or data['remove-notification'] == 'yes' %}
+
+          {% else %}
+          <strong class="nhsuk-tag nhsuk-tag--red side-nav-tag">
+            Problem
+          </strong>
+          {% endif %}
+        </a>
+      </li>
+      <li>
+        <a href="coroner-notification">Coroner
+        <strong class="nhsuk-tag nhsuk-tag--blue side-nav-tag">
+          Raised
+        </strong>
+        </a>
+      </li>
     </div>
   </ul>
 </div>

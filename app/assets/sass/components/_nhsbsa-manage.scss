@@ -91,6 +91,7 @@ ul {
 }
 li {
   margin: 0px;
+  position: relative;
 }
 
 li a {
@@ -112,11 +113,22 @@ li a.active {
   font-weight: 600;
   border-top: #005EB8 1px solid;
   border-bottom: #005EB8 1px solid;
+
+  .nhsuk-tag--complete {
+    background-color: white;
+    color: black;
+  }
+  
 }
 
 li a:hover:not(.active) {
   background-color: #005EB8;
   color: white;
+  
+  .nhsuk-tag--complete {
+    background-color: white;
+    color: black;
+  }
 }
 
 .action-buttons {

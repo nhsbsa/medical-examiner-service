@@ -98,18 +98,54 @@ Case details
 
 {% block sideNav %}
 <div class="side-nav">
-    <h3>{{ data['deceased-full-name'] }}
-        <span class="nhsuk-caption-m nhsuk-caption--bottom nhsuk-u-margin-top-2">
-            <strong class="nhsuk-tag nhsuk-tag--blue">Routine</strong>
-        </span>
-    </h3>
+  <h3>{{ data['deceased-full-name'] }}
+    <span class="nhsuk-caption-m nhsuk-caption--bottom nhsuk-u-margin-top-2">
+      {% if data['deceased-full-name'] == 'Milo Brett' %}
+        <strong class="nhsuk-tag nhsuk-tag--red">Urgent</strong>
+      {% else %}
+        {% if data['reopen-this-case'] == 'yes' %}
+          <strong class="nhsuk-tag nhsuk-tag--orange">Reopened</strong>
+        {% else %}
+          <strong class="nhsuk-tag nhsuk-tag--blue">Routine</strong>
+        {% endif %}
+      {% endif %}
+    </span>
+  </h3>
     <ul>
-        <div id="options" class="options">
-            <li><a href="case-details">Case details</a></li>
-            <li><a href="case-scrutiny">Case scrutiny</a></li>
-            <li><a href="comms-concerns">Communications</a></li>
-            <li><a class="active" href="coroner-notification">Coroner</a></li>
-        </div>
+      <div id="options" class="options">
+        <li>
+          <a href="case-details">Case details
+          <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+            Complete
+          </strong>
+          </a>
+        </li>
+        <li>
+          <a href="case-scrutiny">Case scrutiny
+            <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+              Complete
+            </strong>
+          </a>
+        </li>
+        <li>
+          <a href="comms-concerns">Communications
+            {% if data['comms-patient-safety-email'] or data['remove-notification'] == 'yes' %}
+
+            {% else %}
+            <strong class="nhsuk-tag nhsuk-tag--red side-nav-tag">
+              Problem
+            </strong>
+            {% endif %}
+          </a>
+        </li>
+        <li>
+          <a class="active" href="coroner-notification">Coroner
+          <strong class="nhsuk-tag nhsuk-tag--blue side-nav-tag">
+            Raised
+          </strong>
+          </a>
+        </li>
+      </div>
     </ul>
 </div>
 {% endblock %}
