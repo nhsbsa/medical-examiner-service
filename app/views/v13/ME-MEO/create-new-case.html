@@ -65,8 +65,9 @@ Create new case
                 <label class="nhsuk-label nhsuk-date-input__label" for="dateOfDeath-day">
                   Day
                 </label>
+                <!-- value="" matches the name attribute on the <input> using nunjucks example {{ data['name-attribute-value'] }} -->
                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dateOfDeath-day"
-                  name="dodDayCreate" type="text" pattern="[0-9]*" inputmode="numeric">
+                  name="dodDayCreate" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['dodDayCreate'] }}">
               </div>
             </div>
             <div class="nhsuk-date-input__item">
