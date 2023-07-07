@@ -1,5 +1,6 @@
 // ES6 or Vanilla JavaScript
 $(document).ready(function() {
+
     const months = {
         "01": "January",
         "02": "February",
@@ -30,4 +31,24 @@ $(document).ready(function() {
         console.log("months[month]:", months[month]);
         return months[month];
     });
+
+    // Get the select element and the target elements
+    const select = document.getElementById('reports');
+    const noReport = document.getElementById('no-report');
+    const generateReport = document.getElementById('generate-report');
+
+    // Add an event listener to the select element
+    select.addEventListener('change', function() {
+    // Check the selected value
+    if (select.value === '2') {
+        // Add the 'hidden' class to the div and remove it from the paragraph
+        noReport.classList.add('hidden');
+        generateReport.classList.remove('hidden');
+    } else {
+        // Remove the 'hidden' class from the div and add it to the paragraph
+        noReport.classList.remove('hidden');
+        generateReport.classList.add('hidden');
+    }
+    });
+
 });

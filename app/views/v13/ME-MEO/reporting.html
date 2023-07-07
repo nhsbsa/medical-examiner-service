@@ -34,16 +34,21 @@ Reporting
     <div class="nhsuk-grid-column-full">
 
         <div class="nhsuk-form-group">
-            <label class="nhsuk-label" for="select-1">
+            <label class="nhsuk-label" for="reports">
                 Showing report for
             </label>
-            <select class="nhsuk-select" id="select-1" name="select-1">
+            <select class="nhsuk-select" id="reports" name="select-1">
                 <option value="1">Quarter 1 (January 2023)</option>
                 <option value="2">Quarter 4 (October 2022)</option>
                 <option value="3">Quarter 3 (July 2022)</option>
             </select>
         </div>
-        <p>There is no data for this quarter</p>
+        <p class="no-report" id="no-report">There is no data for this quarter</p>
+
+        <div id="generate-report" class="hidden">
+          <!-- ADD REPORTING TABLE HERE -->
+          <p>Report will be added here</p>
+        </div>
 
     </div>
 </div>
