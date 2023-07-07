@@ -40,7 +40,7 @@ Case details
                     Raised by
                 </dt>
                 <dd class="nhsuk-summary-list__value" id="raised-by-value">
-                    {{ data['contactFirstNames'] }} {{ data['contactLastName'] }}
+                    {{ data['contactFirstNamesMain'] }} {{ data['contactLastNameMain'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                     <a id="raised-by-change-link" href="#">Change
@@ -52,9 +52,9 @@ Case details
                     Date and time raised
                 </dt>
                 <dd class="nhsuk-summary-list__value" id="date-time-value">
-                    {{ data['dodDayCommsConcern'] }}/{{ data['dodMonthCommsConcern'] }}/{{ data['dodYearCommsConcern'] }}
+                    {{ data['dodDayMain'] }}/{{ data['dodMonthMain'] }}/{{ data['dodYearMain'] }}
                     <br>
-                    {{ data['todHourCommsConcern'] }}:{{ data['todMinuteCommsConcern'] }}
+                    {{ data['todHourMain'] }}:{{ data['todMinuteMain'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                     <a id="date-time-raised-change-link" href="#">Change
@@ -66,7 +66,7 @@ Case details
                     Conversation details
                 </dt>
                 <dd class="nhsuk-summary-list__value" id="conversation-details-value">
-                    {{ data['detailsOfDiscussionCommsConcern'] }}
+                    {{ data['detailsOfDiscussionMain'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                     <a id="conversation-details-change-link" href="#">Change

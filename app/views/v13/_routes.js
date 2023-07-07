@@ -402,8 +402,18 @@ router.post(/remove-concern-notification/, (req, res) => {
         res.redirect('../../statics/comms-concerns')
     }
     
-
 })
 
+// ========================================================================
+// STATUS REFRESH
+// ========================================================================
+
+router.post(/status-refresh/, (req, res) => {
+
+    req.session.data['status-refresh'] = 'complete'
+
+    res.redirect('comms-concerns')
+
+})
 
 module.exports = router;

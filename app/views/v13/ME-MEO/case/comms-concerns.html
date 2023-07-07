@@ -140,12 +140,23 @@ Case details
                   <td class="nhsuk-table__cell">Record review</td>
                   <!-- <td class="nhsuk-table__cell ">{{ data['dodDayMain'] }}/{{ data['dodMonthMain'] }}/{{ data['dodYearMain'] }}</td> -->
                   <td class="nhsuk-table__cell ">{{ data['main-record-review-email'] }}</td>
+                  {% if data['status-refresh'] == 'complete' %}
+                  <td class="nhsuk-table__cell ">
+                    <strong class="nhsuk-tag">
+                      Delivered
+                    </strong>
+                  </td>
+                  <td class="nhsuk-table__cell "></td>
+                  {% else %}
                   <td class="nhsuk-table__cell ">
                     <strong class="nhsuk-tag nhsuk-tag--blue">
                       Sending
                     </strong>
                   </td>
-                  <td class="nhsuk-table__cell "><a href="#">Refresh</a></td>
+                  <form action="status-refresh" method="post" id="status-refresh">
+                    <td class="nhsuk-table__cell "><a href="#" onclick="document.getElementById('status-refresh').submit(); return false;">Refresh</a></td>
+                  </form>
+                  {% endif %}
                 </tr>
                 {% endif %}
                 {% if data['main-governance-process-email'] %}
@@ -153,12 +164,21 @@ Case details
                   <td class="nhsuk-table__cell">Governance processes review</td>
                   <!-- <td class="nhsuk-table__cell ">{{ data['dodDayMain'] }}/{{ data['dodMonthMain'] }}/{{ data['dodYearMain'] }}</td> -->
                   <td class="nhsuk-table__cell ">{{ data['main-governance-process-email'] }}</td>
+                  {% if data['status-refresh'] == 'complete' %}
+                  <td class="nhsuk-table__cell ">
+                    <strong class="nhsuk-tag">
+                      Delivered
+                    </strong>
+                  </td>
+                  <td class="nhsuk-table__cell "></td>
+                  {% else %}
                   <td class="nhsuk-table__cell ">
                     <strong class="nhsuk-tag nhsuk-tag--blue">
                       Sending
                     </strong>
                   </td>
                   <td class="nhsuk-table__cell "><a href="#">Refresh</a></td>
+                  {% endif %}
                 </tr>
                 {% endif %}
                 {% if data['main-patient-safety-email'] %}
@@ -166,12 +186,21 @@ Case details
                   <td class="nhsuk-table__cell">Patient safety incident</td>
                   <!-- <td class="nhsuk-table__cell ">{{ data['dodDayMain'] }}/{{ data['dodMonthMain'] }}/{{ data['dodYearMain'] }}</td> -->
                   <td class="nhsuk-table__cell ">{{ data['main-patient-safety-email'] }}</td>
+                  {% if data['status-refresh'] == 'complete' %}
+                  <td class="nhsuk-table__cell ">
+                    <strong class="nhsuk-tag">
+                      Delivered
+                    </strong>
+                  </td>
+                  <td class="nhsuk-table__cell "></td>
+                  {% else %}
                   <td class="nhsuk-table__cell ">
                     <strong class="nhsuk-tag nhsuk-tag--blue">
                       Sending
                     </strong>
                   </td>
                   <td class="nhsuk-table__cell "><a href="#">Refresh</a></td>
+                  {% endif %}
                 </tr>
                 {% endif %}
               </tbody>
@@ -353,6 +382,9 @@ Case details
 
 {% endblock %}
 
+<!-- ====================================== -->
+<!-- SIDE NAV -->
+<!-- ====================================== -->
 {% block sideNav %}
 <div class="side-nav">
   <h3>{{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
@@ -362,19 +394,96 @@ Case details
   </h3>
   <ul>
     <div id="options" class="options">
-      <li><a href="case-details">Case details</a></li>
+      <li><a href="case-details">
+        Case details
+        <!-- if case details sections are all complete -->
+        {% if data['additional-details-section'] == 'complete' and data['location-of-death-section'] == 'complete' %} 
+        <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+          Complete
+        </strong>
+        {% else %}
+        <strong class="nhsuk-tag nhsuk-tag--grey side-nav-tag">
+          In progress
+        </strong>
+        {% endif %}
+      </a></li>
 
        <!-- If an answer has been provided already for Over or Under 28 days after birth then show case scrutiny screen otherwise if no answer provided show Over or Under 28 days screen -->
-      {% if data['over-under-28'] %}
-        <li><a href="case-scrutiny">Case scrutiny</a></li>
-      {% else %}
-      <form action="case-scrutiny-link" method="post" id="run-28-days-once">
-        <li><a href="#" onclick="document.getElementById('run-28-days-once').submit(); return false;">Case scrutiny</a></li>
-      </form>
-      {% endif %}
+       {% if data['over-under-28'] %}
+       <li><a href="case-scrutiny">
+         Case scrutiny
+         {% if data['pre-scrutiny-note-section'] == 'complete' and 
+         data['ap-prop-cause-of-death-section'] == 'complete' and 
+         data['me-independent-review-section'] == 'complete' and 
+         data['ap-discussion-section'] == 'complete' and 
+         data['ap-details-section'] == 'complete'       
+         %}
+         <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+           Complete
+         </strong>
+         {% elif data['pre-scrutiny-note-section'] == 'complete' or 
+         data['ap-prop-cause-of-death-section'] == 'complete' or 
+         data['me-independent-review-section'] == 'complete' or 
+         data['ap-discussion-section'] == 'complete' or 
+         data['ap-details-section'] == 'complete'       
+         %}
+         <strong class="nhsuk-tag nhsuk-tag--grey side-nav-tag">
+           In progress
+         </strong>
+         {% else %}
+         <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag">
+           Not started
+         </strong>
+         {% endif %}
+       </a></li>
+     {% else %}
+     <form action="case-scrutiny-link" method="post" id="run-28-days-once">
+       <li><a href="#" onclick="document.getElementById('run-28-days-once').submit(); return false;">
+         Case scrutiny
+         {% if data['pre-scrutiny-note-section'] == 'complete' and 
+         data['ap-prop-cause-of-death-section'] == 'complete' and 
+         data['me-independent-review-section'] == 'complete' and 
+         data['ap-discussion-section'] == 'complete' and 
+         data['ap-details-section'] == 'complete'       
+         %}
+         <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+           Complete
+         </strong>
+         {% elif data['pre-scrutiny-note-section'] == 'complete'  or 
+         data['ap-prop-cause-of-death-section'] == 'complete' or 
+         data['me-independent-review-section'] == 'complete' or 
+         data['ap-discussion-section'] == 'complete' or 
+         data['ap-details-section'] == 'complete'       
+         %}
+         <strong class="nhsuk-tag nhsuk-tag--grey side-nav-tag">
+           In progress
+         </strong>
+         {% else %}
+         <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag">
+           Not started
+         </strong>
+         {% endif %}
+       </a></li>
+     </form>
+     {% endif %}
 
-      <li><a class="active" href="comms-concerns">Communications</a></li>
-      <li><a href="coroner-notification">Coroner</a></li>
+      <li><a class="active" href="comms-concerns">
+        Communications
+        {% if data['discussion-with-main-section'] == 'complete' %}
+        <strong class="nhsuk-tag nhsuk-tag--blue side-nav-tag">
+          Raised
+        </strong>
+        {% endif %}
+      </a></li>
+
+      <li><a href="coroner-notification">
+        Coroner
+        {% if data['notify-coroner'] == 'yes' %}
+        <strong class="nhsuk-tag nhsuk-tag--blue side-nav-tag">
+          Raised
+        </strong>
+        {% endif %}
+      </a></li>
       <!-- <li><a href="concerns-notification">Concerns notifications</a></li> -->
     </div>
   </ul>
