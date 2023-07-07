@@ -39,13 +39,14 @@ Create new case
         <label class="nhsuk-label nhsuk-u-width-one-half" for="firstNames">
           First name(s)
         </label>
-        <input class="nhsuk-input nhsuk-u-width-one-half" id="firstNames" name="deceased-first-name" type="text">
+        <input class="nhsuk-input nhsuk-u-width-one-half" id="firstNames" name="deceased-first-name" type="text" 
+        value="{{ data['deceased-first-name'] }}">
       </div>
       <div class="nhsuk-form-group">
         <label class="nhsuk-label nhsuk-u-width-one-half" for="lastName">
           Last name
         </label>
-        <input class="nhsuk-input nhsuk-u-width-one-half" id="lastName" name="deceased-last-name" type="text">
+        <input class="nhsuk-input nhsuk-u-width-one-half" id="lastName" name="deceased-last-name" type="text" value="{{ data['deceased-last-name'] }}">
       </div>
 
       <h2 id="date-time-death-header">Date and time death was verified</h2>
