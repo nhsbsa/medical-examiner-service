@@ -1,0 +1,73 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-full-width.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+        {% from 'back-link/macro.njk' import backLink %}
+
+        {{ backLink({
+        "href": "javascript:history.back()",
+        "text": "Go back"
+        }) }}
+
+        <form action="remove-concern-notification" method="post">
+
+            <div class="nhsuk-form-group">
+
+                <fieldset class="nhsuk-fieldset">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                    <h1 class="nhsuk-fieldset__heading">
+                    Are you sure you want to remove this concern notification?
+                    </h1>
+                </legend>
+            
+                <div class="nhsuk-radios">
+            
+                    <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="remove-notification-yes" name="remove-notification" type="radio" value="yes">
+                    <label class="nhsuk-label nhsuk-radios__label" for="remove-notification-yes">
+                        Yes
+                    </label>
+                    </div>
+            
+                    <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="remove-notification-no" name="remove-notification" type="radio" value="no">
+                    <label class="nhsuk-label nhsuk-radios__label" for="remove-notification-no">
+                        No
+                    </label>
+                    </div>
+            
+                </div>
+                </fieldset>
+            
+            </div>
+            <button class="nhsuk-button" type="submit">Continue</button>
+        
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
