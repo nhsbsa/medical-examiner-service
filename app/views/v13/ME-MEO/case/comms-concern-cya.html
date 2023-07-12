@@ -31,7 +31,7 @@ Case details
                 Communication and concerns
                 - {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
             </span>
-            Check communication details
+            Check discussion details
         </h1>
 
         <dl class="nhsuk-summary-list">
@@ -75,16 +75,36 @@ Case details
             </div>
             <div class="nhsuk-summary-list__row summary-list__details-list">
                 <dt class="nhsuk-summary-list__key">
-                    Conversation details
+                    Discussion details
                 </dt>
                 <dd class="nhsuk-summary-list__value" id="conversation-details-value">
                     {{ data['detailsOfDiscussionCommsConcern'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                     <a id="conversation-details-change-link" href="#">Change
-                        <span class="nhsuk-u-visually-hidden">discussion detais</span></a>
+                        <span class="nhsuk-u-visually-hidden">discussion details</span></a>
                 </dd>
+            </dl>
+
+            <h2>
+                Check concern notification details
+            </h2>
+
+            <dl class="nhsuk-summary-list">
+                {% if data['recordAsConcernMain'] == 'no' %}
+                <div class="nhsuk-summary-list__row summary-list__details-list">
+                    <dt class="nhsuk-summary-list__key">
+                        Concern details
+                    </dt>
+                    <dd class="nhsuk-summary-list__value" id="concern-details-value">
+                        {{ data['detailsOfConcern'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                        <a id="concern-details-change-link" href="#">Change
+                            <span class="nhsuk-u-visually-hidden">discussion details</span></a>
+                    </dd>
             </div>
+            {% endif %}
             {% if data['recordAsConcernMain'] == 'no' %}
                 <div class="nhsuk-summary-list__row summary-list__details-list">
                     <dt class="nhsuk-summary-list__key">

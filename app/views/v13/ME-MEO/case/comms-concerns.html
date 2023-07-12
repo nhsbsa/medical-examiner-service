@@ -35,7 +35,7 @@ Case details
 <div class="nhsuk-grid-row">
 
   <div class="nhsuk-grid-column-three-quarters">
-    <h1 class="nhsuk-heading-xl">Communication and concerns</h1>
+    <h1 class="nhsuk-heading-xl">Communications and concerns</h1>
   </div>
   <!-- IF all sections are complete, display 'Close this case' button -->
   {% if data['create-and-assign-section'] and data['additional-details-section'] and data['location-of-death-section'] and data['pre-scrutiny-note-section'] and data['ap-prop-cause-of-death-section'] and data['me-independent-review-section'] and data['ap-discussion-section'] and data['discussion-with-main-section'] and data['coroner-notification-section'] and data['coroner-response-section'] %}
@@ -244,10 +244,10 @@ Case details
   </div>
   {% endif %}
   <div class="nhsuk-grid-column-full">
-    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Discussions and concerns</h2>
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Discussions</h2>
     {% if data['record-communication-concern-section'] == 'complete' %}
 
-      <p><a href="record-comm-or-concern">Record discussion or a concern</a></p>
+      <p><a href="record-comm-or-concern">Record discussion</a></p>
 
         <details class="nhsuk-details nhsuk-expander">
           <summary class="nhsuk-details__summary">
@@ -371,8 +371,8 @@ Case details
       <dl class="nhsuk-summary-list">
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key nhsuk-u-font-weight-normal">
-            No discussions or concerns have been added to this case. <a href="record-comm-or-concern">Record
-              discussions or a concern</a>
+            No discussions have been added to this case. <a href="record-comm-or-concern">Record a
+              discussion</a>
           </dt>
         </div>
       </dl>

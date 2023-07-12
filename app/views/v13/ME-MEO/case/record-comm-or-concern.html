@@ -37,7 +37,7 @@ Case details
                 <span class="nhsuk-caption-m nhsuk-caption--bottom">
                     Other communication and concerns - {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
                 </span>
-                Record communication or a concern
+                Record a discussion
             </h1>
 
             <form action="record-comm-or-concern" method="post">
@@ -63,7 +63,7 @@ Case details
                         Role or relevance of the person to the case
                     </label>
                     <div class="nhsuk-hint" id="contactRole-hint">
-                        For example, family member, or person involved in case.
+                        For example, family member, or person involved in case
                     </div>
                     <input class="nhsuk-input nhsuk-u-width-one-half" id="contactRole" name="contactRole" type="text"
                         aria-describedby="contactRole-hint">
@@ -74,7 +74,7 @@ Case details
                         Which team member was the discussion with?
                     </label>
                     <div class="nhsuk-hint" id="contactingTeamMember-hint">
-                        This could be yourself or a colleague.
+                        This could be yourself or a colleague
                     </div>
                     <input class="nhsuk-input nhsuk-u-width-one-half" id="contactingTeamMember"
                         name="contactingTeamMember" type="text" aria-describedby="contactingTeamMember-hint">
@@ -86,7 +86,7 @@ Case details
                             Date of communication
                         </legend>
                         <div class="nhsuk-hint" id="dateOfDiscussion-hint">
-                            For example, 22 3 2021
+                            For example, 22 03 2021
                         </div>
                         <div class="nhsuk-date-input" id="dateOfDiscussion">
                             <div class="nhsuk-date-input__item">
@@ -189,7 +189,7 @@ Case details
 
                 <div class="nhsuk-form-group">
                     <label class="nhsuk-label nhsuk-u-width-two-thirds" for="detailsOfDiscussion">
-                        Enter details of the communication
+                        Enter details of the discussion
                     </label>
                     <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="detailsOfDiscussion"
                         name="detailsOfDiscussionCommsConcern" rows="5"></textarea>
@@ -198,10 +198,10 @@ Case details
                 <div class="nhsuk-form-group">
                     <fieldset class="nhsuk-fieldset" aria-describedby="recordAsConcern-hint">
                         <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
-                            Do you want to record this as a concern?
+                            Do you want to raise a concern or send an email notification?
                         </legend>
                         <div class="nhsuk-hint" id="recordAsConcern-hint">
-                            A medical examiner will review concerns before any action is taken.
+                            Send an email for case record review, clinical governance process review or for a patient safety incident
                         </div>
                         <div class="nhsuk-radios">
                             <div class="nhsuk-radios__item">
