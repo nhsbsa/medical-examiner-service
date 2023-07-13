@@ -438,10 +438,55 @@ router.post(/save-draft-HAS/, (req, res) => {
 
 })
 
+//Page: /case/pre-scrutiny-note
+router.post(/save-draft-PSN/, (req, res) => {
+    
+    req.session.data['draft-status-PSN'] = 'draft'
+    
+    res.redirect('case-scrutiny')
+
+})
+
+//Page: /case/ap-prop-cause-of-death
+router.post(/save-draft-APCOD/, (req, res) => {
+    
+    req.session.data['draft-status-APCOD'] = 'draft'
+    
+    res.redirect('case-scrutiny')
+
+})
+
+//Page: /case/record-review
+router.post(/save-draft-RV/, (req, res) => {
+    
+    req.session.data['draft-status-RV'] = 'draft'
+    
+    res.redirect('case-scrutiny')
+
+})
+
+//Page: /case/record-review
+router.post(/save-draft-MEIR/, (req, res) => {
+    
+    req.session.data['draft-status-MEIR'] = 'draft'
+    
+    res.redirect('case-scrutiny')
+
+})
+
 //Page: /case/record-comm-or-concern
 router.post(/save-draft-CC/, (req, res) => {
 
     req.session.data['draft-status-CC'] = 'draft'
+
+    res.redirect('comms-concerns')
+
+})
+
+//Page: /case/raise-comms-concern
+router.post(/save-draft-RC/, (req, res) => {
+
+    req.session.data['draft-status-RC'] = 'draft'
 
     res.redirect('comms-concerns')
 

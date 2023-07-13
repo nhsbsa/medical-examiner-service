@@ -53,7 +53,13 @@ Case details
   <div class="nhsuk-grid-column-three-quarters">
     <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Pre-scrutiny notes</h2>
   </div>
-  {% if data['pre-scrutiny-note-section'] == 'complete' %}
+  {% if data['draft-status-PSN'] == 'draft' %}
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag--grey align-right">
+      Draft
+    </strong>
+  </div>
+  {% elif data['pre-scrutiny-note-section'] == 'complete' %}
   <div class="nhsuk-grid-column-one-quarter">
     <strong class="nhsuk-tag nhsuk-tag align-right">
       Complete
@@ -69,7 +75,7 @@ Case details
   {% endif %}
 
   <div class="nhsuk-grid-column-full">
-    {% if data['pre-scrutiny-note-section'] == 'complete' or data['pre-scrutiny-note-section'] == 'incomplete' %}
+    {% if data['pre-scrutiny-note-section'] == 'complete' or data['pre-scrutiny-note-section'] == 'incomplete' or data['draft-status-PSN'] == 'draft' %}
     <dl class="nhsuk-summary-list">
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
@@ -143,6 +149,12 @@ Case details
       Complete
     </strong>
   </div>
+    {% elif data['draft-status-APCOD'] == 'draft' %}
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag--grey align-right">
+      Draft
+    </strong>
+  </div>
   {% elif data['ap-prop-cause-of-death-section'] !== 'complete' and data['ap-details-section'] == 'complete' %}
   <div class="nhsuk-grid-column-one-quarter">
     <strong class="nhsuk-tag nhsuk-tag--grey align-right">
@@ -191,7 +203,7 @@ Case details
     </dl>
 
     <!-- AP cause of death -->
-    {% if data['ap-prop-cause-of-death-section'] == 'complete' or data['ap-prop-cause-of-death-section'] == 'incomplete' %}
+    {% if data['ap-prop-cause-of-death-section'] == 'complete' or data['ap-prop-cause-of-death-section'] == 'incomplete' or data['draft-status-APCOD'] == 'draft' %}
     <dl class="nhsuk-summary-list">
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
@@ -432,14 +444,19 @@ Case details
   <div class="nhsuk-grid-column-three-quarters">
     <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Medical examiner's independent review</h2>
   </div>
-  {% if data['me-independent-review-section'] == 'complete' %}
+  {% if data['draft-status-RV'] == 'draft' %}
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag--grey align-right">
+      Draft
+    </strong>
+  </div>
+  {% elif data['me-independent-review-section'] == 'complete' %}
   <div class="nhsuk-grid-column-one-quarter">
     <strong class="nhsuk-tag nhsuk-tag align-right">
       Complete
     </strong>
   </div>
-  {% endif %}
-  {% if data['me-independent-review-section'] == 'incomplete' %}
+  {% elif data['me-independent-review-section'] == 'incomplete' %}
   <div class="nhsuk-grid-column-one-quarter">
     <strong class="nhsuk-tag nhsuk-tag--grey align-right">
       In progress
@@ -447,8 +464,9 @@ Case details
   </div>
   {% endif %}
 
+
   <div class="nhsuk-grid-column-full">
-    {% if data['me-independent-review-section'] == 'complete' or data['me-independent-review-section'] == 'incomplete' %}
+    {% if data['me-independent-review-section'] == 'complete' or data['me-independent-review-section'] == 'incomplete' or data['draft-status-RV'] == 'draft' %}
     <dl class="nhsuk-summary-list">
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
@@ -856,11 +874,11 @@ Case details
   </div>
     
   <!-- ================================================== -->
-  <!-- CONCERNS NOTIFICATION -->
+  <!-- RAISE A CONCERN -->
   <!-- ================================================== -->
   
   <div class="nhsuk-grid-column-three-quarters">
-    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Concerns notification
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Raise a concern
     </h2>
   </div>
 
@@ -868,7 +886,7 @@ Case details
     <dl class="nhsuk-summary-list">
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key nhsuk-u-font-weight-normal">
-          <a href="record-comm-or-concern">Raise a concern about this case</a>
+          <a href="raise-comms-concern">Raise a concern about this case</a>
         </dt>
         <dd class="nhsuk-summary-list__actions">
           <strong class="nhsuk-tag nhsuk-tag--white align-right">
