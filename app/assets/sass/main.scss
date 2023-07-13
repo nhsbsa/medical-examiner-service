@@ -80,3 +80,16 @@
 .hidden {
     display: none;
 }
+
+// save as draft button
+.custom-draft-form {
+    position: absolute;
+}
+.custom-draft-button {
+    top: -92px;
+    left: 212px;
+
+    &:active {
+        top: -88px;
+    }
+}
