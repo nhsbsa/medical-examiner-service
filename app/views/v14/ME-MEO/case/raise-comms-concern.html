@@ -43,17 +43,25 @@ Case details
 
         <form action="raise-comms-concern" method="post">
 
-            <div class="nhsuk-label nhsuk-u-width-two-thirds" data-module="nhsuk-character-count" data-maxlength="200">
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-u-width-full" for="titleOfConcern">
+                    Enter a title for the concern
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-two-thirds" id="titleOfConcern" name="titleOfConcern"
+                    type="text">
+            </div>
+
+            <div class="nhsuk-label nhsuk-u-width-two-thirds" data-module="nhsuk-character-count" data-maxlength="500">
 
                 <div class="nhsuk-form-group">
                     <label class="nhsuk-label nhsuk-label" for="detailsOfConcern">
                         Enter details of the concern
                     </label>
-                  <textarea class="nhsuk-textarea nhsuk-js-character-count" id="detailsOfConcern" name="detailsOfConcern" rows="5" aria-describedby="detailsOfConcern-hint"></textarea>
+                  <textarea class="nhsuk-textarea nhsuk-js-character-count" id="detailsOfConcern" name="detailsOfConcern" rows="8" aria-describedby="detailsOfConcern-hint"></textarea>
                 </div>
               
                 <div class="nhsuk-hint nhsuk-character-count__message" id="detailsOfConcern-info">
-                  You can enter up to 200 characters
+                  You can enter up to 500 characters
                 </div>
               
               </div>
@@ -115,7 +123,7 @@ Case details
                     </div>
                 </fieldset>
             </div>
-
+ 
             <button class="nhsuk-button" type="submit">
                 Save and continue
             </button>
