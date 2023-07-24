@@ -492,4 +492,13 @@ router.post(/save-draft-RC/, (req, res) => {
 
 })
 
+//Page: /case/discussion-with-main-contact
+router.post(/save-draft-DWMC/, (req, res) => {
+
+    req.session.data['draft-status-DWMC'] = 'draft'
+
+    res.redirect('comms-concerns')
+
+})
+
 module.exports = router;

@@ -141,7 +141,7 @@ Case details
                     name="detailsOfDiscussionMain" rows="5"></textarea>
             </div>
 
-            <div class="nhsuk-form-group">
+            <!--<div class="nhsuk-form-group">
                 <fieldset class="nhsuk-fieldset" aria-describedby="recordAsConcern-hint">
                     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
                         Do you want to record this as a concern?
@@ -166,11 +166,20 @@ Case details
                         </div>
                     </div>
                 </fieldset>
-            </div>
+            </div>-->
 
             <button class="nhsuk-button" type="submit">
                 Save and continue
             </button>
+
+            </form>
+
+                        <!-- add the class of custom-draft-form to the form element -->
+                        <form class="custom-draft-form" action="save-draft-DWMC" method="post"> 
+                            <!-- add the class of custom-draft-button to the button -->
+                            <button class="nhsuk-button nhsuk-button--secondary custom-draft-button" id="save-as-draft-button" data-module="nhsuk-button" type="submit">
+                                Save as draft
+                            </button> 
 
         </form>
 
