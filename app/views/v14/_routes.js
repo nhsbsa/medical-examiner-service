@@ -270,7 +270,9 @@ router.post(/any-further-action/, (req, res) => {
 
 router.post(/check-discussion-details/, (req, res) => {
 
-    res.redirect('../statics/comms-concerns')
+    req.session.data['concern-raised'] = 'yes'
+    
+    res.redirect('../case/comms-concerns')
 
 })
 
