@@ -34,14 +34,32 @@ Case details
 
         <h1>
             <span class="nhsuk-caption-m nhsuk-caption--bottom">
-
-                Discussion with the main contact about the cause of death
-                - {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
+                {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
             </span>
-            Record concern
+            Raise a concern
         </h1>
 
         <form action="resend-raise-comms-concern" method="post">
+
+            <div class="nhsuk-form-group">
+                <p class="nhsuk-label">
+                    Enter a title for the concern
+                </p>
+                  <div class="nhsuk-inset-text nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-3">
+                    <span class="nhsuk-u-visually-hidden">Email recipient: </span>
+                    <p>Prescribed treatment</p>
+                  </div>
+            </div>
+
+            <div class="nhsuk-form-group">
+                <p class="nhsuk-label">
+                    Enter details of the concern
+                </p>
+                  <div class="nhsuk-inset-text nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-3">
+                    <span class="nhsuk-u-visually-hidden">Email recipient: </span>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  </div>
+            </div>
 
             <div class="nhsuk-form-group">
                 <p class="nhsuk-label">
