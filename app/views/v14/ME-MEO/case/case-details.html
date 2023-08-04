@@ -95,7 +95,7 @@ Case details
           {{ data['todHourCreate'] }}:{{ data['todMinuteCreate'] }}
         </dd>
         <dd class="nhsuk-summary-list__actions">
-          <a href="#">
+          <a href="../../ME-MEO/create-new-case#timeOfDeath-hour">
             Change<span class="nhsuk-u-visually-hidden"> time of death</span>
           </a>
         </dd>
@@ -108,7 +108,7 @@ Case details
           {{ data['requestForRapidRelease'] }}
         </dd>
         <dd class="nhsuk-summary-list__actions">
-          <a href="#">
+          <a href="../../ME-MEO/create-new-case#requestForRapidRelease">
             Change<span class="nhsuk-u-visually-hidden"> rapid release</span>
           </a>
         </dd>
@@ -139,7 +139,7 @@ Case details
           {{ data['assign-medical-examiner'] }}
         </dd>
         <dd class="nhsuk-summary-list__actions">
-          <a href="#">
+          <a href="../../ME-MEO/assign-case#assign-medical-examiner">
             Change<span class="nhsuk-u-visually-hidden"> assigned medical examiner</span>
           </a>
         </dd>
@@ -152,7 +152,7 @@ Case details
           {{ data['assign-medical-examiner-officer'] }}
         </dd>
         <dd class="nhsuk-summary-list__actions">
-          <a href="#">
+          <a href="../../ME-MEO/assign-case#assign-medical-examiner-officer">
             Change<span class="nhsuk-u-visually-hidden"> assigned medical examiner officer</span>
           </a>
         </dd>
@@ -194,7 +194,7 @@ Case details
               {% if data['knownAs'] %}{{ data['knownAs'] }}{% else %}Karen Francis{% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="#">
+              <a href="../../ME-MEO/case/additional-details#knownAs">
                 Change<span class="nhsuk-u-visually-hidden"> name known as</span>
               </a>
             </dd>
@@ -212,7 +212,7 @@ Case details
             {% endif %}
           </dd>
           <dd class="nhsuk-summary-list__actions">
-            <a href="#">
+            <a href="../../ME-MEO/case/additional-details#dateOfBirth-day">
               Change<span class="nhsuk-u-visually-hidden"> date of birth</span>
             </a>
           </dd>
@@ -229,7 +229,7 @@ Case details
             {% endif %}
           </dd>
           <dd class="nhsuk-summary-list__actions">
-            <a href="#">
+            <a href="../../ME-MEO/case/additional-details#nhsNumberKnown">
               Change<span class="nhsuk-u-visually-hidden"> nhs number</span>
             </a>
           </dd>
@@ -247,7 +247,7 @@ Case details
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="#">
+              <a href="../../ME-MEO/case/additional-details#hospitalNumber">
                 Change<span class="nhsuk-u-visually-hidden"> hospital number</span>
               </a>
             </dd>
@@ -269,7 +269,7 @@ Case details
             {% endif %}
           </dd>
           <dd class="nhsuk-summary-list__actions">
-            <a href="#">
+            <a href="../../ME-MEO/case/additional-details#homeAddressKnown">
               Change<span class="nhsuk-u-visually-hidden"> home address</span>
             </a>
           </dd>
@@ -286,7 +286,7 @@ Case details
             {% endif %}
           </dd>
           <dd class="nhsuk-summary-list__actions">
-            <a href="#">
+            <a href="../../ME-MEO/case/additional-details#occupationKnown">
               Change<span class="nhsuk-u-visually-hidden"> main job</span>
             </a>
           </dd>
@@ -324,6 +324,10 @@ Case details
     </strong>
   </div>
   {% endif %}
+
+  <!-- ================================================== -->
+  <!-- LOCATION OF DEATH -->
+  <!-- ================================================== -->
     
   {% if data['location-of-death-section'] == 'complete' or data['draft-status-HAS'] == 'draft' %}
   <div class="nhsuk-grid-column-full">
@@ -352,7 +356,7 @@ Case details
               {{ data['doaDay'] }}/{{ data['doaMonth'] }}/{{ data['doaYear'] }}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="#">
+              <a href="hospital-acute-setting">
                 Change<span class="nhsuk-u-visually-hidden"> date of admission</span>
               </a>
             </dd>
@@ -365,7 +369,7 @@ Case details
               {{ data['locationDetails'] }}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="#">
+              <a href="hospital-acute-setting">
                 Change<span class="nhsuk-u-visually-hidden"> location details</span>
               </a>
             </dd>
@@ -382,7 +386,7 @@ Case details
             Community or non-acute setting
           </dd>
           <dd class="nhsuk-summary-list__actions">
-            <a href="community-non-acute">
+            <a href="location-of-death">
               Change<span class="nhsuk-u-visually-hidden"> location of death</span>
             </a>
           </dd>
@@ -405,7 +409,7 @@ Case details
             {% endif %}
           </dd>
           <dd class="nhsuk-summary-list__actions">
-            <a href="#">
+            <a href="community-non-acute">
               Change<span class="nhsuk-u-visually-hidden"> location details</span>
             </a>
           </dd>
