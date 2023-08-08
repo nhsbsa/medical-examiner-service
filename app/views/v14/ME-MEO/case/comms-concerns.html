@@ -19,7 +19,7 @@ Case details
 <nav class="nhsuk-breadcrumb nhsuk-u-padding-bottom-0" aria-label="Breadcrumb">
   <ol class="nhsuk-breadcrumb__list">
     <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="../open-cases">Open cases</a></li>
-    <li class="nhsuk-breadcrumb__item">Communication and concerns - {{ data['deceased-first-name'] }} {{
+    <li class="nhsuk-breadcrumb__item">Communications - {{ data['deceased-first-name'] }} {{
       data['deceased-last-name'] }}</li>
   </ol>
   <p class="nhsuk-breadcrumb__back">
@@ -99,7 +99,7 @@ Case details
               Action
             </dt>
             <dd class="nhsuk-summary-list__value">
-              <td class="nhsuk-table__cell "><a href="../case/discussion-with-main-contact">View details</a> / <a href="../case/concerns/remove-concern-notification">Remove</a></td>
+              <td class="nhsuk-table__cell "><a href="../case/discussion-main-cya">View details</a> / <a href="../case/concerns/remove-concern-notification">Remove</a></td>
             </dd>
           </div>
         </dl>
@@ -230,7 +230,7 @@ Case details
               Action
             </dt>
             <dd class="nhsuk-summary-list__value">
-              <td class="nhsuk-table__cell "><a href="../case/no-discussion-main">View details</a> / <a href="../case/concerns/remove-concern-notification">Remove</a></td>
+              <td class="nhsuk-table__cell "><a href="../case/no-discussion-main-cya">View details</a> / <a href="../case/concerns/remove-concern-notification">Remove</a></td>
             </dd>
           </div>
         </dl>
@@ -452,7 +452,7 @@ Case details
           </div>
         </dl>
 
-        {% if data['comms-record-review-email'] and data['comms-governance-process-email'] and
+        {% if data['comms-record-review-email'] or data['comms-governance-process-email'] or
       data['comms-patient-safety-email'] %}
       <div class="nhsuk-table-responsive nhsuk-u-margin-top-0 table-wrap">
         <h3 class="nhsuk-heading-l">Concerns notification</h3>
@@ -481,14 +481,14 @@ Case details
           <tbody class="nhsuk-table__body">
             <tr role="row" class="nhsuk-table__row">
               <td class="nhsuk-table__cell">Record review</td>
-              <td class="nhsuk-table__cell ">16/06/2023</td>
+              <td class="nhsuk-table__cell ">14/06/2023</td>
               <td class="nhsuk-table__cell ">{{ data['comms-record-review-email'] }}</td>
               <td class="nhsuk-table__cell ">
-                <strong class="nhsuk-tag nhsuk-tag">
-                  Delivered
+                <strong class="nhsuk-tag nhsuk-tag--blue">
+                  Sending
                 </strong>
               </td>
-              <td class="nhsuk-table__cell "></td>
+              <td class="nhsuk-table__cell "><a href="#">Refresh</a></td>
             </tr>
             <tr role="row" class="nhsuk-table__row">
               <td class="nhsuk-table__cell">Governance processes review</td>
@@ -643,6 +643,10 @@ Case details
           <strong class="nhsuk-tag nhsuk-tag--blue side-nav-tag">
             Raised
           </strong>
+          {% else %}
+          <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag">
+            Not started
+          </strong>
           {% endif %}
         </a></li>
 
@@ -651,6 +655,10 @@ Case details
           {% if data['notify-coroner'] == 'yes' %}
           <strong class="nhsuk-tag nhsuk-tag--blue side-nav-tag">
             Raised
+          </strong>
+          {% else %}
+          <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag">
+            Not started
           </strong>
           {% endif %}
         </a></li>

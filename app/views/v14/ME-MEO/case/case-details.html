@@ -528,14 +528,22 @@ Case details
         <strong class="nhsuk-tag nhsuk-tag--blue side-nav-tag">
           Raised
         </strong>
+        {% else %}
+        <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag">
+          Not started
+        </strong>
         {% endif %}
       </a></li>
 
-      <li><a href="coroner-notification">
+    <li><a href="coroner-notification">
         Coroner
         {% if data['notify-coroner'] == 'yes' %}
         <strong class="nhsuk-tag nhsuk-tag--blue side-nav-tag">
           Raised
+        </strong>
+        {% else %}
+        <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag">
+          Not started
         </strong>
         {% endif %}
       </a></li>

@@ -129,15 +129,18 @@ Case details
         </li>
         <li>
           <a href="comms-concerns">Communications
-            {% if data['comms-patient-safety-email'] or data['remove-notification'] == 'yes' %}
-
-            {% else %}
-            <strong class="nhsuk-tag nhsuk-tag--red side-nav-tag">
-              Problem
-            </strong>
-            {% endif %}
+          {% if data['comms-patient-safety-email'] or data['remove-notification'] == 'yes' %}
+          <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+            Complete
+          </strong>
+          {% else %}
+          <strong class="nhsuk-tag nhsuk-tag--red side-nav-tag">
+            Problem
+          </strong>
+          {% endif %}
           </a>
         </li>
+        <li>
         <li>
           <a class="active" href="coroner-notification">Coroner
           <strong class="nhsuk-tag nhsuk-tag--blue side-nav-tag">

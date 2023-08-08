@@ -19,7 +19,7 @@ Case details
 <nav class="nhsuk-breadcrumb nhsuk-u-padding-bottom-0" aria-label="Breadcrumb">
   <ol class="nhsuk-breadcrumb__list">
     <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="../closed-cases">Closed cases</a></li>
-    <li class="nhsuk-breadcrumb__item">Discussions and concerns - {{ data['deceased-full-name'] }}</li>
+    <li class="nhsuk-breadcrumb__item">Communications - {{ data['deceased-full-name'] }}</li>
   </ol>
   <p class="nhsuk-breadcrumb__back">
     <a class="nhsuk-breadcrumb__backlink" href="#">
@@ -119,7 +119,7 @@ Case details
               Action
             </dt>
             <dd class="nhsuk-summary-list__value">
-              <td class="nhsuk-table__cell "><a href="../case/discussion-with-main-contact">View details</a> / <a href="../case/concerns/remove-concern-notification">Remove</a></td>
+              <td class="nhsuk-table__cell "><a href="../case/discussion-with-main-contact">View details</a></td>
             </dd>
           </div>
         </dl>
@@ -229,6 +229,54 @@ Case details
     <p><a href="../case/record-comm-or-concern">Record a discussion</a></p>
 
 
+    <details class="nhsuk-details nhsuk-expander">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+          Discussion with Sue Felba
+        </span>
+
+        <strong class="nhsuk-tag nhsuk-tag--grey nhsbsa-tag--custom">
+          Draft
+        </strong>
+      </summary>
+      <div class="nhsuk-details__text">
+        <dl class="nhsuk-summary-list nhsuk-summary-list--no-border">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Role of person
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Daughter
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Date
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              25 June 2023
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Communication method
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+                Phone call
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Action
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <p><a href="../case/record-comm-or-concern">View details</a> / <a href="../case/concerns/remove-concern-notification">Remove</a></p>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </details>
+  
 
     <details class="nhsuk-details nhsuk-expander">
       <summary class="nhsuk-details__summary">
@@ -270,61 +318,14 @@ Case details
               Action
             </dt>
             <dd class="nhsuk-summary-list__value">
-              <p><a href="../case/record-comm-or-concern">View details</a> / <a href="../case/concerns/remove-concern-notification">Remove</a></p>
-            </dd>
-          </div>
-        </dl>
-      </div>
-    </details>
-
-    <details class="nhsuk-details nhsuk-expander">
-      <summary class="nhsuk-details__summary">
-        <span class="nhsuk-details__summary-text">
-          Discussion with Sue Felba
-        </span>
-
-        <strong class="nhsuk-tag nhsuk-tag--grey nhsbsa-tag--custom">
-          Draft
-        </strong>
-      </summary>
-      <div class="nhsuk-details__text">
-        <dl class="nhsuk-summary-list nhsuk-summary-list--no-border">
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Role of person
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              Daughter
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Date
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              13 June 2023
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Communication method
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-                Phone call
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Action
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <p><a href="../case/record-comm-or-concern">View details</a> / <a href="../case/concerns/remove-concern-notification">Remove</a></p>
+              <p><a href="../case/record-comm-or-concern">View details</a></p>
             </dd>
           </div>
         </dl>
       </div>
     </details>
   </div>
+
 
   <!-- ================================================== -->
   <!-- CONCERNS -->
@@ -524,7 +525,7 @@ Case details
       <li>
         <a class="active" href="comms-concerns">Communications
         {% if data['comms-patient-safety-email'] or data['remove-notification'] == 'yes' %}
-        <strong class="nhsuk-tag nhsuk-tag side-nav-tag">
+        <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
           Complete
         </strong>
         {% else %}
