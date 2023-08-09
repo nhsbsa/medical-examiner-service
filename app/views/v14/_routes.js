@@ -153,7 +153,7 @@ router.post(/ap-prop-cod-discussion/, (req, res) => {
     const needDiscussion = req.session.data['ap-prop-cod-discussion']
 
     if (needDiscussion == 'yes') {
-        res.redirect('record-discussion-ap')
+        res.redirect('record-comm-or-concern-ap')
     } else {
         res.redirect('no-discussion-ap')
     }
@@ -161,7 +161,7 @@ router.post(/ap-prop-cod-discussion/, (req, res) => {
 })
 
 // Record discussion
-router.post(/record-discussion-ap/, (req, res) => {
+router.post(/record-comm-or-concern-ap/, (req, res) => {
 
     const agreedOutcome = req.session.data['agreedOutcome']
 
@@ -242,7 +242,7 @@ router.post(/main-raise-concern/, (req, res) => {
     
 })
 
-// Record communication or a concern
+// Record discussion
 router.post(/record-comm-or-concern/, (req, res) => {
     
     const recordCommsConcern = req.session.data['recordAsCommsConcern']
@@ -260,7 +260,7 @@ router.post(/record-comm-or-concern/, (req, res) => {
 router.post(/raise-comms-concern/, (req, res) => {
     
     req.session.data['recordAsConcernComms'] = 'yes'
-    res.redirect('comms-concern-cya')
+    res.redirect('concerns-notification-cya')
     
 })
 
@@ -406,6 +406,18 @@ router.post(/remove-concern-notification/, (req, res) => {
 
     if (removeNotification == 'yes') {
         res.redirect('../concerns/concern-notification-removed')
+    } else {
+        res.redirect('../../statics/comms-concerns')
+    }
+    
+})
+
+router.post(/remove-discussion-main/, (req, res) => {
+
+    const removeNotification = req.session.data['remove-discussion-main']
+
+    if (removeNotification == 'yes') {
+        res.redirect('../concerns/discussion-main-removed')
     } else {
         res.redirect('../../statics/comms-concerns')
     }
