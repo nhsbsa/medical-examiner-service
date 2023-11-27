@@ -25,6 +25,8 @@ Case details
 
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
+        {% from 'back-link/macro.njk' import backLink %}
+
         {{ backLink({
         "href": "javascript:history.back()",
         "text": "Go back"
@@ -32,25 +34,27 @@ Case details
 
         <h1>
             <span class="nhsuk-caption-m nhsuk-caption--bottom">
-                Discussion with the attending practitioner about the cause of death - {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
+                {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
             </span>
             Record discussion
         </h1>
 
-        <form action="record-comm-or-concern-ap" method="post">
+        <form action="main-contact-discussion" method="post">
 
             <div class="nhsuk-form-group">
-                <label class="nhsuk-label nhsuk-u-width-one-half" for="ap-prop-first-name">
-                    First name of the AP who proposed the cause of death
+                <label class="nhsuk-label" for="contactFirstNames">
+                    What's the first name of the AP who proposed the cause of death?
                 </label>
-                <input class="nhsuk-input nhsuk-u-width-one-half" id="ap-prop-first-name" name="ap-prop-first-name" type="text">
+                <input class="nhsuk-input nhsuk-u-width-one-half" id="contactFirstNames" name="contactFirstNamesMain"
+                    type="text">
             </div>
 
             <div class="nhsuk-form-group">
-                <label class="nhsuk-label nhsuk-u-width-one-half" for="ap-prop-last-name">
-                    Last name of the AP who proposed the cause of death
+                <label class="nhsuk-label" for="contactLastName">
+                    What's the last name of the AP who proposed the cause of death?
                 </label>
-                <input class="nhsuk-input nhsuk-u-width-one-half" id="ap-prop-last-name" name="ap-prop-last-name" type="text">
+                <input class="nhsuk-input nhsuk-u-width-one-half" id="contactLastName" name="contactLastNameMain"
+                    type="text">
             </div>
 
             <div class="nhsuk-form-group">
@@ -68,7 +72,7 @@ Case details
                                     Day
                                 </label>
                                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
-                                    id="dateOfDiscussion-day" name="dodDay" type="text" pattern="[0-9]*"
+                                    id="dateOfDiscussion-day" name="dodDayMain" type="text" pattern="[0-9]*"
                                     inputmode="numeric">
                             </div>
                         </div>
@@ -78,7 +82,7 @@ Case details
                                     Month
                                 </label>
                                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
-                                    id="dateOfDiscussion-dodMonth" name="dodMonth" type="text" pattern="[0-9]*"
+                                    id="dateOfDiscussion-dodMonth" name="dodMonthMain" type="text" pattern="[0-9]*"
                                     inputmode="numeric">
                             </div>
                         </div>
@@ -88,7 +92,7 @@ Case details
                                     Year
                                 </label>
                                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
-                                    id="dateOfDiscussion-dodYear" name="dodYear" type="text" pattern="[0-9]*"
+                                    id="dateOfDiscussion-dodYear" name="dodYearMain" type="text" pattern="[0-9]*"
                                     inputmode="numeric">
                             </div>
                         </div>
@@ -111,7 +115,7 @@ Case details
                                     Hour
                                 </label>
                                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
-                                    id="timeOfDiscussion-hour" name="todHour" type="text" pattern="[0-9]*"
+                                    id="timeOfDiscussion-hour" name="todHourMain" type="text" pattern="[0-9]*"
                                     inputmode="numeric">
                             </div>
                         </div>
@@ -121,7 +125,7 @@ Case details
                                     Minutes
                                 </label>
                                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
-                                    id="timeOfDiscussion-todMinute" name="todMinute" type="text" pattern="[0-9]*"
+                                    id="timeOfDiscussion-todMinute" name="todMinuteMain" type="text" pattern="[0-9]*"
                                     inputmode="numeric">
                             </div>
                         </div>
@@ -134,17 +138,16 @@ Case details
                     Details of the discussion
                 </label>
                 <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="detailsOfDiscussion"
-                    name="detailsOfDiscussion" rows="5"></textarea>
+                    name="detailsOfDiscussionMain" rows="5"></textarea>
             </div>
 
-            <div class="nhsuk-form-group">
-                <div class="govuk-warning-text nhsuk-form-group nhsuk-u-width-two-thirds">
+            <div class="nhsuk-form-group nhsuk-u-margin-top-7 nhsuk-u-margin-bottom-7">
+                <div class="govuk-warning-text">
                     <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-                    <span class="govuk-warning-text__text">
-                        <span class="visually-hidden">Warning</span>
-                        Your selection will have a direct impact on the cause of death that appears on the MCCD
-                        (medical certificate of cause of death)
-                    </span>
+                    <strong class="govuk-warning-text__text">
+                    <span class="govuk-warning-text__assistive nhsuk-u-visually-hidden">Warning</span>
+                    Your selection will have a direct impact on the cause of death that appears on the MCCD (medical certificate of cause of death)
+                    </strong>
                 </div>
             </div>
 
@@ -155,32 +158,30 @@ Case details
                     </legend>
                     <div class="nhsuk-radios">
                         <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="discussion-qap" name="agreedOutcome" type="radio"
-                                value="The AP's proposed cause of death will appear on the MCCD">
-                            <label class="nhsuk-label nhsuk-radios__label" for="discussion-qap">
+                            <input class="nhsuk-radios__input" id="mccd-outcome" name="mccd-outcome"
+                                type="radio" value="ap-pcod">
+                            <label class="nhsuk-label nhsuk-radios__label" for="mccd-outcome">
                                 The AP's proposed cause of death will appear on the MCCD
                             </label>
                         </div>
                         <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="discussion-medical-examiner" name="agreedOutcome"
-                                type="radio" value="The medical examiner's proposed cause of death will appear on the MCCD">
-                            <label class="nhsuk-label nhsuk-radios__label" for="discussion-medical-examiner">
+                            <input class="nhsuk-radios__input" id="me-pcod" name="mccd-outcome" type="radio"
+                                value="me-pcod">
+                            <label class="nhsuk-label nhsuk-radios__label" for="me-pcod">
                                 The medical examiner's proposed cause of death will appear on the MCCD
                             </label>
                         </div>
                         <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="discussion-different" name="agreedOutcome"
-                                type="radio" value="A different cause of death, agreed by the AP and medical examiner, will appear on the
-                                MCCD">
-                            <label class="nhsuk-label nhsuk-radios__label" for="discussion-different">
-                                A different cause of death, agreed by the AP and medical examiner, will appear on the
-                                MCCD
+                            <input class="nhsuk-radios__input" id="diff-pcod" name="mccd-outcome" type="radio"
+                                value="diff-pcod">
+                            <label class="nhsuk-label nhsuk-radios__label" for="diff-pcod">
+                                A different cause of death, agreed by the AP and medical examiner, will appear on the MCCD
                             </label>
                         </div>
                         <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="discussion-no-mccd" name="agreedOutcome" type="radio"
-                                value="No MCCD will be generated, as the coroner is being notified about this case">
-                            <label class="nhsuk-label nhsuk-radios__label" for="discussion-no-mccd">
+                            <input class="nhsuk-radios__input" id="no-mccd" name="mccd-outcome" type="radio"
+                                value="no-mccd">
+                            <label class="nhsuk-label nhsuk-radios__label" for="no-mccd">
                                 No MCCD will be generated, as the coroner is being notified about this case
                             </label>
                         </div>
@@ -188,21 +189,22 @@ Case details
                 </fieldset>
             </div>
 
-            <button class="nhsuk-button" id="save-and-continue-button" type="submit">
+            <button class="nhsuk-button" type="submit">
                 Save and continue
             </button>
 
-        </form>
+            </form>
 
-        <form action="save-draft-APCOD" method="post"> 
-            <button class="nhsuk-button nhsuk-button--secondary custom-draft-button" id="save-as-draft-button" data-module="nhsuk-button" type="submit">
-                Save as draft
-              </button>
+                        <!-- add the class of custom-draft-form to the form element -->
+                        <form class="custom-draft-form" action="save-draft-DWMC" method="post"> 
+                            <!-- add the class of custom-draft-button to the button -->
+                            <button class="nhsuk-button nhsuk-button--secondary custom-draft-button" id="save-as-draft-button" data-module="nhsuk-button" type="submit">
+                                Save as draft
+                            </button> 
 
         </form>
 
     </div>
-
 </div>
 
 {% endblock %}

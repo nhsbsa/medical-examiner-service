@@ -153,9 +153,22 @@ router.post(/ap-prop-cod-discussion/, (req, res) => {
     const needDiscussion = req.session.data['ap-prop-cod-discussion']
 
     if (needDiscussion == 'yes') {
-        res.redirect('record-comm-or-concern-ap')
+        res.redirect('record-discussion-ap')
     } else {
         res.redirect('no-discussion-ap')
+    }
+
+})
+
+// Outcome of discussion with attending practitioner
+router.post(/record-discussion-ap/, (req, res) => {
+
+    const needDiscussion = req.session.data['record-discussion-ap']
+
+    if (agreedOutcome == 'discussion-different') {
+        res.redirect('different-mccd-outcome')
+    } else {
+        res.redirect('case-scrutiny')
     }
 
 })
