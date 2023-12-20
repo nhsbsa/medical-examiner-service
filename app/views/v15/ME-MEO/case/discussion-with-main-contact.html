@@ -1,0 +1,189 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-full-width.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+        {% from 'back-link/macro.njk' import backLink %}
+
+        {{ backLink({
+        "href": "javascript:history.back()",
+        "text": "Go back"
+        }) }}
+
+        <h1>
+            <span class="nhsuk-caption-m nhsuk-caption--bottom">
+                {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
+            </span>
+            Record discussion about the cause of death with the main contact
+        </h1>
+
+        <form action="main-contact-discussion" method="post">
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="contactFirstNames">
+                    What's the first name of the person the discussion was with?
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-one-half" id="contactFirstNames" name="contactFirstNamesMain"
+                    type="text">
+            </div>
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="contactLastName">
+                    What's the last name of the person the discussion was with?
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-one-half" id="contactLastName" name="contactLastNameMain"
+                    type="text">
+            </div>
+
+            <div class="nhsuk-form-group">
+                <fieldset class="nhsuk-fieldset" aria-describedby="dateOfDiscussion-hint" role="group">
+                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+                        Date of discussion
+                    </legend>
+                    <div class="nhsuk-hint" id="dateOfDiscussion-hint">
+                        For example, 22 3 2021
+                    </div>
+                    <div class="nhsuk-date-input" id="dateOfDiscussion">
+                        <div class="nhsuk-date-input__item">
+                            <div class="nhsuk-form-group">
+                                <label class="nhsuk-label nhsuk-date-input__label" for="dateOfDiscussion-day">
+                                    Day
+                                </label>
+                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                                    id="dateOfDiscussion-day" name="dodDayMain" type="text" pattern="[0-9]*"
+                                    inputmode="numeric">
+                            </div>
+                        </div>
+                        <div class="nhsuk-date-input__item">
+                            <div class="nhsuk-form-group">
+                                <label class="nhsuk-label nhsuk-date-input__label" for="dateOfDiscussion-dodMonth">
+                                    Month
+                                </label>
+                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                                    id="dateOfDiscussion-dodMonth" name="dodMonthMain" type="text" pattern="[0-9]*"
+                                    inputmode="numeric">
+                            </div>
+                        </div>
+                        <div class="nhsuk-date-input__item">
+                            <div class="nhsuk-form-group">
+                                <label class="nhsuk-label nhsuk-date-input__label" for="dateOfDiscussion-dodYear">
+                                    Year
+                                </label>
+                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+                                    id="dateOfDiscussion-dodYear" name="dodYearMain" type="text" pattern="[0-9]*"
+                                    inputmode="numeric">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="nhsuk-form-group">
+                <fieldset class="nhsuk-fieldset" aria-describedby="timeOfDiscussion-hint" role="group">
+                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+                        Time of discussion
+                    </legend>
+                    <div class="nhsuk-hint" id="timeOfDiscussion-hint">
+                        Use 24 hour format. For example, 16 23
+                    </div>
+                    <div class="nhsuk-date-input" id="timeOfDiscussion">
+                        <div class="nhsuk-date-input__item">
+                            <div class="nhsuk-form-group">
+                                <label class="nhsuk-label nhsuk-date-input__label" for="timeOfDiscussion-hour">
+                                    Hour
+                                </label>
+                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                                    id="timeOfDiscussion-hour" name="todHourMain" type="text" pattern="[0-9]*"
+                                    inputmode="numeric">
+                            </div>
+                        </div>
+                        <div class="nhsuk-date-input__item">
+                            <div class="nhsuk-form-group">
+                                <label class="nhsuk-label nhsuk-date-input__label" for="timeOfDiscussion-todMinute">
+                                    Minutes
+                                </label>
+                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                                    id="timeOfDiscussion-todMinute" name="todMinuteMain" type="text" pattern="[0-9]*"
+                                    inputmode="numeric">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-u-width-two-thirds" for="detailsOfDiscussion">
+                    Details of the discussion
+                </label>
+                <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="detailsOfDiscussion"
+                    name="detailsOfDiscussionMain" rows="5"></textarea>
+            </div>
+
+            <!--<div class="nhsuk-form-group">
+                <fieldset class="nhsuk-fieldset" aria-describedby="recordAsConcern-hint">
+                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+                        Do you want to record this as a concern?
+                    </legend>
+                    <div class="nhsuk-hint" id="recordAsConcern-hint">
+                        A medical examiner will review concerns before any action is taken.
+                    </div>
+                    <div class="nhsuk-radios">
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="recordAsConcern" name="recordAsConcernMain"
+                                type="radio" value="yes">
+                            <label class="nhsuk-label nhsuk-radios__label" for="recordAsConcern">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="recordAsConcernNo" name="recordAsConcernMain"
+                                type="radio" value="no">
+                            <label class="nhsuk-label nhsuk-radios__label" for="recordAsConcernNo">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>-->
+
+            <button class="nhsuk-button" type="submit">
+                Save and continue
+            </button>
+
+            </form>
+
+                        <!-- add the class of custom-draft-form to the form element -->
+                        <form class="custom-draft-form" action="save-draft-DWMC" method="post"> 
+                            <!-- add the class of custom-draft-button to the button -->
+                            <button class="nhsuk-button nhsuk-button--secondary custom-draft-button" id="save-as-draft-button" data-module="nhsuk-button" type="submit">
+                                Save as draft
+                            </button> 
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,353 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+{% block breadcrumbs %}
+<nav class="nhsuk-breadcrumb nhsuk-u-padding-bottom-0" aria-label="Breadcrumb">
+  <ol class="nhsuk-breadcrumb__list">
+    <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="../closed-cases">Closed cases</a></li>
+    <li class="nhsuk-breadcrumb__item">Case scrutiny - {{ data['deceased-full-name'] }}</li>
+  </ol>
+  <p class="nhsuk-breadcrumb__back">
+    <a class="nhsuk-breadcrumb__backlink" href="#">
+      <span class="nhsuk-u-visually-hidden">Back to &nbsp;</span>
+      Closed cases
+    </a>
+  </p>
+</nav>
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h1 class="nhsuk-heading-xl">Case scrutiny</h1>
+  </div>
+  <div class="nhsuk-grid-column-one-quarter">
+    {% if data['deceased-full-name'] == 'Kia Ravi' %}
+      {% if data['reopen-this-case'] == 'yes' %}
+        <a class="nhsuk-button nhsbsa-button--right-align" href="../case/close-case">Close case</a>
+      {% else %}
+        <form action="reopen-case" method="post">
+          <button class="nhsuk-button nhsbsa-button--right-align" type="submit">Reopen case</button>
+        </form>
+      {% endif %}
+    {% endif %}
+  </div>
+
+  <!-- ================================================== -->
+  <!-- PRE-SCRUTINY NOTES -->
+  <!-- ================================================== -->
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Pre-scrutiny notes</h2>
+  </div>
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag align-right">
+      Complete
+    </strong>
+  </div>
+
+  <div class="nhsuk-grid-column-full">
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Added by
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          Alex Tilo
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Details
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          Recent heart surgery
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="pre-scrutiny-note">
+            Change<span class="nhsuk-u-visually-hidden"> details</span>
+          </a>
+        </dd>
+      </div>
+    </dl>
+  </div>
+
+  <!-- ================================================== -->
+  <!-- AP PROPOSED CAUSE OF DEATH -->
+  <!-- ================================================== -->
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Attending practitioner's (AP) proposed cause of
+      death</h2>
+  </div>
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag align-right">
+      Complete
+    </strong>
+  </div>
+
+  <div class="nhsuk-grid-column-full">
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          AP who proposed the cause of death
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          Frankie Val
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="ap-prop-cause-of-death">
+            Change<span class="nhsuk-u-visually-hidden"> ap who proposed the cause of death</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Cause of death summary
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          Suffered Heart Attack During Surgery
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> cause of death summary</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          1(a) disease or condition directly leading to death
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          Heart Attack
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> 1(a) disease or condition directly leading to death</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Approximate interval between onset of 1(a) and death
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          30 minutes
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> Approximate interval between onset of 1(a) and death</span>
+          </a>
+        </dd>
+      </div>
+    </dl>
+  </div>
+
+  <!-- ================================================== -->
+  <!-- ME INDEPENDENT REVIEW -->
+  <!-- ================================================== -->
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Medical examiner's independent review</h2>
+  </div>
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag align-right">
+      Complete
+    </strong>
+  </div>
+
+  <div class="nhsuk-grid-column-full">
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Access to required documentation
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          Yes
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="record-review">
+            Change<span class="nhsuk-u-visually-hidden"> Access to required documentation</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Review details
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          Surgery documents
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> Review details</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Cause of death summary
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          Heart attack during heart surgery
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> cause of death summary</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          1(a) disease or condition directly leading to death
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          Heart Attack
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> 1(a) disease or condition directly leading to death</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Approximate interval between onset of 1(a) and death
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          30 minutes
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> Approximate interval between onset of 1(a) and death</span>
+          </a>
+        </dd>
+      </div>
+    </dl>
+  </div>
+
+  <!-- ================================================== -->
+  <!-- DISCUSSION WITH THE AP ABOUT THE CAUSE OF DEATH -->
+  <!-- ================================================== -->
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Discussion with the AP about the cause of death
+    </h2>
+  </div>
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag align-right">
+      Complete
+    </strong>
+  </div>
+
+  <div class="nhsuk-grid-column-full">
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Discussion occured
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          No
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="ap-prop-cod-discussion">
+            Change<span class="nhsuk-u-visually-hidden"> discussion had</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Reason for no discussion
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          Agree with written correspondence recieved from AP
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> reason for no discussion</span>
+          </a>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block sideNav %}
+<div class="side-nav">
+  <h3>{{ data['deceased-full-name'] }}
+    <span class="nhsuk-caption-m nhsuk-caption--bottom nhsuk-u-margin-top-2">
+      {% if data['deceased-full-name'] == 'Milo Brett' %}
+        <strong class="nhsuk-tag nhsuk-tag--red">Urgent</strong>
+      {% else %}
+        {% if data['reopen-this-case'] == 'yes' %}
+          <strong class="nhsuk-tag nhsuk-tag--orange">Reopened</strong>
+        {% else %}
+          <strong class="nhsuk-tag nhsuk-tag--blue">Routine</strong>
+        {% endif %}
+      {% endif %}
+    </span>
+  </h3>
+  <ul>
+    <div id="options" class="options">
+      <li>
+        <a href="case-details">Case details
+        <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+          Complete
+        </strong>
+        </a>
+      </li>
+      <li>
+        <a class="active" href="case-scrutiny">Case scrutiny
+        <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+          Complete
+        </strong>
+        </a>
+      </li>
+      <li>
+        <a href="comms-concerns">Communications
+        {% if data['comms-patient-safety-email'] or data['remove-notification'] == 'yes' %}
+        <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+          Complete
+        </strong>
+        {% else %}
+        <strong class="nhsuk-tag nhsuk-tag--red side-nav-tag">
+          Problem
+        </strong>
+        {% endif %}
+        </a>
+      </li>
+      <li>
+      <li>
+        <a href="coroner-notification">Coroner
+        <strong class="nhsuk-tag nhsuk-tag--blue side-nav-tag">
+          Raised
+        </strong>
+        </a>
+      </li>
+    </div>
+  </ul>
+</div>
+{% endblock %}

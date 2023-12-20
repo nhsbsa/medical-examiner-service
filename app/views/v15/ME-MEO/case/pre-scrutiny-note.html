@@ -1,0 +1,81 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-full-width.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+        {% from 'back-link/macro.njk' import backLink %}
+
+        {{ backLink({
+        "href": "javascript:history.back()",
+        "text": "Go back"
+        }) }}
+
+        <h1>
+            <span class="nhsuk-caption-m nhsuk-caption--bottom ">
+                Pre-scrutiny notes - {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
+            </span>
+            Add a note
+        </h1>
+
+        <form action="pre-scrutiny-note" method="post">
+
+        <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-u-width-two-thirds" for="noteText">
+                Provide case synopsis for the medical examiner to review
+            </label>
+            <div class="nhsuk-hint nhsuk-u-width-two-thirds" id="noteText-hint">
+                Include previous medical, social, and drug histories, and details of; recent surgery or treatment,
+                clinical investigations (CT, MRI, X-ray), falls, pressure sores (including grade), learning
+                difficulties, end of life care documentation and DNAR, ongoing registered concerns.
+            </div>
+            <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="noteText" name="noteText" rows="15" aria-describedby="noteText-hint"></textarea>
+        </div>
+        <div class="nhsuk-form-group">
+            <div class="nhsuk-checkboxes">
+                <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="complete" name="sectionComplete" type="checkbox" value="on">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="complete">
+                        This section is complete and ready for the medical examiner to review
+                    </label>
+                </div>
+            </div>
+        </div>
+        <button class="nhsuk-button" id="save-and-continue-button" type="submit">
+            Save and continue
+        </button>
+
+        </form>
+
+            <form action="save-draft-PSN" method="post"> 
+                <button class="nhsuk-button nhsuk-button--secondary custom-draft-button" id="save-as-draft-button" data-module="nhsuk-button" type="submit">
+                Save as draft
+              </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

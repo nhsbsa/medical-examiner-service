@@ -1,0 +1,554 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+{% block breadcrumbs %}
+<nav class="nhsuk-breadcrumb nhsuk-u-padding-bottom-0" aria-label="Breadcrumb">
+  <ol class="nhsuk-breadcrumb__list">
+    <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="../open-cases">Open cases</a></li>
+    <li class="nhsuk-breadcrumb__item">Case details - {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}</li>
+  </ol>
+  <p class="nhsuk-breadcrumb__back">
+    <a class="nhsuk-breadcrumb__backlink" href="#">
+      <span class="nhsuk-u-visually-hidden">Back to &nbsp;</span>
+      Level three
+    </a>
+  </p>
+</nav>
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h1 class="nhsuk-heading-xl">Case details</h1>
+  </div>
+  <!-- IF all sections are complete, display 'Close this case' button -->
+  {% if data['create-and-assign-section'] and data['additional-details-section'] and data['location-of-death-section'] and data['pre-scrutiny-note-section'] and data['ap-prop-cause-of-death-section'] and data['me-independent-review-section'] and data['ap-discussion-section'] and data['discussion-with-main-section'] and data['coroner-notification-section'] and data['coroner-response-section'] %}
+  <div class="nhsuk-grid-column-one-quarter">
+    <a class="nhsuk-button nhsbsa-button--right-align" href="close-case">Close this case</a>
+  </div>
+  {% endif %}
+
+  <!-- ================================================== -->
+  <!-- DECEASED PERSONS DETAILS -->
+  <!-- ================================================== -->
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Deceased person's details</h2>
+  </div>
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag align-right">
+      Complete
+    </strong>
+  </div>
+
+  <div class="nhsuk-grid-column-full">
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Name
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="../../ME-MEO/create-new-case#firstNames">
+            Change<span class="nhsuk-u-visually-hidden"> name</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Date of death
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['dodDayCreate'] }} <span class="convert-month">{{ data['dodMonthCreate'] }}</span> {{ data['dodYearCreate'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="../../ME-MEO/create-new-case#dateOfDeath-day">
+            Change<span class="nhsuk-u-visually-hidden"> date of death</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Time of death
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['todHourCreate'] }}:{{ data['todMinuteCreate'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="../../ME-MEO/create-new-case#timeOfDeath-hour">
+            Change<span class="nhsuk-u-visually-hidden"> time of death</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Rapid release
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['requestForRapidRelease'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="../../ME-MEO/create-new-case#requestForRapidRelease">
+            Change<span class="nhsuk-u-visually-hidden"> rapid release</span>
+          </a>
+        </dd>
+      </div>
+    </dl>
+  </div>
+
+  <!-- ================================================== -->
+  <!-- CASE ASSIGNMENT -->
+  <!-- ================================================== -->
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Case assignment</h2>
+  </div>
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag align-right">
+      Complete
+    </strong>
+  </div>
+
+  <div class="nhsuk-grid-column-full">
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Medical examiner
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['assign-medical-examiner'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="../../ME-MEO/assign-case#assign-medical-examiner">
+            Change<span class="nhsuk-u-visually-hidden"> assigned medical examiner</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Medical examiner officer
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['assign-medical-examiner-officer'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="../../ME-MEO/assign-case#assign-medical-examiner-officer">
+            Change<span class="nhsuk-u-visually-hidden"> assigned medical examiner officer</span>
+          </a>
+        </dd>
+      </div>
+    </dl>
+  </div>
+
+  <!-- ================================================== -->
+  <!-- ADDITIONAL DETAILS -->
+  <!-- ================================================== -->
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Additional details</h2>
+  </div>
+  {% if data['draft-status-AD'] == 'draft' %}
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag--grey align-right">
+      Draft
+    </strong>
+  </div>
+  {% elif data['additional-details-section'] == 'complete' %}
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag align-right">
+      Complete
+    </strong>
+  </div>
+  {% endif %}
+
+  <!-- ADITIONAL DETAILS IF STATMENT FOR COMPLETE & DRAFT STATUS-->
+  <div class="nhsuk-grid-column-full">
+    {% if data['additional-details-section'] == 'complete' or data['draft-status-AD'] == 'draft' %}
+      <dl class="nhsuk-summary-list">
+        {% if data['knownAs'] %}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Name deceased also known as
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {% if data['knownAs'] %}{{ data['knownAs'] }}{% else %}Karen Francis{% endif %}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="../../ME-MEO/case/additional-details#knownAs">
+                Change<span class="nhsuk-u-visually-hidden"> name known as</span>
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if data['dobDay'] and data['dobMonth'] and data['dobYear'] %}
+              {{ data['dobDay'] }} / {{ data['dobMonth'] }} / {{ data['dobYear'] }}
+            {% else %}
+              15/11/1992
+            {% endif %}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="../../ME-MEO/case/additional-details#dateOfBirth-day">
+              Change<span class="nhsuk-u-visually-hidden"> date of birth</span>
+            </a>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            NHS number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if data['nhsNumberKnown'] == 'yes' %}
+              {{ data['nhsNumber'] }}
+            {% else %}
+              Not known
+            {% endif %}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="../../ME-MEO/case/additional-details#nhsNumberKnown">
+              Change<span class="nhsuk-u-visually-hidden"> nhs number</span>
+            </a>
+          </dd>
+        </div>
+        {% if data['hospitalNumber'] %}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Hospital number
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {% if data['hospitalNumber'] %}
+                {{ data['hospitalNumber'] }}
+              {% else %}
+                1234567890
+              {% endif %}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="../../ME-MEO/case/additional-details#hospitalNumber">
+                Change<span class="nhsuk-u-visually-hidden"> hospital number</span>
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Home address
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if data['homeAddressKnown'] == 'yes' %}
+              {{ data['addressLine1'] }}<br>
+              {% if data['addressLine2'] %}{{ data['addressLine2'] }}<br>{% endif %}
+              {% if data['townOrCity'] %}{{ data['townOrCity'] }}<br>{% endif %}
+              {% if data['county'] %}{{ data['county'] }}<br>{% endif %}
+              {{ data['postCode'] }}
+            {% else %}
+              Not known
+            {% endif %}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="../../ME-MEO/case/additional-details#homeAddressKnown">
+              Change<span class="nhsuk-u-visually-hidden"> home address</span>
+            </a>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Main job
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if data['occupationKnown'] == 'yes' %}
+              {{ data['mainJob'] }}
+            {% else %}
+              Not known
+            {% endif %}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="../../ME-MEO/case/additional-details#occupationKnown">
+              Change<span class="nhsuk-u-visually-hidden"> main job</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+    {% else %}
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key nhsuk-u-font-weight-normal">
+            <a href="additional-details">Add additional details about the deceased person</a>
+          </dt>
+          <dd class="nhsuk-summary-list__actions">
+            <strong class="nhsuk-tag nhsuk-tag--white align-right">
+              Not started
+            </strong>
+          </dd>
+        </div>
+      </dl>
+    {% endif %}
+  </div>
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h2 class="nhsuk-heading-l">Location of death</h2>
+  </div>
+  {% if data['draft-status-HAS'] == 'draft' %}
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag--grey align-right">
+      Draft
+    </strong>
+  </div>
+  {% elif data['location-of-death-section'] == 'complete' %}
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag align-right">
+      Complete
+    </strong>
+  </div>
+  {% endif %}
+
+  <!-- ================================================== -->
+  <!-- LOCATION OF DEATH -->
+  <!-- ================================================== -->
+    
+  {% if data['location-of-death-section'] == 'complete' or data['draft-status-HAS'] == 'draft' %}
+  <div class="nhsuk-grid-column-full">
+    {% if data['locationOfDeathType'] == 'hospital-acute' %}
+    <!-- Hospital Acute -->
+      <dl class="nhsuk-summary-list">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Location of death
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Hospital or acute setting<br>
+              {{ data['healthCareProvider'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="hospital-acute-setting">
+                Change<span class="nhsuk-u-visually-hidden"> location of death</span>
+              </a>
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Date of admission
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['doaDay'] }}/{{ data['doaMonth'] }}/{{ data['doaYear'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="hospital-acute-setting">
+                Change<span class="nhsuk-u-visually-hidden"> date of admission</span>
+              </a>
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Location details
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['locationDetails'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="hospital-acute-setting">
+                Change<span class="nhsuk-u-visually-hidden"> location details</span>
+              </a>
+            </dd>
+          </div>
+      </dl>
+    {% else %}
+    <!-- Community or non-acute setting -->
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Location of death
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Community or non-acute setting
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="location-of-death">
+              Change<span class="nhsuk-u-visually-hidden"> location of death</span>
+            </a>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Location details
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if data['addressLocationType'] == 'same-as-home' %}
+              Same as home address
+            {% elif data['addressLocationType'] == 'other-address' %}
+              {{ data['otherAddressLine1'] }}<br>
+              {% if data['otherAddressLine2'] %}{{ data['otherAddressLine2'] }}<br>{% endif %}
+              {% if data['otherTownOrCity'] %}{{ data['otherTownOrCity'] }}<br>{% endif %}
+              {% if data['otherCounty'] %}{{ data['otherCounty'] }}<br>{% endif %}
+              {{ data['otherPostode'] }}
+            {% else %}
+              {{ data['nonSpecificAddressDetails'] }}
+            {% endif %}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="community-non-acute">
+              Change<span class="nhsuk-u-visually-hidden"> location details</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+    {% endif %}
+  </div>
+  {% else %}
+    <div class="nhsuk-grid-column-full">
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key nhsuk-u-font-weight-normal">
+            <a href="location-of-death">Add the location of death</a>
+          </dt>
+          <dd class="nhsuk-summary-list__actions">
+            <strong class="nhsuk-tag nhsuk-tag--white align-right">
+              Not started
+            </strong>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  {% endif %}
+</div>
+
+{% endblock %}
+
+<!-- ====================================== -->
+<!-- SIDE NAV -->
+<!-- ====================================== -->
+{% block sideNav %}
+<div class="side-nav">
+  <h3>{{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
+    <span class="nhsuk-caption-m nhsuk-caption--bottom nhsuk-u-margin-top-2">
+      <strong class="nhsuk-tag nhsuk-tag--blue">Routine</strong>
+    </span>
+  </h3>
+  <ul>
+    <div id="options" class="options">
+      <li><a class="active" href="case-details">
+        Case details
+        <!-- if case details sections are all complete -->
+        {% if data['additional-details-section'] == 'complete' and data['location-of-death-section'] == 'complete' %} 
+        <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+          Complete
+        </strong>
+        {% else %}
+        <strong class="nhsuk-tag nhsuk-tag--grey side-nav-tag">
+          In progress
+        </strong>
+        {% endif %}
+      </a></li>
+
+      <!-- If an answer has been provided already for Over or Under 28 days after birth then show case scrutiny screen otherwise if no answer provided show Over or Under 28 days screen -->
+      {% if data['over-under-28'] %}
+        <li><a href="case-scrutiny">
+          Case scrutiny
+          {% if data['pre-scrutiny-note-section'] == 'complete' and 
+          data['ap-prop-cause-of-death-section'] == 'complete' and 
+          data['me-independent-review-section'] == 'complete' and 
+          data['ap-discussion-section'] == 'complete' and 
+          data['ap-details-section'] == 'complete'       
+          %}
+          <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+            Complete
+          </strong>
+          {% elif data['pre-scrutiny-note-section'] == 'complete' or 
+          data['ap-prop-cause-of-death-section'] == 'complete' or 
+          data['me-independent-review-section'] == 'complete' or 
+          data['ap-discussion-section'] == 'complete' or 
+          data['ap-details-section'] == 'complete'       
+          %}
+          <strong class="nhsuk-tag nhsuk-tag--grey side-nav-tag">
+            In progress
+          </strong>
+          {% else %}
+          <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag">
+            Not started
+          </strong>
+          {% endif %}
+        </a></li>
+      {% else %}
+      <form action="case-scrutiny-link" method="post" id="run-28-days-once">
+        <li><a href="#" onclick="document.getElementById('run-28-days-once').submit(); return false;">
+          Case scrutiny
+          {% if data['pre-scrutiny-note-section'] == 'complete' and 
+          data['ap-prop-cause-of-death-section'] == 'complete' and 
+          data['me-independent-review-section'] == 'complete' and 
+          data['ap-discussion-section'] == 'complete' and 
+          data['ap-details-section'] == 'complete'       
+          %}
+          <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+            Complete
+          </strong>
+          {% elif data['pre-scrutiny-note-section'] == 'complete'  or 
+          data['ap-prop-cause-of-death-section'] == 'complete' or 
+          data['me-independent-review-section'] == 'complete' or 
+          data['ap-discussion-section'] == 'complete' or 
+          data['ap-details-section'] == 'complete'       
+          %}
+          <strong class="nhsuk-tag nhsuk-tag--grey side-nav-tag">
+            In progress
+          </strong>
+          {% else %}
+          <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag">
+            Not started
+          </strong>
+          {% endif %}
+        </a></li>
+      </form>
+      {% endif %}
+
+      <li><a href="comms-concerns">
+        Communications
+        {% if data['discussion-with-main-section'] == 'complete' %}
+        <strong class="nhsuk-tag nhsuk-tag--blue side-nav-tag">
+          Raised
+        </strong>
+        {% else %}
+        <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag">
+          Not started
+        </strong>
+        {% endif %}
+      </a></li>
+
+    <li><a href="coroner-notification">
+        Coroner
+        {% if data['notify-coroner'] == 'yes' %}
+        <strong class="nhsuk-tag nhsuk-tag--blue side-nav-tag">
+          Raised
+        </strong>
+        {% else %}
+        <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag">
+          Not started
+        </strong>
+        {% endif %}
+      </a></li>
+      <!-- <li><a href="concerns-notification">Concerns notifications</a></li> -->
+    </div>
+  </ul>
+</div>
+{% endblock %}
