@@ -291,6 +291,7 @@ Case details
             </a>
           </dd>
         </div>
+        {% if data['furtherOccupationInfo'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Details about past jobs
@@ -304,6 +305,7 @@ Case details
             </a>
           </dd>
         </div>
+         {% endif %}
       </dl>
     {% else %}
       <dl class="nhsuk-summary-list">
