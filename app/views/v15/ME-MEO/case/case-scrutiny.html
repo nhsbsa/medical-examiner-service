@@ -143,16 +143,22 @@ Case details
     <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Attending practitioner's (AP) proposed cause of
       death</h2>
   </div>
-  {% if data['ap-prop-cause-of-death-section'] == 'complete' and data['ap-details-section'] == 'complete'  %}
-  <div class="nhsuk-grid-column-one-quarter">
-    <strong class="nhsuk-tag nhsuk-tag align-right">
-      Complete
-    </strong>
-  </div>
-    {% elif data['draft-status-APCOD'] == 'draft' %}
+    {% if data['draft-status-APCOD'] == 'draft' %}
   <div class="nhsuk-grid-column-one-quarter">
     <strong class="nhsuk-tag nhsuk-tag--grey align-right">
       Draft
+    </strong>
+  </div>
+    {% elif data['draft-status-DIFCOD'] == 'draft'%}
+    <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag--grey align-right">
+      Draft
+    </strong>
+  </div>
+  {% elif data['ap-prop-cause-of-death-section'] == 'complete' and data['ap-details-section'] == 'complete'  %}
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag align-right">
+      Complete
     </strong>
   </div>
   {% elif data['ap-prop-cause-of-death-section'] !== 'complete' and data['ap-details-section'] == 'complete' %}

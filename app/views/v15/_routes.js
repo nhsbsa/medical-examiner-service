@@ -163,9 +163,9 @@ router.post(/ap-prop-cod-discussion/, (req, res) => {
 // Outcome of discussion with attending practitioner
 router.post(/record-discussion-ap/, (req, res) => {
 
-    const needDiscussion = req.session.data['record-discussion-ap']
+    const agreedOutcome = req.session.data['record-discussion-ap']
 
-    if (agreedOutcome == 'discussion-different') {
+    if (agreedOutcome == 'different-cause-death') {
         res.redirect('different-mccd-outcome')
     } else {
         res.redirect('case-scrutiny')
@@ -484,6 +484,15 @@ router.post(/save-draft-PSN/, (req, res) => {
 router.post(/save-draft-APCOD/, (req, res) => {
     
     req.session.data['draft-status-APCOD'] = 'draft'
+    
+    res.redirect('case-scrutiny')
+
+})
+
+//Page: /case/different-mccd-outcome
+router.post(/save-draft-DIFCOD/, (req, res) => {
+    
+    req.session.data['draft-status-DIFCOD'] = 'draft'
     
     res.redirect('case-scrutiny')
 

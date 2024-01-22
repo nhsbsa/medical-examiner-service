@@ -37,7 +37,7 @@ Case details
             Record discussion
         </h1>
 
-        <form action="record-comm-or-concern-ap" method="post">
+        <form action="record-discussion-ap" method="post">
 
             <div class="nhsuk-form-group">
                 <label class="nhsuk-label nhsuk-u-width-one-half" for="ap-prop-first-name">
@@ -155,30 +155,29 @@ Case details
                     </legend>
                     <div class="nhsuk-radios">
                         <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="discussion-qap" name="agreedOutcome" type="radio"
+                            <input class="nhsuk-radios__input" id="discussion-qap" name="record-discussion-ap" type="radio"
                                 value="The AP's proposed cause of death will appear on the MCCD">
                             <label class="nhsuk-label nhsuk-radios__label" for="discussion-qap">
                                 The AP's proposed cause of death will appear on the MCCD
                             </label>
                         </div>
                         <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="discussion-medical-examiner" name="agreedOutcome"
+                            <input class="nhsuk-radios__input" id="discussion-medical-examiner" name="record-discussion-ap"
                                 type="radio" value="The medical examiner's proposed cause of death will appear on the MCCD">
                             <label class="nhsuk-label nhsuk-radios__label" for="discussion-medical-examiner">
                                 The medical examiner's proposed cause of death will appear on the MCCD
                             </label>
                         </div>
                         <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="discussion-different" name="agreedOutcome"
-                                type="radio" value="A different cause of death, agreed by the AP and medical examiner, will appear on the
-                                MCCD">
+                            <input class="nhsuk-radios__input" id="discussion-different" name="record-discussion-ap"
+                                type="radio" value="different-cause-death">
                             <label class="nhsuk-label nhsuk-radios__label" for="discussion-different">
                                 A different cause of death, agreed by the AP and medical examiner, will appear on the
                                 MCCD
                             </label>
                         </div>
                         <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="discussion-no-mccd" name="agreedOutcome" type="radio"
+                            <input class="nhsuk-radios__input" id="discussion-no-mccd" name="record-discussion-ap" type="radio"
                                 value="No MCCD will be generated, as the coroner is being notified about this case">
                             <label class="nhsuk-label nhsuk-radios__label" for="discussion-no-mccd">
                                 No MCCD will be generated, as the coroner is being notified about this case
