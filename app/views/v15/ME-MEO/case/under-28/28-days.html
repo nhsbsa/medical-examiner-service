@@ -4,9 +4,9 @@
 
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout-full-width.html' %}
-<!-- 
+<!--
   In /views/layout.html you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 
@@ -26,6 +26,11 @@ Case details
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
+      {{ backLink({
+      "href": "javascript:history.back()",
+      "text": "Go back"
+      }) }}
+
         <h1>
             <span class="nhsuk-caption-m nhsuk-caption--bottom">
                 Deceased person's details
@@ -34,7 +39,7 @@ Case details
         </h1>
 
         <form action="28-days" method="post">
-            
+
                 <div class="nhsuk-form-group">
                     <div class="nhsuk-radios">
                         <div class="nhsuk-radios__item">
@@ -54,7 +59,7 @@ Case details
                     </div>
                 </div>
                 <button class="nhsuk-button" type="submit">Save and continue</button>
-            
+
         </form>
 
     </div>
