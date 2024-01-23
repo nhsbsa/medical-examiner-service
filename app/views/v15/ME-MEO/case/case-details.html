@@ -354,25 +354,24 @@ Case details
               Location of death
             </dt>
             <dd class="nhsuk-summary-list__value">
-              Hospital or acute setting<br>
-              {{ data['healthCareProvider'] }}
+              Hospital or acute setting
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="hospital-acute-setting">
+              <a href="location-of-death">
                 Change<span class="nhsuk-u-visually-hidden"> location of death</span>
               </a>
             </dd>
           </div>
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Date of admission
+              Healthcare providr
             </dt>
             <dd class="nhsuk-summary-list__value">
-              {{ data['doaDay'] }}/{{ data['doaMonth'] }}/{{ data['doaYear'] }}
+              {{ data['healthCareProvider'] }}
             </dd>
             <dd class="nhsuk-summary-list__actions">
               <a href="hospital-acute-setting">
-                Change<span class="nhsuk-u-visually-hidden"> date of admission</span>
+                Change<span class="nhsuk-u-visually-hidden"> location of death</span>
               </a>
             </dd>
           </div>
@@ -389,6 +388,34 @@ Case details
               </a>
             </dd>
           </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Date of admission
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['doaDay'] }}/{{ data['doaMonth'] }}/{{ data['doaYear'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="hospital-acute-setting">
+                Change<span class="nhsuk-u-visually-hidden"> date of admission</span>
+              </a>
+            </dd>
+          </div>
+         {% if data['admissionDetails'] %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Admission details
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['admissionDetails'] }}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="hospital-acute-setting#admissionDetails">
+              Change<span class="nhsuk-u-visually-hidden"> admission details</span>
+            </a>
+          </dd>
+        </div>
+         {% endif %}
       </dl>
     {% else %}
     <!-- Community or non-acute setting -->
@@ -412,7 +439,17 @@ Case details
           </dt>
           <dd class="nhsuk-summary-list__value">
             {% if data['addressLocationType'] == 'same-as-home' %}
-              Same as home address
+              
+            {% if data['homeAddressKnown'] == 'yes' %}
+              {{ data['addressLine1'] }}<br>
+              {% if data['addressLine2'] %}{{ data['addressLine2'] }}<br>{% endif %}
+              {% if data['townOrCity'] %}{{ data['townOrCity'] }}<br>{% endif %}
+              {% if data['county'] %}{{ data['county'] }}<br>{% endif %}
+              {{ data['postCode'] }}
+            {% else %}
+              Not known
+            {% endif %}
+
             {% elif data['addressLocationType'] == 'other-address' %}
               {{ data['otherAddressLine1'] }}<br>
               {% if data['otherAddressLine2'] %}{{ data['otherAddressLine2'] }}<br>{% endif %}
