@@ -1,0 +1,363 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'main-template-search.html' %}
+{% set active = "me-user" %}
+{% set activesub = "cases" %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+	Search for a case
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-full">
+		<h1>Search results</h1>
+		<!--	<div class="nhsuk-grid-column-two-thirds">
+			<h1 class="nhsuk-heading-xl">
+				Search results
+			</h1>
+			<div class="nhsuk-grid-column-one-half">-->
+
+			<div id="table-scroll" class="table-scroll">
+						<div class="nhsuk-table-responsive nhsuk-u-margin-top-0 table-wrap">
+
+								<table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable main-table">
+								<thead class="nhsuk-table__head">
+									<tr class="nhsuk-table__row">
+										<th class="nhsuk-table__header" aria-sort="none" scope="col">
+											<button type="button" data-index="0">Name</button>
+										</th>
+										<th class="nhsuk-table__header" aria-sort="none" scope="col">
+											<button onclick="sortTable()" type="button" data-index="0">Date of birth</button>
+										</th>
+										<th class="nhsuk-table__header" aria-sort="none" scope="col">
+											<button onclick="sortTable()" type="button" data-index="0">Date of death</button>
+										</th>
+										<th class="nhsuk-table__header" aria-sort="none" scope="col">
+											<button onclick="sortTable()" type="button" data-index="0">NHS number</button>
+										</th>
+										<th class="nhsuk-table__header" aria-sort="none" scope="col">
+											<button onclick="sortTable()" type="button" data-index="0">Hospital number</button>
+										</th>
+										<th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+											<button onclick="sortTable()" type="button" data-index="0">Case created</button>
+										</th>
+			                            <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+											<button onclick="sortTable()" type="button" data-index="0">Status</button>
+										</th><th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+											<button onclick="sortTable()" type="button" data-index="0">Stage</button>
+										</th></tr></thead>
+								<tbody class="nhsuk-table__body">
+									<tr class="nhsuk-table__row">
+										<td class="nhsuk-table__cell"><a href="case-overview">Martin Lincoln</a></td>
+										<td class="nhsuk-table__cell">02/11/1935</td>
+										<td class="nhsuk-table__cell">28/08/2020</td>
+										<td class="nhsuk-table__cell">9975360025</td>
+										<td class="nhsuk-table__cell">66543</td>
+										<td class="nhsuk-table__cell">28/09/2020</td>
+			                             <td class="nhsuk-table__cell">Open</td>
+										<td><span class="nhsuk-tag nhsuk-tag--red case-tag">Urgent</span></td>
+
+									</tr>
+									<tr class="nhsuk-table__row">
+										<td class="nhsuk-table__cell"><a href="case-overview">Test Two</a></td>
+										<td class="nhsuk-table__cell">01/01/1980</td>
+										<td class="nhsuk-table__cell">28/08/2020</td>
+										<td class="nhsuk-table__cell">1234567890</td>
+										<td class="nhsuk-table__cell">62155</td>
+										<td class="nhsuk-table__cell">01/01/2020</td>
+			                             <td class="nhsuk-table__cell">Open</td>
+										<td><span class="nhsuk-tag nhsuk-tag--yellow case-tag">Overdue</span>
+
+									</td></tr>
+									<tr class="nhsuk-table__row">
+										<td class="nhsuk-table__cell"><a href="case-overview">Test Three</a></td>
+										<td class="nhsuk-table__cell">01/01/1980</td>
+										<td class="nhsuk-table__cell">28/08/2020</td>
+										<td class="nhsuk-table__cell">1234567890</td>
+										<td class="nhsuk-table__cell">62155</td>
+										<td class="nhsuk-table__cell">01/01/2020</td>
+			                            <td class="nhsuk-table__cell">Open</td>
+										<td><span class="nhsuk-tag nhsuk-tag--green case-tag">Due today</span>
+
+									</td></tr>
+			<tr class="nhsuk-table__row">
+										<td class="nhsuk-table__cell"><a href="case-overview">Test Four</a></td>
+										<td class="nhsuk-table__cell">01/01/1980</td>
+										<td class="nhsuk-table__cell">28/08/2020</td>
+										<td class="nhsuk-table__cell">123456780</td>
+										<td class="nhsuk-table__cell">62155</td>
+										<td class="nhsuk-table__cell">01/01/2020</td>
+			    <td class="nhsuk-table__cell">Closed</td>
+										<td><span class="nhsuk-tag nhsuk-tag--grey case-tag">Routine</span>
+
+									</td></tr>
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+							<nav class="nhsbsa-pagination" id="pagination-label">
+			<p class="nhsuk-u-visually-hidden" aria-labelledby="pagination-label">Pagination navigation</p>
+			<ul class="nhsbsa-pagination__list">
+				<!-- <li class="nhsbsa-pagination__item  nhsbsa-pagination__item--prev">
+					<a class="nhsbsa-pagination__link" href="">Previous<span class="nhsuk-u-visually-hidden"> set of pages</span></a>
+				</li> -->
+				<li class="nhsbsa-pagination__item nhsbsa-pagination__item--active">1</li>
+
+				<li class="nhsbsa-pagination__item"><a class="nhsbsa-pagination__link" href="open-cases-2">2</a></li>
+
+				<li class="nhsbsa-pagination__item"><a class="nhsbsa-pagination__link" href="open-cases-3">3</a></li>
+
+				<li class="nhsbsa-pagination__item  nhsbsa-pagination__item--next">
+					<a class="nhsbsa-pagination__link" href="open-cases-2">Next<span class="nhsuk-u-visually-hidden"> set of pages</span></a>
+				</li>
+			</ul>
+			<p class="nhsbsa-pagination__results">Showing <b>1</b> to <b>3</b> of <b>3</b> results</p>
+		</nav>
+		<hr style="border-bottom:4px solid #005eb8; margin:0" />
+		<form novalidate="novalidate" action="search_results" method="post">
+			<div class="nhsuk-promo">
+				<h3>Edit search</h3>
+				<div class="nhsuk-grid-row">
+					<!-- First name -->
+					<div class="nhsuk-grid-column-one-quarter">
+						<div class="nhsuk-form-group">
+							<label class="nhsuk-label" for="searchfirstname"><strong class ='bold'>
+								First name</strong>
+							</label>
+						<input class="nhsuk-input nhsuk-u-width-full" id="searchfirstname" name="searchfirstname" type="text">
+						</div>
+
+						<div class="nhsuk-form-group">
+							<label class="nhsuk-label" for="searchlasttname"><strong class ='bold'>
+								Last name</strong>
+							</label>
+							<input class="nhsuk-input nhsuk-u-width-full" id="searchlastname" name="searchlastname" type="text">
+						</div>
+					</div>
+
+					<div class="nhsuk-grid-column-one-quarter">
+						<div class="nhsuk-form-group">
+							<label class="nhsuk-label" for="nhsnumber"><strong class ='bold'>
+								NHS number</strong>
+							</label>
+							<input class="nhsuk-input nhsuk-u-width-full" id="nhsnumber" name="nhsnumber" type="text">
+						</div>
+
+						<div class="nhsuk-form-group">
+							<label class="nhsuk-label" for="hospnumber"><strong class ='bold'>
+							Hospital number</strong>
+							</label>
+							<input class="nhsuk-input nhsuk-u-width-full" id="hospnumber" name="hospnumber" type="text">
+						</div>
+					</div>
+
+
+					<div class="nhsuk-grid-column-one-quarter">
+						<!-- DOB -->
+						<div class="nhsuk-form-group">
+							<label class="nhsuk-label" for="nhsnumber"><strong class ='bold'>
+							Date of birth</strong>
+							</label>
+							<div class="nhsuk-date-input">
+								<div class="nhsuk-date-input__item">
+									<div class="nhsuk-form-group">
+									<label class="nhsuk-label nhsuk-date-input__label" for="duedateday">
+										Day
+									</label>
+									<input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="duedateday"
+										name="duedateday" type="number" pattern="[0-9]*">
+									</div>
+								</div>
+								<div class="nhsuk-date-input__item">
+									<div class="nhsuk-form-group">
+									<label class="nhsuk-label nhsuk-date-input__label" for="duedatemonth">
+										Month
+									</label>
+									<input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="duedatemonth"
+										name="duedatemonth" type="number" pattern="[0-9]*">
+									</div>
+								</div>
+								<div class="nhsuk-date-input__item">
+									<div class="nhsuk-form-group">
+									<label class="nhsuk-label nhsuk-date-input__label" for="duedateyear">
+										Year
+									</label>
+									<input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="duedateyear"
+										name="duedateyear" type="number" pattern="[0-9]*">
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- DOD -->
+						<div class="nhsuk-form-group">
+							<label class="nhsuk-label" for="nhsnumber"><strong class ='bold'>
+								Date of death</strong>
+							</label>
+							<div class="nhsuk-date-input">
+								<div class="nhsuk-date-input__item">
+									<div class="nhsuk-form-group">
+									<label class="nhsuk-label nhsuk-date-input__label" for="duedateday">
+										Day
+									</label>
+									<input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="duedateday"
+										name="duedateday" type="number" pattern="[0-9]*" value='28'>
+									</div>
+								</div>
+								<div class="nhsuk-date-input__item">
+									<div class="nhsuk-form-group">
+									<label class="nhsuk-label nhsuk-date-input__label" for="duedatemonth">
+										Month
+									</label>
+									<input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="duedatemonth"
+										name="duedatemonth" type="number" pattern="[0-9]*" value='8'>
+									</div>
+								</div>
+								<div class="nhsuk-date-input__item">
+									<div class="nhsuk-form-group">
+									<label class="nhsuk-label nhsuk-date-input__label" for="duedateyear">
+										Year
+									</label>
+									<input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="duedateyear"
+										name="duedateyear" type="number" pattern="[0-9]*" value='2020'>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Case types-->
+					<div class="nhsuk-grid-column-one-quarter">
+						<div class="nhsuk-form-group">
+							<fieldset class="nhsuk-fieldset"><strong class ='bold'>
+								<p>Stage</p></strong>
+								<div class="nhsuk-radios nhsuk-radios-multiple-choice nhsuk-radios--inline" >
+									<div class="nhsuk-radios__item">
+										<input class="nhsuk-radios__input" id="example-inline-1" name="example-inline" type="radio" value="urgent">
+										<label class="nhsuk-label nhsuk-radios__label" for="example-inline-1" >
+										Urgent
+										</label>
+									</div>
+									<div class="nhsuk-radios__item">
+										<input class="nhsuk-radios__input" id="example-inline-2" name="example-inline" type="radio" value="routine">
+										<label class="nhsuk-label nhsuk-radios__label nhsuk-radios--inline" for="example-inline-2">
+										Routine
+										</label>
+									</div>
+
+									<div class="nhsuk-radios__item" >
+										<input class="nhsuk-radios__input"   id="example-inline-3" name="example-inline" type="radio" value="routine">
+										<label class="nhsuk-label nhsuk-radios__label nhsuk-radios--inline" style="line-height:1.415789477;" for="example-inline-2">
+											Overdue
+										</label>
+									</div>
+									<div class="nhsuk-radios__item">
+										<input class="nhsuk-radios__input" id="example-inline-4" name="example-inline" type="radio" value="routine">
+										<label class="nhsuk-label nhsuk-radios__label nhsuk-radios--inline" for="example-inline-2">
+											Due today
+										</label>
+									</div>
+								</div>
+							</fieldset>
+						</div>
+					</div>
+
+				</div>
+				<div class="nhsuk-grid-row">
+					<div class="nhsuk-grid-column-one-third">
+						<div class="nhsuk-form-group">
+							<button class="nhsuk-button nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-0" type="submit">
+								Search
+							</button>
+
+							<button
+								class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-0 nhsuk-u-margin-left-3"
+								type="reset">
+								Clear search
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<style>
+	.nhsuk-promo{
+		background:white;
+		padding:20px;
+		box-shadow: 0 4px 0 0 #D8DDE0;
+	}
+</style>
+
+<!-- <div class="nhsuk-grid-column-two-thirds">
+
+
+	<div class="checkbox-list" id="checkbox-toggle">
+	<div class="nhsuk-checkboxes">
+
+		<div class="nhsuk-checkboxes__item">
+			<input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
+			<label class="nhsuk-label nhsuk-checkboxes__label toggle-label" for="example-1">
+			Name
+			</label>
+		</div>
+		<div class="nhsuk-checkboxes__item">
+			<input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
+			<label class="nhsuk-label nhsuk-checkboxes__label toggle-label" for="example-1">
+				Date of birth
+			</label>
+			</div>
+			<div class="nhsuk-checkboxes__item">
+			<input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
+			<label class="nhsuk-label nhsuk-checkboxes__label toggle-label" for="example-1">
+				Date of death
+			</label>
+			</div>
+			<div class="nhsuk-checkboxes__item">
+			<input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
+			<label class="nhsuk-label nhsuk-checkboxes__label toggle-label"  for="example-1">
+				NHS number
+			</label>
+			</div>
+			<div class="nhsuk-checkboxes__item">
+			<input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
+			<label class="nhsuk-label nhsuk-checkboxes__label toggle-label" for="example-1">
+				Hospital number
+			</label>
+			</div>
+			<div class="nhsuk-checkboxes__item">
+			<input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
+			<label class="nhsuk-label nhsuk-checkboxes__label toggle-label" for="example-1">
+				Case created
+			</label>
+			</div>
+			<div class="nhsuk-checkboxes__item">
+			<input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
+			<label class="nhsuk-label nhsuk-checkboxes__label toggle-label" for="example-1">
+				Status
+			</label>
+			</div>
+		</div>
+</div>
+</div> -->
+
+
+{% endblock %}
