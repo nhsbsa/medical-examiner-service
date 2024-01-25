@@ -233,7 +233,7 @@ router.post(/no-discussion-main/, (req, res) => {
 
 })
 
-// Record discussion
+// Record discussion with main contact
 router.post(/main-contact-discussion/, (req, res) => {
 
     const raiseConcern = req.session.data['recordAsConcernMain']
