@@ -598,6 +598,7 @@ Case details
             </a>
           </dd>
         </div>
+         {% if data['reviewOnsetInterval1a'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Approximate interval between onset of 1(a) and death
@@ -611,6 +612,8 @@ Case details
             </a>
           </dd>
         </div>
+          {% endif %}
+          {% if data['reviewCauseOfDeath1b'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             1(b) other disease or condition leading to 1(a)
@@ -624,6 +627,8 @@ Case details
             </a>
           </dd>
         </div>
+        {% endif %}
+          {% if data['reviewOnsetInterval1b'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Approximate interval between onset of 1(b) and death
@@ -637,6 +642,8 @@ Case details
             </a>
           </dd>
         </div>
+          {% endif %}
+          {% if data['reviewCauseOfDeath1c'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             1(c) other disease or condition leading to 1(b)
@@ -650,6 +657,8 @@ Case details
             </a>
           </dd>
         </div>
+        {% endif %}
+        {% if data['reviewOnsetInterval1c'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Approximate interval between onset of 1(c) and death
@@ -663,6 +672,8 @@ Case details
             </a>
           </dd>
         </div>
+        {% endif %}
+        {% if data['reviewCauseOfDeath2'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             2 - Other significant conditions
@@ -676,6 +687,8 @@ Case details
             </a>
           </dd>
         </div>
+        {% endif %}
+        {% if data['reviewOnsetInterval2'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Approximate interval between onset of 2 and death
@@ -689,9 +702,11 @@ Case details
             </a>
           </dd>
         </div>
+        {% endif %}
 
       {% endif %}
     </dl>
+    
     {% else %}
     <dl class="nhsuk-summary-list">
       <div class="nhsuk-summary-list__row">
