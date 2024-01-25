@@ -79,6 +79,23 @@ Case details
     <dl class="nhsuk-summary-list">
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
+          Was the death more than 28 days after the birth
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {% if data['over-under-28'] == 'over' %}
+          Yes 
+          {% else %}
+          No
+          {% endif %}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="under-28/28-days">
+            Change<span class="nhsuk-u-visually-hidden"> whether the death was over or under 28 days after birth</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
           Added by
         </dt>
         <dd class="nhsuk-summary-list__value">
@@ -98,23 +115,6 @@ Case details
         <dd class="nhsuk-summary-list__actions">
           <a href="pre-scrutiny-note">
             Change<span class="nhsuk-u-visually-hidden"> details</span>
-          </a>
-        </dd>
-      </div>
-      <div class="nhsuk-summary-list__row">
-        <dt class="nhsuk-summary-list__key">
-          Was the death more than 28 days after the birth
-        </dt>
-        <dd class="nhsuk-summary-list__value">
-          {% if data['over-under-28'] == 'over' %}
-          Yes 
-          {% else %}
-          No
-          {% endif %}
-        </dd>
-        <dd class="nhsuk-summary-list__actions">
-          <a href="pre-scrutiny-note">
-            Change<span class="nhsuk-u-visually-hidden"> whether the death was over or under 28 days after birth</span>
           </a>
         </dd>
       </div>
