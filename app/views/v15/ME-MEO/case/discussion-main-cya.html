@@ -4,9 +4,9 @@
 
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout-full-width.html' %}
-<!-- 
+<!--
   In /views/layout.html you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 
@@ -43,7 +43,7 @@ Case details
                     {{ data['contactFirstNamesMain'] }} {{ data['contactLastNameMain'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                    <a id="raised-by-change-link" href="#">Change
+                    <a id="raised-by-change-link" href="discussion-with-main-contact">Change
                         <span class="nhsuk-u-visually-hidden">who raised the concern</span></a>
                 </dd>
             </div>
@@ -57,7 +57,7 @@ Case details
                     {{ data['todHourMain'] }}:{{ data['todMinuteMain'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                    <a id="date-time-raised-change-link" href="#">Change
+                    <a id="date-time-raised-change-link" href="discussion-with-main-contact">Change
                         <span class="nhsuk-u-visually-hidden">date and time raised</span></a>
                 </dd>
             </div>
@@ -69,7 +69,7 @@ Case details
                     {{ data['detailsOfDiscussionMain'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                    <a id="conversation-details-change-link" href="#">Change
+                    <a id="conversation-details-change-link" href="discussion-with-main-contact">Change
                         <span class="nhsuk-u-visually-hidden">discussion detais</span></a>
                 </dd>
             </div>
@@ -82,19 +82,19 @@ Case details
                         {{ data['recordAsCommsConcern'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
-                        <a id="concern-raised-change-link" href="#">Change
+                        <a id="concern-raised-change-link" href="discussion-with-main">Change
                             <span class="nhsuk-u-visually-hidden">concern raised</span></a>
                     </dd>
                 </div>
             {% endif %}
-            
+
             <!-- If raise as concern answers have been provided (radio buttons) -->
             {% if data['recordAsConcernMain'] == 'yes' %}
                 <div class="nhsuk-summary-list__row summary-list__details-list">
                     <dt class="nhsuk-summary-list__key">
                         Recommended for case record review
                     </dt>
-                    <dd class="nhsuk-summary-list__value" id="concern-raised-value">                        
+                    <dd class="nhsuk-summary-list__value" id="concern-raised-value">
                         {{ data['main-record-review-email'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
