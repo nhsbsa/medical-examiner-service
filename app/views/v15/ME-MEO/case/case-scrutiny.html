@@ -310,6 +310,7 @@ Case details
             </a>
           </dd>
         </div>
+         {% if data['onsetInterval1a'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Approximate interval between onset of 1(a) and death
@@ -323,6 +324,8 @@ Case details
             </a>
           </dd>
         </div>
+        {% endif %}
+        {% if data['causeOfDeath1b'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             1(b) other disease or condition leading to 1(a)
@@ -336,6 +339,8 @@ Case details
             </a>
           </dd>
         </div>
+        {% endif %}
+        {% if data['onsetInterval1b'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Approximate interval between onset of 1(b) and death
@@ -349,6 +354,8 @@ Case details
             </a>
           </dd>
         </div>
+        {% endif %}
+        {% if data['causeOfDeath1c'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             1(c) other disease or condition leading to 1(b)
@@ -362,6 +369,8 @@ Case details
             </a>
           </dd>
         </div>
+        {% endif %}
+        {% if data['onsetInterval1c'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Approximate interval between onset of 1(c) and death
@@ -375,6 +384,8 @@ Case details
             </a>
           </dd>
         </div>
+        {% endif %}
+        {% if data['causeOfDeath2'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             2 - Other significant conditions
@@ -388,6 +399,8 @@ Case details
             </a>
           </dd>
         </div>
+        {% endif %}
+        {% if data['onsetInterval2'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Approximate interval between onset of 2 and death
@@ -401,6 +414,7 @@ Case details
             </a>
           </dd>
         </div>
+        {% endif %}
 
       {% endif %}
     </dl>
