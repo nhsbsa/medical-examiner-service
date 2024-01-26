@@ -276,6 +276,16 @@ router.post(/record-comm-or-concern/, (req, res) => {
     
 })
 
+// Discussion check answers -  comms-concern-cya
+
+router.post(/check-discussion-details/, (req, res) => {
+
+    req.session.data['concern-raised-yes-no'] = 'yes'
+    
+    res.redirect('../case/comms-concerns')
+
+})
+
 // Record concern (coming from Communication or concern)
 router.post(/raise-comms-concern/, (req, res) => {
     
@@ -299,15 +309,6 @@ router.post(/any-further-action/, (req, res) => {
     res.redirect('comms-concerns')
 })
 
-// For comms-concern-cya
-
-router.post(/check-discussion-details/, (req, res) => {
-
-    req.session.data['concern-raised'] = 'yes'
-    
-    res.redirect('../case/comms-concerns')
-
-})
 
 // ========================================================================
 // CORONER NOTIFICATION
