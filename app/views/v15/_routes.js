@@ -167,9 +167,16 @@ router.post(/record-discussion-ap/, (req, res) => {
 
     if (agreedOutcome == 'different-cause-death') {
         res.redirect('different-mccd-outcome')
+    } 
+
+    else if (agreedOutcome) {
+        req.session.data['ap-discussion-section'] = 'complete'
     } else {
-        res.redirect('case-scrutiny')
+        req.session.data['ap-discussion-section'] = 'incomplete'
     }
+
+    res.redirect('case-scrutiny')
+    
 
 })
 
