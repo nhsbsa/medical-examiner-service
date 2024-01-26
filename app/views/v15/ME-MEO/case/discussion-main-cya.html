@@ -25,6 +25,13 @@ Case details
 
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
+                {% from 'back-link/macro.njk' import backLink %}
+
+        {{ backLink({
+        "href": "javascript:history.back()",
+        "text": "Go back"
+        }) }}
+
         <h1>
             <span class="nhsuk-caption-m nhsuk-caption--bottom">
 
@@ -57,7 +64,7 @@ Case details
                     {{ data['dodDayMain'] }}/{{ data['dodMonthMain'] }}/{{ data['dodYearMain'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                    <a id="date-time-raised-change-link" href="#">Change
+                    <a id="date-time-raised-change-link" href="discussion-with-main-contact">Change
                         <span class="nhsuk-u-visually-hidden">date and time raised</span></a>
                 </dd>
             </div>
@@ -94,7 +101,7 @@ Case details
                         {{ data['recordAsCommsConcern'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
-                        <a id="concern-raised-change-link" href="discussion-with-main">Change
+                        <a id="concern-raised-change-link" href="discussion-with-main-contact">Change
                             <span class="nhsuk-u-visually-hidden">concern raised</span></a>
                     </dd>
                 </div>
