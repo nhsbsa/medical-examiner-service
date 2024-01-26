@@ -34,6 +34,8 @@ Case details
             Check discussion with main contact details
         </h1>
 
+         <form action="comms-concerns" method="post">
+
         <dl class="nhsuk-summary-list">
             <div class="nhsuk-summary-list__row summary-list__details-list">
                 <dt class="nhsuk-summary-list__key">
@@ -49,11 +51,21 @@ Case details
             </div>
             <div class="nhsuk-summary-list__row summary-list__details-list">
                 <dt class="nhsuk-summary-list__key">
-                    Date and time raised
+                    Date raised
                 </dt>
                 <dd class="nhsuk-summary-list__value" id="date-time-value">
                     {{ data['dodDayMain'] }}/{{ data['dodMonthMain'] }}/{{ data['dodYearMain'] }}
-                    <br>
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a id="date-time-raised-change-link" href="#">Change
+                        <span class="nhsuk-u-visually-hidden">date and time raised</span></a>
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row summary-list__details-list">
+                <dt class="nhsuk-summary-list__key">
+                     Time raised
+                </dt>
+                <dd class="nhsuk-summary-list__value" id="date-time-value">
                     {{ data['todHourMain'] }}:{{ data['todMinuteMain'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
@@ -144,7 +156,12 @@ Case details
         {% if data['recordAsConcernMain'] == 'no' %}
         <p><a id="raise-concern-link" href="main-raise-concern">Raise concern</a></p>
         {% endif %}
-        <a id="return-to-communicaition-concerns-link" href="comms-concerns">Return to Communications</a>
+
+           <a id="return-to-communicaition-concerns-link" href="comms-concerns">
+               <button class="nhsuk-button" id="save-and-continue-button" type="submit">
+                Save and continue
+                </button>
+            </a>
 
     </div>
 </div>
