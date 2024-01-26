@@ -439,9 +439,15 @@ router.post(/remove-discussion-main/, (req, res) => {
     if (removeNotification == 'yes') {
         res.redirect('../concerns/discussion-main-removed')
     } else {
-        res.redirect('../../statics/comms-concerns')
+        res.redirect('../comms-concerns')
     }
     
+})
+
+router.post(/discussion-main-removed/, (req, res) => {
+
+    res.redirect('../comms-concerns')
+
 })
 
 // ========================================================================

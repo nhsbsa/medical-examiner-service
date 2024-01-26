@@ -64,6 +64,14 @@ Case details
   </div>
   {% endif %}
 
+    {% if data['discussion-with-main-section'] == 'draft' %}
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag--grey nhsbsa-tag--custom">
+       Draft
+    </strong>
+  </div>
+  {% endif %}
+
   {% if data['discussion-with-main-section'] == 'complete' %}
   {% if data['discussionWithMain'] == 'yes' %}
   <div class="nhsuk-grid-column-full">
@@ -115,7 +123,10 @@ Case details
               Action
             </dt>
             <dd class="nhsuk-summary-list__value">
-              <td class="nhsuk-table__cell "><a href="../case/discussion-main-cya">View details</a> / <a href="../case/concerns/remove-discussion-main">Remove</a></td>
+              <td class="nhsuk-table__cell "><a href="../case/discussion-main-cya">View details</a> 
+                {% if data['discussion-with-main-section'] == 'draft' %}
+                  / <a href="../case/concerns/remove-discussion-main">Remove</a></td>
+                {% endif %}
             </dd>
           </div>
         </dl>
