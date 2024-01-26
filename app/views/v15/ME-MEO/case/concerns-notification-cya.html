@@ -42,6 +42,8 @@ Case details
             Check concern details
         </h1>
 
+    <form action="concerns-notification-cya" method="post">
+
         <dl class="nhsuk-summary-list">
             <div class="nhsuk-summary-list__row summary-list__details-list">
                 <dt class="nhsuk-summary-list__key">
@@ -55,7 +57,7 @@ Case details
                         <span class="nhsuk-u-visually-hidden">who raised the concern</span></a>
                 </dd>
             </div>
-            <div class="nhsuk-summary-list__row summary-list__details-list">
+         <!--   <div class="nhsuk-summary-list__row summary-list__details-list">
                 <dt class="nhsuk-summary-list__key">
                     Date raised
                 </dt>
@@ -78,7 +80,7 @@ Case details
                     <a id="date-time-raised-change-link" href="raise-comms-concern">Change
                         <span class="nhsuk-u-visually-hidden">date and time raised</span></a>
                 </dd>
-            </div>
+            </div> -->
             <div class="nhsuk-summary-list__row summary-list__details-list">
                 <dt class="nhsuk-summary-list__key">
                     Concern details
@@ -163,8 +165,8 @@ Case details
             <!-- If raise as concern answers have been provided (radio buttons) -->
         </dl>
 
-        <form action="comms-concerns" method="post">
             <button class="nhsuk-button" type="submit">Save and continue</button>
+
         </form>
 
         <a id="return-to-concerns-notification" href="../case/comms-concerns">Return to communications</a>
