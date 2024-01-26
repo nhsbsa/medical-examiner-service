@@ -284,9 +284,22 @@ router.post(/raise-comms-concern/, (req, res) => {
     
 })
 
+// Check concern details 
+
+router.post(/concerns-notification-cya/, (req, res) => {
+
+    req.session.data['concern-raised'] = 'yes'
+    
+    res.redirect('../case/comms-concerns')
+
+})
+
+
 router.post(/any-further-action/, (req, res) => {
     res.redirect('comms-concerns')
 })
+
+// For comms-concern-cya
 
 router.post(/check-discussion-details/, (req, res) => {
 
