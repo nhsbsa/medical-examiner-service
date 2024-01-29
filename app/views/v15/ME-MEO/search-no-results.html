@@ -3,7 +3,7 @@
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
 <!-- Extends the layout from /views/layout.html -->
-{% extends 'main-template-search.html' %}
+{% extends 'layout-admin-interface.html' %}
 {% set active = "me-user" %}
 {% set activesub = "cases" %}
 <!--
@@ -39,7 +39,7 @@ Search-no-results
 <p>We could not find any matching results.</p>
 <p>Change your search terms and try again.</p>
 
-		
+
 		<form novalidate="novalidate" action="search_results" method="post">
 			<div class="nhsuk-promo">
 				<h3>Edit search</h3>
@@ -268,4 +268,30 @@ Search-no-results
 </div> -->
 
 
+{% endblock %}
+{% block sideNav %}
+  <!-- IF user has selected to Reopen a case then change the numbering -->
+  {% if data['reopen-this-case'] == 'yes' %}
+    <div class="side-nav">
+      <ul>
+        <div id="options" class="options">
+          <li><a class="active" href="open-cases">Open cases 3</a></li>
+          <li><a href="closed-cases">Closed cases 0</a></li>
+          <li><a href="reopened-cases">Reopened cases 2</a></li>
+          <li><a href="reporting">Reporting</a></li>
+        </div>
+      </ul>
+    </div>
+  {% else %}
+    <div class="side-nav">
+      <ul>
+        <div id="options" class="options">
+          <li><a class="active" href="open-cases">Open cases 3</a></li>
+          <li><a href="closed-cases">Closed cases 1</a></li>
+          <li><a href="reopened-cases">Reopened cases 1</a></li>
+          <li><a href="reporting">Reporting</a></li>
+        </div>
+      </ul>
+    </div>
+  {% endif %}
 {% endblock %}
