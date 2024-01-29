@@ -17,9 +17,9 @@ router.post(/create-new-case/, (req, res) => {
 })
 
 // Edit deceased person's details
-router.post(/deceased-person-details/, (req, res) => {
+router.post(/search_results/, (req, res) => {
 
-    res.redirect('../statics/case-details')
+    res.redirect('search_results')
 
 })
 
@@ -547,6 +547,25 @@ router.post(/save-draft-DWMC/, (req, res) => {
     req.session.data['draft-status-DWMC'] = 'draft'
 
     res.redirect('comms-concerns')
+
+})
+
+// ========================================================================
+// Search
+// ========================================================================
+
+// search results found
+router.post(/search_results/, (req, res) => {
+
+    res.redirect('search_results')
+
+})
+
+
+// search results not found
+router.post(/search_no_results/, (req, res) => {
+
+    res.redirect('search-no-results')
 
 })
 
