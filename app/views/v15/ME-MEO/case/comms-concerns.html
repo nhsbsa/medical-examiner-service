@@ -447,7 +447,11 @@ Case details
 
   <div class="nhsuk-grid-column-full">
 
-    {% if data['concern-raised'] == 'yes' %}
+        {% if data['remove-notification'] == 'yes' %}
+
+        &nbsp;
+
+    {% elseif data['concern-raised'] == 'yes' %}
 
     <details class="nhsuk-details nhsuk-expander">
       <summary class="nhsuk-details__summary">
