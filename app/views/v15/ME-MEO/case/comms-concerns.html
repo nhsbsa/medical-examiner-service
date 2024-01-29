@@ -376,6 +376,7 @@ Case details
                 <td class="nhsuk-table__cell "><a href="#">Refresh</a></td>
               </tr>
               {% endif %}
+
               {% if data['comms-governance-process-email'] %}
               <tr role="row" class="nhsuk-table__row">
                 <td class="nhsuk-table__cell">Governance processes review</td>
@@ -388,6 +389,7 @@ Case details
                 <td class="nhsuk-table__cell "><a href="#">Refresh</a></td>
               </tr>
               {% endif %}
+
               {% if data['comms-patient-safety-email'] %}
               <tr role="row" class="nhsuk-table__row">
                 <td class="nhsuk-table__cell">Patient safety incident</td>
@@ -397,7 +399,12 @@ Case details
                     Sending
                   </strong>
                 </td>
-                <td class="nhsuk-table__cell "><a href="#">Refresh</a></td>
+                <td class="nhsuk-table__cell ">
+                  <form action="refresh-email-concern" method="post">
+                    <button class="nhsuk-link" data-module="nhsuk-action-link" type="submit">
+                      Refresh
+                    </button>
+                  </form> 
               </tr>
               {% endif %}
             </tbody>
@@ -510,24 +517,52 @@ Case details
               <td class="nhsuk-table__cell">Record review</td>
               <td class="nhsuk-table__cell ">14/06/2023</td>
               <td class="nhsuk-table__cell ">{{ data['comms-record-review-email'] }}</td>
-              <td class="nhsuk-table__cell ">
-                <strong class="nhsuk-tag nhsuk-tag--blue">
-                  Sending
-                </strong>
-              </td>
-              <td class="nhsuk-table__cell "><a href="#">Refresh</a></td>
+                {% if data['status-refresh'] == 'complete' %}
+                <td class="nhsuk-table__cell ">
+                  <strong class="nhsuk-tag">
+                    Delivered
+                  </strong>
+                </td>
+                <td class="nhsuk-table__cell "></td>
+                {% else %}
+                <td class="nhsuk-table__cell ">
+                  <strong class="nhsuk-tag nhsuk-tag--blue">
+                    Sending
+                  </strong>
+                </td>
+                <td class="nhsuk-table__cell ">
+                  <form action="status-refresh" method="post" id="status-refresh">
+                    <a href="#" onclick="document.getElementById('status-refresh').submit(); return false;">Refresh</a></td>
+                  </form>
+                </td>
+                  {% endif %} 
             </tr>
-            <tr role="row" class="nhsuk-table__row">
-              <td class="nhsuk-table__cell">Governance processes review</td>
-              <td class="nhsuk-table__cell ">14/06/2023</td>
-              <td class="nhsuk-table__cell ">{{ data['comms-governance-process-email'] }}</td>
-              <td class="nhsuk-table__cell ">
-                <strong class="nhsuk-tag nhsuk-tag--blue">
-                  Sending
-                </strong>
-              </td>
-              <td class="nhsuk-table__cell "><a href="#">Refresh</a></td>
-            </tr>
+                {% if data['comms-governance-process-email'] %}
+              <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__cell">Governance processes review</td>
+                <td class="nhsuk-table__cell ">14/06/2023</td>
+                <td class="nhsuk-table__cell ">{{ data['comms-governance-process-email'] }}</td>
+                {% if data['status-refresh'] == 'complete' %}
+                <td class="nhsuk-table__cell ">
+                  <strong class="nhsuk-tag">
+                    Delivered
+                  </strong>
+                </td>
+                <td class="nhsuk-table__cell "></td>
+                {% else %}
+                <td class="nhsuk-table__cell ">
+                  <strong class="nhsuk-tag nhsuk-tag--blue">
+                    Sending
+                  </strong>
+                </td>
+                <td class="nhsuk-table__cell ">
+                  <form action="status-refresh" method="post" id="status-refresh">
+                    <a href="#" onclick="document.getElementById('status-refresh').submit(); return false;">Refresh</a></td>
+                  </form>
+                </td>
+                  {% endif %}
+              </tr>
+              {% endif %}
             {% if data['remove-notification'] !== 'yes' %}
             <tr role="row" class="nhsuk-table__row">
               <td class="nhsuk-table__cell">Patient safety incident</td>
