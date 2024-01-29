@@ -423,15 +423,11 @@ router.post(/reopen-case/, (req, res) => {
 
 
 router.post(/resend-raise-comms-concern/, (req, res) => {
-
     res.redirect('concerns/comms-concern-cya')
-
 })
 
 router.post(/concerns-notification-resend/, (req, res) => {
-
-    res.redirect('../../statics/comms-concerns')
-
+    res.redirect('../comms-concerns')
 })
 
 router.post(/remove-concern-notification/, (req, res) => {
@@ -441,10 +437,15 @@ router.post(/remove-concern-notification/, (req, res) => {
     if (removeNotification == 'yes') {
         res.redirect('../concerns/concern-notification-removed')
     } else {
-        res.redirect('../../statics/comms-concerns')
+        res.redirect('../comms-concerns')
     }
     
 })
+
+router.post(/remove-concern-confirm/, (req, res) => {
+    res.redirect('../comms-concerns')
+})
+
 
 router.post(/remove-discussion-main/, (req, res) => {
 
@@ -569,5 +570,15 @@ router.post(/save-draft-DWMC/, (req, res) => {
     res.redirect('comms-concerns')
 
 })
+
+// Page: commns-concerns Concerns Notifucation email delivery status refresh
+router.post(/refresh-email-concern/, (req, res) => {
+
+    req.session.data['refresh-email-sent'] = 'refresh'
+
+    res.redirect('comms-concerns')
+
+})
+
 
 module.exports = router;
