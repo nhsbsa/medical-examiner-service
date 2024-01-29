@@ -16,6 +16,13 @@ router.post(/create-new-case/, (req, res) => {
 
 })
 
+// Edit deceased person's details
+router.post(/deceased-person-details/, (req, res) => {
+
+    res.redirect('../statics/case-details')
+
+})
+
 // Assign someone to case
 router.post(/assign-case-to-someone/, (req, res) => {
 
@@ -56,7 +63,7 @@ router.post(/hospital-acute-setting/, (req, res) => {
 
     // creating a session key 'additional-details-section' and assigning it the value of complete
     req.session.data['location-of-death-section'] = 'complete'
-    
+
     res.redirect('case-details')
 
 })
@@ -66,7 +73,7 @@ router.post(/community-non-acute/, (req, res) => {
 
     // creating a session key 'additional-details-section' and assigning it the value of complete
     req.session.data['location-of-death-section'] = 'complete'
-    
+
     res.redirect('case-details')
 
 })
@@ -77,7 +84,7 @@ router.post(/community-non-acute/, (req, res) => {
 
 // Was the death more than 28 days after birth
 router.post(/case-scrutiny-link/, (req, res) => {
-    
+
     req.session.data['runOnce'] = 'yes'
     res.redirect('under-28/28-days')
 
@@ -85,7 +92,7 @@ router.post(/case-scrutiny-link/, (req, res) => {
 
 // Was the death more than 28 days after birth
 router.post(/28-days/, (req, res) => {
-    
+
     res.redirect('../case-scrutiny')
 
 })
@@ -102,7 +109,7 @@ router.post(/pre-scrutiny-note/, (req, res) => {
         req.session.data['pre-scrutiny-note-section'] = 'incomplete'
         res.redirect('case-scrutiny')
     }
-    
+
 
 })
 
@@ -111,7 +118,7 @@ router.post(/ap-details/, (req, res) => {
 
     req.session.data['ap-details-section'] = 'complete'
     res.redirect('case-scrutiny')
-    
+
 })
 
 // Record proposed cause of death
@@ -127,7 +134,7 @@ router.post(/ap-prop-cause-of-death/, (req, res) => {
         req.session.data['ap-prop-cause-of-death-section'] = 'incomplete'
         res.redirect('case-scrutiny')
     }
-    
+
 })
 
 // Record review
@@ -142,7 +149,7 @@ router.post(/record-review/, (req, res) => {
         req.session.data['me-independent-review-section'] = 'incomplete'
         res.redirect('case-scrutiny')
     }
-    
+
 })
 
 
@@ -185,7 +192,7 @@ router.post(/record-comm-or-concern-ap/, (req, res) => {
     }
 
     res.redirect('case-scrutiny')
-    
+
 
 })
 
@@ -202,7 +209,7 @@ router.post(/no-discussion-ap/, (req, res) => {
     }
 
     res.redirect('case-scrutiny')
-    
+
 
 })
 
@@ -244,37 +251,37 @@ router.post(/main-contact-discussion/, (req, res) => {
     } else {
         res.redirect('discussion-main-cya')
     }
-    
+
 })
 
 // Record concern
 router.post(/main-raise-concern/, (req, res) => {
-    
+
     req.session.data['recordAsConcernMain'] = 'yes'
     res.redirect('discussion-main-cya')
-    
+
 })
 
 // Record discussion
 router.post(/record-comm-or-concern/, (req, res) => {
-    
+
     const recordCommsConcern = req.session.data['recordAsCommsConcern']
     req.session.data['record-communication-concern-section'] = 'complete'
-    
+
     if (recordCommsConcern == 'yes') {
         res.redirect('raise-comms-concern')
     } else {
         res.redirect('comms-concern-cya')
     }
-    
+
 })
 
 // Record concern (coming from Communication or concern)
 router.post(/raise-comms-concern/, (req, res) => {
-    
+
     req.session.data['recordAsConcernComms'] = 'yes'
     res.redirect('concerns-notification-cya')
-    
+
 })
 
 router.post(/any-further-action/, (req, res) => {
@@ -284,7 +291,7 @@ router.post(/any-further-action/, (req, res) => {
 router.post(/check-discussion-details/, (req, res) => {
 
     req.session.data['concern-raised'] = 'yes'
-    
+
     res.redirect('../case/comms-concerns')
 
 })
@@ -295,7 +302,7 @@ router.post(/check-discussion-details/, (req, res) => {
 
 // Notification method
 router.post(/notification-method/, (req, res) => {
-    
+
     const userType = req.session.data['user-type']
     const meCompleted = req.session.data['me-independent-review-section']
 
@@ -323,14 +330,14 @@ router.post(/notification-method/, (req, res) => {
     } else {
         res.redirect('cannot-notify-coroner')
     }
-    
+
 
 })
 
 // Notification details (method: No)
 router.post(/notification-details/, (req, res) => {
 
-    req.session.data['coroner-notification-section'] = 'complete' 
+    req.session.data['coroner-notification-section'] = 'complete'
     res.redirect('coroner-notification')
 
 })
@@ -344,7 +351,7 @@ router.post(/me-comms-coroner/, (req, res) => {
 
 // Coroner's email address
 router.post(/coroner-email/, (req, res) => {
-    
+
     req.session.data['coroner-notification-section'] = 'complete'
     res.redirect('coroner-email-cya')
 
@@ -422,7 +429,7 @@ router.post(/remove-concern-notification/, (req, res) => {
     } else {
         res.redirect('../../statics/comms-concerns')
     }
-    
+
 })
 
 router.post(/remove-discussion-main/, (req, res) => {
@@ -434,7 +441,7 @@ router.post(/remove-discussion-main/, (req, res) => {
     } else {
         res.redirect('../../statics/comms-concerns')
     }
-    
+
 })
 
 // ========================================================================
@@ -455,7 +462,7 @@ router.post(/status-refresh/, (req, res) => {
 
 //Page: /case/additional-details
 router.post(/save-draft-AD/, (req, res) => {
-    
+
     req.session.data['draft-status-AD'] = 'draft'
 
     res.redirect('case-details')
@@ -464,54 +471,54 @@ router.post(/save-draft-AD/, (req, res) => {
 
 //Page: /case/hospital-acute-setting
 router.post(/save-draft-HAS/, (req, res) => {
-    
+
     req.session.data['draft-status-HAS'] = 'draft'
-    
+
     res.redirect('case-details')
 
 })
 
 //Page: /case/pre-scrutiny-note
 router.post(/save-draft-PSN/, (req, res) => {
-    
+
     req.session.data['draft-status-PSN'] = 'draft'
-    
+
     res.redirect('case-scrutiny')
 
 })
 
 //Page: /case/ap-prop-cause-of-death
 router.post(/save-draft-APCOD/, (req, res) => {
-    
+
     req.session.data['draft-status-APCOD'] = 'draft'
-    
+
     res.redirect('case-scrutiny')
 
 })
 
 //Page: /case/different-mccd-outcome
 router.post(/save-draft-DIFCOD/, (req, res) => {
-    
+
     req.session.data['draft-status-DIFCOD'] = 'draft'
-    
+
     res.redirect('case-scrutiny')
 
 })
 
 //Page: /case/record-review
 router.post(/save-draft-RV/, (req, res) => {
-    
+
     req.session.data['draft-status-RV'] = 'draft'
-    
+
     res.redirect('case-scrutiny')
 
 })
 
 //Page: /case/record-review
 router.post(/save-draft-MEIR/, (req, res) => {
-    
+
     req.session.data['draft-status-MEIR'] = 'draft'
-    
+
     res.redirect('case-scrutiny')
 
 })
