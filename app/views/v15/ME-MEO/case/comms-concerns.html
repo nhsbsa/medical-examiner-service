@@ -337,7 +337,10 @@ Case details
               Action
             </dt>
             <dd class="nhsuk-summary-list__value">
-              <td class="nhsuk-table__cell "><a href="../case/record-comm-or-concern">View details</a> / <a href="../case/concerns/remove-concern-notification">Remove</a></td>
+              <td class="nhsuk-table__cell "><a href="../case/record-comm-or-concern">View details</a> 
+                {% if data['record-communication-concern-section'] == 'draft' %}
+                  / <a href="../case/concerns/remove-discussion-main">Remove</a></td>
+                {% endif %}
             </dd>
           </div>
         </dl>

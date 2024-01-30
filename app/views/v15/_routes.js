@@ -262,6 +262,7 @@ router.post(/main-raise-concern/, (req, res) => {
     
 })
 
+
 // Record discussion
 router.post(/record-comm-or-concern/, (req, res) => {
     
@@ -275,6 +276,27 @@ router.post(/record-comm-or-concern/, (req, res) => {
     }
     
 })
+
+// Remove Discussion
+
+router.post(/remove-discussion/, (req, res) => {
+
+    const removeNotification = req.session.data['remove-discussion']
+
+    if (removeNotification == 'yes') {
+        res.redirect('../concerns/discussion-removed')
+    } else {
+        res.redirect('../comms-concerns')
+    }
+    
+})
+
+router.post(/discussion-removed/, (req, res) => {
+
+    res.redirect('../comms-concerns')
+
+})
+
 
 // Discussion check answers -  comms-concern-cya
 
@@ -447,6 +469,8 @@ router.post(/remove-concern-confirm/, (req, res) => {
 })
 
 
+// Remove discussion with main contact
+
 router.post(/remove-discussion-main/, (req, res) => {
 
     const removeNotification = req.session.data['remove-discussion-main']
@@ -464,6 +488,7 @@ router.post(/discussion-main-removed/, (req, res) => {
     res.redirect('../comms-concerns')
 
 })
+
 
 // ========================================================================
 // STATUS REFRESH
