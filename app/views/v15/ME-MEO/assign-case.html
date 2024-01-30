@@ -1,8 +1,8 @@
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout-full-width.html' %}
-<!-- 
+<!--
   In /views/layout.html you can:
-    - edit the header and footer 
+    - edit the header and footer
     - add custom CSS and JavaScript
 -->
 
@@ -53,7 +53,7 @@ Assign someone to case
           </div>
         </h2>
         <input class="nhsuk-input nhsuk-input--width-20" id="assign-medical-examiner" name="assign-medical-examiner"
-          type="text">
+          type="text" value="{{ data['assign-medical-examiner'] }}">
       </div>
       <div class="nhsuk-form-group">
         <h2 class="nhsuk-label-wrapper">
@@ -65,7 +65,7 @@ Assign someone to case
           </div>
         </h2>
         <input class="nhsuk-input nhsuk-input--width-20" id="assign-medical-examiner-officer"
-          name="assign-medical-examiner-officer" type="text">
+          name="assign-medical-examiner-officer" type="text" value="{{ data['assign-medical-examiner'] }}">
       </div>
 
       <button class="nhsuk-button" type="submit">Save and continue</button>

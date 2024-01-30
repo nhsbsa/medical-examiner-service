@@ -44,7 +44,7 @@ Additional Details
                 <label class="nhsuk-label nhsuk-u-width-one-half" for="knownAs">
                     Name deceased also known as <span class="optional-span"> (optional) </span>
                 </label>
-                <input class="nhsuk-input nhsuk-u-width-one-half " id="knownAs" name="knownAs" type="text">
+                <input class="nhsuk-input nhsuk-u-width-one-half " id="knownAs" name="knownAs" type="text" value="{{ data['knownAs'] }}">
             </div>
 
             <div class="nhsuk-form-group">
@@ -62,7 +62,7 @@ Additional Details
                                     Day
                                 </label>
                                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
-                                    id="dateOfBirth-day" name="dobDay" type="text" pattern="[0-9]*" inputmode="numeric">
+                                    id="dateOfBirth-day" name="dobDay" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['dobDay'] }}">
                             </div>
                         </div>
                         <div class="nhsuk-date-input__item">
@@ -72,7 +72,7 @@ Additional Details
                                 </label>
                                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
                                     id="dateOfBirth-dobMonth" name="dobMonth" type="text" pattern="[0-9]*"
-                                    inputmode="numeric">
+                                    inputmode="numeric" value="{{ data['dobMonth'] }}">
                             </div>
                         </div>
                         <div class="nhsuk-date-input__item">
@@ -82,7 +82,7 @@ Additional Details
                                 </label>
                                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
                                     id="dateOfBirth-dobYear" name="dobYear" type="text" pattern="[0-9]*"
-                                    inputmode="numeric">
+                                    inputmode="numeric" value="{{ data['dobYear'] }}">
                             </div>
                         </div>
                     </div>
@@ -112,7 +112,7 @@ Additional Details
                                     NHS numbers are 10 digits long. For example, 485 777 3456
                                 </div>
                                 <input class="nhsuk-input nhsuk-u-width-one-half" id="nhsNumber" name="nhsNumber"
-                                    type="text" aria-describedby="nhsNumber-hint">
+                                    type="text" aria-describedby="nhsNumber-hint" value="{{ data['nhsNumber'] }}">
                             </div>
                         </div>
                         <div class="nhsuk-radios__item">
@@ -130,7 +130,7 @@ Additional Details
                 <label class="nhsuk-label nhsuk-u-width-one-half" for="hospitalNumber">
                     Hospital number <span class="optional-span"> (optional) </span>
                 </label>
-                <input class="nhsuk-input nhsuk-u-width-one-half" id="hospitalNumber" name="hospitalNumber" type="text">
+                <input class="nhsuk-input nhsuk-u-width-one-half" id="hospitalNumber" name="hospitalNumber" type="text" value="{{ data['hospitalNumber'] }}"">
             </div>
 
             <div class="nhsuk-form-group">
@@ -154,21 +154,21 @@ Additional Details
                                     Address line 1 <span class="nhsuk-u-visually-hidden">line 1 of 2</span>
                                 </label>
                                 <input class="nhsuk-input nhsuk-u-width-one-half" id="addressLine1" name="addressLine1"
-                                    type="text">
+                                    type="text" value="{{ data['addressLine1'] }}">
                             </div>
                             <div class="nhsuk-form-group">
                                 <label class="nhsuk-label nhsuk-u-width-one-half" for="addressLine2">
                                     Address line 2 (optional) <span class="nhsuk-u-visually-hidden">line 2 of 2</span>
                                 </label>
                                 <input class="nhsuk-input nhsuk-u-width-one-half" id="addressLine2" name="addressLine2"
-                                    type="text">
+                                    type="text" value="{{ data['addressLine2'] }}">
                             </div>
                             <div class="nhsuk-form-group">
                                 <label class="nhsuk-label nhsuk-u-width-one-half" for="townOrCity">
                                     Town or city <span class="optional-span"> (optional) </span>
                                 </label>
                                 <input class="nhsuk-input nhsuk-u-width-one-half" id="townOrCity" name="townOrCity"
-                                    type="text">
+                                    type="text" value="{{ data['townOrCity'] }}">
                             </div>
                             <div class="nhsuk-form-group">
                                 <label class="nhsuk-label nhsuk-u-width-one-half" for="county">
@@ -181,7 +181,7 @@ Additional Details
                                     Postcode
                                 </label>
                                 <input class="nhsuk-input nhsuk-input--width-10" id="postCode" name="postCode"
-                                    type="text">
+                                    type="text" value="{{ data['postCode'] }}">
                             </div>
                         </div>
                         <div class="nhsuk-radios__item">
@@ -215,7 +215,7 @@ Additional Details
                                     Enter details
                                 </label>
                                 <input class="nhsuk-input nhsuk-u-width-one-half" id="mainJob" name="mainJob"
-                                    type="text">
+                                    type="text" value="{{ data['mainJob'] }}">
                             </div>
                         </div>
                         <div class="nhsuk-radios__item">
@@ -237,7 +237,7 @@ Additional Details
                     For example, if the deceased person worked with harmful chemicals.
                 </div>
                 <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="furtherOccupationInfo"
-                    name="furtherOccupationInfo" rows="5"></textarea>
+                    name="furtherOccupationInfo" rows="5">{{ data['furtherOccupationInfo'] }}</textarea>
             </div>
 
             <button class="nhsuk-button" id="save-and-continue-button" type="submit">

@@ -4,9 +4,9 @@
 
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout-full-width.html' %}
-<!-- 
+<!--
   In /views/layout.html you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 
@@ -46,7 +46,7 @@ Case details
                     Healthcare provider
                 </label>
                 <input class="nhsuk-input nhsuk-u-width-one-half" id="healthcareProvider" name="healthCareProvider"
-                    type="text">
+                    type="text" value="{{ data['healthCareProvider'] }}">
             </div>
 
             <div class="nhsuk-form-group">
@@ -57,7 +57,7 @@ Case details
                     For example, Ward 2B, or A&amp;E
                 </div>
                 <input class="nhsuk-input nhsuk-u-width-one-half" id="locationDetails" name="locationDetails"
-                    type="text" aria-describedby="locationDetails-hint">
+                    type="text" aria-describedby="locationDetails-hint" value="{{ data['locationDetails'] }}">
             </div>
 
             <div class="nhsuk-form-group">
@@ -76,7 +76,7 @@ Case details
                                 </label>
                                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
                                     id="dateOfAdmission-day" name="doaDay" type="text" pattern="[0-9]*"
-                                    inputmode="numeric">
+                                    inputmode="numeric" value="{{ data['doaDay'] }}">
                             </div>
                         </div>
                         <div class="nhsuk-date-input__item">
@@ -86,7 +86,7 @@ Case details
                                 </label>
                                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
                                     id="dateOfAdmission-doaMonth" name="doaMonth" type="text" pattern="[0-9]*"
-                                    inputmode="numeric">
+                                    inputmode="numeric" value="{{ data['doaMonth'] }}">
                             </div>
                         </div>
                         <div class="nhsuk-date-input__item">
@@ -96,7 +96,7 @@ Case details
                                 </label>
                                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
                                     id="dateOfAdmission-doaYear" name="doaYear" type="text" pattern="[0-9]*"
-                                    inputmode="numeric">
+                                    inputmode="numeric" value="{{ data['doaYear'] }}">
                             </div>
                         </div>
                     </div>
@@ -111,8 +111,8 @@ Case details
                     For example, the admission time, method, and reason.
                 </div>
                 <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="admissionDetails" name="admissionDetails"
-                    rows="5" aria-describedby="admissionDetails-hint" value="admissionDetails"></textarea>
-            </div>
+                    rows="5" aria-describedby="admissionDetails-hint">{{ data['admissionDetails'] }}</textarea>
+                </div>
 
             <button class="nhsuk-button" type="submit">
                 Save and continue
