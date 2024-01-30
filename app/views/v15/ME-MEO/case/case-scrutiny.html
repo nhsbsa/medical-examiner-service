@@ -241,6 +241,7 @@ Case details
           </a>
         </dd>
       </div>
+       {% if data['b-cod-infant'] %}
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
           (b) Other diseases or conditions in infant
@@ -254,6 +255,8 @@ Case details
           </a>
         </dd>
       </div>
+      {% endif %}
+      {% if data['c-cod-infant'] %}
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
           (c) Main maternal diseases or conditions affecting infant
@@ -267,6 +270,8 @@ Case details
           </a>
         </dd>
       </div>
+       {% endif %}
+       {% if data['d-cod-infant'] %}
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
           (d) Other maternal diseases or conditions affecting infant
@@ -280,6 +285,8 @@ Case details
           </a>
         </dd>
       </div>
+      {% endif %}
+      {% if data['e-cod-infant'] %}
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
           (e) Other relevant causes
@@ -293,6 +300,7 @@ Case details
           </a>
         </dd>
       </div>
+      {% endif %}
 
       <!-- Over 28 days after birth form -->
       {% else %}
