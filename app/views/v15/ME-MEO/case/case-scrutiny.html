@@ -79,6 +79,23 @@ Case details
     <dl class="nhsuk-summary-list">
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
+          Was the death more than 28 days after the birth
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {% if data['over-under-28'] == 'over' %}
+          Yes 
+          {% else %}
+          No
+          {% endif %}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="under-28/28-days">
+            Change<span class="nhsuk-u-visually-hidden"> whether the death was over or under 28 days after birth</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
           Added by
         </dt>
         <dd class="nhsuk-summary-list__value">
@@ -98,23 +115,6 @@ Case details
         <dd class="nhsuk-summary-list__actions">
           <a href="pre-scrutiny-note">
             Change<span class="nhsuk-u-visually-hidden"> details</span>
-          </a>
-        </dd>
-      </div>
-      <div class="nhsuk-summary-list__row">
-        <dt class="nhsuk-summary-list__key">
-          Was the death more than 28 days after the birth
-        </dt>
-        <dd class="nhsuk-summary-list__value">
-          {% if data['over-under-28'] == 'over' %}
-          Yes
-          {% else %}
-          No
-          {% endif %}
-        </dd>
-        <dd class="nhsuk-summary-list__actions">
-          <a href="./under-28/28-days">
-            Change<span class="nhsuk-u-visually-hidden"> whether the death was over or under 28 days after birth</span>
           </a>
         </dd>
       </div>
@@ -310,12 +310,14 @@ Case details
             </a>
           </dd>
         </div>
+         {% if data['onsetInterval1a'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Approximate interval between onset of 1(a) and death
           </dt>
           <dd class="nhsuk-summary-list__value">
             {{ data['onsetInterval1a'] }}
+             {{ data['onsetInterval1ab'] }}
           </dd>
           <dd class="nhsuk-summary-list__actions">
             <a href="ap-prop-cause-of-death">
@@ -323,6 +325,8 @@ Case details
             </a>
           </dd>
         </div>
+        {% endif %}
+        {% if data['causeOfDeath1b'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             1(b) other disease or condition leading to 1(a)
@@ -336,12 +340,15 @@ Case details
             </a>
           </dd>
         </div>
+        {% endif %}
+        {% if data['onsetInterval1b'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Approximate interval between onset of 1(b) and death
           </dt>
           <dd class="nhsuk-summary-list__value">
             {{ data['onsetInterval1b'] }}
+            {{ data['onsetInterval1bb'] }}
           </dd>
           <dd class="nhsuk-summary-list__actions">
             <a href="ap-prop-cause-of-death">
@@ -349,6 +356,8 @@ Case details
             </a>
           </dd>
         </div>
+        {% endif %}
+        {% if data['causeOfDeath1c'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             1(c) other disease or condition leading to 1(b)
@@ -362,12 +371,15 @@ Case details
             </a>
           </dd>
         </div>
+        {% endif %}
+        {% if data['onsetInterval1c'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Approximate interval between onset of 1(c) and death
           </dt>
           <dd class="nhsuk-summary-list__value">
             {{ data['onsetInterval1c'] }}
+            {{ data['onsetInterval1cb'] }}
           </dd>
           <dd class="nhsuk-summary-list__actions">
             <a href="ap-prop-cause-of-death">
@@ -375,6 +387,8 @@ Case details
             </a>
           </dd>
         </div>
+        {% endif %}
+        {% if data['causeOfDeath2'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             2 - Other significant conditions
@@ -388,12 +402,15 @@ Case details
             </a>
           </dd>
         </div>
+        {% endif %}
+        {% if data['onsetInterval2'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Approximate interval between onset of 2 and death
           </dt>
           <dd class="nhsuk-summary-list__value">
             {{ data['onsetInterval2'] }}
+             {{ data['onsetInterval2b'] }}
           </dd>
           <dd class="nhsuk-summary-list__actions">
             <a href="ap-prop-cause-of-death">
@@ -401,6 +418,7 @@ Case details
             </a>
           </dd>
         </div>
+        {% endif %}
 
       {% endif %}
     </dl>
@@ -605,6 +623,7 @@ Case details
           </dt>
           <dd class="nhsuk-summary-list__value">
             {{ data['reviewOnsetInterval1a'] }}
+            {{ data['reviewOnsetInterval1ab'] }}
           </dd>
           <dd class="nhsuk-summary-list__actions">
             <a href="record-review">
@@ -635,6 +654,7 @@ Case details
           </dt>
           <dd class="nhsuk-summary-list__value">
             {{ data['reviewOnsetInterval1b'] }}
+             {{ data['reviewOnsetInterval1bb'] }}
           </dd>
           <dd class="nhsuk-summary-list__actions">
             <a href="record-review">
@@ -665,6 +685,7 @@ Case details
           </dt>
           <dd class="nhsuk-summary-list__value">
             {{ data['reviewOnsetInterval1c'] }}
+            {{ data['reviewOnsetInterval1cb'] }}
           </dd>
           <dd class="nhsuk-summary-list__actions">
             <a href="record-review">
@@ -695,6 +716,7 @@ Case details
           </dt>
           <dd class="nhsuk-summary-list__value">
             {{ data['reviewOnsetInterval2'] }}
+            {{ data['reviewOnsetInterval2b'] }}
           </dd>
           <dd class="nhsuk-summary-list__actions">
             <a href="record-review">

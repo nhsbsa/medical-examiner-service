@@ -174,9 +174,16 @@ router.post(/record-discussion-ap/, (req, res) => {
 
     if (agreedOutcome == 'different-cause-death') {
         res.redirect('different-mccd-outcome')
+    } 
+
+    else if (agreedOutcome) {
+        req.session.data['ap-discussion-section'] = 'complete'
     } else {
-        res.redirect('case-scrutiny')
+        req.session.data['ap-discussion-section'] = 'incomplete'
     }
+
+    res.redirect('case-scrutiny')
+    
 
 })
 
@@ -240,7 +247,7 @@ router.post(/no-discussion-main/, (req, res) => {
 
 })
 
-// Record discussion
+// Record discussion with main contact
 router.post(/main-contact-discussion/, (req, res) => {
 
     const raiseConcern = req.session.data['recordAsConcernMain']
@@ -276,6 +283,16 @@ router.post(/record-comm-or-concern/, (req, res) => {
 
 })
 
+// Discussion check answers -  comms-concern-cya
+
+router.post(/check-discussion-details/, (req, res) => {
+
+    req.session.data['concern-raised-yes-no'] = 'yes'
+    
+    res.redirect('../case/comms-concerns')
+
+})
+
 // Record concern (coming from Communication or concern)
 router.post(/raise-comms-concern/, (req, res) => {
 
@@ -284,17 +301,21 @@ router.post(/raise-comms-concern/, (req, res) => {
 
 })
 
-router.post(/any-further-action/, (req, res) => {
-    res.redirect('comms-concerns')
-})
+// Check concern details 
 
-router.post(/check-discussion-details/, (req, res) => {
+router.post(/concerns-notification-cya/, (req, res) => {
 
     req.session.data['concern-raised'] = 'yes'
 
     res.redirect('../case/comms-concerns')
 
 })
+
+
+router.post(/any-further-action/, (req, res) => {
+    res.redirect('comms-concerns')
+})
+
 
 // ========================================================================
 // CORONER NOTIFICATION
@@ -409,15 +430,11 @@ router.post(/reopen-case/, (req, res) => {
 
 
 router.post(/resend-raise-comms-concern/, (req, res) => {
-
     res.redirect('concerns/comms-concern-cya')
-
 })
 
 router.post(/concerns-notification-resend/, (req, res) => {
-
-    res.redirect('../../statics/comms-concerns')
-
+    res.redirect('../comms-concerns')
 })
 
 router.post(/remove-concern-notification/, (req, res) => {
@@ -427,10 +444,15 @@ router.post(/remove-concern-notification/, (req, res) => {
     if (removeNotification == 'yes') {
         res.redirect('../concerns/concern-notification-removed')
     } else {
-        res.redirect('../../statics/comms-concerns')
+        res.redirect('../comms-concerns')
     }
 
 })
+
+router.post(/remove-concern-confirm/, (req, res) => {
+    res.redirect('../comms-concerns')
+})
+
 
 router.post(/remove-discussion-main/, (req, res) => {
 
@@ -439,8 +461,14 @@ router.post(/remove-discussion-main/, (req, res) => {
     if (removeNotification == 'yes') {
         res.redirect('../concerns/discussion-main-removed')
     } else {
-        res.redirect('../../statics/comms-concerns')
+        res.redirect('../comms-concerns')
     }
+
+})
+
+router.post(/discussion-main-removed/, (req, res) => {
+
+    res.redirect('../comms-concerns')
 
 })
 
@@ -568,5 +596,16 @@ router.post(/search_no_results/, (req, res) => {
     res.redirect('search-no-results')
 
 })
+
+=======
+// Page: commns-concerns Concerns Notifucation email delivery status refresh
+router.post(/refresh-email-concern/, (req, res) => {
+
+    req.session.data['refresh-email-sent'] = 'refresh'
+
+    res.redirect('comms-concerns')
+
+})
+
 
 module.exports = router;

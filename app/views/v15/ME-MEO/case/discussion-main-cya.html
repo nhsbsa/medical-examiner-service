@@ -25,6 +25,13 @@ Case details
 
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
+                {% from 'back-link/macro.njk' import backLink %}
+
+        {{ backLink({
+        "href": "javascript:history.back()",
+        "text": "Go back"
+        }) }}
+
         <h1>
             <span class="nhsuk-caption-m nhsuk-caption--bottom">
 
@@ -33,6 +40,8 @@ Case details
             </span>
             Check discussion with main contact details
         </h1>
+
+         <form action="comms-concerns" method="post">
 
         <dl class="nhsuk-summary-list">
             <div class="nhsuk-summary-list__row summary-list__details-list">
@@ -49,11 +58,21 @@ Case details
             </div>
             <div class="nhsuk-summary-list__row summary-list__details-list">
                 <dt class="nhsuk-summary-list__key">
-                    Date and time raised
+                    Date raised
                 </dt>
                 <dd class="nhsuk-summary-list__value" id="date-time-value">
                     {{ data['dodDayMain'] }}/{{ data['dodMonthMain'] }}/{{ data['dodYearMain'] }}
-                    <br>
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a id="date-time-raised-change-link" href="discussion-with-main-contact">Change
+                        <span class="nhsuk-u-visually-hidden">date and time raised</span></a>
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row summary-list__details-list">
+                <dt class="nhsuk-summary-list__key">
+                     Time raised
+                </dt>
+                <dd class="nhsuk-summary-list__value" id="date-time-value">
                     {{ data['todHourMain'] }}:{{ data['todMinuteMain'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
@@ -78,11 +97,11 @@ Case details
                     <dt class="nhsuk-summary-list__key">
                         Concern raised?
                     </dt>
-                    <dd class="nhsuk-summary-list__value" id="concern-raised-value">
+                    <dd class="nhsuk-summary-list__value" id="concern-raised-yes-no">
                         {{ data['recordAsCommsConcern'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
-                        <a id="concern-raised-change-link" href="discussion-with-main">Change
+                        <a id="concern-raised-change-link" href="discussion-with-main-contact">Change
                             <span class="nhsuk-u-visually-hidden">concern raised</span></a>
                     </dd>
                 </div>
@@ -144,7 +163,12 @@ Case details
         {% if data['recordAsConcernMain'] == 'no' %}
         <p><a id="raise-concern-link" href="main-raise-concern">Raise concern</a></p>
         {% endif %}
-        <a id="return-to-communicaition-concerns-link" href="comms-concerns">Return to Communications</a>
+
+           <a id="return-to-communicaition-concerns-link" href="comms-concerns">
+               <button class="nhsuk-button" id="save-and-continue-button" type="submit">
+                Save and continue
+                </button>
+            </a>
 
     </div>
 </div>
