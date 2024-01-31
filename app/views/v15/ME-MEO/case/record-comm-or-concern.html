@@ -4,9 +4,9 @@
 
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout-full-width.html' %}
-<!-- 
+<!--
   In /views/layout.html you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 
@@ -47,7 +47,7 @@ Case details
                         What's the first name of the person the discussion was with?
                     </label>
                     <input class="nhsuk-input nhsuk-u-width-one-half" id="contactFirstNames" name="contactFirstNames"
-                        type="text">
+                        type="text" value="{{ data['contactFirstNames'] }}">
                 </div>
 
                 <div class="nhsuk-form-group">
@@ -55,7 +55,7 @@ Case details
                         What's the last name of the person the discussion was with?
                     </label>
                     <input class="nhsuk-input nhsuk-u-width-one-half" id="contactLastName" name="contactLastName"
-                        type="text">
+                        type="text" value="{{ data['contactLastName'] }}">
                 </div>
 
                 <div class="nhsuk-form-group">
@@ -66,7 +66,7 @@ Case details
                         For example, family member, or person involved in case
                     </div>
                     <input class="nhsuk-input nhsuk-u-width-one-half" id="contactRole" name="contactRole" type="text"
-                        aria-describedby="contactRole-hint">
+                        aria-describedby="contactRole-hint" value="{{ data['contactRole'] }}">
                 </div>
 
                 <div class="nhsuk-form-group">
@@ -77,7 +77,7 @@ Case details
                         This could be yourself or a colleague
                     </div>
                     <input class="nhsuk-input nhsuk-u-width-one-half" id="contactingTeamMember"
-                        name="contactingTeamMember" type="text" aria-describedby="contactingTeamMember-hint">
+                        name="contactingTeamMember" type="text" aria-describedby="contactingTeamMember-hint" value="{{ data['contactingTeamMember'] }}">
                 </div>
 
                 <div class="nhsuk-form-group">
@@ -96,7 +96,7 @@ Case details
                                     </label>
                                     <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
                                         id="dateOfDiscussion-day" name="dodDayCommsConcern" type="text" pattern="[0-9]*"
-                                        inputmode="numeric">
+                                        inputmode="numeric" value="{{ data['dodDayCommsConcern'] }}">
                                 </div>
                             </div>
                             <div class="nhsuk-date-input__item">
@@ -106,7 +106,7 @@ Case details
                                     </label>
                                     <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
                                         id="dateOfDiscussion-month" name="dodMonthCommsConcern" type="text" pattern="[0-9]*"
-                                        inputmode="numeric">
+                                        inputmode="numeric" value="{{ data['dodMonthCommsConcern'] }}">
                                 </div>
                             </div>
                             <div class="nhsuk-date-input__item">
@@ -116,7 +116,7 @@ Case details
                                     </label>
                                     <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
                                         id="dateOfDiscussion-year" name="dodYearCommsConcern" type="text" pattern="[0-9]*"
-                                        inputmode="numeric">
+                                        inputmode="numeric" value="{{ data['dodYearCommsConcern'] }}">
                                 </div>
                             </div>
                         </div>
@@ -139,7 +139,7 @@ Case details
                                     </label>
                                     <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
                                         id="timeOfDiscussion-hour" name="todHourCommsConcern" type="text" pattern="[0-9]*"
-                                        inputmode="numeric">
+                                        inputmode="numeric" value="{{ data['todHourCommsConcern'] }}">
                                 </div>
                             </div>
                             <div class="nhsuk-date-input__item">
@@ -149,7 +149,7 @@ Case details
                                     </label>
                                     <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
                                         id="timeOfDiscussion-minute" name="todMinuteCommsConcern" type="text" pattern="[0-9]*"
-                                        inputmode="numeric">
+                                        inputmode="numeric" value="{{ data['todMinuteCommsConcern'] }}">
                                 </div>
                             </div>
                         </div>
@@ -192,7 +192,7 @@ Case details
                         Enter details of the discussion
                     </label>
                     <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="detailsOfDiscussion"
-                        name="detailsOfDiscussionCommsConcern" rows="5"></textarea>
+                        name="detailsOfDiscussionCommsConcern" rows="5">{{ data['todMinuteCommsConcern'] }}</textarea>
                 </div>
 
                 <!--<div class="nhsuk-form-group">
