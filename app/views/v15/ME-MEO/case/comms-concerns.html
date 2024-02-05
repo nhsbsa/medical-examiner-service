@@ -4,9 +4,9 @@
 
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout-admin-interface.html' %}
-<!-- 
+<!--
   In /views/layout.html you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 
@@ -38,8 +38,8 @@ Case details
   <div class="nhsuk-grid-column-three-quarters">
     <h1 class="nhsuk-heading-xl">Communications</h1>
   </div>
-  
-    <!-- IF the mandatory sections are complete and a Coroner has responded, then show close button  --> 
+
+    <!-- IF the mandatory sections are complete and a Coroner has responded, then show close button  -->
       {% if data['create-and-assign-section'] and data['additional-details-section'] and data['location-of-death-section'] and data['pre-scrutiny-note-section'] and data['ap-prop-cause-of-death-section'] and
   data['me-independent-review-section'] and data['ap-discussion-section'] and data['discussion-with-main-section'] and
   data['coroner-notification-section'] and data['coroner-response-section'] %}
@@ -133,7 +133,7 @@ Case details
               Action
             </dt>
             <dd class="nhsuk-summary-list__value">
-              <td class="nhsuk-table__cell "><a href="../case/discussion-main-cya">View details</a> 
+              <td class="nhsuk-table__cell "><a href="../case/discussion-main-cya">View details</a>
                 {% if data['discussion-with-main-section'] == 'draft' %}
                   / <a href="../case/concerns/remove-discussion-main">Remove</a></td>
                 {% endif %}
@@ -146,7 +146,7 @@ Case details
           <table class="nhsuk-table">
             <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">A table showing the concerns raised</caption>
             <thead role="rowgroup" class="nhsuk-table__head">
-              <tr role="row"> 
+              <tr role="row">
                 <th role="columnheader" class="" scope="col">
                   Concern type
                 </th>
@@ -310,11 +310,11 @@ Case details
         <span class="nhsuk-details__summary-text">
           Discussion with {{ data['contactFirstNames'] }} {{ data['contactLastName'] }}
         </span>
-        
+
               <strong class="nhsuk-tag nhsuk-tag nhsbsa-tag--custom">
                 Complete
               </strong>
-           
+
       </summary>
       <div class="nhsuk-details__text">
         <dl class="nhsuk-summary-list nhsuk-summary-list--no-border">
@@ -347,7 +347,7 @@ Case details
               Action
             </dt>
             <dd class="nhsuk-summary-list__value">
-              <td class="nhsuk-table__cell "><a href="../case/record-comm-or-concern">View details</a> 
+              <td class="nhsuk-table__cell "><a href="../case/comms-concern-cya">View details</a> 
                 {% if data['record-communication-concern-section'] == 'draft' %}
                   / <a href="../case/concerns/remove-discussion-main">Remove</a></td>
                 {% endif %}
@@ -417,7 +417,7 @@ Case details
                     <button class="nhsuk-link" data-module="nhsuk-action-link" type="submit">
                       Refresh
                     </button>
-                  </form> 
+                  </form>
               </tr>
               {% endif %}
             </tbody>
@@ -552,7 +552,7 @@ Case details
                     <a href="#" onclick="document.getElementById('status-refresh').submit(); return false;">Refresh</a></td>
                   </form>
                 </td>
-                  {% endif %} 
+                  {% endif %}
             </tr>
                 {% if data['comms-governance-process-email'] %}
               <tr role="row" class="nhsuk-table__row">
@@ -607,7 +607,7 @@ Case details
               {% if data['comms-patient-safety-email'] %}
               <td class="nhsuk-table__cell "><a href="#">Refresh</a></td>
               {% else %}
-              
+
               <td class="nhsuk-table__cell "><a href="../case/concerns/comms-concern-cya">Review</a> / <a
                   href="../case/concerns/remove-concern-notification">Remove</a></td>
               {% endif %}
@@ -619,7 +619,7 @@ Case details
       {% endif %}
 
       </div>
-      
+
     </details>
 
     {% endif %}
