@@ -4,9 +4,9 @@
 
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout-full-width.html' %}
-<!-- 
+<!--
   In /views/layout.html you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 
@@ -52,7 +52,7 @@ Case details
                         {{ data['notificationReason'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
-                        <a id="reason-for-notification-change-link" href="#">Change
+                        <a id="reason-for-notification-change-link" href="me-comms-coroner#notificationReason">Change
                             <span class="nhsuk-u-visually-hidden">reason for notification</span></a>
                     </dd>
                 </div>
@@ -64,7 +64,7 @@ Case details
                         {{ data['mentalHealthIssues'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
-                        <a id="deceased-mental-health-issues-change-link" href="#">Change
+                        <a id="deceased-mental-health-issues-change-link" href="me-comms-coroner#mentalHealthIssues">Change
                             <span class="nhsuk-u-visually-hidden">mental health status</span></a>
                     </dd>
                 </div>
@@ -76,7 +76,7 @@ Case details
                         {{ data['reportedToPolice'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
-                        <a id="reported-police-change-link" href="#">Change
+                        <a id="reported-police-change-link" href="me-comms-coroner#reportedToPolice">Change
                             <span class="nhsuk-u-visually-hidden">reported to police</span></a>
                     </dd>
                 </div>
@@ -239,7 +239,7 @@ Case details
 
             <h2 class="nhsuk-heading-l" id="me-independent-review-header">Medical Examiner's independent review</h2>
             <dl class="nhsuk-summary-list">
-                <div class="nhsuk-summary-list__row summary-list__details-list"> 
+                <div class="nhsuk-summary-list__row summary-list__details-list">
                     <dt class="nhsuk-summary-list__key">
                         Cause of death summary
                     </dt>
@@ -263,7 +263,7 @@ Case details
                         {{ data['coronerEmailAddress'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
-                        <a id="coroner-email-change-link" href="#">Change
+                        <a id="coroner-email-change-link" href="coroner-email#emailAddress">Change
                             <span class="nhsuk-u-visually-hidden">coroner email address</span></a>
                     </dd>
                 </div>

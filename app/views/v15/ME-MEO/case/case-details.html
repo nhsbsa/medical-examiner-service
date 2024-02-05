@@ -4,9 +4,9 @@
 
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout-admin-interface.html' %}
-<!-- 
+<!--
   In /views/layout.html you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 
@@ -281,8 +281,8 @@ Case details
             {% endif %}
           </dd>
           <dd class="nhsuk-summary-list__actions">
-            <a href="../../ME-MEO/case/additional-details#homeAddressKnown">
-              Change<span class="nhsuk-u-visually-hidden"> home address</span>
+          <a href="../../ME-MEO/case/additional-details#homeAddressKnown">
+            Change<span class="nhsuk-u-visually-hidden"> home address</span>
             </a>
           </dd>
         </div>
@@ -355,7 +355,7 @@ Case details
   <!-- ================================================== -->
   <!-- LOCATION OF DEATH -->
   <!-- ================================================== -->
-    
+
   {% if data['location-of-death-section'] == 'complete' or data['draft-status-HAS'] == 'draft' %}
   <div class="nhsuk-grid-column-full">
     {% if data['locationOfDeathType'] == 'hospital-acute' %}
@@ -382,7 +382,7 @@ Case details
               {{ data['healthCareProvider'] }}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="hospital-acute-setting">
+              <a href="hospital-acute-setting#healthCareProvider">
                 Change<span class="nhsuk-u-visually-hidden"> location of death</span>
               </a>
             </dd>
@@ -395,7 +395,7 @@ Case details
               {{ data['locationDetails'] }}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="hospital-acute-setting">
+              <a href="hospital-acute-setting#locationDetails">
                 Change<span class="nhsuk-u-visually-hidden"> location details</span>
               </a>
             </dd>
@@ -408,7 +408,7 @@ Case details
               {{ data['doaDay'] }}/{{ data['doaMonth'] }}/{{ data['doaYear'] }}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="hospital-acute-setting">
+              <a href="hospital-acute-setting#dateOfAdmission">
                 Change<span class="nhsuk-u-visually-hidden"> date of admission</span>
               </a>
             </dd>
@@ -451,7 +451,7 @@ Case details
           </dt>
           <dd class="nhsuk-summary-list__value">
             {% if data['addressLocationType'] == 'same-as-home' %}
-              
+
             {% if data['homeAddressKnown'] == 'yes' %}
               {{ data['addressLine1'] }}<br>
               {% if data['addressLine2'] %}{{ data['addressLine2'] }}<br>{% endif %}
@@ -516,7 +516,7 @@ Case details
       <li><a class="active" href="case-details">
         Case details
         <!-- if case details sections are all complete -->
-        {% if data['additional-details-section'] == 'complete' and data['location-of-death-section'] == 'complete' %} 
+        {% if data['additional-details-section'] == 'complete' and data['location-of-death-section'] == 'complete' %}
         <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
           Complete
         </strong>
@@ -531,20 +531,20 @@ Case details
       {% if data['over-under-28'] %}
         <li><a href="case-scrutiny">
           Case scrutiny
-          {% if data['pre-scrutiny-note-section'] == 'complete' and 
-          data['ap-prop-cause-of-death-section'] == 'complete' and 
-          data['me-independent-review-section'] == 'complete' and 
-          data['ap-discussion-section'] == 'complete' and 
-          data['ap-details-section'] == 'complete'       
+          {% if data['pre-scrutiny-note-section'] == 'complete' and
+          data['ap-prop-cause-of-death-section'] == 'complete' and
+          data['me-independent-review-section'] == 'complete' and
+          data['ap-discussion-section'] == 'complete' and
+          data['ap-details-section'] == 'complete'
           %}
           <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
             Complete
           </strong>
-          {% elif data['pre-scrutiny-note-section'] == 'complete' or 
-          data['ap-prop-cause-of-death-section'] == 'complete' or 
-          data['me-independent-review-section'] == 'complete' or 
-          data['ap-discussion-section'] == 'complete' or 
-          data['ap-details-section'] == 'complete'       
+          {% elif data['pre-scrutiny-note-section'] == 'complete' or
+          data['ap-prop-cause-of-death-section'] == 'complete' or
+          data['me-independent-review-section'] == 'complete' or
+          data['ap-discussion-section'] == 'complete' or
+          data['ap-details-section'] == 'complete'
           %}
           <strong class="nhsuk-tag nhsuk-tag--grey side-nav-tag">
             In progress
@@ -559,20 +559,20 @@ Case details
       <form action="case-scrutiny-link" method="post" id="run-28-days-once">
         <li><a href="#" onclick="document.getElementById('run-28-days-once').submit(); return false;">
           Case scrutiny
-          {% if data['pre-scrutiny-note-section'] == 'complete' and 
-          data['ap-prop-cause-of-death-section'] == 'complete' and 
-          data['me-independent-review-section'] == 'complete' and 
-          data['ap-discussion-section'] == 'complete' and 
-          data['ap-details-section'] == 'complete'       
+          {% if data['pre-scrutiny-note-section'] == 'complete' and
+          data['ap-prop-cause-of-death-section'] == 'complete' and
+          data['me-independent-review-section'] == 'complete' and
+          data['ap-discussion-section'] == 'complete' and
+          data['ap-details-section'] == 'complete'
           %}
           <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
             Complete
           </strong>
-          {% elif data['pre-scrutiny-note-section'] == 'complete'  or 
-          data['ap-prop-cause-of-death-section'] == 'complete' or 
-          data['me-independent-review-section'] == 'complete' or 
-          data['ap-discussion-section'] == 'complete' or 
-          data['ap-details-section'] == 'complete'       
+          {% elif data['pre-scrutiny-note-section'] == 'complete'  or
+          data['ap-prop-cause-of-death-section'] == 'complete' or
+          data['me-independent-review-section'] == 'complete' or
+          data['ap-discussion-section'] == 'complete' or
+          data['ap-details-section'] == 'complete'
           %}
           <strong class="nhsuk-tag nhsuk-tag--grey side-nav-tag">
             In progress

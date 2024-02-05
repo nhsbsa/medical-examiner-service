@@ -1,8 +1,8 @@
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout-full-width.html' %}
-<!-- 
+<!--
   In /views/layout.html you can:
-    - edit the header and footer 
+    - edit the header and footer
     - add custom CSS and JavaScript
 -->
 
@@ -39,7 +39,7 @@ Create new case
         <label class="nhsuk-label nhsuk-u-width-one-half" for="firstNames">
           First name(s)
         </label>
-        <input class="nhsuk-input nhsuk-u-width-one-half" id="firstNames" name="deceased-first-name" type="text" 
+        <input class="nhsuk-input nhsuk-u-width-one-half" id="firstNames" name="deceased-first-name" type="text"
         value="{{ data['deceased-first-name'] }}">
       </div>
       <div class="nhsuk-form-group">
@@ -76,7 +76,7 @@ Create new case
                   Month
                 </label>
                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dateOfDeath-dodMonth"
-                  name="dodMonthCreate" type="text" pattern="[0-9]*" inputmode="numeric">
+                  name="dodMonthCreate" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['dodMonthCreate'] }}">
               </div>
             </div>
             <div class="nhsuk-date-input__item">
@@ -85,7 +85,7 @@ Create new case
                   Year
                 </label>
                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="dateOfDeath-dodYear"
-                  name="dodYearCreate" type="text" pattern="[0-9]*" inputmode="numeric">
+                  name="dodYearCreate" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['dodYearCreate'] }}">
               </div>
             </div>
           </div>
@@ -107,7 +107,7 @@ Create new case
                   Hour
                 </label>
                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="timeOfDeath-hour"
-                  name="todHourCreate" type="text" pattern="[0-9]*" inputmode="numeric">
+                  name="todHourCreate" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['todHourCreate'] }}">
               </div>
             </div>
             <div class="nhsuk-date-input__item">
@@ -116,7 +116,7 @@ Create new case
                   Minutes
                 </label>
                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="timeOfDeath-todMinute"
-                  name="todMinuteCreate" type="text" pattern="[0-9]*" inputmode="numeric">
+                  name="todMinuteCreate" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['todMinuteCreate'] }}">
               </div>
             </div>
           </div>

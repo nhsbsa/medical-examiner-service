@@ -4,9 +4,9 @@
 
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout-full-width.html' %}
-<!-- 
+<!--
   In /views/layout.html you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 
@@ -49,13 +49,13 @@ Case details
 
         <form action="ap-prop-cause-of-death" method="post">
 
-            
+
             <div class="nhsuk-form-group">
                 <label class="nhsuk-label nhsuk-u-width-two-thirds" for="causeOfDeathSummary">
                     Cause of death summary
                 </label>
                 <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="causeOfDeathSummary"
-                    name="causeOfDeathSummary" rows=" 10 "></textarea>
+                    name="causeOfDeathSummary" rows=" 10 ">{{ data['causeOfDeathSummary'] }}</textarea>
             </div>
 
             <!-- Under 28 days after birth form -->
@@ -100,7 +100,7 @@ Case details
                             1(a) disease or condition directly leading to death (required)
                         </label>
                         <input class="nhsuk-input nhsuk-u-width-one-half" id="causeOfDeath1a" name="causeOfDeath1a"
-                            type="text">
+                            type="text" value="{{ data['causeOfDeath1a'] }}">
                     </div>
                     <div class="nhsuk-date-input" id="onset1a">
                         <div class="nhsuk-date-input__item">
@@ -108,7 +108,7 @@ Case details
                                 <label class="nhsuk-label" for="onsetInterval1a">
                                     Approximate interval between onset of 1(a) and death
                                 </label>
-                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 interval-input" id="onsetInterval1a" name="onsetInterval1a" type="text" pattern="[0-9]*" inputmode="numeric">
+                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 interval-input" id="onsetInterval1a" name="onsetInterval1a" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['onsetInterval1a'] }}">
                                 <select class="nhsuk-select" id="onsetInterval1ab" name="onsetInterval1ab">
                                   <option value="year(s)">Year(s)</option>
                                   <option value="month(s)">Month(s)</option>
@@ -127,7 +127,7 @@ Case details
                             1(b) other disease or condition leading to 1(a) (optional)
                         </label>
                         <input class="nhsuk-input nhsuk-u-width-one-half" id="causeOfDeath1b" name="causeOfDeath1b"
-                            type="text">
+                            type="text" value="{{ data['causeOfDeath1b'] }}">
                     </div>
                     <div class="nhsuk-form-group">
                     <div class="nhsuk-date-input" id="onset1b">
@@ -136,7 +136,7 @@ Case details
                                 <label class="nhsuk-label" for="select-1">
                                     Approximate interval between onset of 1(b) and death
                                 </label>
-                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 interval-input" id="onsetInterval1b" name="onsetInterval1b" type="text" pattern="[0-9]*" inputmode="numeric">
+                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 interval-input" id="onsetInterval1b" name="onsetInterval1b" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['onsetInterval1b'] }}">
                                 <select class="nhsuk-select" id="onsetInterval1bb" name="onsetInterval1bb">
                                   <option value="year(s)">Year(s)</option>
                                   <option value="month(s)">Month(s)</option>
@@ -155,7 +155,7 @@ Case details
                             1(c) other disease or condition leading to 1(b) (optional)
                         </label>
                         <input class="nhsuk-input nhsuk-u-width-one-half" id="causeOfDeath1c" name="causeOfDeath1c"
-                            type="text">
+                            type="text" value="{{ data['causeOfDeath1c'] }}">
                     </div>
                     <div class="nhsuk-form-group">
                         <div class="nhsuk-date-input" id="onset1c">
@@ -164,7 +164,7 @@ Case details
                                     <label class="nhsuk-label" for="select-1">
                                         Approximate interval between onset of 1(c) and death
                                     </label>
-                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 interval-input" id="onsetInterval1c" name="onsetInterval1c" type="text" pattern="[0-9]*" inputmode="numeric">
+                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 interval-input" id="onsetInterval1c" name="onsetInterval1c" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['onsetInterval1c'] }}">
                                     <select class="nhsuk-select" id="onsetInterval1cb" name="onsetInterval1cb">
                                       <option value="year(s)">Year(s)</option>
                                       <option value="month(s)">Month(s)</option>
@@ -184,7 +184,7 @@ Case details
                             2 - Other significant conditions (optional)
                         </label>
                         <input class="nhsuk-input nhsuk-u-width-one-half" id="causeOfDeath2" name="causeOfDeath2"
-                            type="text">
+                            type="text" value="{{ data['causeOfDeath2'] }}">
                     </div>
                     <div class="nhsuk-form-group">
                         <div class="nhsuk-date-input" id="onset2">
@@ -193,7 +193,7 @@ Case details
                                     <label class="nhsuk-label" for="select-1">
                                         Approximate interval between onset of 2 and death
                                     </label>
-                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 interval-input" id="onsetInterval2" name="onsetInterval2" type="text" pattern="[0-9]*" inputmode="numeric">
+                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 interval-input" id="onsetInterval2" name="onsetInterval2" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['onsetInterval2'] }}">
                                     <select class="nhsuk-select" id="onsetInterval2b" name="onsetInterval2b">
                                       <option value="year(s)">Year(s)</option>
                                       <option value="month(s)">Month(s)</option>
@@ -253,7 +253,7 @@ Case details
 
         </form>
 
-        <form action="save-draft-APCOD" method="post"> 
+        <form action="save-draft-APCOD" method="post">
             <button class="nhsuk-button nhsuk-button--secondary custom-draft-button" id="save-as-draft-button" data-module="nhsuk-button" type="submit">
                 Save as draft
             </button>

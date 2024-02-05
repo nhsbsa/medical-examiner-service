@@ -41,7 +41,7 @@ Case details
                     {{ data['contactFirstNames'] }} {{ data['contactLastName'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                    <a id="raised-by-change-link" href="record-comm-or-concern">Change
+                    <a id="raised-by-change-link" href="record-comm-or-concern#contactFirstNames">Change
                         <span class="nhsuk-u-visually-hidden">who raised the concern</span></a>
                 </dd>
             </div>
@@ -54,7 +54,7 @@ Case details
                     {{ data['contactRole'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                    <a id="raised-by-change-link" href="record-comm-or-concern">Change
+                    <a id="raised-by-change-link" href="record-comm-or-concern#contactRole">Change
                         <span class="nhsuk-u-visually-hidden">Relationship</span></a>
                 </dd>
             </div>
@@ -64,10 +64,10 @@ Case details
                     Team member discussion was with
                 </dt>
                 <dd class="nhsuk-summary-list__value" id="discussion-team-member">
-                    {{ data['contactRole'] }}
+                    {{ data['contactingTeamMember'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                    <a id="raised-by-change-link" href="record-comm-or-concern">Change
+                    <a id="raised-by-change-link" href="record-comm-or-concern#contactingTeamMember">Change
                         <span class="nhsuk-u-visually-hidden">Relationship</span></a>
                 </dd>
             </div>
@@ -82,7 +82,7 @@ Case details
                     {{ data['todHourCommsConcern'] }}:{{ data['todMinuteCommsConcern'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                    <a id="date-time-raised-change-link" href="record-comm-or-concern">Change
+                    <a id="date-time-raised-change-link" href="record-comm-or-concern#dateOfDiscussion">Change
                         <span class="nhsuk-u-visually-hidden">date and time raised</span></a>
                 </dd>
             </div>
@@ -106,7 +106,7 @@ Case details
                     {{ data['detailsOfDiscussionCommsConcern'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                    <a id="conversation-details-change-link" href="record-comm-or-concern">Change
+                    <a id="conversation-details-change-link" href="record-comm-or-concern#detailsOfDiscussion">Change
                         <span class="nhsuk-u-visually-hidden">discussion details</span></a>
                 </dd>
             </div>

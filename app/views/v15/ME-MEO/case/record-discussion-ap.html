@@ -4,9 +4,9 @@
 
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout-full-width.html' %}
-<!-- 
+<!--
   In /views/layout.html you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 
@@ -134,7 +134,7 @@ Case details
                     Details of the discussion
                 </label>
                 <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="detailsOfDiscussion"
-                    name="detailsOfDiscussion" rows="5"></textarea>
+                    name="detailsOfDiscussion" rows="5">{{ data['detailsOfDiscussion'] }}</textarea>
             </div>
 
             <div class="nhsuk-form-group">
@@ -193,7 +193,7 @@ Case details
 
         </form>
 
-        <form action="save-draft-APCOD" method="post"> 
+        <form action="save-draft-APCOD" method="post">
             <button class="nhsuk-button nhsuk-button--secondary custom-draft-button" id="save-as-draft-button" data-module="nhsuk-button" type="submit">
                 Save as draft
               </button>

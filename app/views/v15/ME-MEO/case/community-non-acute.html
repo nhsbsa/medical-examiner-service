@@ -4,9 +4,9 @@
 
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout-full-width.html' %}
-<!-- 
+<!--
   In /views/layout.html you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 
@@ -78,7 +78,7 @@ Case details
                                         Address line 1 <span class="nhsuk-u-visually-hidden">line 1 of 2</span>
                                     </label>
                                     <input class="nhsuk-input nhsuk-u-width-one-half" id="addressLine1"
-                                        name="otherAddressLine1" type="text">
+                                        name="otherAddressLine1" type="text" value="{{ data['otherAddressLine1'] }}">
                                 </div>
                                 <div class="nhsuk-form-group">
                                     <label class="nhsuk-label nhsuk-u-width-one-half" for="addressLine2">

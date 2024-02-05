@@ -4,9 +4,9 @@
 
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout-full-width.html' %}
-<!-- 
+<!--
   In /views/layout.html you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 
@@ -50,7 +50,7 @@ Case details
                 clinical investigations (CT, MRI, X-ray), falls, pressure sores (including grade), learning
                 difficulties, end of life care documentation and DNAR, ongoing registered concerns.
             </div>
-            <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="noteText" name="noteText" rows="15" aria-describedby="noteText-hint"></textarea>
+            <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="noteText" name="noteText" rows="15" aria-describedby="noteText-hint">{{ data['noteText'] }}</textarea>
         </div>
         <div class="nhsuk-form-group">
             <div class="nhsuk-checkboxes">
@@ -68,7 +68,7 @@ Case details
 
         </form>
 
-            <form action="save-draft-PSN" method="post"> 
+            <form action="save-draft-PSN" method="post">
                 <button class="nhsuk-button nhsuk-button--secondary custom-draft-button" id="save-as-draft-button" data-module="nhsuk-button" type="submit">
                 Save as draft
               </button>

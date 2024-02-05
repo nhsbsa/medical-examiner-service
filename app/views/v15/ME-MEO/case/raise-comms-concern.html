@@ -4,9 +4,9 @@
 
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout-full-width.html' %}
-<!-- 
+<!--
   In /views/layout.html you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 
@@ -48,7 +48,7 @@ Case details
                     Enter a title for the concern
                 </label>
                 <input class="nhsuk-input nhsuk-u-width-two-thirds" id="titleOfConcern" name="titleOfConcern"
-                    type="text">
+                    type="text" value="{{ data['titleOfConcern'] }}">
             </div>
 
             <div class="nhsuk-label nhsuk-u-width-two-thirds" data-module="nhsuk-character-count" data-maxlength="500">
@@ -57,13 +57,13 @@ Case details
                     <label class="nhsuk-label nhsuk-label" for="detailsOfConcern">
                         Enter details of the concern
                     </label>
-                  <textarea class="nhsuk-textarea nhsuk-js-character-count" id="detailsOfConcern" name="detailsOfConcern" rows="8" aria-describedby="detailsOfConcern-hint"></textarea>
+                  <textarea class="nhsuk-textarea nhsuk-js-character-count" id="detailsOfConcern" name="detailsOfConcern" rows="8" aria-describedby="detailsOfConcern-hint">{{ data['detailsOfConcern'] }}</textarea>
                 </div>
-              
+
                 <div class="nhsuk-hint nhsuk-character-count__message" id="detailsOfConcern-info">
                   You can enter up to 500 characters
                 </div>
-              
+
               </div>
 
             <h2>
@@ -77,7 +77,7 @@ Case details
                 <div class="nhsuk-hint" id="example-with-hint-text-hint">
                     For example, structured judgemenet review or equivalent
                   </div>
-                <input class="nhsuk-input nhsuk-input--width-20" id="email" name="comms-record-review-email" type="text">
+                <input class="nhsuk-input nhsuk-input--width-20" id="comms-record-review-email" name="comms-record-review-email" type="text" value="{{ data['comms-record-review-email'] }}">
             </div>
 
             <div class="nhsuk-form-group">
@@ -87,7 +87,7 @@ Case details
                 <div class="nhsuk-hint" id="example-with-hint-text-hint">
                     For example, safeguarding or mortality and morbidity (M&M) meetings
                   </div>
-                <input class="nhsuk-input nhsuk-input--width-20" id="email" name="comms-governance-process-email" type="text">
+                <input class="nhsuk-input nhsuk-input--width-20" id="comms-governance-process-email" name="comms-governance-process-email" type="text" value="{{ data['comms-governance-process-email'] }}">
             </div>
 
             <div class="nhsuk-form-group">
@@ -97,7 +97,7 @@ Case details
                 <div class="nhsuk-hint" id="example-with-hint-text-hint">
                     For example, safeguarding or mortality and morbidity (M&M) meetings
                   </div>
-                <input class="nhsuk-input nhsuk-input--width-20" id="email" name="comms-patient-safety-email" type="text">
+                <input class="nhsuk-input nhsuk-input--width-20" id="comms-patient-safety-email" name="comms-patient-safety-email" type="text" value="{{ data['comms-patient-safety-email'] }}">
             </div>
 
             <div class="nhsuk-form-group">
@@ -123,13 +123,13 @@ Case details
                     </div>
                 </fieldset>
             </div>
- 
+
             <button class="nhsuk-button" type="submit">
                 Save and continue
             </button>
         </form>
 
-        <form action="save-draft-RC" method="post"> 
+        <form action="save-draft-RC" method="post">
             <button class="nhsuk-button nhsuk-button--secondary custom-draft-button" id="save-as-draft-button" data-module="nhsuk-button" type="submit">
                 Save as draft
               </button>
