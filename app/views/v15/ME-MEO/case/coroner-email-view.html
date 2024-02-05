@@ -33,13 +33,13 @@ Case details
                 <span class="nhsuk-caption-m nhsuk-caption--bottom">
                     Coroner notification - {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
                 </span>
-                Check your answers
+                Coroner notification
             </h1>
 
 
             <div class="nhsuk-inset-text">
                 <span class="nhsuk-u-visually-hidden">Information: </span>
-                <p>Check that all the case details are correct before you send this to the coroner.</p>
+                <p>These are the case details which were sent to the coroner.</p>
             </div>
 
             <h2 class="nhsuk-heading-l" id="coroner-notification-details-header">Notification details</h2>
@@ -52,8 +52,7 @@ Case details
                         {{ data['notificationReason'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
-                        <a id="reason-for-notification-change-link" href="#">Change
-                            <span class="nhsuk-u-visually-hidden">reason for notification</span></a>
+                       &nbsp;
                     </dd>
                 </div>
                 <div class="nhsuk-summary-list__row summary-list__details-list">
@@ -64,8 +63,7 @@ Case details
                         {{ data['mentalHealthIssues'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
-                        <a id="deceased-mental-health-issues-change-link" href="#">Change
-                            <span class="nhsuk-u-visually-hidden">mental health status</span></a>
+                         &nbsp;
                     </dd>
                 </div>
                 <div class="nhsuk-summary-list__row summary-list__details-list">
@@ -76,8 +74,7 @@ Case details
                         {{ data['reportedToPolice'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
-                        <a id="reported-police-change-link" href="#">Change
-                            <span class="nhsuk-u-visually-hidden">reported to police</span></a>
+                         &nbsp;
                     </dd>
                 </div>
             </dl>
@@ -92,8 +89,7 @@ Case details
                         {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
-                        <a id="deceased-name-change-link" href="#">Change
-                            <span class="nhsuk-u-visually-hidden">deceased person's name</span></a>
+                         &nbsp;
                     </dd>
                 </div>
                 <div class="nhsuk-summary-list__row summary-list__details-list">
@@ -104,8 +100,7 @@ Case details
                         {{ data['dobDay'] }}/{{ data['dobMonth'] }}/{{ data['dobYear'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
-                        <a id="deceased-dob-change-link" href="#">Change
-                            <span class="nhsuk-u-visually-hidden">date of birth</span></a>
+                         &nbsp;
                     </dd>
                 </div>
                 <div class="nhsuk-summary-list__row summary-list__details-list">
@@ -116,8 +111,7 @@ Case details
                         {{ data['nhsNumber'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
-                        <a id="deceased-nhs-number-change-link" href="#">Change
-                            <span class="nhsuk-u-visually-hidden">nhs number</span></a>
+                         &nbsp;
                     </dd>
                 </div>
                 <div class="nhsuk-summary-list__row summary-list__details-list">
@@ -128,8 +122,7 @@ Case details
                         {{ data['hospitalNumber'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
-                        <a id="deceased-hosptial-number-change-link" href="#">Change
-                            <span class="nhsuk-u-visually-hidden">hospital number</span></a>
+                         &nbsp;
                     </dd>
                 </div>
                 <div class="nhsuk-summary-list__row summary-list__details-list">
@@ -140,8 +133,7 @@ Case details
                         {{ data['dodDay'] }}/{{ data['dodMonth'] }}/{{ data['dodYear'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
-                        <a id="deceased-dod-change-link" href="#">Change
-                            <span class="nhsuk-u-visually-hidden">date of death</span></a>
+                        &nbsp;
                     </dd>
                 </div>
                 <div class="nhsuk-summary-list__row summary-list__details-list">
@@ -152,8 +144,7 @@ Case details
                         {{ data['todHour'] }}:{{ data['todMinute'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
-                        <a id="deceased-tod-change-link" href="#">Change
-                            <span class="nhsuk-u-visually-hidden">time of death</span></a>
+                         &nbsp;
                     </dd>
                 </div>
 
@@ -165,8 +156,7 @@ Case details
                         {{ data['requestForRapidRelease'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
-                        <a id="deceased-rapid-release-change-link" href="#">Change
-                            <span class="nhsuk-u-visually-hidden"> request for rapid release</span></a>
+                         &nbsp;
                     </dd>
                 </div>
                 <div class="nhsuk-summary-list__row summary-list__details-list">
@@ -177,8 +167,7 @@ Case details
                         {{ data['addressLine1'] }}<br>{{ data['addressLine2'] }}<br>{{ data['townOrCity'] }}<br>{{ data['county'] }}<br>{{ data['postCode'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
-                        <a id="deceased-home-address-change-link" href="#">Change
-                            <span class="nhsuk-u-visually-hidden">home address</span></a>
+                        &nbsp;
                     </dd>
                 </div>
                 {% if data['occupationKnown'] == 'yes' %}
@@ -190,9 +179,7 @@ Case details
                             {{ data['mainJob'] }}
                         </dd>
                         <dd class="nhsuk-summary-list__actions">
-                            <a id="deceased-job-change-link" href="#">Change
-                                <span class="nhsuk-u-visually-hidden">main job</span></a>
-
+                          &nbsp;
                         </dd>
                     </div>
                 {% endif %}
@@ -208,8 +195,7 @@ Case details
                         {{ data['locationOfDeathType'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
-                        <a id="location-of-death-type-link" href="#">Change
-                            <span class="nhsuk-u-visually-hidden">location of death</span></a>
+                         &nbsp;
                     </dd>
                 </div>
 
@@ -231,8 +217,7 @@ Case details
                         {% endif %}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
-                        <a id="location-of-death-details-link" href="#">Change
-                            <span class="nhsuk-u-visually-hidden">location details</span></a>
+                        &nbsp;
                     </dd>
                 </div>
             </dl>
@@ -247,8 +232,7 @@ Case details
                         {{ data['reviewCauseOfDeathSummary'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
-                        <a id="me-cause-of-death-change-link" href="#">Change
-                            <span class="nhsuk-u-visually-hidden">ME cause of death summary</span></a>
+                         &nbsp;
                     </dd>
                 </div>
             </dl>
@@ -263,16 +247,14 @@ Case details
                         {{ data['coronerEmailAddress'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
-                        <a id="coroner-email-change-link" href="#">Change
-                            <span class="nhsuk-u-visually-hidden">coroner email address</span></a>
+                         &nbsp;
                     </dd>
                 </div>
             </dl>
 
-            <a class="nhsuk-button" id="accept-and-send-button" href="coroner-email-sent">
-                Accept and send
-            </a><br>
-            <a id="return-to-coroner-notification-link" href="#">Return to Coroner notification</a>
+            <a class="nhsuk-button" href="coroner-notification">
+                Continue
+            </a>
 
         </div>
     </div>
