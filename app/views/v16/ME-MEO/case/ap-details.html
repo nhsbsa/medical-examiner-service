@@ -1,0 +1,65 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-full-width.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+        {{ backLink({
+        "href": "javascript:history.back()",
+        "text": "Go back"
+        }) }}
+        <h1>
+            <span class="nhsuk-caption-m nhsuk-caption--bottom">
+                Case scrutiny - {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
+            </span>
+            Attending practitioner's (AP) details
+        </h1>
+
+        <form action="ap-details" method="post">
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-u-width-one-half" for="qapFirstNames">
+                    First name of the AP who proposed the cause of death
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="qapFirstNames" name="qapFirstNames" type="text" value="{{ data['qapFirstNames'] }}">
+            </div>
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-u-width-one-half" for="qapLastName">
+                    Last name of the AP who proposed the cause of death
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="qapLastName" name="qapLastName" type="text" value="{{ data['qapLastName'] }}">
+            </div>
+
+            <button class="nhsuk-button" id="save-and-continue-button" type="submit">
+                Save and continue
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

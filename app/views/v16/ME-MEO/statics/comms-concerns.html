@@ -1,0 +1,548 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+{% block breadcrumbs %}
+<nav class="nhsuk-breadcrumb nhsuk-u-padding-bottom-0" aria-label="Breadcrumb">
+  <ol class="nhsuk-breadcrumb__list">
+    <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="../closed-cases">Closed cases</a></li>
+    <li class="nhsuk-breadcrumb__item">Communications - {{ data['deceased-full-name'] }}</li>
+  </ol>
+  <p class="nhsuk-breadcrumb__back">
+    <a class="nhsuk-breadcrumb__backlink" href="#">
+      <span class="nhsuk-u-visually-hidden">Back to &nbsp;</span>
+      Closed cases
+    </a>
+  </p>
+</nav>
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-three-quarters">
+    
+    {% if data['comms-patient-safety-email'] or data['remove-notification'] == 'yes' %}
+      
+    {% else %}
+    <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
+      <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+        There is a problem
+      </h2>
+      <div class="nhsuk-error-summary__body">
+        <ul class="nhsuk-list nhsuk-error-summary__list" role="list">
+          <li>
+            <a href="#email-error">Email notification has failed to send</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    {% endif %}
+
+    <h1 class="nhsuk-heading-xl">Communications</h1>
+  </div>
+  <div class="nhsuk-grid-column-one-quarter">
+    {% if data['deceased-full-name'] == 'Kia Ravi' %}
+    {% if data['reopen-this-case'] == 'yes' %}
+    <a class="nhsuk-button nhsbsa-button--right-align" href="../case/close-case">Close case</a>
+    {% else %}
+    <form action="reopen-case" method="post">
+      <button class="nhsuk-button nhsbsa-button--right-align" type="submit">Reopen case</button>
+    </form>
+    {% endif %}
+    {% endif %}
+  </div>
+
+  <!-- ================================================== -->
+  <!-- DISCUSSION WITH THE MAIN CONTACT -->
+  <!-- ================================================== -->
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Discussion with the main contact about the cause of
+      death</h2>
+  </div>
+
+  <div class="nhsuk-grid-column-full">
+    <details class="nhsuk-details nhsuk-expander">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+          Discussion with Kai Felba
+        </span>
+        <strong class="nhsuk-tag nhsuk-tag nhsbsa-tag--custom">
+          Complete
+        </strong>
+      </summary>
+      <div class="nhsuk-details__text">
+        <dl class="nhsuk-summary-list nhsuk-summary-list--no-border">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Has there been a discussion?
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Yes
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Date
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              15 June 2023
+            </dd>
+          </div>
+          <!--<div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Status
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong class="nhsuk-tag">
+                Complete
+              </strong>
+            </dd>
+          </div>-->
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Action
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <td class="nhsuk-table__cell "><a href="../case/discussion-with-main-contact">View details</a></td>
+            </dd>
+          </div>
+        </dl>
+        <!--<h3 class="nhsuk-heading-l">Concerns notification</h3>
+        <div class="nhsuk-table-responsive nhsuk-u-margin-top-0 table-wrap">
+          <table class="nhsuk-table">
+            <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">A table showing the concerns raised</caption>
+            <thead role="rowgroup" class="nhsuk-table__head">
+              <tr role="row">
+                <th role="columnheader" class="" scope="col">
+                  Concern type
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Date raised
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Concern recipient email
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Status
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+              <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__cell">Record review</td>
+                <td class="nhsuk-table__cell ">15/06/2023</td>
+                <td class="nhsuk-table__cell ">emmit.mar@example.com</td>
+                <td class="nhsuk-table__cell ">
+                  <strong class="nhsuk-tag nhsuk-tag">
+                    Delivered
+                  </strong>
+                </td>
+                <td class="nhsuk-table__cell "></td>
+              </tr>
+              <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__cell">Governance processes review</td>
+                <td class="nhsuk-table__cell ">15/06/2023</td>
+                <td class="nhsuk-table__cell ">kai.mar@example.com</td>
+                <td class="nhsuk-table__cell ">
+                  <strong class="nhsuk-tag nhsuk-tag">
+                    Delivered
+                  </strong>
+                </td>
+                <td class="nhsuk-table__cell "></td>
+              </tr>
+              <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__cell">Patient safety incident</td>
+                <td class="nhsuk-table__cell ">15/06/2023</td>
+                <td class="nhsuk-table__cell ">lou.mar@example.com</td>
+                <td class="nhsuk-table__cell ">
+                  <strong class="nhsuk-tag nhsuk-tag">
+                    Delivered
+                  </strong>
+                </td>
+                <td class="nhsuk-table__cell "></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>-->
+      </div>
+    </details>
+
+    <!--<details class="nhsuk-details nhsuk-expander">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+          No discussion recorded
+        </span>
+        <strong class="nhsuk-tag nhsuk-tag nhsbsa-tag--custom">
+          Complete
+        </strong>
+      </summary>
+      <div class="nhsuk-details__text">
+        <dl class="nhsuk-summary-list nhsuk-summary-list--no-border">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Has there been a discussion?
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              No - Declined interaction with medical examiner office
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Action
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <td class="nhsuk-table__cell "><a href="../case/no-discussion-main">View details</a> / <a href="../case/concerns/remove-concern-notification">Remove</a></td>
+            </dd> 
+          </div>
+        </dl>
+      </div>
+    </details>-->
+
+  </div>
+
+  <!-- ================================================== -->
+  <!-- DISCUSSIONS -->
+  <!-- ================================================== -->
+
+  <div class="nhsuk-grid-column-full">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Discussions</h2>
+
+    <p><a href="../case/record-comm-or-concern">Record a discussion</a></p>
+
+
+    <details class="nhsuk-details nhsuk-expander">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+          Discussion with Sue Felba
+        </span>
+
+        <strong class="nhsuk-tag nhsuk-tag--grey nhsbsa-tag--custom">
+          Draft
+        </strong>
+      </summary>
+      <div class="nhsuk-details__text">
+        <dl class="nhsuk-summary-list nhsuk-summary-list--no-border">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Role of person
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Daughter
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Date
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              25 June 2023
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Communication method
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+                Phone call
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Action
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <p><a href="../case/record-comm-or-concern">View details</a> / <a href="../case/concerns/remove-concern-notification">Remove</a></p>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </details>
+  
+
+    <details class="nhsuk-details nhsuk-expander">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+          Discussion with Emmit Felba
+        </span> 
+        <strong class="nhsuk-tag nhsuk-tag nhsbsa-tag--custom">
+          Complete
+        </strong>
+      </summary>
+      <div class="nhsuk-details__text">
+        <dl class="nhsuk-summary-list nhsuk-summary-list--no-border">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Role of person
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Family member
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Date
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              14 June 2023
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Communication method
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+                Email
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Action
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <p><a href="../case/record-comm-or-concern">View details</a></p>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </details>
+  </div>
+
+
+  <!-- ================================================== -->
+  <!-- CONCERNS -->
+  <!-- ================================================== -->
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Concerns</h2>
+
+    <p><a href="../case/raise-comms-concern">Raise a concern</a></p>
+
+  </div>
+  <!--<div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag--blue align-right">
+      Raised
+    </strong>
+  </div>-->
+  <div class="nhsuk-grid-column-full">
+    <details class="nhsuk-details nhsuk-expander">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+          Concern for prescribed treatment
+        </span>
+
+        {% if data['comms-patient-safety-email'] or data['remove-notification'] == 'yes' %}
+        <strong class="nhsuk-tag nhsuk-tag nhsbsa-tag--custom">
+          Complete
+        </strong>
+        {% else %}
+          <strong class="nhsuk-tag nhsuk-tag--red nhsbsa-tag--custom">
+            Problem
+          </strong>
+        {% endif %}
+
+      </summary>
+      <div class="nhsuk-details__text">
+        <dl class="nhsuk-summary-list nhsuk-summary-list--no-border">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Date
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              15 June 2023
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Action
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <p><a href="../case/concerns/record-concern">View details</a></p>
+            </dd>
+          </div>
+        </dl>
+ <!-- validation example - if a new email hasnt been provided then show validation -->
+ {% if data['comms-patient-safety-email'] or data['remove-notification'] == 'yes' %}
+      
+ {% else %}
+ <div class="nhsuk-form-group--error">
+ {% endif %}
+   <h3 class="nhsuk-heading-l">Concerns notification</h3>
+   
+   <!-- validation message -->
+   {% if data['comms-patient-safety-email'] or data['remove-notification'] == 'yes' %}
+
+   {% else %}
+   <span class="nhsuk-error-message" id="email-error">
+     <span class="nhsuk-u-visually-hidden">Error:</span> Email notification has failed to send
+   </span>
+   {% endif %}
+   <div class="nhsuk-table-responsive nhsuk-u-margin-top-0 table-wrap">
+     <table class="nhsuk-table">
+       <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">A table showing the concerns raised</caption>
+       <thead role="rowgroup" class="nhsuk-table__head">
+         <tr role="row">
+           <th role="columnheader" class="" scope="col">
+             Concern type
+           </th>
+           <th role="columnheader" class="" scope="col">
+             Date raised
+           </th>
+           <th role="columnheader" class="" scope="col">
+             Concern recipient email
+           </th>
+           <th role="columnheader" class="" scope="col">
+             Status
+           </th>
+           <th role="columnheader" class="" scope="col">
+             Action
+           </th>
+         </tr>
+       </thead>
+       <tbody class="nhsuk-table__body">
+         <tr role="row" class="nhsuk-table__row">
+           <td class="nhsuk-table__cell">Record review</td>
+           <td class="nhsuk-table__cell ">14/06/2023</td>
+           <td class="nhsuk-table__cell ">record-reviewer@example.com</td>
+           <td class="nhsuk-table__cell ">
+             <strong class="nhsuk-tag nhsuk-tag">
+               Delivered
+             </strong>
+           </td>
+           <td class="nhsuk-table__cell "></td>
+         </tr>
+         <tr role="row" class="nhsuk-table__row">
+           <td class="nhsuk-table__cell">Governance processes review</td>
+           <td class="nhsuk-table__cell ">14/06/2023</td>
+           <td class="nhsuk-table__cell ">governance-officer@example.com</td>
+           <td class="nhsuk-table__cell ">
+             <strong class="nhsuk-tag nhsuk-tag--blue">
+               Sending
+             </strong>
+           </td>
+           <td class="nhsuk-table__cell "><a href="#">Refresh</a></td>
+         </tr>
+         {% if data['remove-notification'] !== 'yes' %}
+           <tr role="row" class="nhsuk-table__row">
+             <td class="nhsuk-table__cell">Patient safety incident</td>
+             <td class="nhsuk-table__cell ">14/06/2023</td>
+             <td class="nhsuk-table__cell ">
+               {% if data['comms-patient-safety-email'] %}
+                     {{ data['comms-patient-safety-email'] }}
+                 {% else %}
+                     incident-officer@example.com
+                 {% endif %}
+             </td>
+
+             <td class="nhsuk-table__cell ">
+               {% if data['comms-patient-safety-email'] %}
+                 <strong class="nhsuk-tag nhsuk-tag--blue">
+                   Sending
+                 </strong>
+               {% else %}
+                 <strong class="nhsuk-tag nhsuk-tag--red">
+                   Undelivered
+                 </strong>
+               {% endif %}
+             </td>
+
+             {% if data['comms-patient-safety-email'] %}
+               <td class="nhsuk-table__cell "><a href="#">Refresh</a></td>
+             {% else %}
+               <td class="nhsuk-table__cell "><a href="../case/concerns/comms-concern-cya">Review</a> / <a href="../case/concerns/remove-concern-notification">Remove</a></td>
+             {% endif %}
+           </tr>
+         {% endif %}
+       </tbody>
+     </table>
+   </div>
+ <!-- close div for validation -->
+ {% if data['comms-patient-safety-email'] or data['remove-notification'] == 'yes' %}
+
+ {% else %}
+ </div>
+ {% endif %}
+</div>
+</details>
+  </div>
+
+
+  
+
+</div>
+
+{% endblock %}
+
+{% block sideNav %}
+<div class="side-nav">
+  <h3>{{ data['deceased-full-name'] }}
+    <span class="nhsuk-caption-m nhsuk-caption--bottom nhsuk-u-margin-top-2">
+      {% if data['deceased-full-name'] == 'Milo Brett' %}
+        <strong class="nhsuk-tag nhsuk-tag--red">Urgent</strong>
+      {% else %}
+        {% if data['reopen-this-case'] == 'yes' %}
+          <strong class="nhsuk-tag nhsuk-tag--orange">Reopened</strong>
+        {% else %}
+          <strong class="nhsuk-tag nhsuk-tag--blue">Routine</strong>
+        {% endif %}
+      {% endif %}
+    </span>
+  </h3>
+  <ul>
+    <div id="options" class="options">
+      <li>
+        <a href="case-details">Case details
+        <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+          Complete
+        </strong>
+        </a>
+      </li>
+      <li>
+        <a href="case-scrutiny">Case scrutiny
+          <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+            Complete
+          </strong>
+        </a>
+      </li>
+      <li>
+        <a class="active" href="comms-concerns">Communications
+        {% if data['comms-patient-safety-email'] or data['remove-notification'] == 'yes' %}
+        <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+          Complete
+        </strong>
+        {% else %}
+        <strong class="nhsuk-tag nhsuk-tag--red side-nav-tag">
+          Problem
+        </strong>
+        {% endif %}
+        </a>
+      </li>
+      <li>
+        <a href="coroner-notification">Coroner
+        <strong class="nhsuk-tag nhsuk-tag--blue side-nav-tag">
+          Raised
+        </strong>
+        </a>
+      </li>
+    </div>
+  </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,748 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+{% block breadcrumbs %}
+<nav class="nhsuk-breadcrumb nhsuk-u-padding-bottom-0" aria-label="Breadcrumb">
+  <ol class="nhsuk-breadcrumb__list">
+    <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="../open-cases">Open cases</a></li>
+    <li class="nhsuk-breadcrumb__item">Communications - {{ data['deceased-first-name'] }} {{
+      data['deceased-last-name'] }}</li>
+  </ol>
+  <p class="nhsuk-breadcrumb__back">
+    <a class="nhsuk-breadcrumb__backlink" href="#">
+      <span class="nhsuk-u-visually-hidden">Back to &nbsp;</span>
+      Level three
+    </a>
+  </p>
+</nav>
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h1 class="nhsuk-heading-xl">Communications</h1>
+  </div>
+
+    <!-- IF the mandatory sections are complete and a Coroner has responded, then show close button  -->
+      {% if data['create-and-assign-section'] and data['additional-details-section'] and data['location-of-death-section'] and data['pre-scrutiny-note-section'] and data['ap-prop-cause-of-death-section'] and
+  data['me-independent-review-section'] and data['ap-discussion-section'] and data['discussion-with-main-section'] and
+  data['coroner-notification-section'] and data['coroner-response-section'] %}
+       <div class="nhsuk-grid-column-one-quarter">
+        <a class="nhsuk-button nhsbsa-button--right-align" href="close-case">Close this case</a>
+      </div>
+      <!-- IF the mandatory sections are complete but if a Coroner has been contacted, but hasn't repsponsed, then hide it  -->
+      {% elseif data['create-and-assign-section'] and data['additional-details-section'] and data['location-of-death-section']and data['pre-scrutiny-note-section'] and data['ap-prop-cause-of-death-section'] and
+  data['me-independent-review-section'] and data['ap-discussion-section'] and data['discussion-with-main-section'] and data['coroner-notification-section'] %}
+        &nbsp;
+      <!-- If the mandatory sections are complete and a Coroner has not been contacted, show close button  -->
+      {% elseif data['create-and-assign-section'] and data['additional-details-section'] and data['location-of-death-section'] and data['pre-scrutiny-note-section'] and data['ap-prop-cause-of-death-section'] and
+  data['me-independent-review-section'] and data['ap-discussion-section'] and data['discussion-with-main-section'] %}
+      <div class="nhsuk-grid-column-one-quarter">
+        <a class="nhsuk-button nhsbsa-button--right-align" href="close-case">Close this case</a>
+      </div>
+    {% endif %}
+
+  <!-- ================================================== -->
+  <!-- DISCUSSION WITH THE MAIN CONTACT -->
+  <!-- ================================================== -->
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Discussion with the main contact about the cause of
+      death</h2>
+  </div>
+  {% if data['discussion-with-main-section'] == 'complete' %}
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag align-right">
+      Complete
+    </strong>
+  </div>
+  {% endif %}
+
+    {% if data['discussion-with-main-section'] == 'draft' %}
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag--grey nhsbsa-tag--custom">
+       Draft
+    </strong>
+  </div>
+  {% endif %}
+
+  {% if data['discussion-with-main-section'] == 'complete' %}
+  {% if data['discussionWithMain'] == 'yes' %}
+  <div class="nhsuk-grid-column-full">
+    <details class="nhsuk-details nhsuk-expander">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+          Discussion with {{ data['contactFirstNamesMain'] }} {{ data['contactLastNameMain'] }}
+        </span>
+        <strong class="nhsuk-tag nhsuk-tag nhsbsa-tag--custom">
+          Complete
+        </strong>
+      </summary>
+      <div class="nhsuk-details__text">
+        <dl class="nhsuk-summary-list nhsuk-summary-list--no-border">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Has there been a discussion?
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+            Yes
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Date
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['dodDayMain'] }}/{{ data['dodMonthMain'] }}/{{ data['dodYearMain'] }}
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Time
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['todHourMain'] }}:{{ data['todMinuteMain'] }}
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Conversation details
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['detailsOfDiscussionMain'] }}
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Action
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <td class="nhsuk-table__cell "><a href="../case/discussion-main-cya">View details</a>
+                {% if data['discussion-with-main-section'] == 'draft' %}
+                  / <a href="../case/concerns/remove-discussion-main">Remove</a></td>
+                {% endif %}
+            </dd>
+          </div>
+        </dl>
+        {% if data['recordAsConcernMain'] == 'yes' %}
+        <h3 class="nhsuk-heading-l">Concerns notification</h3>
+        <div class="nhsuk-table-responsive nhsuk-u-margin-top-0 table-wrap">
+          <table class="nhsuk-table">
+            <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">A table showing the concerns raised</caption>
+            <thead role="rowgroup" class="nhsuk-table__head">
+              <tr role="row">
+                <th role="columnheader" class="" scope="col">
+                  Concern type
+                </th>
+                <!-- <th role="columnheader" class="" scope="col">
+                    Date raised
+                  </th> -->
+                <th role="columnheader" class="" scope="col">
+                  Concern recipient email
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Status
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+              {% if data['main-record-review-email'] %}
+              <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__cell">Record review</td>
+                <!-- <td class="nhsuk-table__cell ">{{ data['dodDayMain'] }}/{{ data['dodMonthMain'] }}/{{ data['dodYearMain'] }}</td> -->
+                <td class="nhsuk-table__cell ">{{ data['main-record-review-email'] }}</td>
+                {% if data['status-refresh'] == 'complete' %}
+                <td class="nhsuk-table__cell ">
+                  <strong class="nhsuk-tag">
+                    Delivered
+                  </strong>
+                </td>
+                <td class="nhsuk-table__cell "></td>
+                {% else %}
+                <td class="nhsuk-table__cell ">
+                  <strong class="nhsuk-tag nhsuk-tag--blue">
+                    Sending
+                  </strong>
+                </td>
+                <form action="status-refresh" method="post" id="status-refresh">
+                  <td class="nhsuk-table__cell "><a href="#"
+                      onclick="document.getElementById('status-refresh').submit(); return false;">Refresh</a></td>
+                </form>
+                {% endif %}
+              </tr>
+              {% endif %}
+              {% if data['main-governance-process-email'] %}
+              <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__cell">Governance processes review</td>
+                <!-- <td class="nhsuk-table__cell ">{{ data['dodDayMain'] }}/{{ data['dodMonthMain'] }}/{{ data['dodYearMain'] }}</td> -->
+                <td class="nhsuk-table__cell ">{{ data['main-governance-process-email'] }}</td>
+                {% if data['status-refresh'] == 'complete' %}
+                <td class="nhsuk-table__cell ">
+                  <strong class="nhsuk-tag">
+                    Delivered
+                  </strong>
+                </td>
+                <td class="nhsuk-table__cell "></td>
+                {% else %}
+                <td class="nhsuk-table__cell ">
+                  <strong class="nhsuk-tag nhsuk-tag--blue">
+                    Sending
+                  </strong>
+                </td>
+                <td class="nhsuk-table__cell "><a href="#">Refresh</a></td>
+                {% endif %}
+              </tr>
+              {% endif %}
+              {% if data['main-patient-safety-email'] %}
+              <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__cell">Patient safety incident</td>
+                <!-- <td class="nhsuk-table__cell ">{{ data['dodDayMain'] }}/{{ data['dodMonthMain'] }}/{{ data['dodYearMain'] }}</td> -->
+                <td class="nhsuk-table__cell ">{{ data['main-patient-safety-email'] }}</td>
+                {% if data['status-refresh'] == 'complete' %}
+                <td class="nhsuk-table__cell ">
+                  <strong class="nhsuk-tag">
+                    Delivered
+                  </strong>
+                </td>
+                <td class="nhsuk-table__cell "></td>
+                {% else %}
+                <td class="nhsuk-table__cell ">
+                  <strong class="nhsuk-tag nhsuk-tag--blue">
+                    Sending
+                  </strong>
+                </td>
+                <td class="nhsuk-table__cell "><a href="#">Refresh</a></td>
+                {% endif %}
+              </tr>
+              {% endif %}
+            </tbody>
+          </table>
+        </div>
+        {% endif %}
+      </div>
+    </details>
+  </div>
+  {% else %}
+  <div class="nhsuk-grid-column-full">
+    <details class="nhsuk-details nhsuk-expander">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+          No discussion recorded
+        </span>
+        <strong class="nhsuk-tag nhsuk-tag nhsbsa-tag--custom">
+          Complete
+        </strong>
+      </summary>
+      <div class="nhsuk-details__text">
+        <dl class="nhsuk-summary-list nhsuk-summary-list--no-border">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Has there been a discussion?
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              No - Declined interaction with medical examiner office
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Action
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <td class="nhsuk-table__cell "><a href="../case/no-discussion-main-cya">View details</a> / <a href="../case/concerns/remove-discussion-main.html">Remove</a></td>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </details>
+  </div>
+  {% endif %}
+  {% else %}
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-hint">
+      The main contact is often the next of kin but does not have to be.
+    </div>
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key nhsuk-u-font-weight-normal">
+          <a href="discussion-with-main">Record discussion with main contact</a>
+        </dt>
+        <dd class="nhsuk-summary-list__actions">
+          <strong class="nhsuk-tag nhsuk-tag--white align-right">
+            Not started
+          </strong>
+        </dd>
+      </div>
+    </dl>
+  </div>
+  {% endif %}
+
+  <!-- ================================================== -->
+  <!-- DISCUSSIONS -->
+  <!-- ================================================== -->
+
+  <div class="nhsuk-grid-column-full">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Discussions</h2>
+    {% if data['record-communication-concern-section'] == 'complete' %}
+
+    <p><a href="record-comm-or-concern">Record a discussion</a></p>
+
+    <details class="nhsuk-details nhsuk-expander">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+          Discussion with {{ data['contactFirstNames'] }} {{ data['contactLastName'] }}
+        </span>
+
+              <strong class="nhsuk-tag nhsuk-tag nhsbsa-tag--custom">
+                Complete
+              </strong>
+
+      </summary>
+      <div class="nhsuk-details__text">
+        <dl class="nhsuk-summary-list nhsuk-summary-list--no-border">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Role of person
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['contactRole'] }}
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Date
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['dodDayCommsConcern'] }}/{{ data['dodMonthCommsConcern'] }}/{{ data['dodYearCommsConcern'] }}
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Communication method
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['communicationMethod'] }}
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Action
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <td class="nhsuk-table__cell "><a href="../case/comms-concern-cya">View details</a> 
+                {% if data['record-communication-concern-section'] == 'draft' %}
+                  / <a href="../case/concerns/remove-discussion-main">Remove</a></td>
+                {% endif %}
+            </dd>
+          </div>
+        </dl>
+
+        {% if data['recordAsCommsConcern'] == 'yes' %}
+        <h3 class="nhsuk-heading-l">Concerns notification</h3>
+        <div class="nhsuk-table-responsive nhsuk-u-margin-top-0 table-wrap">
+          <table class="nhsuk-table">
+            <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">A table showing the concerns raised</caption>
+            <thead role="rowgroup" class="nhsuk-table__head">
+              <tr role="row">
+                <th role="columnheader" class="" scope="col">
+                  Concern type
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Concern recipient email
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Status
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+              {% if data['comms-record-review-email'] %}
+              <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__cell">Record review</td>
+                <td class="nhsuk-table__cell ">{{ data['comms-record-review-email'] }}</td>
+                <td class="nhsuk-table__cell ">
+                  <strong class="nhsuk-tag nhsuk-tag--blue">
+                    Sending
+                  </strong>
+                </td>
+                <td class="nhsuk-table__cell "><a href="#">Refresh</a></td>
+              </tr>
+              {% endif %}
+
+              {% if data['comms-governance-process-email'] %}
+              <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__cell">Governance processes review</td>
+                <td class="nhsuk-table__cell ">{{ data['comms-governance-process-email'] }}</td>
+                <td class="nhsuk-table__cell ">
+                  <strong class="nhsuk-tag nhsuk-tag--blue">
+                    Sending
+                  </strong>
+                </td>
+                <td class="nhsuk-table__cell "><a href="#">Refresh</a></td>
+              </tr>
+              {% endif %}
+
+              {% if data['comms-patient-safety-email'] %}
+              <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__cell">Patient safety incident</td>
+                <td class="nhsuk-table__cell ">{{ data['comms-patient-safety-email'] }}</td>
+                <td class="nhsuk-table__cell ">
+                  <strong class="nhsuk-tag nhsuk-tag--blue">
+                    Sending
+                  </strong>
+                </td>
+                <td class="nhsuk-table__cell ">
+                  <form action="refresh-email-concern" method="post">
+                    <button class="nhsuk-link" data-module="nhsuk-action-link" type="submit">
+                      Refresh
+                    </button>
+                  </form>
+              </tr>
+              {% endif %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      {% endif %}
+    </details>
+    {% else %}
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key nhsuk-u-font-weight-normal">
+          <a href="record-comm-or-concern">Record a
+            discussion</a>
+        </dt>
+      </div>
+    </dl>
+    {% endif %}
+  </div>
+
+  <!-- ================================================== -->
+  <!-- CONCERNS -->
+  <!-- ================================================== -->
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Concerns</h2>
+
+    <p><a href="../case/raise-comms-concern">Raise a concern</a></p>
+
+
+
+  </div>
+  <!--<div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag--blue align-right">
+      Raised
+    </strong>
+  </div>-->
+
+  <!-- Raise concern expander -->
+
+  <div class="nhsuk-grid-column-full">
+
+        {% if data['remove-notification'] == 'yes' %}
+
+        &nbsp;
+
+    {% elseif data['concern-raised'] == 'yes' %}
+
+    <details class="nhsuk-details nhsuk-expander">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+          Concern for {{ data['titleOfConcern'] }}
+        </span>
+
+        {% if data['comms-patient-safety-email'] or data['remove-notification'] == 'yes' %}
+        <strong class="nhsuk-tag nhsuk-tag nhsbsa-tag--custom">
+          Complete
+        </strong>
+        {% else %}
+        <strong class="nhsuk-tag nhsuk-tag nhsbsa-tag--custom">
+          Complete
+        </strong>
+        {% endif %}
+
+      </summary>
+      <div class="nhsuk-details__text">
+        <dl class="nhsuk-summary-list nhsuk-summary-list--no-border">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Date raised
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              15 June 2023
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Action
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <p><a href="../case/concerns/record-concern">View details</a> / <a href="../case/concerns/remove-concern-notification">Remove</a></p>
+            </dd>
+          </div>
+        </dl>
+
+        {% if data['comms-record-review-email'] or data['comms-governance-process-email'] or
+      data['comms-patient-safety-email'] %}
+      <div class="nhsuk-table-responsive nhsuk-u-margin-top-0 table-wrap">
+        <h3 class="nhsuk-heading-l">Concerns notification</h3>
+        <table class="nhsuk-table">
+          <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">A table showing the concerns raised
+          </caption>
+          <thead role="rowgroup" class="nhsuk-table__head">
+            <tr role="row">
+              <th role="columnheader" class="" scope="col">
+                Concern type
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Date raised
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Concern recipient email
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Status
+              </th>
+              <th role="columnheader" class="" scope="col">
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+            <tr role="row" class="nhsuk-table__row">
+              <td class="nhsuk-table__cell">Record review</td>
+              <td class="nhsuk-table__cell ">14/06/2023</td>
+              <td class="nhsuk-table__cell ">{{ data['comms-record-review-email'] }}</td>
+                {% if data['status-refresh'] == 'complete' %}
+                <td class="nhsuk-table__cell ">
+                  <strong class="nhsuk-tag">
+                    Delivered
+                  </strong>
+                </td>
+                <td class="nhsuk-table__cell "></td>
+                {% else %}
+                <td class="nhsuk-table__cell ">
+                  <strong class="nhsuk-tag nhsuk-tag--blue">
+                    Sending
+                  </strong>
+                </td>
+                <td class="nhsuk-table__cell ">
+                  <form action="status-refresh" method="post" id="status-refresh">
+                    <a href="#" onclick="document.getElementById('status-refresh').submit(); return false;">Refresh</a></td>
+                  </form>
+                </td>
+                  {% endif %}
+            </tr>
+                {% if data['comms-governance-process-email'] %}
+              <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__cell">Governance processes review</td>
+                <td class="nhsuk-table__cell ">14/06/2023</td>
+                <td class="nhsuk-table__cell ">{{ data['comms-governance-process-email'] }}</td>
+                {% if data['status-refresh'] == 'complete' %}
+                <td class="nhsuk-table__cell ">
+                  <strong class="nhsuk-tag">
+                    Delivered
+                  </strong>
+                </td>
+                <td class="nhsuk-table__cell "></td>
+                {% else %}
+                <td class="nhsuk-table__cell ">
+                  <strong class="nhsuk-tag nhsuk-tag--blue">
+                    Sending
+                  </strong>
+                </td>
+                <td class="nhsuk-table__cell ">
+                  <form action="status-refresh" method="post" id="status-refresh">
+                    <a href="#" onclick="document.getElementById('status-refresh').submit(); return false;">Refresh</a></td>
+                  </form>
+                </td>
+                  {% endif %}
+              </tr>
+              {% endif %}
+            {% if data['remove-notification'] !== 'yes' %}
+            <tr role="row" class="nhsuk-table__row">
+              <td class="nhsuk-table__cell">Patient safety incident</td>
+              <td class="nhsuk-table__cell ">14/06/2023</td>
+              <td class="nhsuk-table__cell ">
+                {% if data['comms-patient-safety-email'] %}
+                {{ data['comms-patient-safety-email'] }}
+                {% else %}
+                incident-officer@example.com
+                {% endif %}
+              </td>
+
+              <td class="nhsuk-table__cell ">
+                {% if data['comms-patient-safety-email'] %}
+                <strong class="nhsuk-tag nhsuk-tag--blue">
+                  Sending
+                </strong>
+                {% else %}
+                <strong class="nhsuk-tag nhsuk-tag--red">
+                  Undelivered
+                </strong>
+                {% endif %}
+              </td>
+
+              {% if data['comms-patient-safety-email'] %}
+              <td class="nhsuk-table__cell "><a href="#">Refresh</a></td>
+              {% else %}
+
+              <td class="nhsuk-table__cell "><a href="../case/concerns/comms-concern-cya">Review</a> / <a
+                  href="../case/concerns/remove-concern-notification">Remove</a></td>
+              {% endif %}
+            </tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+      {% endif %}
+
+      </div>
+
+    </details>
+
+    {% endif %}
+  </div>
+
+
+
+</div>
+
+{% endblock %}
+
+<!-- ====================================== -->
+<!-- SIDE NAV -->
+<!-- ====================================== -->
+{% block sideNav %}
+<div class="side-nav">
+  <h3>{{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
+    <span class="nhsuk-caption-m nhsuk-caption--bottom nhsuk-u-margin-top-2">
+      <strong class="nhsuk-tag nhsuk-tag--blue">Routine</strong>
+    </span>
+  </h3>
+  <ul>
+    <div id="options" class="options">
+      <li><a href="case-details">
+          Case details
+          <!-- if case details sections are all complete -->
+          {% if data['additional-details-section'] == 'complete' and data['location-of-death-section'] == 'complete' %}
+          <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+            Complete
+          </strong>
+          {% else %}
+          <strong class="nhsuk-tag nhsuk-tag--grey side-nav-tag">
+            In progress
+          </strong>
+          {% endif %}
+        </a></li>
+
+      <!-- If an answer has been provided already for Over or Under 28 days after birth then show case scrutiny screen otherwise if no answer provided show Over or Under 28 days screen -->
+      {% if data['over-under-28'] %}
+      <li><a href="case-scrutiny">
+          Case scrutiny
+          {% if data['pre-scrutiny-note-section'] == 'complete' and
+          data['ap-prop-cause-of-death-section'] == 'complete' and
+          data['me-independent-review-section'] == 'complete' and
+          data['ap-discussion-section'] == 'complete' and
+          data['ap-details-section'] == 'complete'
+          %}
+          <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+            Complete
+          </strong>
+          {% elif data['pre-scrutiny-note-section'] == 'complete' or
+          data['ap-prop-cause-of-death-section'] == 'complete' or
+          data['me-independent-review-section'] == 'complete' or
+          data['ap-discussion-section'] == 'complete' or
+          data['ap-details-section'] == 'complete'
+          %}
+          <strong class="nhsuk-tag nhsuk-tag--grey side-nav-tag">
+            In progress
+          </strong>
+          {% else %}
+          <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag">
+            Not started
+          </strong>
+          {% endif %}
+        </a></li>
+      {% else %}
+      <form action="case-scrutiny-link" method="post" id="run-28-days-once">
+        <li><a href="#" onclick="document.getElementById('run-28-days-once').submit(); return false;">
+            Case scrutiny
+            {% if data['pre-scrutiny-note-section'] == 'complete' and
+            data['ap-prop-cause-of-death-section'] == 'complete' and
+            data['me-independent-review-section'] == 'complete' and
+            data['ap-discussion-section'] == 'complete' and
+            data['ap-details-section'] == 'complete'
+            %}
+            <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+              Complete
+            </strong>
+            {% elif data['pre-scrutiny-note-section'] == 'complete' or
+            data['ap-prop-cause-of-death-section'] == 'complete' or
+            data['me-independent-review-section'] == 'complete' or
+            data['ap-discussion-section'] == 'complete' or
+            data['ap-details-section'] == 'complete'
+            %}
+            <strong class="nhsuk-tag nhsuk-tag--grey side-nav-tag">
+              In progress
+            </strong>
+            {% else %}
+            <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag">
+              Not started
+            </strong>
+            {% endif %}
+          </a></li>
+      </form>
+      {% endif %}
+
+      <li><a class="active" href="comms-concerns">
+          Communications
+          {% if data['discussion-with-main-section'] == 'complete' %}
+          <strong class="nhsuk-tag nhsuk-tag--blue side-nav-tag">
+            Raised
+          </strong>
+          {% else %}
+          <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag">
+            Not started
+          </strong>
+          {% endif %}
+        </a></li>
+
+      <li><a href="coroner-notification">
+          Coroner
+          {% if data['notify-coroner'] == 'yes' %}
+          <strong class="nhsuk-tag nhsuk-tag--blue side-nav-tag">
+            Raised
+          </strong>
+          {% else %}
+          <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag">
+            Not started
+          </strong>
+          {% endif %}
+        </a></li>
+      <!-- <li><a href="concerns-notification">Concerns notifications</a></li> -->
+    </div>
+  </ul>
+</div>
+{% endblock %}
