@@ -161,12 +161,12 @@ Case details
       Draft
     </strong>
   </div>
-    {% elif data['draft-status-DIFCOD'] == 'draft'%}
+  <!--  {% elif data['draft-status-DIFCOD'] == 'draft'%}
     <div class="nhsuk-grid-column-one-quarter">
     <strong class="nhsuk-tag nhsuk-tag--grey align-right">
       Draft
     </strong>
-  </div>
+  </div> -->
   {% elif data['ap-prop-cause-of-death-section'] == 'complete' and data['ap-details-section'] == 'complete'  %}
   <div class="nhsuk-grid-column-one-quarter">
     <strong class="nhsuk-tag nhsuk-tag align-right">
@@ -1005,10 +1005,10 @@ Case details
           Cause of death summary
         </dt>
         <dd class="nhsuk-summary-list__value">
-          {{ data['reviewCauseOfDeathSummary'] }}
+          {{ data['diff-causeOfDeathSummar'] }}
         </dd>
         <dd class="nhsuk-summary-list__actions">
-          <a href="record-review#reviewCauseOfDeathSummary">
+          <a href="diferent-mccd-outcome#diff-causeOfDeathSummar">
             Change<span class="nhsuk-u-visually-hidden"> cause of death summary</span>
           </a>
         </dd>

@@ -36,7 +36,7 @@ Case details
             Agreed new cause of death
         </h1>
 
-        <form action="new-agreed-cause" method="post">
+        <form action="different-mccd-outcome" method="post">
 
             
             <div class="nhsuk-form-group">
@@ -88,15 +88,15 @@ Case details
                         <label class="nhsuk-label nhsuk-u-width-one-half" for="diff-causeOfDeath1a">
                             1(a) disease or condition directly leading to death (required)
                         </label>
-                        <input class="nhsuk-input nhsuk-u-width-one-half" id="diff-causeOfDeath1a" name="diff-causeOfDeath1a"type="text">
+                        <input class="nhsuk-input nhsuk-u-width-one-half" id="diff-causeOfDeath1a" name="diff-causeOfDeath1a"type="text" value="{{ data['diff-causeOfDeath1a'] }}">
                     </div>
-                    <div class="nhsuk-date-input" id="onset1a">
+                    <div class="nhsuk-date-input" id="diff-onsetInterval1a">
                         <div class="nhsuk-date-input__item">
                               <div class="nhsuk-form-group">
                                 <label class="nhsuk-label" for="select-1">
                                     Approximate interval between onset of 1(a) and death
                                 </label>
-                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="diff-onsetInterval1a" name="diff-onsetInterval1a" type="text" pattern="[0-9]*" inputmode="numeric">
+                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="diff-onsetInterval1a" name="diff-onsetInterval1a" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['diff-onsetInterval1a'] }}">
                                 <select class="nhsuk-select" id="diff-onsetInterval1ab" name="diff-onsetInterval1ab">
                                   <option value="Year(s)">Year(s)</option>
                                   <option value="Month(s)">Month(s)</option>
@@ -114,16 +114,16 @@ Case details
                         <label class="nhsuk-label nhsuk-u-width-one-half" for="diff-causeOfDeath1b">
                             1(b) other disease or condition leading to 1(a) (optional)
                         </label>
-                        <input class="nhsuk-input nhsuk-u-width-one-half" id="diff-causeOfDeath1b" name="diff-causeOfDeath1b"type="text">
+                        <input class="nhsuk-input nhsuk-u-width-one-half" id="diff-causeOfDeath1b" name="diff-causeOfDeath1b"type="text" value="{{ data['diff-causeOfDeath1b'] }}">
                     </div>
                     <div class="nhsuk-form-group">
                     <div class="nhsuk-date-input" id="onset1b">
                         <div class="nhsuk-date-input__item">
                               <div class="nhsuk-form-group">
-                                <label class="nhsuk-label" for="select-1">
+                                <label class="nhsuk-label" for="diff-onsetInterval1b">
                                     Approximate interval between onset of 1(b) and death
                                 </label>
-                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="diff-onsetInterval1b" name="diff-onsetInterval1b" type="text" pattern="[0-9]*" inputmode="numeric">
+                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="diff-onsetInterval1b" name="diff-onsetInterval1b" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['diff-onsetInterval1b'] }}">
                                 <select class="nhsuk-select" id="diff-onsetInterval1bb" name="diff-onsetInterval1bb">
                                   <option value="Year(s)">Year(s)</option>
                                   <option value="Month(s)">Month(s)</option>
@@ -141,17 +141,16 @@ Case details
                         <label class="nhsuk-label nhsuk-u-width-one-half" for="diff-causeOfDeath1c">
                             1(c) other disease or condition leading to 1(b) (optional)
                         </label>
-                        <input class="nhsuk-input nhsuk-u-width-one-half" id="diff-causeOfDeath1c" name="diff-causeOfDeath1c"
-                            type="text">
+                        <input class="nhsuk-input nhsuk-u-width-one-half" id="diff-causeOfDeath1c" name="diff-causeOfDeath1c"type="text" value="{{ data['diff-causeOfDeath1c'] }}">
                     </div>
                     <div class="nhsuk-form-group">
                         <div class="nhsuk-date-input" id="onset1c">
                             <div class="nhsuk-date-input__item">
                                   <div class="nhsuk-form-group">
-                                    <label class="nhsuk-label" for="select-1">
+                                    <label class="nhsuk-label" for="diff-onsetInterval1c">
                                         Approximate interval between onset of 1(c) and death
                                     </label>
-                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="diff-onsetInterval1c" name="diff-onsetInterval1c" type="text" pattern="[0-9]*" inputmode="numeric">
+                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="diff-onsetInterval1c" name="diff-onsetInterval1c" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['diff-onsetInterval1c'] }}">
                                     <select class="nhsuk-select" id="diff-onsetInterval1cb" name="diff-onsetInterval1cb">
                                       <option value="Year(s)">Year(s)</option>
                                       <option value="Month(s)">Month(s)</option>
@@ -177,10 +176,10 @@ Case details
                         <div class="nhsuk-date-input" id="onset2">
                             <div class="nhsuk-date-input__item">
                                   <div class="nhsuk-form-group">
-                                    <label class="nhsuk-label" for="select-1">
+                                    <label class="nhsuk-label" for="diff-onsetInterval2">
                                         Approximate interval between onset of 2 and death
                                     </label>
-                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="diff-onsetInterval2" name="diff-onsetInterval2" type="text" pattern="[0-9]*" inputmode="numeric">
+                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="diff-onsetInterval2" name="diff-onsetInterval2" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['diff-onsetInterval2'] }}">
                                     <select class="nhsuk-select" id="diff-onsetInterval2b" name="diff-onsetInterval2b">
                                           <option value="Year(s)">Year(s)</option>
                                           <option value="Month(s)">Month(s)</option>
@@ -210,9 +209,8 @@ Case details
                 <fieldset class="nhsuk-fieldset">
                     <div class="nhsuk-checkboxes nhsuk-u-width-two-thirds">
                         <div class="nhsuk-checkboxes__item">
-                            <input class="nhsuk-checkboxes__input" id="confirmationOfProposal" name="declaration1"
-                                type="checkbox" value="confirmationOfProposal">
-                            <label class="nhsuk-label nhsuk-checkboxes__label" for="confirmationOfProposal">
+                            <input class="nhsuk-checkboxes__input" id="diffconfirmationOfProposal" name="diffconfirmationOfProposal" type="checkbox" value="diffconfirmationOfProposal">
+                            <label class="nhsuk-label nhsuk-checkboxes__label" for="diffconfirmationOfProposal">
                                 I can confirm that I have:
                                 <ul>
                                     <li>carried out an independent and proportionate scrutiny of this death</li>
