@@ -18,5 +18,6 @@ router.use('/current', require('./views/current/_routes'));
 router.use('/v13', require('./views/v13/_routes'));
 router.use('/v14', require('./views/v14/_routes'));
 router.use('/v15', require('./views/v15/_routes'));
+router.use('/v16', require('./views/v16/_routes'));
 
 module.exports = router;

@@ -36,59 +36,60 @@ Case details
             Agreed new cause of death
         </h1>
 
-        <form action="new-agreed-cause" method="post">
+        <form action="ap-prop-cause-of-death" method="post">
 
             
             <div class="nhsuk-form-group">
-                <label class="nhsuk-label nhsuk-u-width-two-thirds" for="diff-causeOfDeathSummary">
+                <label class="nhsuk-label nhsuk-u-width-two-thirds" for="causeOfDeathSummary">
                     Cause of death summary
                 </label>
-                <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="diff-causeOfDeathSummary"
-                    name="diff-causeOfDeathSummary" rows=" 10 "></textarea>
+                <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="causeOfDeathSummary"
+                    name="causeOfDeathSummary" rows=" 10 "></textarea>
             </div>
 
             <!-- Under 28 days after birth form -->
             {% if data['over-under-28'] == 'under' %}
                 <div class="nhsuk-u-margin-bottom-8">
                     <div class="nhsuk-form-group">
-                        <label class="nhsuk-label nhsuk-u-width-one-half" for="a-cod-infant-diff">
+                        <label class="nhsuk-label nhsuk-u-width-one-half" for="a-cod-infant">
                             (a) Main disease or conditions in infant
                         </label>
-                        <input class="nhsuk-input nhsuk-u-width-one-half" id="a-cod-infant-diff" name="a-cod-infant-diff" type="text">
+                        <input class="nhsuk-input nhsuk-u-width-one-half" id="a-cod-infant" name="a-cod-infant" type="text">
                     </div>
                     <div class="nhsuk-form-group">
-                        <label class="nhsuk-label nhsuk-u-width-one-half" for="b-cod-infant-diff">
+                        <label class="nhsuk-label nhsuk-u-width-one-half" for="b-cod-infant">
                             (b) Other disease or conditions in infant
                         </label>
-                        <input class="nhsuk-input nhsuk-u-width-one-half" id="b-cod-infant-diff" name="b-cod-infant-diff" type="text">
+                        <input class="nhsuk-input nhsuk-u-width-one-half" id="b-cod-infant" name="b-cod-infant" type="text">
                     </div>
                     <div class="nhsuk-form-group">
-                        <label class="nhsuk-label nhsuk-u-width-one-half" for="c-cod-infant-diff">
+                        <label class="nhsuk-label nhsuk-u-width-one-half" for="c-cod-infant">
                             (c) Main maternal disease or conditions affecting infant
                         </label>
-                        <input class="nhsuk-input nhsuk-u-width-one-half" id="c-cod-infant-diff" name="c-cod-infant-diff" type="text">
+                        <input class="nhsuk-input nhsuk-u-width-one-half" id="c-cod-infant" name="c-cod-infant" type="text">
                     </div>
                     <div class="nhsuk-form-group">
-                        <label class="nhsuk-label nhsuk-u-width-one-half" for="d-cod-infant-diff">
+                        <label class="nhsuk-label nhsuk-u-width-one-half" for="d-cod-infant">
                             (d) Other maternal disease or conditions affecting infant
                         </label>
-                        <input class="nhsuk-input nhsuk-u-width-one-half" id="d-cod-infant-diff" name="d-cod-infant-diff" type="text">
+                        <input class="nhsuk-input nhsuk-u-width-one-half" id="d-cod-infant" name="d-cod-infant" type="text">
                     </div>
                     <div class="nhsuk-form-group">
-                        <label class="nhsuk-label nhsuk-u-width-one-half" for="e-cod-infant-diff">
+                        <label class="nhsuk-label nhsuk-u-width-one-half" for="e-cod-infant">
                             (e) Other relevant causes
                         </label>
-                        <input class="nhsuk-input nhsuk-u-width-one-half" id="e-cod-infant-diff" name="e-cod-infant-diff" type="text">
+                        <input class="nhsuk-input nhsuk-u-width-one-half" id="e-cod-infant" name="e-cod-infant" type="text">
                     </div>
                 </div>
             <!-- Over 28 days after birth form -->
             {% else %}
                 <div class="nhsuk-u-margin-bottom-8">
                     <div class="nhsuk-form-group">
-                        <label class="nhsuk-label nhsuk-u-width-one-half" for="diff-causeOfDeath1a">
+                        <label class="nhsuk-label nhsuk-u-width-one-half" for="causeOfDeath1a">
                             1(a) disease or condition directly leading to death (required)
                         </label>
-                        <input class="nhsuk-input nhsuk-u-width-one-half" id="diff-causeOfDeath1a" name="diff-causeOfDeath1a"type="text">
+                        <input class="nhsuk-input nhsuk-u-width-one-half" id="causeOfDeath1a" name="causeOfDeath1a"
+                            type="text">
                     </div>
                     <div class="nhsuk-date-input" id="onset1a">
                         <div class="nhsuk-date-input__item">
@@ -96,14 +97,14 @@ Case details
                                 <label class="nhsuk-label" for="select-1">
                                     Approximate interval between onset of 1(a) and death
                                 </label>
-                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="diff-onsetInterval1a" name="diff-onsetInterval1a" type="text" pattern="[0-9]*" inputmode="numeric">
-                                <select class="nhsuk-select" id="diff-onsetInterval1ab" name="diff-onsetInterval1ab">
-                                  <option value="Year(s)">Year(s)</option>
-                                  <option value="Month(s)">Month(s)</option>
-                                  <option value="Week(s)">Week(s)</option>
-                                  <option value="Day(s)">Day(s)</option>
-                                  <option value="Hour(s)">Hour(s)</option>
-                                  <option value="Minute(s)">Minute(s)</option>
+                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="onsetInterval1a" name="onsetInterval1a" type="text" pattern="[0-9]*" inputmode="numeric">
+                                <select class="nhsuk-select" id="onsetInterval1a" name="onsetInterval1a">
+                                  <option value="1">Year(s)</option>
+                                  <option value="2">Month(s)</option>
+                                  <option value="3">Week(s)</option>
+                                  <option value="4">Day(s)</option>
+                                  <option value="5">Hour(s)</option>
+                                  <option value="6">Minute(s)</option>
                                 </select>
                               </div>
                         </div>
@@ -111,10 +112,11 @@ Case details
 
                 <div class="nhsuk-u-margin-bottom-8">
                     <div class="nhsuk-form-group">
-                        <label class="nhsuk-label nhsuk-u-width-one-half" for="diff-causeOfDeath1b">
+                        <label class="nhsuk-label nhsuk-u-width-one-half" for="causeOfDeath1b">
                             1(b) other disease or condition leading to 1(a) (optional)
                         </label>
-                        <input class="nhsuk-input nhsuk-u-width-one-half" id="diff-causeOfDeath1b" name="diff-causeOfDeath1b"type="text">
+                        <input class="nhsuk-input nhsuk-u-width-one-half" id="causeOfDeath1b" name="causeOfDeath1b"
+                            type="text">
                     </div>
                     <div class="nhsuk-form-group">
                     <div class="nhsuk-date-input" id="onset1b">
@@ -123,14 +125,14 @@ Case details
                                 <label class="nhsuk-label" for="select-1">
                                     Approximate interval between onset of 1(b) and death
                                 </label>
-                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="diff-onsetInterval1b" name="diff-onsetInterval1b" type="text" pattern="[0-9]*" inputmode="numeric">
-                                <select class="nhsuk-select" id="diff-onsetInterval1bb" name="diff-onsetInterval1bb">
-                                  <option value="Year(s)">Year(s)</option>
-                                  <option value="Month(s)">Month(s)</option>
-                                  <option value="Week(s)">Week(s)</option>
-                                  <option value="Day(s)">Day(s)</option>
-                                  <option value="Hour(s)">Hour(s)</option>
-                                  <option value="Minute(s)">Minute(s)</option>
+                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="onsetInterval1b" name="onsetInterval1b" type="text" pattern="[0-9]*" inputmode="numeric">
+                                <select class="nhsuk-select" id="onsetInterval1b" name="onsetInterval1b">
+                                  <option value="1">Year(s)</option>
+                                  <option value="2">Month(s)</option>
+                                  <option value="3">Week(s)</option>
+                                  <option value="4">Day(s)</option>
+                                  <option value="5">Hour(s)</option>
+                                  <option value="6">Minute(s)</option>
                                 </select>
                               </div>
                         </div>
@@ -138,10 +140,10 @@ Case details
                 </div>
                 <div class="nhsuk-u-margin-bottom-8">
                     <div class="nhsuk-form-group">
-                        <label class="nhsuk-label nhsuk-u-width-one-half" for="diff-causeOfDeath1c">
+                        <label class="nhsuk-label nhsuk-u-width-one-half" for="causeOfDeath1c">
                             1(c) other disease or condition leading to 1(b) (optional)
                         </label>
-                        <input class="nhsuk-input nhsuk-u-width-one-half" id="diff-causeOfDeath1c" name="diff-causeOfDeath1c"
+                        <input class="nhsuk-input nhsuk-u-width-one-half" id="causeOfDeath1c" name="causeOfDeath1c"
                             type="text">
                     </div>
                     <div class="nhsuk-form-group">
@@ -151,14 +153,14 @@ Case details
                                     <label class="nhsuk-label" for="select-1">
                                         Approximate interval between onset of 1(c) and death
                                     </label>
-                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="diff-onsetInterval1c" name="diff-onsetInterval1c" type="text" pattern="[0-9]*" inputmode="numeric">
-                                    <select class="nhsuk-select" id="diff-onsetInterval1cb" name="diff-onsetInterval1cb">
-                                      <option value="Year(s)">Year(s)</option>
-                                      <option value="Month(s)">Month(s)</option>
-                                      <option value="Week(s)">Week(s)</option>
-                                      <option value="Day(s)">Day(s)</option>
-                                      <option value="Hour(s)">Hour(s)</option>
-                                      <option value="Minute(s)">Minute(s)</option>
+                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="onsetInterval1c" name="onsetInterval1c" type="text" pattern="[0-9]*" inputmode="numeric">
+                                    <select class="nhsuk-select" id="onsetInterval1c" name="onsetInterval1c">
+                                      <option value="1">Year(s)</option>
+                                      <option value="2">Month(s)</option>
+                                      <option value="3">Week(s)</option>
+                                      <option value="4">Day(s)</option>
+                                      <option value="5">Hour(s)</option>
+                                      <option value="6">Minute(s)</option>
                                     </select>
                                   </div>
                             </div>
@@ -167,10 +169,10 @@ Case details
                 </div>
                 <div class="nhsuk-u-margin-bottom-8">
                     <div class="nhsuk-form-group">
-                        <label class="nhsuk-label nhsuk-u-width-one-half" for="diff-causeOfDeath2">
+                        <label class="nhsuk-label nhsuk-u-width-one-half" for="causeOfDeath2">
                             2 - Other significant conditions (optional)
                         </label>
-                        <input class="nhsuk-input nhsuk-u-width-one-half" id="diff-causeOfDeath2" name="diff-causeOfDeath2"
+                        <input class="nhsuk-input nhsuk-u-width-one-half" id="causeOfDeath2" name="causeOfDeath2"
                             type="text">
                     </div>
                     <div class="nhsuk-form-group">
@@ -180,14 +182,14 @@ Case details
                                     <label class="nhsuk-label" for="select-1">
                                         Approximate interval between onset of 2 and death
                                     </label>
-                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="diff-onsetInterval2" name="diff-onsetInterval2" type="text" pattern="[0-9]*" inputmode="numeric">
-                                    <select class="nhsuk-select" id="diff-onsetInterval2b" name="diff-onsetInterval2b">
-                                          <option value="Year(s)">Year(s)</option>
-                                          <option value="Month(s)">Month(s)</option>
-                                          <option value="Week(s)">Week(s)</option>
-                                          <option value="Day(s)">Day(s)</option>
-                                          <option value="Hour(s)">Hour(s)</option>
-                                          <option value="Minute(s)">Minute(s)</option>
+                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="onsetInterval2" name="onsetInterval2" type="text" pattern="[0-9]*" inputmode="numeric">
+                                    <select class="nhsuk-select" id="onsetInterval2" name="onsetInterval2">
+                                      <option value="1">Year(s)</option>
+                                      <option value="2">Month(s)</option>
+                                      <option value="3">Week(s)</option>
+                                      <option value="4">Day(s)</option>
+                                      <option value="5">Hour(s)</option>
+                                      <option value="6">Minute(s)</option>
                                     </select>
                                   </div>
                             </div>
@@ -230,7 +232,7 @@ Case details
 
         </form>
 
-        <form action="save-draft-new-CoD" method="post"> 
+        <form action="save-draft-DIFCOD" method="post"> 
             <button class="nhsuk-button nhsuk-button--secondary custom-draft-button" id="save-as-draft-button" data-module="nhsuk-button" type="submit">
                 Save as draft
             </button>

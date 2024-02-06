@@ -220,6 +220,20 @@ router.post(/no-discussion-ap/, (req, res) => {
 
 })
 
+// Agreed new cause of death 
+router.post(/new-agreed-cause/, (req, res) => {
+
+    const newcause = req.session.data['newcause']
+
+    if (newcause) {
+        req.session.data['new-cause-of-death-section'] = 'complete'
+        res.redirect('case-scrutiny')
+    } else {
+        req.session.data['new-cause-of-death-section'] = 'incomplete'
+        res.redirect('case-scrutiny')
+    }
+
+})
 
 
 // ========================================================================
@@ -549,7 +563,8 @@ router.post(/save-draft-APCOD/, (req, res) => {
 
 })
 
-//Page: /case/different-mccd-outcome
+
+//Page: /case/different-mccd-outcome: V15 WRONG APPROACH
 router.post(/save-draft-DIFCOD/, (req, res) => {
 
     req.session.data['draft-status-DIFCOD'] = 'draft'
@@ -557,6 +572,16 @@ router.post(/save-draft-DIFCOD/, (req, res) => {
     res.redirect('case-scrutiny')
 
 })
+
+//Page: /case/different-mccd-outcome: V16 CORRECT APPROACH
+router.post(/save-draft-new-CoD/, (req, res) => {
+
+    req.session.data['draft-status-new-CoD'] = 'draft'
+
+    res.redirect('case-scrutiny')
+
+})
+
 
 //Page: /case/record-review
 router.post(/save-draft-RV/, (req, res) => {
