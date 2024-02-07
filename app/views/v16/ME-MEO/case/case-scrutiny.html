@@ -1005,7 +1005,7 @@ Case details
           Cause of death summary
         </dt>
         <dd class="nhsuk-summary-list__value">
-          {{ data['diff-causeOfDeathSummar'] }}
+          {{ data['diff-causeOfDeathSummary '] }}
         </dd>
         <dd class="nhsuk-summary-list__actions">
           <a href="diferent-mccd-outcome#diff-causeOfDeathSummar">
@@ -1122,7 +1122,6 @@ Case details
           </dd>
         </div>
           {% endif %}
-          {% if data['diff-CauseOfDeath1b'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             1(b) other disease or condition leading to 1(a)
@@ -1136,15 +1135,13 @@ Case details
             </a>
           </dd>
         </div>
-        {% endif %}
-          {% if data['diff-OnsetInterval1b'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Approximate interval between onset of 1(b) and death
           </dt>
           <dd class="nhsuk-summary-list__value">
-            {{ data['diff-OnsetInterval1b'] }}
-             {{ data['diff-OnsetInterval1bb'] }}
+            {{ data['diffOnsetInterval1b'] }}
+             {{ data['diffOnsetInterval1bb'] }}
           </dd>
           <dd class="nhsuk-summary-list__actions">
             <a href="record-review#reviewOnsetInterval1b">
@@ -1152,7 +1149,6 @@ Case details
             </a>
           </dd>
         </div>
-          {% endif %}
           {% if data['diff-CauseOfDeath1c'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">

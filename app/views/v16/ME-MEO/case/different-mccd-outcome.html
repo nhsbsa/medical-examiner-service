@@ -93,7 +93,7 @@ Case details
                     <div class="nhsuk-date-input" id="diff-onsetInterval1a">
                         <div class="nhsuk-date-input__item">
                               <div class="nhsuk-form-group">
-                                <label class="nhsuk-label" for="select-1">
+                                <label class="nhsuk-label" for="diff-onsetInterval1a">
                                     Approximate interval between onset of 1(a) and death
                                 </label>
                                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="diff-onsetInterval1a" name="diff-onsetInterval1a" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['diff-onsetInterval1a'] }}">
@@ -111,20 +111,20 @@ Case details
 
                 <div class="nhsuk-u-margin-bottom-8">
                     <div class="nhsuk-form-group">
-                        <label class="nhsuk-label nhsuk-u-width-one-half" for="diff-causeOfDeath1b">
+                        <label class="nhsuk-label nhsuk-u-width-one-half" for="diffcauseOfDeath1b">
                             1(b) other disease or condition leading to 1(a) (optional)
                         </label>
-                        <input class="nhsuk-input nhsuk-u-width-one-half" id="diff-causeOfDeath1b" name="diff-causeOfDeath1b"type="text" value="{{ data['diff-causeOfDeath1b'] }}">
+                        <input class="nhsuk-input nhsuk-u-width-one-half" id="diffcauseOfDeath1b" name="diffcauseOfDeath1b"type="text" value="{{ data['diffcauseOfDeath1b'] }}">
                     </div>
                     <div class="nhsuk-form-group">
-                    <div class="nhsuk-date-input" id="onset1b">
+                    <div class="nhsuk-date-input" id="diffonsetInterval1b">
                         <div class="nhsuk-date-input__item">
                               <div class="nhsuk-form-group">
-                                <label class="nhsuk-label" for="diff-onsetInterval1b">
+                                <label class="nhsuk-label" for="diffonsetInterval1b">
                                     Approximate interval between onset of 1(b) and death
                                 </label>
-                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="diff-onsetInterval1b" name="diff-onsetInterval1b" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['diff-onsetInterval1b'] }}">
-                                <select class="nhsuk-select" id="diff-onsetInterval1bb" name="diff-onsetInterval1bb">
+                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="diffonsetInterval1b" name="diffonsetInterval1b" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['diffonsetInterval1b'] }}">
+                                <select class="nhsuk-select" id="diffonsetInterval1bb" name="diffonsetInterval1bb">
                                   <option value="Year(s)">Year(s)</option>
                                   <option value="Month(s)">Month(s)</option>
                                   <option value="Week(s)">Week(s)</option>
@@ -209,7 +209,7 @@ Case details
                 <fieldset class="nhsuk-fieldset">
                     <div class="nhsuk-checkboxes nhsuk-u-width-two-thirds">
                         <div class="nhsuk-checkboxes__item">
-                            <input class="nhsuk-checkboxes__input" id="diffconfirmationOfProposal" name="diffconfirmationOfProposal" type="checkbox" value="diffconfirmationOfProposal">
+                            <input class="nhsuk-checkboxes__input" id="diffconfirmationOfProposal" name="diffconfirmationOfProposal" type="checkbox">
                             <label class="nhsuk-label nhsuk-checkboxes__label" for="diffconfirmationOfProposal">
                                 I can confirm that I have:
                                 <ul>
