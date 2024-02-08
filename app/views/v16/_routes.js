@@ -152,22 +152,6 @@ router.post(/record-review/, (req, res) => {
 
 })
 
-// Agreed new cause of death 
-router.post(/different-mccd-outcome/, (req, res) => {
-
-    const newcause = req.session.data['diffconfirmationOfProposal']
-
-    if (newcause) {
-        req.session.data['new-cause-of-death-section'] = 'complete'
-        res.redirect('case-scrutiny')
-    } else {
-        req.session.data['new-cause-of-death-section'] = 'incomplete'
-        res.redirect('case-scrutiny')
-    }
-
-})
-
-
 // Discussion with the attending practitioner about the cause of death
 router.post(/ap-prop-cod-discussion/, (req, res) => {
 
@@ -200,6 +184,22 @@ router.post(/record-discussion-ap/, (req, res) => {
     
 
 })
+
+// Agreed new cause of death 
+router.post(/different-mccd-outcome/, (req, res) => {
+
+    const newcause = req.session.data['different-mccd-outcome']
+
+    if (newcause) {
+        req.session.data['new-cause-of-death-section'] = 'complete'
+        res.redirect('case-scrutiny')
+    } else {
+        req.session.data['new-cause-of-death-section'] = 'incomplete'
+        res.redirect('case-scrutiny')
+    }
+
+})
+
 
 // Record discussion
 router.post(/record-comm-or-concern-ap/, (req, res) => {

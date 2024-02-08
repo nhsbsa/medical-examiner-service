@@ -872,7 +872,7 @@ Case details
           Agreed outcome of discussion
         </dt>
         <dd class="nhsuk-summary-list__value">
-          {{ data['agreedOutcome'] }}
+          {{ data['record-discussion-ap'] }}
         </dd>
         <dd class="nhsuk-summary-list__actions">
           <a href="record-discussion-ap">
@@ -970,7 +970,7 @@ Case details
 
   {% else %}
 
-
+    {% if data['new-cause-of-death-section'] == 'complete' or data['new-cause-of-death-section'] == 'incomplete' or data['draft-status-new-CoD'] == 'draft' %}
 
   <div class="nhsuk-grid-column-three-quarters">
     <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Agreed new cause of death</h2>
@@ -997,7 +997,7 @@ Case details
 
 
   <div class="nhsuk-grid-column-full">
-    {% if data['new-cause-of-death-section'] == 'complete' or data['new-cause-of-death-section'] == 'incomplete' or data['draft-status-new-CoD'] == 'draft' %}
+
     <dl class="nhsuk-summary-list">
 
       <div class="nhsuk-summary-list__row">
@@ -1215,8 +1215,9 @@ Case details
       {% endif %}
     </dl>
 
-    {% endif %}
   </div>
+
+    {% endif %}
 
   {% endif %}
 
