@@ -1106,7 +1106,6 @@ Case details
             </a>
           </dd>
         </div>
-         {% if data['diff-onsetInterval1a'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Approximate interval between onset of 1(a) and death
@@ -1121,7 +1120,7 @@ Case details
             </a>
           </dd>
         </div>
-          {% endif %}
+        {% if data['diff-CauseOfDeath1b'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             1(b) other disease or condition leading to 1(a)
@@ -1135,6 +1134,8 @@ Case details
             </a>
           </dd>
         </div>
+          {% endif %}
+          {% if data['diff-CauseOfDeath1c'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Approximate interval between onset of 1(b) and death
@@ -1149,6 +1150,7 @@ Case details
             </a>
           </dd>
         </div>
+         {% endif %}
           {% if data['diff-CauseOfDeath1c'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">

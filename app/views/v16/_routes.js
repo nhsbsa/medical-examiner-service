@@ -170,15 +170,15 @@ router.post(/record-discussion-ap/, (req, res) => {
 
     const agreedOutcome = req.session.data['record-discussion-ap']
 
-    if (agreedOutcome == 'different-cause-death') {
-        res.redirect('different-mccd-outcome')
-    } 
-
-    else if (agreedOutcome) {
+    if (agreedOutcome) {
         req.session.data['ap-discussion-section'] = 'complete'
     } else {
         req.session.data['ap-discussion-section'] = 'incomplete'
     }
+
+    if (agreedOutcome == 'different-cause-death') {
+        res.redirect('different-mccd-outcome')
+    } 
 
     res.redirect('case-scrutiny')
     
