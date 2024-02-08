@@ -176,7 +176,7 @@ router.post(/record-discussion-ap/, (req, res) => {
         req.session.data['ap-discussion-section'] = 'incomplete'
     }
 
-    if (agreedOutcome == 'different-cause-death') {
+    if (agreedOutcome == 'A different cause of death, agreed by the AP and medical examiner, will appear on the MCCD') {
         res.redirect('different-mccd-outcome')
     } 
 
