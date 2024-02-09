@@ -38,13 +38,12 @@ Case details
 
         <form action="different-mccd-outcome" method="post">
 
-            
             <div class="nhsuk-form-group">
-                <label class="nhsuk-label nhsuk-u-width-two-thirds" for="diff-causeOfDeathSummary">
+                <label class="nhsuk-label" for="diffCauseOfDeathSummary">
                     Cause of death summary
                 </label>
-                <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="diff-causeOfDeathSummary"
-                    name="diff-causeOfDeathSummary" rows=" 10 "></textarea>
+                <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="diffCauseOfDeathSummary"
+                name="diffCauseOfDeathSummary" rows=" 10 ">{{ data['diffCauseOfDeathSummary'] }}</textarea>
             </div>
 
             <!-- Under 28 days after birth form -->
