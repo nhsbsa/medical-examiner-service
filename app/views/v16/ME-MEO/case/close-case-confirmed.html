@@ -26,6 +26,8 @@ Case details
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
 
+        <form action="case-closed" method="post">
+
         <div class="govuk-panel govuk-panel--confirmation--nhs" id="closed-case-panel">
             <h1 class="govuk-panel__title">
                 Case closed
@@ -47,6 +49,11 @@ Case details
         <p class="nhsuk-body" id="closed-case-text">
             Should the Register Office reject the MCCD, you can re-open the case from Closed cases.
         </p>
+
+            <button class="nhsuk-button" id="save-and-continue-button" type="submit">
+                Continue
+            </button>
+
         <p>
             <a target="_blank" href="#">What did you think of this service?<span class="visually-hidden">opens in a new tab</span></a> (takes 30 seconds)
         </p>
