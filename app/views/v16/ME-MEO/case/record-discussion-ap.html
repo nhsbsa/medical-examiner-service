@@ -43,14 +43,14 @@ Case details
                 <label class="nhsuk-label nhsuk-u-width-one-half" for="ap-prop-first-name">
                     First name of the AP who proposed the cause of death
                 </label>
-                <input class="nhsuk-input nhsuk-input--width-20" id="ap-prop-first-name" name="ap-prop-first-name" type="text">
+                <input class="nhsuk-input nhsuk-input--width-20" id="ap-prop-first-name" name="ap-prop-first-name" type="text" value="{{ data['ap-prop-first-name'] }}">
             </div>
 
             <div class="nhsuk-form-group">
                 <label class="nhsuk-label nhsuk-u-width-one-half" for="ap-prop-last-name">
                     Last name of the AP who proposed the cause of death
                 </label>
-                <input class="nhsuk-input nhsuk-input--width-20" id="ap-prop-last-name" name="ap-prop-last-name" type="text">
+                <input class="nhsuk-input nhsuk-input--width-20" id="ap-prop-last-name" name="ap-prop-last-name" type="text" value="{{ data['ap-prop-last-name'] }}">
             </div>
 
             <div class="nhsuk-form-group">
@@ -69,7 +69,7 @@ Case details
                                 </label>
                                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
                                     id="dateOfDiscussion-day" name="dodDay" type="text" pattern="[0-9]*"
-                                    inputmode="numeric">
+                                    inputmode="numeric" value="{{ data['dodDay'] }}">
                             </div>
                         </div>
                         <div class="nhsuk-date-input__item">
@@ -79,7 +79,7 @@ Case details
                                 </label>
                                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
                                     id="dateOfDiscussion-dodMonth" name="dodMonth" type="text" pattern="[0-9]*"
-                                    inputmode="numeric">
+                                    inputmode="numeric" value="{{ data['dodMonth'] }}">
                             </div>
                         </div>
                         <div class="nhsuk-date-input__item">
@@ -89,7 +89,7 @@ Case details
                                 </label>
                                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
                                     id="dateOfDiscussion-dodYear" name="dodYear" type="text" pattern="[0-9]*"
-                                    inputmode="numeric">
+                                    inputmode="numeric" value="{{ data['dodYear'] }}">
                             </div>
                         </div>
                     </div>
@@ -112,7 +112,7 @@ Case details
                                 </label>
                                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
                                     id="timeOfDiscussion-hour" name="todHour" type="text" pattern="[0-9]*"
-                                    inputmode="numeric">
+                                    inputmode="numeric" value="{{ data['todHour'] }}">
                             </div>
                         </div>
                         <div class="nhsuk-date-input__item">
@@ -122,7 +122,7 @@ Case details
                                 </label>
                                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
                                     id="timeOfDiscussion-todMinute" name="todMinute" type="text" pattern="[0-9]*"
-                                    inputmode="numeric">
+                                    inputmode="numeric" value="{{ data['todMinute'] }}">
                             </div>
                         </div>
                     </div>
@@ -190,15 +190,13 @@ Case details
                 Save and continue
             </button>
 
-        </form>
-
-        <form action="save-draft-APCOD" method="post">
-            <button class="nhsuk-button nhsuk-button--secondary custom-draft-button" id="save-as-draft-button" data-module="nhsuk-button" type="submit">
+            <button formaction="save-draft-APCOD" method="post" class="nhsuk-button nhsuk-button--secondary" type="submit">
                 Save as draft
-              </button>
+            </button>
 
         </form>
 
+      
     </div>
 
 </div>
