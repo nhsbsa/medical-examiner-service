@@ -267,7 +267,7 @@ Case details
               Action
             </dt>
             <dd class="nhsuk-summary-list__value">
-              <td class="nhsuk-table__cell "><a href="../case/no-discussion-main-cya">View details</a> / <a href="../case/concerns/remove-discussion-main.html">Remove</a></td>
+              <td class="nhsuk-table__cell "><a href="../case/no-discussion-main-cya">View details</a> / <a href="../case/concerns/remove-discussion-main">Remove</a></td>
             </dd>
           </div>
         </dl>
@@ -301,9 +301,15 @@ Case details
 
   <div class="nhsuk-grid-column-full">
     <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Discussions</h2>
-    {% if data['record-communication-concern-section'] == 'complete' %}
+    {% if data['record-communication-concern-section'] == 'complete' or data['draft-status-CC'] == 'draft' %}
 
     <p><a href="record-comm-or-concern">Record a discussion</a></p>
+
+    {% if data['remove-discussion'] == 'yes' %}
+
+      &nbsp;
+
+    {% else %}
 
     <details class="nhsuk-details nhsuk-expander">
       <summary class="nhsuk-details__summary">
@@ -311,9 +317,15 @@ Case details
           Discussion with {{ data['contactFirstNames'] }} {{ data['contactLastName'] }}
         </span>
 
-              <strong class="nhsuk-tag nhsuk-tag nhsbsa-tag--custom">
-                Complete
-              </strong>
+        {% if data['draft-status-CC'] == 'draft' %}
+          <strong class="nhsuk-tag nhsuk-tag--grey align-right">
+            Draft
+          </strong>
+        {% else %}
+          <strong class="nhsuk-tag nhsuk-tag nhsbsa-tag--custom">
+            Complete
+          </strong>
+        {% endif %}
 
       </summary>
       <div class="nhsuk-details__text">
@@ -347,9 +359,11 @@ Case details
               Action
             </dt>
             <dd class="nhsuk-summary-list__value">
-              <td class="nhsuk-table__cell "><a href="../case/comms-concern-cya">View details</a> 
+              <td class="nhsuk-table__cell "><a href="../case/comms-concern-cya">View details</a>
                 {% if data['record-communication-concern-section'] == 'draft' %}
                   / <a href="../case/concerns/remove-discussion-main">Remove</a></td>
+                  {% elseif data['draft-status-CC'] == 'draft' %}
+                   <a href="../case/concerns/remove-discussion">Remove</a></td>
                 {% endif %}
             </dd>
           </div>
@@ -426,6 +440,7 @@ Case details
       </div>
       {% endif %}
     </details>
+    {% endif %}
     {% else %}
     <dl class="nhsuk-summary-list">
       <div class="nhsuk-summary-list__row">
