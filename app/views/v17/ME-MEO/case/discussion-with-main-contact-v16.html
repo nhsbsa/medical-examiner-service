@@ -4,9 +4,9 @@
 
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout-full-width.html' %}
-<!-- 
+<!--
   In /views/layout.html you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 
@@ -34,9 +34,9 @@ Case details
 
         <h1>
             <span class="nhsuk-caption-m nhsuk-caption--bottom">
-                Discussion with the main contact about the cause of death - {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
+                {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
             </span>
-            Record discussion
+            Record discussion about the cause of death with the main contact
         </h1>
 
         <form action="main-contact-discussion" method="post">
@@ -46,15 +46,15 @@ Case details
                     What's the first name of the person the discussion was with?
                 </label>
                 <input class="nhsuk-input nhsuk-u-width-one-half" id="contactFirstNames" name="contactFirstNamesMain"
-                    type="text">
+                    type="text" value="{{ data['contactFirstNamesMain'] }}">
             </div>
 
             <div class="nhsuk-form-group">
                 <label class="nhsuk-label" for="contactLastName">
                     What's the last name of the person the discussion was with?
                 </label>
-                <input class="nhsuk-input nhsuk-u-width-one-half" id="contactLastName" name="contactLastNameMain"
-                    type="text">
+                <input class="nhsuk-input nhsuk-u-width-one-half" id="contactLastName" name="contactLastNamesMain"
+                    type="text" value="{{ data['contactLastNamesMain'] }}">
             </div>
 
             <div class="nhsuk-form-group">
@@ -73,7 +73,7 @@ Case details
                                 </label>
                                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
                                     id="dateOfDiscussion-day" name="dodDayMain" type="text" pattern="[0-9]*"
-                                    inputmode="numeric">
+                                    inputmode="numeric" value="{{ data['dodDayMain'] }}">
                             </div>
                         </div>
                         <div class="nhsuk-date-input__item">
@@ -83,7 +83,7 @@ Case details
                                 </label>
                                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
                                     id="dateOfDiscussion-dodMonth" name="dodMonthMain" type="text" pattern="[0-9]*"
-                                    inputmode="numeric">
+                                    inputmode="numeric" value="{{ data['dodMonthMain'] }}">
                             </div>
                         </div>
                         <div class="nhsuk-date-input__item">
@@ -93,7 +93,7 @@ Case details
                                 </label>
                                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
                                     id="dateOfDiscussion-dodYear" name="dodYearMain" type="text" pattern="[0-9]*"
-                                    inputmode="numeric">
+                                    inputmode="numeric" value="{{ data['dodYearMain'] }}">
                             </div>
                         </div>
                     </div>
@@ -116,7 +116,7 @@ Case details
                                 </label>
                                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
                                     id="timeOfDiscussion-hour" name="todHourMain" type="text" pattern="[0-9]*"
-                                    inputmode="numeric">
+                                    inputmode="numeric" value="{{ data['todHourMain'] }}">
                             </div>
                         </div>
                         <div class="nhsuk-date-input__item">
@@ -126,7 +126,7 @@ Case details
                                 </label>
                                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
                                     id="timeOfDiscussion-todMinute" name="todMinuteMain" type="text" pattern="[0-9]*"
-                                    inputmode="numeric">
+                                    inputmode="numeric" value="{{ data['todMinuteMain'] }}">
                             </div>
                         </div>
                     </div>
@@ -138,10 +138,10 @@ Case details
                     Details of the discussion
                 </label>
                 <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="detailsOfDiscussion"
-                    name="detailsOfDiscussionMain" rows="5"></textarea>
+                    name="detailsOfDiscussionMain" rows="5">{{ data['detailsOfDiscussionMain'] }}</textarea>
             </div>
 
-            <div class="nhsuk-form-group">
+            <!--<div class="nhsuk-form-group">
                 <fieldset class="nhsuk-fieldset" aria-describedby="recordAsConcern-hint">
                     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
                         Do you want to record this as a concern?
@@ -166,13 +166,19 @@ Case details
                         </div>
                     </div>
                 </fieldset>
-            </div>
+            </div>-->
 
             <button class="nhsuk-button" type="submit">
                 Save and continue
             </button>
 
-        </form>
+            <button formaction="save-draft-DWMC" method="post" class="nhsuk-button nhsuk-button--secondary" type="submit">
+                Save as draft
+            </button>
+
+            </form>
+
+                        
 
     </div>
 </div>

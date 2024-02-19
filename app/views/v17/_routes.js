@@ -261,7 +261,7 @@ router.post(/no-discussion-main/, (req, res) => {
 
 })
 
-// Record discussion with main contact
+// Record discussion
 router.post(/main-contact-discussion/, (req, res) => {
 
     const raiseConcern = req.session.data['recordAsConcernMain']
@@ -272,81 +272,38 @@ router.post(/main-contact-discussion/, (req, res) => {
     } else {
         res.redirect('discussion-main-cya')
     }
-
+    
 })
 
 // Record concern
 router.post(/main-raise-concern/, (req, res) => {
-
+    
     req.session.data['recordAsConcernMain'] = 'yes'
     res.redirect('discussion-main-cya')
-
+    
 })
 
-
-// Record discussion
+// Record communication or a concern
 router.post(/record-comm-or-concern/, (req, res) => {
-
+    
     const recordCommsConcern = req.session.data['recordAsCommsConcern']
     req.session.data['record-communication-concern-section'] = 'complete'
-
+    
     if (recordCommsConcern == 'yes') {
         res.redirect('raise-comms-concern')
     } else {
-        res.redirect('comms-concern-cya')
-    }
-
-})
-
-// Remove Discussion
-
-router.post(/remove-discussion/, (req, res) => {
-
-    const removeNotification = req.session.data['remove-discussion']
-
-    if (removeNotification == 'yes') {
-        res.redirect('../concerns/discussion-removed')
-    } else {
-        res.redirect('../comms-concerns')
+        res.redirect('discussion-main-cya')
     }
     
-})
-
-router.post(/discussion-removed/, (req, res) => {
-
-    res.redirect('../comms-concerns')
-
-})
-
-
-// Discussion check answers -  comms-concern-cya
-
-router.post(/check-discussion-details/, (req, res) => {
-
-    req.session.data['concern-raised-yes-no'] = 'yes'
-    
-    res.redirect('../case/comms-concerns')
-
 })
 
 // Record concern (coming from Communication or concern)
 router.post(/raise-comms-concern/, (req, res) => {
-
+    
     req.session.data['recordAsConcernComms'] = 'yes'
-    res.redirect('concerns-notification-cya')
-
+    res.redirect('comms-concern-cya')
+    
 })
-
-// Check concern details 
-
-router.post(/concerns-notification-cya/, (req, res) => {
-
-    req.session.data['concern-raised'] = 'yes'
-
-    res.redirect('../case/comms-concerns')
-
-})
-
 
 router.post(/any-further-action/, (req, res) => {
     res.redirect('comms-concerns')
