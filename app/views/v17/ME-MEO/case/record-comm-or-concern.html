@@ -1,0 +1,244 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-full-width.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+        {% from 'back-link/macro.njk' import backLink %}
+
+        {{ backLink({
+        "href": "javascript:history.back()",
+        "text": "Go back"
+        }) }}
+
+        <div class="nhsuk-grid-column-full">
+            <h1>
+                <span class="nhsuk-caption-m nhsuk-caption--bottom">
+                    Other communication and concerns - {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
+                </span>
+                Record a discussion
+            </h1>
+
+            <form action="record-comm-or-concern" method="post">
+
+                <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-u-width-one-half" for="contactFirstNames">
+                        What's the first name of the person the discussion was with?
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-one-half" id="contactFirstNames" name="contactFirstNames"
+                        type="text" value="{{ data['contactFirstNames'] }}">
+                </div>
+
+                <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-u-width-one-half" for="contactLastName">
+                        What's the last name of the person the discussion was with?
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-one-half" id="contactLastName" name="contactLastName"
+                        type="text" value="{{ data['contactLastName'] }}">
+                </div>
+
+                <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-u-width-one-half" for="contactRole">
+                        Role or relevance of the person to the case
+                    </label>
+                    <div class="nhsuk-hint" id="contactRole-hint">
+                        For example, family member, or person involved in case
+                    </div>
+                    <input class="nhsuk-input nhsuk-u-width-one-half" id="contactRole" name="contactRole" type="text"
+                        aria-describedby="contactRole-hint" value="{{ data['contactRole'] }}">
+                </div>
+
+                <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-u-width-one-half" for="contactingTeamMember">
+                        Which team member was the discussion with?
+                    </label>
+                    <div class="nhsuk-hint" id="contactingTeamMember-hint">
+                        This could be yourself or a colleague
+                    </div>
+                    <input class="nhsuk-input nhsuk-u-width-one-half" id="contactingTeamMember"
+                        name="contactingTeamMember" type="text" aria-describedby="contactingTeamMember-hint" value="{{ data['contactingTeamMember'] }}">
+                </div>
+
+                <div class="nhsuk-form-group">
+                    <fieldset class="nhsuk-fieldset" aria-describedby="dateOfDiscussion-hint" role="group">
+                        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+                            Date of communication
+                        </legend>
+                        <div class="nhsuk-hint" id="dateOfDiscussion-hint">
+                            For example, 22 03 2021
+                        </div>
+                        <div class="nhsuk-date-input" id="dateOfDiscussion">
+                            <div class="nhsuk-date-input__item">
+                                <div class="nhsuk-form-group">
+                                    <label class="nhsuk-label nhsuk-date-input__label" for="dateOfDiscussion-day">
+                                        Day
+                                    </label>
+                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                                        id="dateOfDiscussion-day" name="dodDayCommsConcern" type="text" pattern="[0-9]*"
+                                        inputmode="numeric" value="{{ data['dodDayCommsConcern'] }}">
+                                </div>
+                            </div>
+                            <div class="nhsuk-date-input__item">
+                                <div class="nhsuk-form-group">
+                                    <label class="nhsuk-label nhsuk-date-input__label" for="dateOfDiscussion-month">
+                                        Month
+                                    </label>
+                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                                        id="dateOfDiscussion-month" name="dodMonthCommsConcern" type="text" pattern="[0-9]*"
+                                        inputmode="numeric" value="{{ data['dodMonthCommsConcern'] }}">
+                                </div>
+                            </div>
+                            <div class="nhsuk-date-input__item">
+                                <div class="nhsuk-form-group">
+                                    <label class="nhsuk-label nhsuk-date-input__label" for="dateOfDiscussion-year">
+                                        Year
+                                    </label>
+                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+                                        id="dateOfDiscussion-year" name="dodYearCommsConcern" type="text" pattern="[0-9]*"
+                                        inputmode="numeric" value="{{ data['dodYearCommsConcern'] }}">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class="nhsuk-form-group">
+                    <fieldset class="nhsuk-fieldset" aria-describedby="timeOfDiscussion-hint" role="group">
+                        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+                            Time of communication
+                        </legend>
+                        <div class="nhsuk-hint" id="timeOfDiscussion-hint">
+                            Use 24 hour format. For example, 16 23
+                        </div>
+                        <div class="nhsuk-date-input" id="timeOfDiscussion">
+                            <div class="nhsuk-date-input__item">
+                                <div class="nhsuk-form-group">
+                                    <label class="nhsuk-label nhsuk-date-input__label" for="timeOfDiscussion-hour">
+                                        Hour
+                                    </label>
+                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                                        id="timeOfDiscussion-hour" name="todHourCommsConcern" type="text" pattern="[0-9]*"
+                                        inputmode="numeric" value="{{ data['todHourCommsConcern'] }}">
+                                </div>
+                            </div>
+                            <div class="nhsuk-date-input__item">
+                                <div class="nhsuk-form-group">
+                                    <label class="nhsuk-label nhsuk-date-input__label" for="timeOfDiscussion-minute">
+                                        Minutes
+                                    </label>
+                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                                        id="timeOfDiscussion-minute" name="todMinuteCommsConcern" type="text" pattern="[0-9]*"
+                                        inputmode="numeric" value="{{ data['todMinuteCommsConcern'] }}">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class="nhsuk-form-group">
+                    <fieldset class="nhsuk-fieldset">
+                        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+                            Select the method of communication
+                        </legend>
+                        <div class="nhsuk-radios">
+                            <div class="nhsuk-radios__item">
+                                <input class="nhsuk-radios__input" id="communicationMethod" name="communicationMethod"
+                                    type="radio" value="Phone call">
+                                <label class="nhsuk-label nhsuk-radios__label" for="communicationMethod">
+                                    Phone call
+                                </label>
+                            </div>
+                            <div class="nhsuk-radios__item">
+                                <input class="nhsuk-radios__input" id="inPerson" name="communicationMethod" type="radio"
+                                    value="In person conversation">
+                                <label class="nhsuk-label nhsuk-radios__label" for="inPerson">
+                                    In person conversation
+                                </label>
+                            </div>
+                            <div class="nhsuk-radios__item">
+                                <input class="nhsuk-radios__input" id="Email" name="communicationMethod" type="radio"
+                                    value="Email">
+                                <label class="nhsuk-label nhsuk-radios__label" for="Email">
+                                    Email
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-u-width-two-thirds" for="detailsOfDiscussion">
+                        Enter details of the discussion
+                    </label>
+                    <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="detailsOfDiscussion"
+                        name="detailsOfDiscussionCommsConcern" rows="5">{{ data['detailsOfDiscussionCommsConcern'] }}</textarea>
+                </div>
+
+                <!--<div class="nhsuk-form-group">
+                    <fieldset class="nhsuk-fieldset" aria-describedby="recordAsConcern-hint">
+                        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+                            Do you want to raise a concern or send an email notification?
+                        </legend>
+                        <div class="nhsuk-hint" id="recordAsConcern-hint">
+                            Send an email for case record review, clinical governance process review or for a patient safety incident
+                        </div>
+                        <div class="nhsuk-radios">
+                            <div class="nhsuk-radios__item">
+                                <input class="nhsuk-radios__input" id="recordAsCommsConcern-yes" name="recordAsCommsConcern"
+                                    type="radio" value="yes">
+                                <label class="nhsuk-label nhsuk-radios__label" for="recordAsCommsConcern-yes">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="nhsuk-radios__item">
+                                <input class="nhsuk-radios__input" id="recordAsCommsConcern-no" name="recordAsCommsConcern"
+                                    type="radio" value="no">
+                                <label class="nhsuk-label nhsuk-radios__label" for="recordAsCommsConcern-no">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>-->
+
+
+                <button class="nhsuk-button" type="submit">
+                    Save and continue
+                </button>
+                <button formaction="save-draft-CC" method="post" class="nhsuk-button nhsuk-button--secondary" type="submit">
+                    Save as draft
+                </button>
+
+              </form>
+              <!-- <form action="save-draft-CC" method="post">
+                    <button class="nhsuk-button nhsuk-button--secondary custom-draft-button" id="save-as-draft-button" data-module="nhsuk-button" type="submit">
+                    Save as draft
+                  </button>
+
+            </form> -->
+
+        </div>
+    </div>
+
+    {% endblock %}
