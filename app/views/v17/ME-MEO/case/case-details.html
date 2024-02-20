@@ -428,6 +428,21 @@ Case details
               </a>
             </dd>
           </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Time of admission
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['todHourAdmissionCreate'] }}:{{ data['todMinuteAdmissionCreate'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="hospital-acute-setting#timeOfAdmission">
+                Change<span class="nhsuk-u-visually-hidden"> time of admission</span>
+              </a>
+            </dd>
+          </div>
+
          {% if data['admissionDetails'] %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
