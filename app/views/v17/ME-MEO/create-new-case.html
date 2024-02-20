@@ -49,6 +49,60 @@ Create new case
         <input class="nhsuk-input nhsuk-u-width-one-half" id="lastName" name="deceased-last-name" type="text" value="{{ data['deceased-last-name'] }}">
       </div>
 
+<!-- non toggle nhs number
+      <div class="nhsuk-form-group">
+        <label class="nhsuk-label nhsuk-u-width-one-third" for="nhsNumber">
+          NHS number (Do not include spaces)
+        </label>
+        <input class="nhsuk-input nhsuk-u-width-one-third" id="nhsNumber" name="nhsNumber" type="text" value="{{ data['nhsNumber'] }}">
+      </div>
+      -->
+
+      <div class="nhsuk-form-group">
+          <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+                  NHS number
+              </legend>
+
+              <div class="nhsuk-radios nhsuk-radios--conditional">
+                  <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="nhsNumberKnown" name="nhsNumberKnown" type="radio"
+                          value="yes" aria-controls="conditional-nhsNumberKnown" aria-expanded="false">
+                      <label class="nhsuk-label nhsuk-radios__label" for="nhsNumberKnown">
+                          Known
+                      </label>
+                  </div>
+                  <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden"
+                      id="conditional-nhsNumberKnown">
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label" for="nhsNumber">
+                            Enter details
+                        </label>
+
+                          <div class="nhsuk-hint nhsuk-u-width-one-half" id="nhsNumber-hint">
+                              <!-- NHS numbers are 10 digits long. For example, 485 777 3456 -->
+                              Do not enter spaces
+                          </div>
+                          <input class="nhsuk-input nhsuk-u-width-one-half" id="nhsNumber" name="nhsNumber"
+                              type="text" aria-describedby="nhsNumber-hint" value="{{ data['nhsNumber'] }}">
+                      </div>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="nhsNumberKnown-false" name="nhsNumberKnown"
+                          type="radio" value="no">
+                      <label class="nhsuk-label nhsuk-radios__label" for="nhsNumberKnown-false">
+                          Not known
+                      </label>
+                  </div>
+              </div>
+                      </fieldset>
+      </div>
+
+
+
+
+
+
       <h2 id="date-time-death-header">Date and time death was verified</h2>
 
       <div class="nhsuk-form-group">
