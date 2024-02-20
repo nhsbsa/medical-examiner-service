@@ -52,6 +52,20 @@ Case details
                 <input class="nhsuk-input nhsuk-input--width-20" id="qapLastName" name="qapLastName" type="text" value="{{ data['qapLastName'] }}">
             </div>
 
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-u-width-one-half" for="contactBleepNumber">
+                    Contact or bleep number <span class="optional-span">(optional)
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="contactBleepNumber" name="contactBleepNumber" type="text" value="{{ data['contactBleepNumber'] }}">
+            </div>
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-u-width-one-half" for="gmcNumber">
+                    GMC number <span class="optional-span">(optional)
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="gmcNumber" name="gmcNumber" type="text" value="{{ data['gmcNumber'] }}">
+            </div>
+
             <button class="nhsuk-button" id="save-and-continue-button" type="submit">
                 Save and continue
             </button>
