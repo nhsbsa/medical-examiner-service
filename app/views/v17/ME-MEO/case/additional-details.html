@@ -94,6 +94,10 @@ Additional Details
                     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
                         NHS number
                     </legend>
+                    {% if data['nhsNumber'] %}
+                    <input class="nhsuk-input nhsuk-u-width-one-third" id="nhsNumber" name="nhsNumber"
+                        type="text" aria-describedby="nhsNumber-hint" value="{{ data['nhsNumber'] }}">
+                        {% else %}
                     <div class="nhsuk-radios nhsuk-radios--conditional">
                         <div class="nhsuk-radios__item">
                             <input class="nhsuk-radios__input" id="nhsNumberKnown" name="nhsNumberKnown" type="radio"
@@ -109,7 +113,8 @@ Additional Details
                                     Enter details
                                 </label>
                                 <div class="nhsuk-hint nhsuk-u-width-one-half" id="nhsNumber-hint">
-                                    NHS numbers are 10 digits long. For example, 485 777 3456
+                                    <!-- NHS numbers are 10 digits long. For example, 485 777 3456 -->
+                                    Do not enter spaces
                                 </div>
                                 <input class="nhsuk-input nhsuk-u-width-one-half" id="nhsNumber" name="nhsNumber"
                                     type="text" aria-describedby="nhsNumber-hint" value="{{ data['nhsNumber'] }}">
@@ -123,6 +128,7 @@ Additional Details
                             </label>
                         </div>
                     </div>
+                    {% endif %}
                 </fieldset>
             </div>
 
@@ -250,7 +256,7 @@ Additional Details
 
             </form>
 
-            
+
 
     </div>
 
