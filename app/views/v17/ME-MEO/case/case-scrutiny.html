@@ -213,10 +213,11 @@ Case details
         </dd>
       </div>
 
+ {% if data['contactBleepNumber'] %}
       <div class="nhsuk-summary-list__row">
         {% if data['ap-details-section'] == 'complete' %}
         <dt class="nhsuk-summary-list__key">
-          Contact or bleep
+          Phone or bleep number
         </dt>
         {% endif %}
         <dd class="nhsuk-summary-list__value">
@@ -236,7 +237,9 @@ Case details
           {% endif %}
         </dd>
       </div>
+        {% endif %}
 
+{% if data['gmcNumber'] %}
       <div class="nhsuk-summary-list__row">
         {% if data['ap-details-section'] == 'complete' %}
         <dt class="nhsuk-summary-list__key">
@@ -260,6 +263,7 @@ Case details
           {% endif %}
         </dd>
       </div>
+      {% endif %}
 
     </dl>
 
