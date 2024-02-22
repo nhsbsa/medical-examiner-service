@@ -4,9 +4,9 @@
 
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout-full-width.html' %}
-<!-- 
+<!--
   In /views/layout.html you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 
@@ -44,6 +44,9 @@ Case details
                 </label>
                 <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="diffCauseOfDeathSummary"
                 name="diffCauseOfDeathSummary" rows=" 10 ">{{ data['diffCauseOfDeathSummary'] }}</textarea>
+                <div class="nhsuk-hint nhsuk-character-count__message" id="differentCauseOfDeath-info">
+                You can enter up to 3000 characters
+                </div>
             </div>
 
             <!-- Under 28 days after birth form -->
@@ -82,14 +85,22 @@ Case details
                 </div>
             <!-- Over 28 days after birth form -->
             {% else %}
-                <div class="nhsuk-u-margin-bottom-8">
-                    <div class="nhsuk-form-group">
-                        <label class="nhsuk-label nhsuk-u-width-one-half" for="diff-causeOfDeath1a">
+
+<!-- Start 1a -->
+<div class="nhsuk-u-margin-bottom-4">
+            <div class="nhsuk-grid-row">
+    					<div class="nhsuk-grid-column-one-half">
+                  <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-u-width-full" for="diff-causeOfDeath1a">
                             1(a) disease or condition directly leading to death (required)
                         </label>
-                        <input class="nhsuk-input nhsuk-u-width-one-half" id="diff-causeOfDeath1a" name="diff-causeOfDeath1a"type="text" value="{{ data['diff-causeOfDeath1a'] }}">
+                        <input class="nhsuk-input nhsuk-u-width-full" id="diff-causeOfDeath1a" name="diff-causeOfDeath1a"type="text" value="{{ data['diff-causeOfDeath1a'] }}">
                     </div>
-                    <div class="nhsuk-date-input" id="diff-onsetInterval1a">
+                  </div>
+
+
+              <div class="nhsuk-grid-column-one-half">
+                  <div class="nhsuk-date-input" id="diff-onsetInterval1a">
                         <div class="nhsuk-date-input__item">
                               <div class="nhsuk-form-group">
                                 <label class="nhsuk-label" for="diff-onsetInterval1a">
@@ -97,81 +108,114 @@ Case details
                                 </label>
                                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="diff-onsetInterval1a" name="diff-onsetInterval1a" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['diff-onsetInterval1a'] }}">
                                 <select class="nhsuk-select" id="diff-onsetInterval1ab" name="diff-onsetInterval1ab">
-                                  <option value="Year(s)">Year(s)</option>
-                                  <option value="Month(s)">Month(s)</option>
-                                  <option value="Week(s)">Week(s)</option>
-                                  <option value="Day(s)">Day(s)</option>
-                                  <option value="Hour(s)">Hour(s)</option>
-                                  <option value="Minute(s)">Minute(s)</option>
+                                  <option value="year(s)">Year(s)</option>
+                                  <option value="month(s)">Month(s)</option>
+                                  <option value="week(s)">Week(s)</option>
+                                  <option value="day(s)">Day(s)</option>
+                                  <option value="hour(s)">Hour(s)</option>
+                                  <option value="minute(s)">Minute(s)</option>
                                 </select>
                               </div>
+                            </div>
+                          </div>
                         </div>
                     </div>
-
-                <div class="nhsuk-u-margin-bottom-8">
-                    <div class="nhsuk-form-group">
-                        <label class="nhsuk-label nhsuk-u-width-one-half" for="diffcauseOfDeath1b">
-                            1(b) other disease or condition leading to 1(a) (optional)
-                        </label>
-                        <input class="nhsuk-input nhsuk-u-width-one-half" id="diffcauseOfDeath1b" name="diffcauseOfDeath1b"type="text" value="{{ data['diffcauseOfDeath1b'] }}">
                     </div>
-                    <div class="nhsuk-form-group">
+<!-- End 1a -->
+
+<!-- Start 1b -->
+<div class="nhsuk-u-margin-bottom-4">
+          <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-one-half">
+                <div class="nhsuk-form-group">
+                      <label class="nhsuk-label nhsuk-u-width-full" for="diffcauseOfDeath1b">
+                          1(b) other disease or condition leading to 1(a) (optional)
+                      </label>
+                      <input class="nhsuk-input nhsuk-u-width-full" id="diffcauseOfDeath1b" name="diffcauseOfDeath1b"type="text" value="{{ data['diffcauseOfDeath1b'] }}">
+                </div>
+            </div>
+
+               <div class="nhsuk-grid-column-one-half">
+                  <div class="nhsuk-form-group">
                     <div class="nhsuk-date-input" id="diffonsetInterval1b">
                         <div class="nhsuk-date-input__item">
-                              <div class="nhsuk-form-group">
+                            <div class="nhsuk-form-group">
                                 <label class="nhsuk-label" for="diffonsetInterval1b">
                                     Approximate interval between onset of 1(b) and death
                                 </label>
                                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="diffonsetInterval1b" name="diffonsetInterval1b" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['diffonsetInterval1b'] }}">
                                 <select class="nhsuk-select" id="diffonsetInterval1bb" name="diffonsetInterval1bb">
-                                  <option value="Year(s)">Year(s)</option>
-                                  <option value="Month(s)">Month(s)</option>
-                                  <option value="Week(s)">Week(s)</option>
-                                  <option value="Day(s)">Day(s)</option>
-                                  <option value="Hour(s)">Hour(s)</option>
-                                  <option value="Minute(s)">Minute(s)</option>
+                                  <option value="year(s)">Year(s)</option>
+                                  <option value="month(s)">Month(s)</option>
+                                  <option value="week(s)">Week(s)</option>
+                                  <option value="day(s)">Day(s)</option>
+                                  <option value="hour(s)">Hour(s)</option>
+                                  <option value="minute(s)">Minute(s)</option>
                                 </select>
                               </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="nhsuk-u-margin-bottom-8">
-                    <div class="nhsuk-form-group">
-                        <label class="nhsuk-label nhsuk-u-width-one-half" for="diff-causeOfDeath1c">
+                           </div>
+                       </div>
+                   </div>
+                   </div>
+                   </div>
+                   </div>
+
+<!-- end 1b -->
+
+<!-- Startr 1c -->
+<div class="nhsuk-u-margin-bottom-4">
+             <div class="nhsuk-grid-row">
+                <div class="nhsuk-grid-column-one-half">
+                   <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-u-width-full" for="diff-causeOfDeath1c">
                             1(c) other disease or condition leading to 1(b) (optional)
                         </label>
-                        <input class="nhsuk-input nhsuk-u-width-one-half" id="diff-causeOfDeath1c" name="diff-causeOfDeath1c"type="text" value="{{ data['diff-causeOfDeath1c'] }}">
+                        <input class="nhsuk-input nhsuk-u-width-full" id="diff-causeOfDeath1c" name="diff-causeOfDeath1c"type="text" value="{{ data['diff-causeOfDeath1c'] }}">
                     </div>
+                </div>
+
+                <div class="nhsuk-grid-column-one-half">
                     <div class="nhsuk-form-group">
                         <div class="nhsuk-date-input" id="onset1c">
                             <div class="nhsuk-date-input__item">
                                   <div class="nhsuk-form-group">
-                                    <label class="nhsuk-label" for="diff-onsetInterval1c">
+                                    <label class="nhsuk-label" for="reviewOnsetInterval1c">
                                         Approximate interval between onset of 1(c) and death
                                     </label>
-                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="diff-onsetInterval1c" name="diff-onsetInterval1c" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['diff-onsetInterval1c'] }}">
-                                    <select class="nhsuk-select" id="diff-onsetInterval1cb" name="diff-onsetInterval1cb">
-                                      <option value="Year(s)">Year(s)</option>
-                                      <option value="Month(s)">Month(s)</option>
-                                      <option value="Week(s)">Week(s)</option>
-                                      <option value="Day(s)">Day(s)</option>
-                                      <option value="Hour(s)">Hour(s)</option>
-                                      <option value="Minute(s)">Minute(s)</option>
+                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 interval-input" id="reviewOnsetInterval1c" name="reviewOnsetInterval1c" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['reviewOnsetInterval1c'] }}">
+                                <select class="nhsuk-select" id="reviewOnsetInterval1cb" name="reviewOnsetInterval1cb">
+                                      <option value="year(s)">Year(s)</option>
+                                      <option value="month(s)">Month(s)</option>
+                                      <option value="week(s)">Week(s)</option>
+                                      <option value="day(s)">Day(s)</option>
+                                      <option value="hour(s)">Hour(s)</option>
+                                      <option value="minute(s)">Minute(s)</option>
                                     </select>
                                   </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="nhsuk-u-margin-bottom-8">
-                    <div class="nhsuk-form-group">
-                        <label class="nhsuk-label nhsuk-u-width-one-half" for="diff-causeOfDeath2">
+                </div>
+                </div>
+
+<!-- End 1c -->
+
+<!-- Start 2 -->
+
+<div class="nhsuk-u-margin-bottom-4">
+        <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-one-half">
+                  <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-u-width-full" for="diff-causeOfDeath2">
                             2 - Other significant conditions (optional)
                         </label>
-                        <input class="nhsuk-input nhsuk-u-width-one-half" id="diff-causeOfDeath2" name="diff-causeOfDeath2"
-                            type="text">
-                    </div>
-                    <div class="nhsuk-form-group">
+                        <input class="nhsuk-input nhsuk-u-width-full" id="diff-causeOfDeath2" name="diff-causeOfDeath2" type="text" value="{{ data['diff-causeOfDeath2'] }}">
+                </div>
+            </div>
+
+            <div class="nhsuk-grid-column-one-half">
+                  <div class="nhsuk-form-group">
                         <div class="nhsuk-date-input" id="onset2">
                             <div class="nhsuk-date-input__item">
                                   <div class="nhsuk-form-group">
@@ -180,18 +224,21 @@ Case details
                                     </label>
                                     <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="diff-onsetInterval2" name="diff-onsetInterval2" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['diff-onsetInterval2'] }}">
                                     <select class="nhsuk-select" id="diff-onsetInterval2b" name="diff-onsetInterval2b">
-                                          <option value="Year(s)">Year(s)</option>
-                                          <option value="Month(s)">Month(s)</option>
-                                          <option value="Week(s)">Week(s)</option>
-                                          <option value="Day(s)">Day(s)</option>
-                                          <option value="Hour(s)">Hour(s)</option>
-                                          <option value="Minute(s)">Minute(s)</option>
+                                      <option value="year(s)">Year(s)</option>
+                                      <option value="month(s)">Month(s)</option>
+                                      <option value="week(s)">Week(s)</option>
+                                      <option value="day(s)">Day(s)</option>
+                                      <option value="hour(s)">Hour(s)</option>
+                                      <option value="minute(s)">Minute(s)</option>
                                     </select>
                                   </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            </div>
+
             {% endif %}
 
             <div class="nhsuk-form-group">
@@ -227,7 +274,7 @@ Case details
 
         </form>
 
-        <form action="save-draft-new-CoD" method="post"> 
+        <form action="save-draft-new-CoD" method="post">
             <button class="nhsuk-button nhsuk-button--secondary custom-draft-button" id="save-as-draft-button" data-module="nhsuk-button" type="submit">
                 Save as draft
             </button>

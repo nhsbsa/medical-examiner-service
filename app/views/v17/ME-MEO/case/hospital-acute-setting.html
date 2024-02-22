@@ -104,11 +104,42 @@ Case details
             </div>
 
             <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset" aria-describedby="timeOfAdmission-hint" role="group">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+                  Time of admission
+                </legend>
+                <div class="nhsuk-hint" id="timeOfadmission-hint">
+                  Use 24 hour format. For example, 16 23
+                </div>
+                <div class="nhsuk-date-input" id="timeOfAdmission">
+                  <div class="nhsuk-date-input__item">
+                    <div class="nhsuk-form-group">
+                      <label class="nhsuk-label nhsuk-date-input__label" for="timeOfAdmission-hour">
+                        Hour
+                      </label>
+                      <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="timeOfAdmission-hour"
+                        name="todHourAdmissionCreate" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['todHourAdmissionCreate'] }}">
+                    </div>
+                  </div>
+                  <div class="nhsuk-date-input__item">
+                    <div class="nhsuk-form-group">
+                      <label class="nhsuk-label nhsuk-date-input__label" for="timeOfAdmission-todMinute">
+                        Minutes
+                      </label>
+                      <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="timeOfAdmission-todMinute"
+                        name="todMinuteAdmissionCreate" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['todMinuteAdmissionCreate'] }}">
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="nhsuk-form-group">
                 <label class="nhsuk-label nhsuk-u-width-two-thirds" for="admissionDetails">
                     Admission details <span class="optional"> (optional) </span>
                 </label>
                 <div class="nhsuk-hint" id="admissionDetails-hint">
-                    For example, the admission time, method, and reason.
+                    For example, method and reason.
                 </div>
                 <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="admissionDetails" name="admissionDetails"
                     rows="5" aria-describedby="admissionDetails-hint">{{ data['admissionDetails'] }}</textarea>

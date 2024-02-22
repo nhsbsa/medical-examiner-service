@@ -39,7 +39,7 @@ Case details
   <div class="nhsuk-grid-column-three-quarters">
     <h1 class="nhsuk-heading-xl">Case scrutiny</h1>
   </div>
-    <!-- IF the mandatory sections are complete and a Coroner has responded, then show close button  --> 
+    <!-- IF the mandatory sections are complete and a Coroner has responded, then show close button  -->
       {% if data['create-and-assign-section'] and data['additional-details-section'] and data['location-of-death-section'] and data['pre-scrutiny-note-section'] and data['ap-prop-cause-of-death-section'] and
   data['me-independent-review-section'] and data['ap-discussion-section'] and data['discussion-with-main-section'] and
   data['coroner-notification-section'] and data['coroner-response-section'] %}
@@ -212,6 +212,59 @@ Case details
           {% endif %}
         </dd>
       </div>
+
+ {% if data['contactBleepNumber'] %}
+      <div class="nhsuk-summary-list__row">
+        {% if data['ap-details-section'] == 'complete' %}
+        <dt class="nhsuk-summary-list__key">
+          Phone or bleep number
+        </dt>
+        {% endif %}
+        <dd class="nhsuk-summary-list__value">
+          {% if data['ap-details-section'] == 'complete' %}
+            {{ data['contactBleepNumber'] }}
+            {% endif %}
+                  </dd>
+        <dd class="nhsuk-summary-list__actions">
+          {% if data['ap-details-section'] == 'complete' %}
+          <a href="ap-details#contactBleepNumber">
+            Change<span class="nhsuk-u-visually-hidden"> cause of death summary</span>
+          </a>
+          {% else %}
+          <strong class="nhsuk-tag nhsuk-tag--white align-right">
+            Not started
+          </strong>
+          {% endif %}
+        </dd>
+      </div>
+        {% endif %}
+
+{% if data['gmcNumber'] %}
+      <div class="nhsuk-summary-list__row">
+        {% if data['ap-details-section'] == 'complete' %}
+        <dt class="nhsuk-summary-list__key">
+          GMC number
+        </dt>
+        {% endif %}
+        <dd class="nhsuk-summary-list__value">
+          {% if data['ap-details-section'] == 'complete' %}
+            {{ data['gmcNumber'] }}
+            {% endif %}
+                  </dd>
+        <dd class="nhsuk-summary-list__actions">
+          {% if data['ap-details-section'] == 'complete' %}
+          <a href="ap-details#gmcNumber">
+            Change<span class="nhsuk-u-visually-hidden"> cause of death summary</span>
+          </a>
+          {% else %}
+          <strong class="nhsuk-tag nhsuk-tag--white align-right">
+            Not started
+          </strong>
+          {% endif %}
+        </dd>
+      </div>
+      {% endif %}
+
     </dl>
 
     <!-- AP cause of death -->

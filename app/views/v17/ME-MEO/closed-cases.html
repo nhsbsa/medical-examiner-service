@@ -4,9 +4,9 @@
 
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout-admin-interface.html' %}
-<!-- 
+<!--
   In /views/layout.html you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 
@@ -37,15 +37,15 @@ Closed cases
     <table class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable main-table" id="sortable">
       <thead class="nhsuk-table__head">
         <tr class="nhsuk-table__row">
-          <th class="nhsuk-table__header" scope="col"><button class="blue-link-header" type="button">Name</button></th>
-          <th class="nhsuk-table__header" scope="col"><button class="blue-link-header" type="button">Date of death</button></th>
-          <th class="nhsuk-table__header" scope="col"><button class="blue-link-header" type="button">NHS number</button></th>
-          <th class="nhsuk-table__header" scope="col"><button class="blue-link-header" type="button">ME</button></th>
-          <th class="nhsuk-table__header" scope="col"><button class="blue-link-header" type="button">MEO</button></th>
-          <th class="nhsuk-table__header" scope="col"><button class="blue-link-header" type="button">Proposed COD</button></th>
-          <th class="nhsuk-table__header" scope="col"><button class="blue-link-header" type="button">Main contact</button></th>
-          <th class="nhsuk-table__header" scope="col"><button class="blue-link-header" type="button">ME scrutiny</button></th>
-          <th class="nhsuk-table__header fixed-side" scope="col"><button class="blue-link-header" type="button">Case type</button></th>
+          <th role="columnheader" class="nhsuk-table__header" scope="col">Name</th>
+          <th role="columnheader" class="nhsuk-table__header" scope="col">Date of death</th>
+          <th role="columnheader" class="nhsuk-table__header" scope="col">NHS number</th>
+          <th role="columnheader" class="nhsuk-table__header" scope="col">ME</th>
+          <th role="columnheader" class="nhsuk-table__header" scope="col">MEO</th>
+          <th role="columnheader" class="nhsuk-table__header" scope="col">Proposed COD</th>
+          <th role="columnheader" class="nhsuk-table__header" scope="col">Main contact</th>
+          <th role="columnheader" class="nhsuk-table__header" scope="col">ME scrutiny</th>
+          <th role="columnheader" class="nhsuk-table__header" scope="col">Case type</th>
         </tr>
       </thead>
       <tbody class="nhsuk-table__body">
@@ -64,7 +64,7 @@ Closed cases
             <td class="nhsuk-table__cell">
               <span class="nhsuk-tag nhsuk-tag--blue">Routine</span>
             </td>
-          </tr> 
+          </tr>
         {% endif %}
           {% if data['reopen-this-case'] !== 'yes' %}
             <tr class="nhsuk-table__row">
