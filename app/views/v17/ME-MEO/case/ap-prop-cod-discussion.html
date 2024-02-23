@@ -4,9 +4,9 @@
 
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout-full-width.html' %}
-<!-- 
+<!--
   In /views/layout.html you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 
@@ -33,7 +33,7 @@ Case details
             <span class="nhsuk-caption-m nhsuk-caption--bottom">
                 {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
             </span>
-            Discussion with the attending practitioner about the cause of death
+            Discuss cause of death with the AP
         </h1>
 
         <form action="ap-prop-cod-discussion" method="post">
@@ -41,8 +41,7 @@ Case details
             <div class="nhsuk-form-group">
                 <fieldset class="nhsuk-fieldset">
                     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading--m nhsuk-u-width-two-thirds">
-                        Do you need to communicate with the AP (attending practitioner) before the MCCD (medical
-                        certificate of cause of death) is generated?
+                        Do you need to discuss the cause of death with the AP before the MCCD is created?
                     </legend>
                     <div class="nhsuk-radios">
                         <div class="nhsuk-radios__item">
@@ -53,7 +52,7 @@ Case details
                             </label>
                         </div>
                         <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="discussion-no" 
+                            <input class="nhsuk-radios__input" id="discussion-no"
                             name="ap-prop-cod-discussion" type="radio" value="no">
                             <label class="nhsuk-label nhsuk-radios__label" for="discussion-no">
                                 No
