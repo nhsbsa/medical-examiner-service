@@ -31,7 +31,7 @@ Open cases
     </h1>
   </div>
   <div class="nhsuk-grid-column-one-half nhsBSA-align-right">
-    <a href="create-new-case" class="nhsuk-button"> Create new case</a>
+    <a href="create-new-case" id="create-new-case" data-module="create-new-case" class="nhsuk-button"> Create new case</a>
   </div>
 
   <div class="nhsuk-grid-column-full">
@@ -52,6 +52,23 @@ Open cases
         </tr>
       </thead>
       <tbody class="nhsuk-table__body">
+         {% if data['create-new-case-section'] == 'complete' %}
+          <tr class="nhsuk-table__row">
+            <td class="nhsuk-table__cell">
+              <a href="case/case-details">{{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}</a>
+            </td>
+            <td class="nhsuk-table__cell">{{ data['dodDayCreate'] }}/{{ data['dodMonthCreate'] }}/{{ data['dodYearCreate'] }}</td>
+            <td class="nhsuk-table__cell">{{ data['nhsNumber'] }}</td>
+            <td class="nhsuk-table__cell">{{ data['assign-medical-examiner'] }}</td>
+            <td class="nhsuk-table__cell">{{ data['assign-medical-examiner-officer'] }}</td>
+            <td class="nhsuk-table__cell">Complete</td>
+            <td class="nhsuk-table__cell">Complete</td>
+            <td class="nhsuk-table__cell">Complete</td>
+            <td class="nhsuk-table__cell">
+              <span class="nhsuk-tag nhsuk-tag--blue">Routine</span>
+            </td>
+          </tr>
+        {% endif %}
         <tr class="nhsuk-table__row">
           <td class="nhsuk-table__cell">
             <a href="statics/case-details?deceased-full-name=Milo Brett">Milo Brett</a>
