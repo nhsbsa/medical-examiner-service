@@ -4,9 +4,9 @@
 
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout-full-width.html' %}
-<!--
+<!-- 
   In /views/layout.html you can:
-    - change the header and footer
+    - change the header and footer 
     - add custom CSS and JavaScript
 -->
 
@@ -27,93 +27,133 @@ Case details
     <div class="nhsuk-grid-column-two-thirds">
         <h1>
             <span class="nhsuk-caption-m nhsuk-caption--bottom">
-                {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
+
+                Communication and concerns
+                - {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
             </span>
-            Check discussion details
+            Check communication details
         </h1>
 
         <dl class="nhsuk-summary-list">
             <div class="nhsuk-summary-list__row summary-list__details-list">
                 <dt class="nhsuk-summary-list__key">
-                    Name of person discussion was with
+                    Raised by
                 </dt>
-                <dd class="nhsuk-summary-list__value" id="discussion-with">
+                <dd class="nhsuk-summary-list__value" id="raised-by-value">
                     {{ data['contactFirstNames'] }} {{ data['contactLastName'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                    <a id="raised-by-change-link" href="record-comm-or-concern#contactFirstNames">Change
+                    <a id="raised-by-change-link" href="#">Change
                         <span class="nhsuk-u-visually-hidden">who raised the concern</span></a>
                 </dd>
             </div>
-
             <div class="nhsuk-summary-list__row summary-list__details-list">
                 <dt class="nhsuk-summary-list__key">
-                    Role of the person
+                    Relationship
                 </dt>
-                <dd class="nhsuk-summary-list__value" id="discussion-role">
+                <dd class="nhsuk-summary-list__value" id="raised-by-value">
                     {{ data['contactRole'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                    <a id="raised-by-change-link" href="record-comm-or-concern#contactRole">Change
+                    <a id="raised-by-change-link" href="#">Change
                         <span class="nhsuk-u-visually-hidden">Relationship</span></a>
                 </dd>
             </div>
-
             <div class="nhsuk-summary-list__row summary-list__details-list">
                 <dt class="nhsuk-summary-list__key">
-                    Team member discussion was with
+                    Date and time raised
                 </dt>
-                <dd class="nhsuk-summary-list__value" id="discussion-team-member">
-                    {{ data['contactingTeamMember'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                    <a id="raised-by-change-link" href="record-comm-or-concern#contactingTeamMember">Change
-                        <span class="nhsuk-u-visually-hidden">Relationship</span></a>
-                </dd>
-            </div>
-
-            <div class="nhsuk-summary-list__row summary-list__details-list">
-                <dt class="nhsuk-summary-list__key">
-                    Date and time
-                </dt>
-                <dd class="nhsuk-summary-list__value" id="discussion-date-time">
+                <dd class="nhsuk-summary-list__value" id="date-time-value">
                     {{ data['dodDayCommsConcern'] }}/{{ data['dodMonthCommsConcern'] }}/{{ data['dodYearCommsConcern'] }}
                     <br>
                     {{ data['todHourCommsConcern'] }}:{{ data['todMinuteCommsConcern'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                    <a id="date-time-raised-change-link" href="record-comm-or-concern#dateOfDiscussion">Change
+                    <a id="date-time-raised-change-link" href="#">Change
                         <span class="nhsuk-u-visually-hidden">date and time raised</span></a>
                 </dd>
             </div>
             <div class="nhsuk-summary-list__row summary-list__details-list">
                 <dt class="nhsuk-summary-list__key">
-                    Method of communication
+                    Conversation details
                 </dt>
-                <dd class="nhsuk-summary-list__value" id="discussion-method">
-                    {{ data['communicationMethod'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                    <a id="conversation-details-change-link" href="record-comm-or-concern">Change
-                        <span class="nhsuk-u-visually-hidden">communication method</span></a>
-                </dd>
-            </div>
-            <div class="nhsuk-summary-list__row summary-list__details-list">
-                <dt class="nhsuk-summary-list__key">
-                    Details of discussion
-                </dt>
-                <dd class="nhsuk-summary-list__value" id="discussion-method">
+                <dd class="nhsuk-summary-list__value" id="conversation-details-value">
                     {{ data['detailsOfDiscussionCommsConcern'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                    <a id="conversation-details-change-link" href="record-comm-or-concern#detailsOfDiscussion">Change
-                        <span class="nhsuk-u-visually-hidden">discussion details</span></a>
+                    <a id="conversation-details-change-link" href="#">Change
+                        <span class="nhsuk-u-visually-hidden">discussion detais</span></a>
                 </dd>
             </div>
-            </dl>
+            {% if data['recordAsConcernMain'] == 'no' %}
+                <div class="nhsuk-summary-list__row summary-list__details-list">
+                    <dt class="nhsuk-summary-list__key">
+                        Concern raised?
+                    </dt>
+                    <dd class="nhsuk-summary-list__value" id="concern-raised-value">
+                        {{ data['recordAsCommsConcern'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                        <a id="concern-raised-change-link" href="#">Change
+                            <span class="nhsuk-u-visually-hidden">concern raised</span></a>
+                    </dd>
+                </div>
+            {% endif %}
+            
+            <!-- If raise as concern answers have been provided (radio buttons) -->
+            {% if data['recordAsConcernComms'] == 'yes' %}
+                <div class="nhsuk-summary-list__row summary-list__details-list">
+                    <dt class="nhsuk-summary-list__key">
+                        Recommended for case record review?
+                    </dt>
+                    <dd class="nhsuk-summary-list__value" id="concern-raised-value">
+                        {{ data['commscaseReviewRecommended'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                        <a id="concern-raised-change-link" href="#">Change
+                            <span class="nhsuk-u-visually-hidden">Recommended for case record review?</span></a>
+                    </dd>
+                </div>
+                <div class="nhsuk-summary-list__row summary-list__details-list">
+                    <dt class="nhsuk-summary-list__key">
+                        Recommended for other clinical governance process review?
+                    </dt>
+                    <dd class="nhsuk-summary-list__value" id="concern-raised-value">
+                        {{ data['commsclinicalReviewRecommended'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                        <a id="concern-raised-change-link" href="#">Change
+                            <span class="nhsuk-u-visually-hidden">Recommended for other clinical governance process review?</span></a>
+                    </dd>
+                </div>
+                <div class="nhsuk-summary-list__row summary-list__details-list">
+                    <dt class="nhsuk-summary-list__key">
+                        Patient safety incident?
+                    </dt>
+                    <dd class="nhsuk-summary-list__value" id="concern-raised-value">
+                        {{ data['commspatientSafetyIncident'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                        <a id="concern-raised-change-link" href="#">Change
+                            <span class="nhsuk-u-visually-hidden">Patient safety incident?</span></a>
+                    </dd>
+                </div>
+                <div class="nhsuk-summary-list__row summary-list__details-list">
+                    <dt class="nhsuk-summary-list__key">
+                        Recommended for referral to PALS?
+                    </dt>
+                    <dd class="nhsuk-summary-list__value" id="concern-raised-value">
+                        {{ data['commsreferToPals'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                        <a id="concern-raised-change-link" href="#">Change
+                            <span class="nhsuk-u-visually-hidden">Recommended for referral to PALS?</span></a>
+                    </dd>
+                </div>
+            {% endif %}
         </dl>
 
-        <!--<form action="any-further-action" method="post">
+        <form action="any-further-action" method="post">
             <div class="nhsuk-form-group">
                 <fieldset class="nhsuk-fieldset">
                     <legend class="nhsuk-fieldset__legend">
@@ -123,26 +163,25 @@ Case details
                         <div class="nhsuk-radios__item">
                             <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
                             <label class="nhsuk-label nhsuk-radios__label" for="example-1">
-                            Yes
+                            Yes, the coroner needs to be notified
                             </label>
                         </div>
                         <div class="nhsuk-radios__item">
                             <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
                             <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                            No
+                            No action needed 
                             </label>
                         </div>
                     </div>
                 </fieldset>
             </div>
             <button class="nhsuk-button" type="submit">Save and continue</button>
-        </form>-->
-
-        <form action="check-discussion-details" method="post">
-            <button class="nhsuk-button" type="submit">Save and continue</button>
         </form>
 
-        <a id="return-to-communicaition-concerns-link" href="comms-concerns">Return to Communications</a>
+        {% if data['recordAsConcernMain'] == 'no' %}
+        <p><a id="raise-concern-link" href="main-raise-concern">Raise concern</a></p>
+        {% endif %}
+        <a id="return-to-communicaition-concerns-link" href="comms-concerns">Return to Communication and concerns</a>
 
     </div>
 </div>

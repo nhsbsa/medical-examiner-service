@@ -4,9 +4,9 @@
 
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout-full-width.html' %}
-<!--
+<!-- 
   In /views/layout.html you can:
-    - change the header and footer
+    - change the header and footer 
     - add custom CSS and JavaScript
 -->
 
@@ -24,7 +24,7 @@ Case details
 {% block content %}
 
 <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-two-thirds">
+    <div class="nhsuk-grid-column-full">
         {% from 'back-link/macro.njk' import backLink %}
 
         {{ backLink({
@@ -38,74 +38,95 @@ Case details
                 Discussion with the main contact about the cause of death
                 - {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
             </span>
-            Raise a concern
+            Record concern
         </h1>
 
         <form action="raise-comms-concern" method="post">
 
             <div class="nhsuk-form-group">
-                <label class="nhsuk-label nhsuk-u-width-full" for="titleOfConcern">
-                    Enter a title for the concern
-                </label>
-                <input class="nhsuk-input nhsuk-u-width-two-thirds" id="titleOfConcern" name="titleOfConcern"
-                    type="text" value="{{ data['titleOfConcern'] }}">
-            </div>
-
-            <div class="nhsuk-label nhsuk-u-width-two-thirds" data-module="nhsuk-character-count" data-maxlength="500">
-
-                <div class="nhsuk-form-group">
-                    <label class="nhsuk-label nhsuk-label" for="detailsOfConcern">
-                        Enter details of the concern
-                    </label>
-                  <textarea class="nhsuk-textarea nhsuk-js-character-count" id="detailsOfConcern" name="detailsOfConcern" rows="8" aria-describedby="detailsOfConcern-hint">{{ data['detailsOfConcern'] }}</textarea>
-                  <div class="nhsuk-hint nhsuk-character-count__message" id="detailsOfConcern-info">
-                  You can enter up to 3000 characters
-                  </div>
-                </div>
-
-
-              </div>
-
-            <h2>
-                Send a request for futher investigation
-            </h2>
-
-            <div class="nhsuk-form-group">
-                <label class="nhsuk-label" for="email">
-                    Send email notification for case record review (optional)
-                </label>
-                <div class="nhsuk-hint" id="example-with-hint-text-hint">
-                    For example, structured judgemenet review or equivalent
-                  </div>
-                <input class="nhsuk-input nhsuk-input--width-20" id="comms-record-review-email" name="comms-record-review-email" type="text" value="{{ data['comms-record-review-email'] }}">
+                <fieldset class="nhsuk-fieldset" aria-describedby="caseReviewRecommended-hint">
+                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+                        Is this case recommended for case record reviews?
+                    </legend>
+                    <div class="nhsuk-hint" id="commscaseReviewRecommended-hint">
+                        For example, structured judgement review or equivalent
+                    </div>
+                    <div class="nhsuk-radios nhsuk-radios--inline">
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="commscaseReviewRecommended" name="commscaseReviewRecommended"
+                                type="radio" value="yes">
+                            <label class="nhsuk-label nhsuk-radios__label" for="commscaseReviewRecommended">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="commscaseReviewRecommendedNo" name="commscaseReviewRecommended"
+                                type="radio" value="no">
+                            <label class="nhsuk-label nhsuk-radios__label" for="commscaseReviewRecommendedNo">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
             </div>
 
             <div class="nhsuk-form-group">
-                <label class="nhsuk-label" for="email">
-                    Send email notification for other clinical governance process review (optional)
-                </label>
-                <div class="nhsuk-hint" id="example-with-hint-text-hint">
-                    For example, safeguarding or mortality and morbidity (M&M) meetings
-                  </div>
-                <input class="nhsuk-input nhsuk-input--width-20" id="comms-governance-process-email" name="comms-governance-process-email" type="text" value="{{ data['comms-governance-process-email'] }}">
-            </div>
-
-            <div class="nhsuk-form-group">
-                <label class="nhsuk-label" for="email">
-                    Send email notification for a patient safety incident (optional)
-                </label>
-                <div class="nhsuk-hint" id="example-with-hint-text-hint">
-                    For example, safeguarding or mortality and morbidity (M&M) meetings
-                  </div>
-                <input class="nhsuk-input nhsuk-input--width-20" id="comms-patient-safety-email" name="comms-patient-safety-email" type="text" value="{{ data['comms-patient-safety-email'] }}">
+                <fieldset class="nhsuk-fieldset" aria-describedby="commsclinicalReviewRecommended-hint">
+                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+                        Is this case recommended for other clinical governance processes review?
+                    </legend>
+                    <div class="nhsuk-hint" id="commsclinicalReviewRecommended-hint">
+                        For example, safeguarding or mortality and morbidity (M&amp;M) meetings
+                    </div>
+                    <div class="nhsuk-radios nhsuk-radios--inline">
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="commsclinicalReviewRecommended"
+                                name="commsclinicalReviewRecommended" type="radio" value="yes">
+                            <label class="nhsuk-label nhsuk-radios__label" for="commsclinicalReviewRecommended">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="commsclinicalReviewRecommendedNo"
+                                name="commsclinicalReviewRecommended" type="radio" value="no">
+                            <label class="nhsuk-label nhsuk-radios__label" for="commsclinicalReviewRecommendedNo">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
             </div>
 
             <div class="nhsuk-form-group">
                 <fieldset class="nhsuk-fieldset">
                     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
-                        Has the main contact of the deceased been made aware of the Patient Advice and Liaison Service or equivalent service?
+                        Is this a patient safety incident?
                     </legend>
-                    <div class="nhsuk-radios">
+                    <div class="nhsuk-radios nhsuk-radios--inline">
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="commspatientSafetyIncident" name="commspatientSafetyIncident"
+                                type="radio" value="yes">
+                            <label class="nhsuk-label nhsuk-radios__label" for="commspatientSafetyIncident">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="commspatientSafetyIncidentNo" name="commspatientSafetyIncident"
+                                type="radio" value="no">
+                            <label class="nhsuk-label nhsuk-radios__label" for="commspatientSafetyIncidentNo">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="nhsuk-form-group">
+                <fieldset class="nhsuk-fieldset">
+                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+                        Is this case recommended for referral to PALS?
+                    </legend>
+                    <div class="nhsuk-radios nhsuk-radios--inline">
                         <div class="nhsuk-radios__item">
                             <input class="nhsuk-radios__input" id="commsreferToPals" name="commsreferToPals" type="radio"
                                 value="yes">
@@ -128,12 +149,7 @@ Case details
                 Save and continue
             </button>
 
-            <button formaction="save-draft-RC" method="post" class="nhsuk-button nhsuk-button--secondary" type="submit">
-                Save as draft
-            </button>
         </form>
-
-
 
     </div>
 </div>
