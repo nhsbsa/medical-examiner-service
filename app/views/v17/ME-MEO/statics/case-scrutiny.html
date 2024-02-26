@@ -4,9 +4,9 @@
 
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout-admin-interface.html' %}
-<!-- 
+<!--
   In /views/layout.html you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 
@@ -171,6 +171,27 @@ Case details
   <div class="nhsuk-grid-column-three-quarters">
     <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Medical examiner's independent review</h2>
   </div>
+
+  {% if data ['deceased-full-name'] == 'Milo Brett' %}
+
+  <div class="nhsuk-grid-column-full">
+  <dl class="nhsuk-summary-list">
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key nhsuk-u-font-weight-normal">
+        <a href="../case/record-review">Add medical examiner's independent review</a>
+      </dt>
+      <dd class="nhsuk-summary-list__actions">
+        <strong class="nhsuk-tag nhsuk-tag--white align-right">
+          Not started
+        </strong>
+      </dd>
+    </div>
+  </dl>
+  </div>
+
+  {% else %}
+
+
   <div class="nhsuk-grid-column-one-quarter">
     <strong class="nhsuk-tag nhsuk-tag align-right">
       Complete
@@ -246,6 +267,7 @@ Case details
       </div>
     </dl>
   </div>
+  {% endif %}
 
   <!-- ================================================== -->
   <!-- DISCUSSION WITH THE AP ABOUT THE CAUSE OF DEATH -->
@@ -255,6 +277,26 @@ Case details
     <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Discussion with the AP about the cause of death
     </h2>
   </div>
+
+  {% if data ['deceased-full-name'] == 'Milo Brett' %}
+
+  <div class="nhsuk-grid-column-full">
+  <dl class="nhsuk-summary-list">
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key nhsuk-u-font-weight-normal">
+        <a href="record-review">Add medical examiner's independent review</a>
+      </dt>
+      <dd class="nhsuk-summary-list__actions">
+        <strong class="nhsuk-tag nhsuk-tag--white align-right">
+          Not started
+        </strong>
+      </dd>
+    </div>
+  </dl>
+  </div>
+
+  {% else %}
+
   <div class="nhsuk-grid-column-one-quarter">
     <strong class="nhsuk-tag nhsuk-tag align-right">
       Complete
@@ -291,7 +333,9 @@ Case details
       </div>
     </dl>
   </div>
+  {% endif %}
 </div>
+
 
 {% endblock %}
 
