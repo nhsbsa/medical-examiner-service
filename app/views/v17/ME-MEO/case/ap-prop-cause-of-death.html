@@ -54,9 +54,9 @@ Case details
                 <label class="nhsuk-label nhsuk-u-width-two-thirds" for="causeOfDeathSummary">
                     Cause of death summary
                 </label>
-                <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="causeOfDeathSummary"
-                    name="causeOfDeathSummary" rows=" 10 ">{{ data['causeOfDeathSummary'] }}</textarea>
-                    <div class="nhsuk-hint nhsuk-character-count__message" id="apCauseOfDeath-info">
+                <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds minchar" id="causeOfDeathSummary"
+                    name="causeOfDeathSummary" rows="10" maxlength="3000">{{ data['causeOfDeathSummary'] }}</textarea>
+                    <div class="nhsuk-hint nhsuk-character-count__message rechar" id="apCauseOfDeath-info">
                     You can enter up to 3000 characters
                     </div>
             </div>

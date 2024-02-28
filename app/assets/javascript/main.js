@@ -54,6 +54,9 @@ $(document).ready(function() {
 });
 
 
+// Character count
+
+
 var textarea = document.querySelector(".minchar"),
     output = document.querySelector(".rechar");
 var maxLength = +textarea.getAttribute("maxlength");
@@ -78,5 +81,4 @@ textarea.addEventListener('keydown', function(event) {
 });
 
 window.onload = outputRemainingCharacters
-
 
