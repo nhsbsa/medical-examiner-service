@@ -4,9 +4,9 @@
 
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout-admin-interface.html' %}
-<!-- 
+<!--
   In /views/layout.html you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 
@@ -35,9 +35,9 @@ Case details
 <div class="nhsuk-grid-row">
 
   <div class="nhsuk-grid-column-three-quarters">
-    
+
     {% if data['comms-patient-safety-email'] or data['remove-notification'] == 'yes' %}
-      
+
     {% else %}
     <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
       <h2 class="nhsuk-error-summary__title" id="error-summary-title">
@@ -119,7 +119,7 @@ Case details
               Action
             </dt>
             <dd class="nhsuk-summary-list__value">
-              <td class="nhsuk-table__cell "><a href="../case/discussion-with-main-contact">View details</a></td>
+              <td class="nhsuk-table__cell "><a href="discussion-main-cya">View details</a></td>
             </dd>
           </div>
         </dl>
@@ -211,7 +211,7 @@ Case details
             </dt>
             <dd class="nhsuk-summary-list__value">
               <td class="nhsuk-table__cell "><a href="../case/no-discussion-main">View details</a> / <a href="../case/concerns/remove-concern-notification">Remove</a></td>
-            </dd> 
+            </dd>
           </div>
         </dl>
       </div>
@@ -276,13 +276,13 @@ Case details
         </dl>
       </div>
     </details>
-  
+
 
     <details class="nhsuk-details nhsuk-expander">
       <summary class="nhsuk-details__summary">
         <span class="nhsuk-details__summary-text">
           Discussion with Emmit Felba
-        </span> 
+        </span>
         <strong class="nhsuk-tag nhsuk-tag nhsbsa-tag--custom">
           Complete
         </strong>
@@ -381,12 +381,12 @@ Case details
         </dl>
  <!-- validation example - if a new email hasnt been provided then show validation -->
  {% if data['comms-patient-safety-email'] or data['remove-notification'] == 'yes' %}
-      
+
  {% else %}
  <div class="nhsuk-form-group--error">
  {% endif %}
    <h3 class="nhsuk-heading-l">Concerns notification</h3>
-   
+
    <!-- validation message -->
    {% if data['comms-patient-safety-email'] or data['remove-notification'] == 'yes' %}
 
@@ -485,7 +485,7 @@ Case details
   </div>
 
 
-  
+
 
 </div>
 

@@ -39,11 +39,13 @@ Case details
             Record discussion
         </h1>
 
+        <h2 class="nhsuk-heading-m" id="ap-who-propose-cause-of-death">Who was the discussion with?</h2>
+
         <form action="main-contact-discussion" method="post">
 
             <div class="nhsuk-form-group">
                 <label class="nhsuk-label" for="contactFirstNames">
-                    What's the first name of the person the discussion was with?
+                    First name
                 </label>
                 <input class="nhsuk-input nhsuk-u-width-one-half" id="contactFirstNames" name="contactFirstNamesMain"
                     type="text">
@@ -51,7 +53,7 @@ Case details
 
             <div class="nhsuk-form-group">
                 <label class="nhsuk-label" for="contactLastName">
-                    What's the last name of the person the discussion was with?
+                    Last name 
                 </label>
                 <input class="nhsuk-input nhsuk-u-width-one-half" id="contactLastName" name="contactLastNameMain"
                     type="text">
@@ -137,6 +139,10 @@ Case details
                 <label class="nhsuk-label nhsuk-u-width-two-thirds" for="detailsOfDiscussion">
                     Details of the discussion
                 </label>
+
+                <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="detailsOfDiscussion"
+                    name="detailsOfDiscussionMain" rows="5"></textarea>
+                    <div class="nhsuk-hint nhsuk-character-count__message" id="apCauseOfDeath-info">
                 <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds minchar" id="detailsOfDiscussion"
                     name="detailsOfDiscussionMain" rows="5" maxlength="3000"></textarea>
                     <div class="nhsuk-hint nhsuk-character-count__message rechar" id="charCount">

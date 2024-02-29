@@ -4,9 +4,9 @@
 
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout-admin-interface.html' %}
-<!-- 
+<!--
   In /views/layout.html you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 
@@ -65,33 +65,56 @@ Case details
                     28/05/2023
                     <br>
                     17:30
-                  </dd> 
+                  </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a href="#">View</a>
                 </dd>
               </div>
-          </dl> 
+          </dl>
 
           <h2 class="nhsuk-heading-l" id="coroner-response-header"> Coroner response </h2>
-          
-          <!-- Coroner has accepted or rejected the case -->
+
+            {% if data ['deceased-full-name'] == 'John Smith' and data ['coronerAcceptedCase'] == 'yes' %}
             <dl class="nhsuk-summary-list">
-              <div class="summary-list__two-item nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                    Coroner accepted case
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                    Close case
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="coroner-email-response">Change</a>
-                </dd>
-              </div>
+            <div class="summary-list__two-item nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Coroner accepted case
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                Close case
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="coroner-email-response">Change</a>
+              </dd>
+            </div>
             </dl>
+               {% elseif data ['deceased-full-name'] == 'John Smith' and data ['coronerAcceptedCase'] == 'no' %}
+               <dl class="nhsuk-summary-list">
+               <div class="summary-list__two-item nhsuk-summary-list__row">
+                 <dt class="nhsuk-summary-list__key">
+                   Coroner accepted case
+                 </dt>
+                 <dd class="nhsuk-summary-list__value">
+                   Complete MCCD
+                 </dd>
+                 <dd class="nhsuk-summary-list__actions">
+                   <a href="coroner-email-response">Change</a>
+                 </dd>
+               </div>
+               </dl>
+          {% else %}
+              <dl class="nhsuk-summary-list">
+                  <div class="summary-list__two-item nhsuk-summary-list__row">
+                      <dt class="nhsuk-summary-list__key">
+                          <p class="nhsuk-u-font-weight-normal">No response has been recorded yet.
+                            <a id="add-coroner-response-link" href="coroner-email-response">Add coroner response</a>
+                          </p>
+                        </dt>
+                      </div>
+                    </dl>
 
+          {% endif %}
     </div>
-
-
 </div>
 
 {% endblock %}
