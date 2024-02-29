@@ -21,6 +21,7 @@ Case details
 
 <!-- Your page content goes inside the content block -->
 <!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+
 {% block content %}
 
 <div class="nhsuk-grid-row">
@@ -41,18 +42,20 @@ Case details
 
         <form action="pre-scrutiny-note" method="post">
 
-        <div class="nhsuk-form-group">
-            <label class="nhsuk-label nhsuk-u-width-two-thirds" for="noteText">
-                Provide case synopsis for the medical examiner to review
-            </label>
-            <div class="nhsuk-hint nhsuk-u-width-two-thirds" id="noteText-hint">
-                Include previous medical, social, and drug histories, and details of; recent surgery or treatment,
-                clinical investigations (CT, MRI, X-ray), falls, pressure sores (including grade), learning
-                difficulties, end of life care documentation and DNAR, ongoing registered concerns.
-            </div>
-            <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="noteText" name="noteText" rows="15" aria-describedby="noteText-hint">{{ data['noteText'] }}</textarea>
-            <div class="nhsuk-hint nhsuk-character-count__message" id="preScrutinyNote-info">
-            You can enter up to 2000 characters
+        <div class="nhsuk-character-count" data-module="nhsuk-character-count" data-maxlength="2000">
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-u-width-two-thirds" for="noteText">
+                    Provide case synopsis for the medical examiner to review
+                </label>
+                <div class="nhsuk-hint nhsuk-u-width-two-thirds" id="noteText-hint">
+                    Include previous medical, social, and drug histories, and details of; recent surgery or treatment,
+                    clinical investigations (CT, MRI, X-ray), falls, pressure sores (including grade), learning
+                    difficulties, end of life care documentation and DNAR, ongoing registered concerns.
+                </div>
+                <textarea class="nhsuk-textarea nhsuk-js-character-count nhsuk-u-width-two-thirds minchar" id="noteText" name="noteText" rows="15" maxlength="2000" aria-describedby="noteText-hint">{{ data['noteText'] }}</textarea>
+                <div class="nhsuk-hint nhsuk-character-count__message rechar" id="preScrutinyNote-info">
+                You can enter up to 2000 characters
+                </div>
             </div>
         </div>
 

@@ -135,9 +135,9 @@ Case details
                 <label class="nhsuk-label nhsuk-u-width-two-thirds" for="detailsOfDiscussion">
                     Details of the discussion
                 </label>
-                <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="detailsOfDiscussion"
-                    name="detailsOfDiscussion" rows="5">{{ data['detailsOfDiscussion'] }}</textarea>
-                    <div class="nhsuk-hint nhsuk-character-count__message" id="discussionDetail-info">
+                <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds minchar" id="detailsOfDiscussion"
+                    name="detailsOfDiscussion" rows="5" maxlength="3000">{{ data['detailsOfDiscussion'] }}</textarea>
+                    <div class="nhsuk-hint nhsuk-character-count__message rechar" id="discussionDetail-info">
                     You can enter up to 3000 characters
                     </div>
             </div>

@@ -52,3 +52,33 @@ $(document).ready(function() {
     });
 
 });
+
+
+// Character count
+
+
+var textarea = document.querySelector(".minchar"),
+    output = document.querySelector(".rechar");
+var maxLength = +textarea.getAttribute("maxlength");
+
+function outputRemainingCharacters(){
+    let used = textarea.value.length;
+    output.innerText = `${maxLength - +used} characters remaining`;
+}
+
+textarea.addEventListener('keydown', function(event) {
+
+    outputRemainingCharacters();
+    let used = textarea.value.length;
+    if (maxLength - used == 0) {
+        output.style.color = "#4c6272";
+    } else if (maxLength - used <= 100) {
+        output.style.color = "#4c6272";
+    } else {
+        output.style.color = "#4c6272"; //Default color
+    }
+
+});
+
+window.onload = outputRemainingCharacters
+
