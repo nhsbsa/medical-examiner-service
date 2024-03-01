@@ -63,7 +63,7 @@ var maxLength = +textarea.getAttribute("maxlength");
 
 function outputRemainingCharacters(){
     let used = textarea.value.length;
-    output.innerText = `${maxLength - +used} characters remaining`;
+    output.innerText = `You have ${maxLength - +used} characters remaining`;
 }
 
 textarea.addEventListener('keydown', function(event) {
@@ -81,4 +81,3 @@ textarea.addEventListener('keydown', function(event) {
 });
 
 window.onload = outputRemainingCharacters
-
