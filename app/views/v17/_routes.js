@@ -42,7 +42,6 @@ router.post(/additional-details/, (req, res) => {
 
     // creating a session key 'additional-details-section' and assigning it the value of complete
     req.session.data['additional-details-section'] = 'complete'
-    req.session.data['draft-status-AD'] = ''
 
     res.redirect('case-details')
 
@@ -145,8 +144,6 @@ router.post(/record-review/, (req, res) => {
 
     const declaration = req.session.data['reviewConfirmed']
 
-    req.session.data['draft-status-RV'] = ''
-
     if (declaration) {
         req.session.data['me-independent-review-section'] = 'complete'
         res.redirect('case-scrutiny')
@@ -157,7 +154,7 @@ router.post(/record-review/, (req, res) => {
 
 })
 
-// Agreed new cause of death
+// Agreed new cause of death 
 router.post(/different-mccd-outcome/, (req, res) => {
 
     const newcause = req.session.data['diffconfirmationOfProposal']
@@ -190,8 +187,6 @@ router.post(/record-discussion-ap/, (req, res) => {
 
     const agreedOutcome = req.session.data['record-discussion-ap']
 
-    req.session.data['draft-status-APCOD'] = ''
-
     if (agreedOutcome) {
         req.session.data['ap-discussion-section'] = 'complete'
     } else {
@@ -200,10 +195,10 @@ router.post(/record-discussion-ap/, (req, res) => {
 
     if (agreedOutcome == 'A different cause of death, agreed by the AP and medical examiner, will appear on the MCCD') {
         res.redirect('different-mccd-outcome')
-    }
+    } 
 
     res.redirect('case-scrutiny')
-
+    
 
 })
 
@@ -279,37 +274,37 @@ router.post(/main-contact-discussion/, (req, res) => {
     } else {
         res.redirect('discussion-main-cya')
     }
-
+    
 })
 
 // Record concern
 router.post(/main-raise-concern/, (req, res) => {
-
+    
     req.session.data['recordAsConcernMain'] = 'yes'
     res.redirect('discussion-main-cya')
-
+    
 })
 
 // Record communication or a concern
 router.post(/record-comm-or-concern/, (req, res) => {
-
+    
     const recordCommsConcern = req.session.data['recordAsCommsConcern']
     req.session.data['record-communication-concern-section'] = 'complete'
-
+    
     if (recordCommsConcern == 'yes') {
         res.redirect('raise-comms-concern')
     } else {
         res.redirect('discussion-main-cya')
     }
-
+    
 })
 
 // Record concern (coming from Communication or concern)
 router.post(/raise-comms-concern/, (req, res) => {
-
+    
     req.session.data['recordAsConcernComms'] = 'yes'
     res.redirect('comms-concern-cya')
-
+    
 })
 
 router.post(/any-further-action/, (req, res) => {
@@ -528,7 +523,6 @@ router.post(/save-draft-PSN/, (req, res) => {
 router.post(/save-draft-APCOD/, (req, res) => {
 
     req.session.data['draft-status-APCOD'] = 'draft'
-    req.session.data['ap-discussion-section'] = 'incomplete'
 
     res.redirect('case-scrutiny')
 
