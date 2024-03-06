@@ -322,17 +322,11 @@ if (countRemains < 1) alert('');
             Save and continue
         </button>
 
+        <button formaction="save-draft-RV" method="post" class="nhsuk-button nhsuk-button--secondary" id="save-as-draft-button" data-module="nhsuk-button" type="submit">
+            Save as draft
+          </button>
         </form>
-
-        <form action="save-draft-RV" method="post">
-            <button class="nhsuk-button nhsuk-button--secondary custom-draft-button" id="save-as-draft-button" data-module="nhsuk-button" type="submit">
-                Save as draft
-              </button>
-
-        </form>
-
     </div>
-
 </div>
 
 {% endblock %}
