@@ -42,6 +42,7 @@ router.post(/additional-details/, (req, res) => {
 
     // creating a session key 'additional-details-section' and assigning it the value of complete
     req.session.data['additional-details-section'] = 'complete'
+    
     req.session.data['draft-status-AD'] = ''
 
     res.redirect('case-details')
