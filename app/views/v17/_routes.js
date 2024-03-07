@@ -66,6 +66,8 @@ router.post(/hospital-acute-setting/, (req, res) => {
     // creating a session key 'additional-details-section' and assigning it the value of complete
     req.session.data['location-of-death-section'] = 'complete'
 
+    req.session.data['draft-status-HAS'] = ''
+
     res.redirect('case-details')
 
 })
@@ -104,6 +106,8 @@ router.post(/pre-scrutiny-note/, (req, res) => {
 
     const sectionComplete = req.session.data['sectionComplete']
 
+    req.session.data['draft-status-PSN'] = ''
+
     if (sectionComplete) {
         req.session.data['pre-scrutiny-note-section'] = 'complete'
         res.redirect('case-scrutiny')
@@ -128,6 +132,8 @@ router.post(/ap-prop-cause-of-death/, (req, res) => {
 
     const declaration1 = req.session.data['declaration1']
     const declaration2 = req.session.data['declaration2']
+
+    req.session.data['draft-status-APCOD'] = ''
 
     if (declaration1 && declaration2) {
         req.session.data['ap-prop-cause-of-death-section'] = 'complete'
@@ -158,6 +164,8 @@ router.post(/record-review/, (req, res) => {
 router.post(/different-mccd-outcome/, (req, res) => {
 
     const newcause = req.session.data['diffconfirmationOfProposal']
+    req.session.data['draft-status-new-CoD'] = ''
+
 
     if (newcause) {
         req.session.data['new-cause-of-death-section'] = 'complete'
@@ -186,6 +194,9 @@ router.post(/ap-prop-cod-discussion/, (req, res) => {
 router.post(/record-discussion-ap/, (req, res) => {
 
     const agreedOutcome = req.session.data['record-discussion-ap']
+
+    req.session.data['draft-status-RD'] = ''
+
 
     if (agreedOutcome) {
         req.session.data['ap-discussion-section'] = 'complete'
@@ -506,7 +517,7 @@ router.post(/save-draft-HAS/, (req, res) => {
 
     req.session.data['draft-status-HAS'] = 'draft'
 
-    res.redirect('case-details')
+        res.redirect('case-details')
 
 })
 
@@ -514,6 +525,7 @@ router.post(/save-draft-HAS/, (req, res) => {
 router.post(/save-draft-PSN/, (req, res) => {
 
     req.session.data['draft-status-PSN'] = 'draft'
+    req.session.data['pre-scrutiny-note-section'] = 'incomplete'
 
     res.redirect('case-scrutiny')
 
@@ -542,6 +554,7 @@ router.post(/save-draft-DIFCOD/, (req, res) => {
 router.post(/save-draft-new-CoD/, (req, res) => {
 
     req.session.data['draft-status-new-CoD'] = 'draft'
+    req.session.data['new-cause-of-death-section'] = 'incomplete'
 
     res.redirect('case-scrutiny')
 
@@ -556,6 +569,17 @@ router.post(/save-draft-RV/, (req, res) => {
     res.redirect('case-scrutiny')
 
 })
+
+//Page: /case/record-discussion-ap
+router.post(/save-draft-RD/, (req, res) => {
+
+    req.session.data['draft-status-RD'] = 'draft'
+    req.session.data['ap-discussion-section'] = 'incomplete'
+
+    res.redirect('case-scrutiny')
+
+})
+
 
 //Page: /case/record-review
 router.post(/save-draft-MEIR/, (req, res) => {

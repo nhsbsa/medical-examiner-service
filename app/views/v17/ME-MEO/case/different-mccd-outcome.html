@@ -141,23 +141,23 @@ Case details
           <div class="nhsuk-grid-row">
             <div class="nhsuk-grid-column-one-half">
                 <div class="nhsuk-form-group">
-                      <label class="nhsuk-label nhsuk-u-width-full" for="diffcauseOfDeath1b">
+                      <label class="nhsuk-label nhsuk-u-width-full" for="diff-causeOfDeath1b">
                           1(b) other disease or condition leading to 1(a) (optional)
                       </label>
-                      <input class="nhsuk-input nhsuk-u-width-full" id="diffcauseOfDeath1b" name="diffcauseOfDeath1b"type="text" value="{{ data['diffcauseOfDeath1b'] }}">
+                      <input class="nhsuk-input nhsuk-u-width-full" id="diff-causeOfDeath1b" name="diff-causeOfDeath1b"type="text" value="{{ data['diff-causeOfDeath1b'] }}">
                 </div>
             </div>
 
                <div class="nhsuk-grid-column-one-half">
                   <div class="nhsuk-form-group">
-                    <div class="nhsuk-date-input" id="diffonsetInterval1b">
+                    <div class="nhsuk-date-input" id="diff-onsetInterval1b">
                         <div class="nhsuk-date-input__item">
                             <div class="nhsuk-form-group">
-                                <label class="nhsuk-label" for="diffonsetInterval1b">
+                                <label class="nhsuk-label" for="diff-onsetInterval1b">
                                     Approximate interval between onset of 1(b) and death
                                 </label>
-                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="diffonsetInterval1b" name="diffonsetInterval1b" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['diffonsetInterval1b'] }}">
-                                <select class="nhsuk-select" id="diffonsetInterval1bb" name="diffonsetInterval1bb">
+                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="diff-onsetInterval1b" name="diff-onsetInterval1b" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['diff-onsetInterval1b'] }}">
+                                <select class="nhsuk-select" id="diff-onsetInterval1bb" name="diff-onsetInterval1bb">
                                   <option value="year(s)">Year(s)</option>
                                   <option value="month(s)">Month(s)</option>
                                   <option value="week(s)">Week(s)</option>
@@ -192,11 +192,11 @@ Case details
                         <div class="nhsuk-date-input" id="onset1c">
                             <div class="nhsuk-date-input__item">
                                   <div class="nhsuk-form-group">
-                                    <label class="nhsuk-label" for="reviewOnsetInterval1c">
+                                    <label class="nhsuk-label" for="diff-OnsetInterval1c">
                                         Approximate interval between onset of 1(c) and death
                                     </label>
-                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 interval-input" id="reviewOnsetInterval1c" name="reviewOnsetInterval1c" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['reviewOnsetInterval1c'] }}">
-                                <select class="nhsuk-select" id="reviewOnsetInterval1cb" name="reviewOnsetInterval1cb">
+                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 interval-input" id="diff-OnsetInterval1c" name="diff-OnsetInterval1c" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['diff-OnsetInterval1c'] }}">
+                                <select class="nhsuk-select" id="diff-OnsetInterval1cb" name="diff-OnsetInterval1cb">
                                       <option value="year(s)">Year(s)</option>
                                       <option value="month(s)">Month(s)</option>
                                       <option value="week(s)">Week(s)</option>
@@ -285,14 +285,20 @@ Case details
                 Save and continue
             </button>
 
+            <button formaction="save-draft-new-CoD" method="post" class="nhsuk-button nhsuk-button--secondary" type="submit">
+                Save as draft
+            </button>
+
         </form>
 
+<!--
         <form action="save-draft-new-CoD" method="post">
             <button class="nhsuk-button nhsuk-button--secondary custom-draft-button" id="save-as-draft-button" data-module="nhsuk-button" type="submit">
                 Save as draft
             </button>
 
         </form>
+        -->
 
     </div>
 
