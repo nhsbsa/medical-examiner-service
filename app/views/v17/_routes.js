@@ -42,7 +42,6 @@ router.post(/additional-details/, (req, res) => {
 
     // creating a session key 'additional-details-section' and assigning it the value of complete
     req.session.data['additional-details-section'] = 'complete'
-
     req.session.data['draft-status-AD'] = ''
 
     res.redirect('case-details')
@@ -152,6 +151,8 @@ router.post(/record-review/, (req, res) => {
 
     const declaration = req.session.data['reviewConfirmed']
 
+    req.session.data['draft-status-RV'] = ''
+
     if (declaration) {
         req.session.data['me-independent-review-section'] = 'complete'
         res.redirect('case-scrutiny')
@@ -198,7 +199,6 @@ router.post(/record-discussion-ap/, (req, res) => {
     const agreedOutcome = req.session.data['record-discussion-ap']
 
     req.session.data['draft-status-RD'] = ''
-
 
     if (agreedOutcome) {
         req.session.data['ap-discussion-section'] = 'complete'
