@@ -834,7 +834,6 @@ Case details
     <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Discussion with the AP about the cause of death
     </h2>
   </div>
-
   {% if data['ap-discussion-section'] == 'complete' %}
   <div class="nhsuk-grid-column-one-quarter">
     <strong class="nhsuk-tag nhsuk-tag align-right">
@@ -842,8 +841,8 @@ Case details
     </strong>
   </div>
   {% endif %}
-
   {% if data['ap-discussion-section'] == 'incomplete' %}
+
      {% if data['draft-status-RD'] == 'draft' %}
         <div class="nhsuk-grid-column-one-quarter">
           <strong class="nhsuk-tag nhsuk-tag--grey align-right">
