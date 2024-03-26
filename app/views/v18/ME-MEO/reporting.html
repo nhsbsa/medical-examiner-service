@@ -1,0 +1,83 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Reporting
+{% endblock %}
+
+{% block breadcrumbs %}
+<p class="nhsuk-u-margin-bottom-2 nhsuk-u-margin-top-3">Royal Infirmary, Newcastle</p>
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-one-half">
+        <h1 class="nhsuk-u-margin-bottom-4">
+            Reporting
+        </h1>
+    </div>
+
+    <div class="nhsuk-grid-column-full">
+
+        <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="reports">
+                Showing report for
+            </label>
+            <select class="nhsuk-select" id="reports" name="select-1">
+                <option value="1">Quarter 1 (January 2023)</option>
+                <option value="2">Quarter 4 (October 2022)</option>
+                <option value="3">Quarter 3 (July 2022)</option>
+            </select>
+        </div>
+        <p class="no-report" id="no-report">There is no data for this quarter</p>
+
+        <div id="generate-report" class="hidden">
+          <!-- ADD REPORTING TABLE HERE -->
+          <p>Report will be added here</p>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block sideNav %}
+  <!-- IF user has selected to Reopen a case then change the numbering -->
+  {% if data['reopen-this-case'] == 'yes' %}
+    <div class="side-nav">
+      <ul>
+        <div id="options" class="options">
+          <li><a href="open-cases">Open cases 3</a></li>
+          <li><a href="closed-cases">Closed cases 0</a></li>
+          <li><a href="reopened-cases">Reopened cases 2</a></li>
+          <li><a class="active" href="reporting">Reporting</a></li>
+        </div>
+      </ul>
+    </div>
+  {% else %}
+    <div class="side-nav">
+      <ul>
+        <div id="options" class="options">
+          <li><a href="open-cases">Open cases 3</a></li>
+          <li><a href="closed-cases">Closed cases 1</a></li>
+          <li><a href="reopened-cases">Reopened cases 1</a></li>
+          <li><a class="active" href="reporting">Reporting</a></li>
+        </div>
+      </ul>
+    </div>
+  {% endif %}
+{% endblock %}

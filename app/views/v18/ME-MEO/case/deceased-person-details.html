@@ -1,0 +1,203 @@
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-full-width.html' %}
+<!--
+  In /views/layout.html you can:
+    - edit the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Create new case
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+{% from 'back-link/macro.njk' import backLink %}
+
+{{ backLink({
+"href": "javascript:history.back()",
+"text": "Go back"
+}) }}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <h1>
+      <span class="nhsuk-caption-m nhsuk-caption--bottom">
+        Edit details
+      </span>
+      Deceased person's details
+    </h1>
+
+    <form action="deceased-person-details" method="post">
+
+      <div class="nhsuk-form-group">
+        <label class="nhsuk-label nhsuk-u-width-one-half" for="firstNames">
+          First name(s)
+        </label>
+        <input class="nhsuk-input nhsuk-u-width-one-half" id="firstNames" name="deceased-first-name" type="text"
+        value="{{ data['deceased-first-name'] }}">
+      </div>
+      <div class="nhsuk-form-group">
+        <label class="nhsuk-label nhsuk-u-width-one-half" for="lastName">
+          Last name
+        </label>
+        <input class="nhsuk-input nhsuk-u-width-one-half" id="lastName" name="deceased-last-name" type="text" value="{{ data['deceased-last-name'] }}">
+      </div>
+
+      <div class="nhsuk-form-group">
+          <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+                  NHS number
+              </legend>
+
+              <div class="nhsuk-radios nhsuk-radios--conditional">
+                  <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="nhsNumberKnown" name="nhsNumberKnown" type="radio"
+                          value="yes" aria-controls="conditional-nhsNumberKnown" aria-expanded="false">
+                      <label class="nhsuk-label nhsuk-radios__label" for="nhsNumberKnown">
+                          Known
+                      </label>
+                  </div>
+                  <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden"
+                      id="conditional-nhsNumberKnown">
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label" for="nhsNumber">
+                            Enter details
+                        </label>
+
+                          <div class="nhsuk-hint nhsuk-u-width-one-half" id="nhsNumber-hint">
+                              <!-- NHS numbers are 10 digits long. For example, 485 777 3456 -->
+                              Do not enter spaces
+                          </div>
+                          <input class="nhsuk-input nhsuk-u-width-one-half" id="nhsNumber" name="nhsNumber"
+                              type="text" aria-describedby="nhsNumber-hint" value="{{ data['nhsNumber'] }}">
+                      </div>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="nhsNumberKnown-false" name="nhsNumberKnown"
+                          type="radio" value="no">
+                      <label class="nhsuk-label nhsuk-radios__label" for="nhsNumberKnown-false">
+                          Not known
+                      </label>
+                  </div>
+              </div>
+                      </fieldset>
+      </div>
+
+
+
+
+      <h2 id="date-time-death-header">Date and time death was verified</h2>
+
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="dateOfDeath-hint" role="group">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+            Date of death
+          </legend>
+          <div class="nhsuk-hint" id="dateOfDeath-hint">
+            For example, 15 3 2021
+          </div>
+          <div class="nhsuk-date-input" id="dateOfDeath">
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="dateOfDeath-day">
+                  Day
+                </label>
+                <!-- value="" matches the name attribute on the <input> using nunjucks example {{ data['name-attribute-value'] }} -->
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dateOfDeath-day"
+                  name="dodDayCreate" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['dodDayCreate'] }}">
+              </div>
+            </div>
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="dateOfDeath-dodMonth">
+                  Month
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dateOfDeath-dodMonth"
+                  name="dodMonthCreate" type="text" pattern="[0-9]*" inputmode="numeric">
+              </div>
+            </div>
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="dateOfDeath-dodYear">
+                  Year
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="dateOfDeath-dodYear"
+                  name="dodYearCreate" type="text" pattern="[0-9]*" inputmode="numeric">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="timeOfDeath-hint" role="group">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+            Time of death
+          </legend>
+          <div class="nhsuk-hint" id="timeOfDeath-hint">
+            Use 24 hour format. For example, 16 23
+          </div>
+          <div class="nhsuk-date-input" id="timeOfDeath">
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="timeOfDeath-hour">
+                  Hour
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="timeOfDeath-hour"
+                  name="todHourCreate" type="text" pattern="[0-9]*" inputmode="numeric">
+              </div>
+            </div>
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="timeOfDeath-todMinute">
+                  Minutes
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="timeOfDeath-todMinute"
+                  name="todMinuteCreate" type="text" pattern="[0-9]*" inputmode="numeric">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+            Request for rapid release?
+          </legend>
+          <div class="nhsuk-radios">
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="requestForRapidRelease" name="requestForRapidRelease" type="radio"
+                value="yes">
+              <label class="nhsuk-label nhsuk-radios__label" for="requestForRapidRelease">
+                Yes
+              </label>
+            </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="requestForRapidRelease-no" name="requestForRapidRelease"
+                type="radio" value="no">
+              <label class="nhsuk-label nhsuk-radios__label" for="requestForRapidRelease-no">
+                No
+              </label>
+            </div>
+
+          </div>
+        </fieldset>
+      </div>
+
+      <button class="nhsuk-button" type="submit">
+        Save and continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+{% endblock %}

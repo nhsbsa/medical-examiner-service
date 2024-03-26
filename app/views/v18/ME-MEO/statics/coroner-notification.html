@@ -1,0 +1,177 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+{% block breadcrumbs %}
+<nav class="nhsuk-breadcrumb nhsuk-u-padding-bottom-0" aria-label="Breadcrumb">
+    <ol class="nhsuk-breadcrumb__list">
+      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="../closed-cases">Closed cases</a></li>
+      <li class="nhsuk-breadcrumb__item">Coroner notification - {{ data['deceased-full-name'] }}</li>
+    </ol>
+    <p class="nhsuk-breadcrumb__back">
+      <a class="nhsuk-breadcrumb__backlink" href="#">
+        <span class="nhsuk-u-visually-hidden">Back to &nbsp;</span>
+        Closed cases
+      </a>
+    </p>
+</nav>
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h1 class="nhsuk-heading-xl">Coroner notification</h1>
+  </div>
+  <div class="nhsuk-grid-column-one-quarter">
+    {% if data['deceased-full-name'] == 'Kia Ravi' %}
+      {% if data['reopen-this-case'] == 'yes' %}
+        <a class="nhsuk-button nhsbsa-button--right-align" href="../case/close-case">Close case</a>
+      {% else %}
+        <form action="reopen-case" method="post">
+          <button class="nhsuk-button nhsbsa-button--right-align" type="submit">Reopen case</button>
+        </form>
+      {% endif %}
+    {% endif %}
+  </div>
+
+    <!-- ================================================== -->
+    <!-- CORONER NOTIFICATION -->
+    <!-- ================================================== -->
+
+    <div class="nhsuk-grid-column-full">
+        <dl class="nhsuk-summary-list">
+              <div class="nhsuk-summary-list__row summary-list__details-list">
+                <dt class="nhsuk-summary-list__key">
+                  The notification has been sent to coroner
+                </dt>
+                  <dd class="nhsuk-summary-list__value" id="coroner-notification-value">
+                    28/05/2023
+                    <br>
+                    17:30
+                  </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="#">View</a>
+                </dd>
+              </div>
+          </dl>
+
+          <h2 class="nhsuk-heading-l" id="coroner-response-header"> Coroner response </h2>
+
+            {% if data ['deceased-full-name'] == 'John Smith' and data ['coronerAcceptedCase'] == 'yes' %}
+            <dl class="nhsuk-summary-list">
+            <div class="summary-list__two-item nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Coroner accepted case
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                Close case
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="coroner-email-response">Change</a>
+              </dd>
+            </div>
+            </dl>
+               {% elseif data ['deceased-full-name'] == 'John Smith' and data ['coronerAcceptedCase'] == 'no' %}
+               <dl class="nhsuk-summary-list">
+               <div class="summary-list__two-item nhsuk-summary-list__row">
+                 <dt class="nhsuk-summary-list__key">
+                   Coroner accepted case
+                 </dt>
+                 <dd class="nhsuk-summary-list__value">
+                   Complete MCCD
+                 </dd>
+                 <dd class="nhsuk-summary-list__actions">
+                   <a href="coroner-email-response">Change</a>
+                 </dd>
+               </div>
+               </dl>
+          {% else %}
+              <dl class="nhsuk-summary-list">
+                  <div class="summary-list__two-item nhsuk-summary-list__row">
+                      <dt class="nhsuk-summary-list__key">
+                          <p class="nhsuk-u-font-weight-normal">No response has been recorded yet.
+                            <a id="add-coroner-response-link" href="coroner-email-response">Add coroner response</a>
+                          </p>
+                        </dt>
+                      </div>
+                    </dl>
+
+          {% endif %}
+    </div>
+</div>
+
+{% endblock %}
+
+{% block sideNav %}
+<div class="side-nav">
+  <h3>{{ data['deceased-full-name'] }}
+    <span class="nhsuk-caption-m nhsuk-caption--bottom nhsuk-u-margin-top-2">
+      {% if data['deceased-full-name'] == 'Milo Brett' %}
+        <strong class="nhsuk-tag nhsuk-tag--red">Urgent</strong>
+      {% else %}
+        {% if data['reopen-this-case'] == 'yes' %}
+          <strong class="nhsuk-tag nhsuk-tag--orange">Reopened</strong>
+        {% else %}
+          <strong class="nhsuk-tag nhsuk-tag--blue">Routine</strong>
+        {% endif %}
+      {% endif %}
+    </span>
+  </h3>
+    <ul>
+      <div id="options" class="options">
+        <li>
+          <a href="case-details">Case details
+          <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+            Complete
+          </strong>
+          </a>
+        </li>
+        <li>
+          <a href="case-scrutiny">Case scrutiny
+            <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+              Complete
+            </strong>
+          </a>
+        </li>
+        <li>
+          <a href="comms-concerns">Communications
+          {% if data['comms-patient-safety-email'] or data['remove-notification'] == 'yes' %}
+          <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+            Complete
+          </strong>
+          {% else %}
+          <strong class="nhsuk-tag nhsuk-tag--red side-nav-tag">
+            Problem
+          </strong>
+          {% endif %}
+          </a>
+        </li>
+        <li>
+        <li>
+          <a class="active" href="coroner-notification">Coroner
+          <strong class="nhsuk-tag nhsuk-tag--blue side-nav-tag">
+            Raised
+          </strong>
+          </a>
+        </li>
+      </div>
+    </ul>
+</div>
+{% endblock %}
