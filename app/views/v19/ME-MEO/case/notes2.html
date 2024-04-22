@@ -1,0 +1,241 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case notes
+{% endblock %}
+
+{% block breadcrumbs %}
+<nav class="nhsuk-breadcrumb nhsuk-u-padding-bottom-0" aria-label="Breadcrumb">
+    <ol class="nhsuk-breadcrumb__list">
+      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="../open-cases">Open cases</a></li>
+      <li class="nhsuk-breadcrumb__item">Coroner notification - {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}</li>
+    </ol>
+    <p class="nhsuk-breadcrumb__back">
+      <a class="nhsuk-breadcrumb__backlink" href="#">
+        <span class="nhsuk-u-visually-hidden">Back to &nbsp;</span>
+        Level three
+      </a>
+    </p>
+</nav>
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h1 class="nhsuk-heading-xl">Case notes</h1>
+  </div>
+
+    <!-- IF the mandatory sections are complete and a Coroner has responded, then show close button  --> 
+      {% if data['create-and-assign-section'] and data['additional-details-section'] and data['location-of-death-section'] and data['pre-scrutiny-note-section'] and data['ap-prop-cause-of-death-section'] and
+  data['me-independent-review-section'] and data['ap-discussion-section'] and data['discussion-with-main-section'] and
+  data['coroner-notification-section'] and data['coroner-response-section'] %}
+       <div class="nhsuk-grid-column-one-quarter">
+        <a class="nhsuk-button nhsbsa-button--right-align" href="close-case">Close this case</a>
+      </div>
+      <!-- IF the mandatory sections are complete but if a Coroner has been contacted, but hasn't repsponsed, then hide it  -->
+      {% elseif data['create-and-assign-section'] and data['additional-details-section'] and data['location-of-death-section']and data['pre-scrutiny-note-section'] and data['ap-prop-cause-of-death-section'] and
+  data['me-independent-review-section'] and data['ap-discussion-section'] and data['discussion-with-main-section'] and data['coroner-notification-section'] %}
+        &nbsp;
+      <!-- If the mandatory sections are complete and a Coroner has not been contacted, show close button  -->
+      {% elseif data['create-and-assign-section'] and data['additional-details-section'] and data['location-of-death-section'] and data['pre-scrutiny-note-section'] and data['ap-prop-cause-of-death-section'] and
+  data['me-independent-review-section'] and data['ap-discussion-section'] and data['discussion-with-main-section'] %}
+      <div class="nhsuk-grid-column-one-quarter">
+        <a class="nhsuk-button nhsbsa-button--right-align" href="close-case">Close this case</a>
+      </div>
+    {% endif %}
+
+    <!-- ================================================== -->
+    <!-- CASE NOTES -->
+    <!-- ================================================== -->
+
+    <div class="nhsuk-grid-column-full">
+        
+        <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key nhsuk-u-font-weight-normal">
+                <a href="note-add2">Add a note about this case</a>
+              </dt>
+              <dd class="nhsuk-summary-list__actions">
+                <!--<strong class="nhsuk-tag nhsuk-tag--white align-right">
+                    Not started
+                </strong> -->
+              </dd>
+            </div>
+        </dl>
+
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Note 2<br>
+            <span style="font-weight: normal;">14 April 2024, 09:30. BG</span>
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+              Mauris vel rhoncus magna. Vivamus ex lectus, scelerisque quis blandit volutpat, gravida eu dui. Sed eros ligula, ultricies accumsan arcu vitae, lobortis pellentesque mi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus facilisis, leo a euismod ullamcorper, tellus odio euismod augue, ut tristique lacus odio eu ligula. Aliquam venenatis convallis dignissim. Phasellus nec dapibus ligula. Nulla rutrum at nulla et ornare. Nulla tincidunt orci egestas, viverra ligula ut, porta arcu. Ut sodales interdum mauris vel vestibulum. Phasellus pulvinar, tellus ac bibendum porttitor, leo arcu sagittis nibh, vitae cursus eros ipsum non lorem. Suspendisse lorem odio, suscipit in eros vitae, aliquam sollicitudin purus. Fusce ut ligula sapien. Etiam sed arcu mi. Vestibulum congue est a arcu posuere cursus. Nunc dignissim nisl ut feugiat scelerisque. 
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <!--<a href="../../ME-MEO/case/additional-details#dateOfBirth-day">
+              Change<span class="nhsuk-u-visually-hidden"> date of birth</span>
+            </a> -->
+          </dd>
+        </div>
+      </dl>
+
+     <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Note 1<br>
+            <span style="font-weight: normal;">12 April 2024, 13:45. FD</span>
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis arcu ex. Fusce tristique nulla arcu, eget porttitor tellus ornare quis. Nam ultrices viverra felis, vel tincidunt odio imperdiet ac. Suspendisse eget eros ullamcorper, viverra mauris sed, faucibus dui. Suspendisse vitae tortor et neque dictum bibendum. Donec molestie augue diam, at porttitor augue vestibulum sit amet. In hac habitasse platea dictumst. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nullam in dapibus felis, eu lacinia nulla. Nullam auctor dignissim viverra. Sed dui magna, finibus ac euismod ac, finibus ac felis. 
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <!--<a href="../../ME-MEO/case/additional-details#dateOfBirth-day">
+              Change<span class="nhsuk-u-visually-hidden"> date of birth</span>
+            </a> -->
+          </dd>
+        </div>
+      </dl>
+
+    </div>
+
+
+</div>
+
+{% endblock %}
+
+<!-- ====================================== -->
+<!-- SIDE NAV -->
+<!-- ====================================== -->
+{% block sideNav %}
+<div class="side-nav">
+    <h3>{{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
+        <span class="nhsuk-caption-m nhsuk-caption--bottom nhsuk-u-margin-top-2">
+            <strong class="nhsuk-tag nhsuk-tag--blue">Routine</strong>
+        </span>
+    </h3>
+    <ul>
+      <div id="options" class="options">
+        <li><a href="case-details">
+          Case details
+          <!-- if case details sections are all complete -->
+          {% if data['additional-details-section'] == 'complete' and data['location-of-death-section'] == 'complete' %} 
+          <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+            Complete
+          </strong>
+          {% else %}
+          <strong class="nhsuk-tag nhsuk-tag--grey side-nav-tag">
+            In progress
+          </strong>
+          {% endif %}
+        </a></li>
+  
+         <!-- If an answer has been provided already for Over or Under 28 days after birth then show case scrutiny screen otherwise if no answer provided show Over or Under 28 days screen -->
+         {% if data['over-under-28'] %}
+         <li><a href="case-scrutiny">
+           Case scrutiny
+           {% if data['pre-scrutiny-note-section'] == 'complete' and 
+           data['ap-prop-cause-of-death-section'] == 'complete' and 
+           data['me-independent-review-section'] == 'complete' and 
+           data['ap-discussion-section'] == 'complete' and 
+           data['ap-details-section'] == 'complete'       
+           %}
+           <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+             Complete
+           </strong>
+           {% elif data['pre-scrutiny-note-section'] == 'complete' or 
+           data['ap-prop-cause-of-death-section'] == 'complete' or 
+           data['me-independent-review-section'] == 'complete' or 
+           data['ap-discussion-section'] == 'complete' or 
+           data['ap-details-section'] == 'complete'       
+           %}
+           <strong class="nhsuk-tag nhsuk-tag--grey side-nav-tag">
+             In progress
+           </strong>
+           {% else %}
+           <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag">
+             Not started
+           </strong>
+           {% endif %}
+         </a></li>
+       {% else %}
+       <form action="case-scrutiny-link" method="post" id="run-28-days-once">
+         <li><a href="#" onclick="document.getElementById('run-28-days-once').submit(); return false;">
+           Case scrutiny
+           {% if data['pre-scrutiny-note-section'] == 'complete' and 
+           data['ap-prop-cause-of-death-section'] == 'complete' and 
+           data['me-independent-review-section'] == 'complete' and 
+           data['ap-discussion-section'] == 'complete' and 
+           data['ap-details-section'] == 'complete'       
+           %}
+           <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+             Complete
+           </strong>
+           {% elif data['pre-scrutiny-note-section'] == 'complete'  or 
+           data['ap-prop-cause-of-death-section'] == 'complete' or 
+           data['me-independent-review-section'] == 'complete' or 
+           data['ap-discussion-section'] == 'complete' or 
+           data['ap-details-section'] == 'complete'       
+           %}
+           <strong class="nhsuk-tag nhsuk-tag--grey side-nav-tag">
+             In progress
+           </strong>
+           {% else %}
+           <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag">
+             Not started
+           </strong>
+           {% endif %}
+         </a></li>
+       </form>
+       {% endif %}
+  
+       <li><a href="comms-concerns">
+        Communications
+        {% if data['discussion-with-main-section'] == 'complete' %}
+        <strong class="nhsuk-tag nhsuk-tag--blue side-nav-tag">
+          Raised
+        </strong>
+        {% else %}
+        <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag">
+          Not started
+        </strong>
+        {% endif %}
+      </a></li>
+
+       <li><a href="coroner-notification">
+        Coroner
+        {% if data['notify-coroner'] == 'yes' %}
+        <strong class="nhsuk-tag nhsuk-tag--blue side-nav-tag">
+          Raised
+        </strong>
+        {% else %}
+        <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag">
+          Not started
+        </strong>
+        {% endif %}
+      </a></li>
+
+      <li><a class="active" href="#">
+        Notes
+      </a></li>
+
+        <!-- <li><a href="concerns-notification">Concerns notifications</a></li> -->
+      </div>
+    </ul>
+</div>
+{% endblock %}

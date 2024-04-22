@@ -1,0 +1,55 @@
+{% extends 'layout-full-width.html' %}
+
+{% block pageTitle %}
+  Page templates - NHS.UK prototype kit
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <div class="nhsuk-warning-callout">
+        <h3 class="nhsuk-warning-callout__label">
+          <span role="text">
+            <span class="nhsuk-u-visually-hidden">Important: </span>
+            Service notice
+          </span>
+        </h3>
+        <p>Sorry, the service will be unavailable from <strong>6pm</strong> on <strong>Friday 1 December</strong> to <strong>8pm</strong> on <strong>Saturday 2 December</strong>.</p>
+        <p>From <strong>8pm</strong> on <strong>Saturday 2 December</strong> you will access the service using a new web address.</p>
+        <p>You will be emailed further details and a temporary password.</p>
+        <p>Contact the Medical Examiner Officer Support team if you need help or further information: <a href="mailto:meofficesupport@nhsbsa.nhs.uk">meofficesupport@nhsbsa.nhs.uk</a>.</p>
+      </div>
+
+        <h1 class="nhsuk-heading-l">Sign in</h1>
+
+        <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="example">
+              Email address
+            </label>
+            <input class="nhsuk-input nhsuk-input--width-20" id="example" name="example" type="text">
+        </div>
+        <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="example">
+                Password
+            </label>
+            <input class="nhsuk-input nhsuk-input--width-20" id="example" name="example" type="text">
+        </div>
+
+        <div class="nhsuk-form-group nhsuk-u-margin-top-7 nhsuk-u-margin-bottom-7">
+          <div class="govuk-warning-text">
+              <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+              <strong class="govuk-warning-text__text">
+              <span class="govuk-warning-text__assistive nhsuk-u-visually-hidden">Warning</span>
+              Once you have signed in, your session will time out after 60 minutes of inactivity.
+              </strong>
+          </div>
+      </div>
+
+      <a href="enter-code" class="nhsuk-button">Sign in</a>
+
+    </div>
+
+  </div>
+{% endblock %}

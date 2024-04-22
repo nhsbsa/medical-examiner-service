@@ -1,0 +1,42 @@
+{% extends 'layout-full-width.html' %}
+
+{% block pageTitle %}
+  Sign in
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <h1 class="nhsuk-heading-l">Sign in</h1>
+
+        <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="example">
+              Email address
+            </label>
+            <input class="nhsuk-input nhsuk-input--width-20" id="example" name="example" type="text">
+        </div>
+        <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="example">
+                Password
+            </label>
+            <input class="nhsuk-input nhsuk-input--width-20" id="example" name="example" type="text">
+        </div>
+
+        <div class="nhsuk-form-group nhsuk-u-margin-top-7 nhsuk-u-margin-bottom-7">
+          <div class="govuk-warning-text">
+              <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+              <strong class="govuk-warning-text__text">
+              <span class="govuk-warning-text__assistive nhsuk-u-visually-hidden">Warning</span>
+              Once you have signed in, your session will time out after 60 minutes of inactivity.
+              </strong>
+          </div>
+      </div>
+
+      <a href="enter-code" class="nhsuk-button">Sign in</a>
+
+    </div>
+
+  </div>
+{% endblock %}

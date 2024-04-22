@@ -1,0 +1,108 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-full-width.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+        {% from 'back-link/macro.njk' import backLink %}
+
+        {{ backLink({
+        "href": "javascript:history.back()",
+        "text": "Go back"
+        }) }}
+
+        <div class="nhsuk-grid-column-full">
+            <div class="nhsuk-grid-row">
+                <div class="nhsuk-grid-column-one-half">
+                    <h1 id="main-contact-discussion-header">
+                        <span class="nhsuk-caption-m nhsuk-caption--bottom">
+                            Discussion with the main contact about the cause of death - Emmit Amar
+                        </span>
+                        No discussion
+                    </h1>
+
+                    <form action="no-discussion-main" method="post">
+
+                        <div class="nhsuk-form-group">
+                            <fieldset class="nhsuk-fieldset">
+                                <legend class="nhsuk-fieldset__legend nhsuk-u-visually-hidden">
+                                    No discussion
+                                </legend>
+
+                                <div class="nhsuk-radios">
+                                    <div class="nhsuk-radios__item">
+                                        <input class="nhsuk-radios__input" id="no-discussion-reason-declined"
+                                            name="no-discussion-reason" type="radio" value="Declined interaction with medical examiner office">
+                                        <label class="nhsuk-label nhsuk-radios__label" for="no-discussion-reason-declined">
+                                            Declined interaction with medical examiner office
+                                        </label>
+                                    </div>
+                                    <div class="nhsuk-radios__item">
+                                        <input class="nhsuk-radios__input" id="no-discussion-reason-no-response"
+                                            name="no-discussion-reason" type="radio" value="No response from main contact or other contacts">
+                                        <label class="nhsuk-label nhsuk-radios__label" for="no-discussion-reason-no-response">
+                                            No response from main contact or other contacts
+                                        </label>
+                                    </div>
+                                    <div class="nhsuk-radios__item">
+                                        <input class="nhsuk-radios__input" id="no-discussion-reason-no-contacts"
+                                            name="no-discussion-reason" type="radio" value="No contacts listed">
+                                        <label class="nhsuk-label nhsuk-radios__label" for="no-discussion-reason-no-contacts">
+                                            No contacts listed
+                                        </label>
+                                    </div>
+                                    <div class="nhsuk-radios__item">
+                                        <input class="nhsuk-radios__input" id="no-discussion-reason-other"
+                                            name="no-discussion-reason" type="radio" value="Other">
+                                        <label class="nhsuk-label nhsuk-radios__label" for="no-discussion-reason-other">
+                                            Other
+                                        </label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="nhsuk-form-group">
+                            <label class="nhsuk-label" for="no-discussion-full-details">
+                              Enter full details
+                            </label>
+                            <textarea class="nhsuk-textarea minchar" id="no-discussion-full-details" name="no-discussion-full-details" rows="5" maxlength="1500">{{ data['no-discussion-full-details'] }}</textarea>
+                            <div class="nhsuk-hint nhsuk-character-count__message rechar" id="noDiscussionFulldetails-info">
+                            You can enter up to 1500 characters
+                            </div>
+                        </div>
+
+                        <button class="nhsuk-button" type="submit">
+                            Save and continue
+                        </button>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
