@@ -78,6 +78,29 @@ Case notes
             </div>
         </dl>
 
+          {% if data['case-note'] == 'complete' %}
+
+            <dl class="nhsuk-summary-list">
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Note 1<br>
+                  <span style="font-weight: normal;">12 April 2024, 13:45. FD</span>
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['notesectionText'] }}            
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                  <!--<a href="../../ME-MEO/case/additional-details#dateOfBirth-day">
+                    Change<span class="nhsuk-u-visually-hidden"> date of birth</span>
+                  </a> -->
+                </dd>
+              </div>
+            </dl>
+
+          {% endif %}
+
+
+
     </div>
 
 

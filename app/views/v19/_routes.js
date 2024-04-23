@@ -117,8 +117,19 @@ router.post(/pre-scrutiny-note/, (req, res) => {
         res.redirect('case-scrutiny')
     }
 
+})
+
+
+
+// Add note
+router.post(/note-add/, (req, res) => {
+
+    req.session.data['notes-section'] = 'complete'
+    res.redirect('notes') 
 
 })
+
+
 
 // Attending practitioner's (AP) details
 router.post(/ap-details/, (req, res) => {
@@ -394,6 +405,14 @@ router.post(/coroner-response/, (req, res) => {
 
 })
 
+
+// ========================================================================
+// NOTES SECTION
+// ========================================================================
+
+
+
+
 // ========================================================================
 // CLOSE CASE
 // ========================================================================
@@ -532,6 +551,8 @@ router.post(/save-draft-PSN/, (req, res) => {
     res.redirect('case-scrutiny')
 
 })
+
+
 
 //Page: /case/ap-prop-cause-of-death
 router.post(/save-draft-APCOD/, (req, res) => {
