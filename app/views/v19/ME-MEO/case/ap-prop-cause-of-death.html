@@ -61,6 +61,14 @@ Case details
                     </div>
             </div>
 
+                <h2 class="nhsuk-heading-m">
+                    Cause of death (1)
+                </h2>
+                <p class="nhsuk-body nhsuk-u-width-one-half">
+                    The disease or condition thought to be the underlying cause of death should appear in the lowest
+                    completed line of part 1
+                </p>
+
             <!-- Under 28 days after birth form -->
             {% if data['over-under-28'] == 'under' %}
                 <div class="nhsuk-u-margin-bottom-8">
@@ -104,7 +112,7 @@ Case details
     					<div class="nhsuk-grid-column-one-half">
                   <div class="nhsuk-form-group">
                         <label class="nhsuk-label nhsuk-u-width-full" for="causeOfDeath1a">
-                            1(a) disease or condition directly leading to death (required)
+                           1(a) Disease or condition directly leading to death (required) 
                         </label>
                         <input class="nhsuk-input nhsuk-u-width-full" id="causeOfDeath1a" name="causeOfDeath1a"
                             type="text" value="{{ data['causeOfDeath1a'] }}">
@@ -142,7 +150,7 @@ Case details
             <div class="nhsuk-grid-column-one-half">
                 <div class="nhsuk-form-group">
                       <label class="nhsuk-label nhsuk-u-width-full" for="causeOfDeath1b">
-                          1(b) other disease or condition leading to 1(a) (optional)
+                          1(b) Other disease or condition directly leading to death (optional) 
                       </label>
                       <input class="nhsuk-input nhsuk-u-width-full" id="causeOfDeath1b" name="causeOfDeath1b"
                           type="text" value="{{ data['causeOfDeath1b'] }}">
@@ -182,7 +190,7 @@ Case details
                 <div class="nhsuk-grid-column-one-half">
                    <div class="nhsuk-form-group">
                         <label class="nhsuk-label nhsuk-u-width-full" for="causeOfDeath1c">
-                            1(c) other disease or condition leading to 1(b) (optional)
+                            1(c) Other disease or condition directly leading to death (optional) 
                         </label>
                         <input class="nhsuk-input nhsuk-u-width-full" id="causeOfDeath1c" name="causeOfDeath1c"
                             type="text" value="{{ data['causeOfDeath1c'] }}">
@@ -216,21 +224,68 @@ Case details
 
 <!-- End 1c -->
 
+<!-- Start 1d -->
+<div class="nhsuk-u-margin-bottom-4">
+             <div class="nhsuk-grid-row">
+                <div class="nhsuk-grid-column-one-half">
+                   <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-u-width-full" for="causeOfDeath1c">
+                            1(d) Other disease or condition directly leading to death (optional) 
+                        </label>
+                        <input class="nhsuk-input nhsuk-u-width-full" id="causeOfDeath1c" name="causeOfDeath1c"
+                            type="text" value="{{ data['causeOfDeath1c'] }}">
+                    </div>
+                </div>
+
+                <div class="nhsuk-grid-column-one-half">
+                    <div class="nhsuk-form-group">
+                        <div class="nhsuk-date-input" id="onset1c">
+                            <div class="nhsuk-date-input__item">
+                                  <div class="nhsuk-form-group">
+                                    <label class="nhsuk-label" for="select-1">
+                                        Approximate interval between onset of 1(c) and death
+                                    </label>
+                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 interval-input" id="onsetInterval1c" name="onsetInterval1c" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['onsetInterval1c'] }}">
+                                    <select class="nhsuk-select" id="onsetInterval1cb" name="onsetInterval1cb">
+                                      <option value="year(s)">Year(s)</option>
+                                      <option value="month(s)">Month(s)</option>
+                                      <option value="week(s)">Week(s)</option>
+                                      <option value="day(s)">Day(s)</option>
+                                      <option value="hour(s)">Hour(s)</option>
+                                      <option value="minute(s)">Minute(s)</option>
+                                    </select>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </div>
+
+<!-- End 1d -->
+
 <!-- Start 2 -->
 
 <div class="nhsuk-u-margin-bottom-4">
         <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-full">
+                <h2 class="nhsuk-heading-m">
+                    Cause of death (2)
+                </h2>
+                <p class="nhsuk-body nhsuk-u-width-one-half">
+                    Other significant condition contributing to the death but not relating to the disease or condition causing it
+                </p>
+            </div>
             <div class="nhsuk-grid-column-one-half">
                   <div class="nhsuk-form-group">
                         <label class="nhsuk-label nhsuk-u-width-full" for="causeOfDeath2">
-                            2 - Other significant conditions (optional)
+                            Other significant condition contributing to their death (optional)
                         </label>
                         <input class="nhsuk-input nhsuk-u-width-full" id="causeOfDeath2" name="causeOfDeath2"
                             type="text" value="{{ data['causeOfDeath2'] }}">
-                </div>
-            </div>
-
-            <div class="nhsuk-grid-column-one-half">
+                  </div>
+              </div>
+              <div class="nhsuk-grid-column-one-half">
                   <div class="nhsuk-form-group">
                         <div class="nhsuk-date-input" id="onset2">
                             <div class="nhsuk-date-input__item">
