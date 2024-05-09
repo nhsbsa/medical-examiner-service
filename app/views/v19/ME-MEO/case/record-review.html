@@ -98,6 +98,14 @@ if (countRemains < 1) alert('');
                 </div>
         </div>
 
+         <h2 class="nhsuk-heading-m">
+                    Cause of death (1)
+                </h2>
+                <p class="nhsuk-body nhsuk-u-width-one-half">
+                    The disease or condition thought to be the underlying cause of death should appear in the lowest
+                    completed line of part 1
+                </p>
+
         <!-- Under 28 days after birth form -->
         {% if data['over-under-28'] == 'under' %}
 
@@ -179,7 +187,7 @@ if (countRemains < 1) alert('');
             <div class="nhsuk-grid-column-one-half">
                 <div class="nhsuk-form-group">
                       <label class="nhsuk-label nhsuk-u-width-full" for="reviewCauseOfDeath1b">
-                          1(b) other disease or condition leading to 1(a) (optional)
+                          1(b) Other disease or condition directly leading to death (optional) 
                       </label>
                       <input class="nhsuk-input nhsuk-u-width-full" id="reviewCauseOfDeath1b" name="reviewCauseOfDeath1b"
                         type="text" value="{{ data['reviewCauseOfDeath1b'] }}">
@@ -219,7 +227,7 @@ if (countRemains < 1) alert('');
                 <div class="nhsuk-grid-column-one-half">
                    <div class="nhsuk-form-group">
                         <label class="nhsuk-label nhsuk-u-width-full" for="reviewCauseOfDeath1c">
-                            1(c) other disease or condition leading to 1(b) (optional)
+                            1(c) Other disease or condition directly leading to death (optional) 
                         </label>
                         <input class="nhsuk-input nhsuk-u-width-full" id="reviewCauseOfDeath1c" name="reviewCauseOfDeath1c"
                             type="text" value="{{ data['reviewCauseOfDeath1c'] }}">
@@ -257,6 +265,16 @@ if (countRemains < 1) alert('');
 
 <div class="nhsuk-u-margin-bottom-4">
         <div class="nhsuk-grid-row">
+
+              <div class="nhsuk-grid-column-full">
+                <h2 class="nhsuk-heading-m">
+                    Cause of death (2)
+                </h2>
+                <p class="nhsuk-body nhsuk-u-width-one-half">
+                    Other significant condition contributing to the death but not relating to the disease or condition causing it
+                </p>
+            </div>
+
             <div class="nhsuk-grid-column-one-half">
                   <div class="nhsuk-form-group">
                         <label class="nhsuk-label nhsuk-u-width-full" for="reviewCauseOfDeath2">
