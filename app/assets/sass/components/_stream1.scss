@@ -1,0 +1,315 @@
+
+
+// temp styles - CD //
+.nhs-task-flow {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      overflow: hidden;
+      border-bottom: 1px solid #d8dde0;
+      padding: 2px 0 10px 0;
+     
+      .govuk-task-list__name-and-hint {
+        float: left;
+        width: auto;
+      }
+      .govuk-task-list__status {
+        float: right;
+        width: auto;
+      }
+    }
+  }
+}
+
+//.nhsBSA-sidebar-content {
+  //background: #fff!important;
+//}
+
+
+.govuk-tag--grey {
+  background: #e5e6e7;
+  color: #282d30;
+}
+.govuk-tag--yellow {
+  background: #fff7bf;
+  color: #594d00;
+}
+
+
+.side-status-task {
+  padding: 30px;
+  h4 {
+    margin: 20px 0 0 0;
+    padding: 10px 0 0 0;
+    font-size: 17px;
+    border-top: 1px solid #b1b4b6;
+    &:first-child {
+      margin: 0;
+      border: 0;
+      padding: 0;
+    }
+  }
+  .side-actions {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #b1b4b6;
+    a {
+      font-size: 17px!important;
+    }
+  }
+}
+
+.govuk-task-list__hint {
+  font-size: 17px;
+  color: #4c6272;
+  margin-top: 5px;
+}
+
+.mt40 {
+  margin-top: 40px;
+}
+
+.mb40 {
+  margin-bottom: 40px;
+}
+
+.mb80 {
+  margin-bottom: 80px;
+}
+
+.mb0 {
+  margin-bottom: 0;
+}
+
+.nhs-notification-badge {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 30px;
+  padding: 5px 8px;
+  font-size: 16px;
+  margin-left: 3px;
+  position: relative;
+  top: -2px;
+}
+
+.report-table {
+  td {
+    font-size: 16px;
+  } 
+  th {
+    font-size: 16px;
+  }
+}
+
+.report-table2 {
+  td {
+    font-size: 17px;
+    font-weight: bold;
+  } 
+  th {
+    font-size: 17px;
+    font-weight: normal;
+  }
+}
+
+.nhsuk-card__content {
+  h3 {
+    font-size: 19px!important;
+  }
+  p {
+    b {
+      font-size: 19px;
+    }
+  }
+  .case-total {
+    font-size: 44px;
+    margin: 5px 0 3px 0;
+    position: relative;
+    left: -3px;
+    span {
+      font-size: 19px;
+      left: 0;
+      position: relative;
+    }
+  }
+  .report-desc {
+    color: #4c6272;
+    margin: 0;
+    font-size: 17px;
+  }
+}
+
+
+.nhsuk-card__content--primary .nhsuk-icon {
+display: block;
+fill: #005eb8;
+margin-top: -8px;
+pointer-events: none;
+position: absolute;
+right: 24px;
+top: 50%;
+}
+
+
+.nhsuk-table {
+  caption {
+    margin-bottom: 20px;
+    //color: #4c6272;
+  }
+  th, td {
+    &:last-child {
+      text-align: right;
+      //background: red;
+    }
+  }
+}
+
+//.heading-break-report {
+  //border-bottom: 3px solid #000;
+  //padding-bottom: 30px;
+  //margin-bottom: 50px;
+//}
+
+
+.report-group-styles {
+  
+
+.govuk-details {
+  margin: 0;
+}
+
+
+.govuk-details__text {
+    border-left: 3px solid #1d70b8;
+    padding-left: 10px;
+    margin: 0 0 0 4px;
+    table {
+      margin: 0;
+      tr {
+        &:last-child {
+          td, th {
+            border-bottom: 0;
+          }
+        }
+      }
+      th, td {
+        font-weight: normal;
+        font-size: 16px;
+      }
+    }
+}
+.govuk-details__summary-text {
+  font-weight: normal;
+  //color: #1d70b8;
+
+}
+
+
+.nhsuk-card-group {
+  
+  .nhsuk-button--secondary {
+    font-size: .9rem;
+  }
+
+}
+
+}
+
+
+.high-level-info {
+  border-left: 8px solid #4c6272;
+  padding: 12px 0;
+  margin: 22px 0;
+  ul {
+    margin: 0;
+    padding: 0;
+    
+    li {
+      display: inline-block;
+      margin: 0 0 0 20px;
+      padding: 0 0 0 20px;
+      font-size: 17px; 
+   //   color: #4c6272;
+      border-left: 1px solid #4c6272;
+      &:first-child {
+        border: 0;
+        padding-left: 0;
+      }
+
+  
+      
+      span {
+        display: block;
+        font-size: 32px;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+
+
+.nhs-sub-navigation {
+  margin: 40px 0 60px 0;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    
+    //overflow: hidden;
+    li {
+      list-style: none;
+      display: inline-block;
+      margin: 0 16px 0 0;
+      padding: 0;
+      &:first-child {
+        margin-left: 0;
+      }
+      a {
+        color: #1d70b8;
+        padding: 10px 0;
+        border-bottom: 5px solid transparent;
+        font-weight: normal;
+        text-decoration: none;
+        &:visited {
+          color: #1d70b8;
+        }
+        &:hover {
+          color: #003078;
+        }
+        &.active {
+          border-bottom: 5px solid #1d70b8;
+          color: #000;
+        }
+      }
+    }
+  }
+}
+
+
+.nhsuk-details__text {
+  .nhsuk-card {
+    border: 0;
+    .nhsuk-card__content {
+      padding: 5px;
+    }
+  }
+}
+
+.nhsuk-details__summary-text {
+  position: relative;
+  span {
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    top: 4px;
+    color: #000;
+    padding-left: 10px;
+  }
+}
+
+
