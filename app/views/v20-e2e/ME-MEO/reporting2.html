@@ -1,0 +1,546 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Reporting
+{% endblock %}
+
+{% block breadcrumbs %}
+<p class="nhsuk-u-margin-bottom-2 nhsuk-u-margin-top-3">Royal Infirmary, Newcastle</p>
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-one-half">
+      
+      {{ backLink({
+      "href": "javascript:history.back()",
+      "text": "Go back"
+      }) }}
+      
+        <h1 class="nhsuk-u-margin-bottom-4">
+            Reporting
+        </h1>
+    </div>
+    
+    
+    
+    
+
+    <div class="nhsuk-grid-column-full">
+      
+      
+      <h3 class="nhsuk-heading-m mb0">Quarter 1</h3>
+      
+      <p class="nhsuk-body-m nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-2">January &ndash; March 2023</p>
+      
+      
+      <div class="high-level-info">
+        <ul>
+          <li>Number of cases: <span>1450</span></li>
+          <li>Scrutinised cases: <span>1391</span></li>
+          <li>Cases completed (3 days): <span>1200</span></li>
+          <li>Cases not completed (3 days): <span>91</span></li>
+        </ul>
+      </div>
+      
+      <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-7">
+        Data last updated: 15 April 2023
+      </p>
+      
+      
+      
+      
+      
+     <!-- <table class="nhsuk-table">
+        <caption class="nhsuk-table__caption">Summary</caption>
+
+        <tbody class="nhsuk-table__body">
+          <tr role="row" class="nhsuk-table__row">
+            <th class="nhsuk-table__cell">Number of cases</th>
+            <td class="nhsuk-table__cell ">324</td>
+          </tr>
+          <tr role="row" class="nhsuk-table__row">
+            <th class="nhsuk-table__cell">Heading 2</th>
+            <td class="nhsuk-table__cell ">0</td>
+          </tr>
+          <tr role="row" class="nhsuk-table__row">
+            <th class="nhsuk-table__cell">Heading 3</th>
+            <td class="nhsuk-table__cell ">0</td>
+          </tr>
+        </tbody>
+      </table> -->
+
+
+        
+        
+<!--<h3 class="nhsuk-heading-s">Categories</h3>-->
+        
+       
+
+<div class="report-group-styles">
+      
+      <ul class="nhsuk-grid-row nhsuk-card-group">
+        
+        <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+      
+          <div class="nhsuk-card">
+            <div class="nhsuk-card__content">
+              <h3 class="nhsuk-heading-s">Adult deaths</h3>
+              
+             <!-- <div class="nhsuk-warning-callout nhsuk-u-margin-bottom-4">
+                <h3 class="nhsuk-warning-callout__label">
+                  Important<span class="nhsuk-u-visually-hidden">:</span>
+                </h3>
+                <p>The number of deaths in this quarter is higher than the usual average amount.</p>
+              </div> -->
+              
+              <table class="nhsuk-table report-table">
+                <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">Summary</caption>
+        
+                <tbody class="nhsuk-table__body">
+                  <tr role="row" class="nhsuk-table__row">
+                    <th class="nhsuk-table__cell">Adult cases &ndash; coroner not notified</th>
+                    <td class="nhsuk-table__cell ">1391</td>
+                  </tr>
+                  <tr role="row" class="nhsuk-table__row">
+                    <th class="nhsuk-table__cell">Adult cases &ndash; coroner notified</th>
+                    <td class="nhsuk-table__cell ">55</td>
+                  </tr>
+                  <tr role="row" class="nhsuk-table__row">
+                    <th class="nhsuk-table__cell">Adult cases taken by coroner</th>
+                    <td class="nhsuk-table__cell ">40</td>
+                  </tr>
+                  <tr role="row" class="nhsuk-table__row">
+                    <th class="nhsuk-table__cell">Adult cases rejected by coroner</th>
+                    <td class="nhsuk-table__cell ">15</td>
+                  </tr>
+                </tbody>
+              </table>
+        
+             
+            </div>
+          </div>
+          
+      
+        </li>
+        
+        
+       <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+     
+         <div class="nhsuk-card">
+           <div class="nhsuk-card__content">
+             <h3 class="nhsuk-heading-s">Child deaths</h3>
+             
+             <table class="nhsuk-table report-table">
+               <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">Summary</caption>
+       
+               <tbody class="nhsuk-table__body">
+                 <tr role="row" class="nhsuk-table__row">
+                   <th class="nhsuk-table__cell">Child cases &ndash; coroner notified</th>
+                   <td class="nhsuk-table__cell ">55</td>
+                 </tr>
+                 <tr role="row" class="nhsuk-table__row">
+                    <th class="nhsuk-table__cell">Child cases &ndash; coroner not notified</th>
+                    <td class="nhsuk-table__cell ">4</td>
+                  </tr>
+                 <tr role="row" class="nhsuk-table__row">
+                   <th class="nhsuk-table__cell">Child cases taken by coroner</th>
+                   <td class="nhsuk-table__cell ">3</td>
+                 </tr>
+                 <tr role="row" class="nhsuk-table__row">
+                   <th class="nhsuk-table__cell">Child cases rejected by coroner</th>
+                   <td class="nhsuk-table__cell ">1</td>
+                 </tr>
+               </tbody>
+             </table>
+       
+            
+           </div>
+         </div>
+         
+     
+       </li>
+       
+       
+       <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+      
+          <div class="nhsuk-card">
+            <div class="nhsuk-card__content">
+              <h3 class="nhsuk-heading-s">Urgent release requests</h3>
+              
+              <table class="nhsuk-table report-table">
+                <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">Summary</caption>
+        
+                <tbody class="nhsuk-table__body">
+                  <tr role="row" class="nhsuk-table__row">
+                     <th class="nhsuk-table__cell">Urgent release requests</th>
+                     <td class="nhsuk-table__cell ">100</td>
+                   </tr>
+                  <tr role="row" class="nhsuk-table__row">
+                    <th class="nhsuk-table__cell">Urgent release requests achieved</th>
+                    <td class="nhsuk-table__cell ">95</td>
+                  </tr>
+                  <tr role="row" class="nhsuk-table__row">
+                     <th class="nhsuk-table__cell">Urgent release requests not achieved</th>
+                     <td class="nhsuk-table__cell ">5</td>
+                   </tr>
+ 
+                </tbody>
+              </table>
+              
+              <!--<button class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button" type="submit">
+                View further details 
+              </button>-->
+             
+            </div>
+          </div>
+          
+      
+        </li>
+        
+        
+     
+  
+       
+     <!--  <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+      
+          <div class="nhsuk-card">
+            <div class="nhsuk-card__content">
+              <h3 class="nhsuk-heading-s">Acute deaths</h3>
+              
+              <table class="nhsuk-table report-table">
+                <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">Summary</caption>
+        
+                <tbody class="nhsuk-table__body">
+                  <tr role="row" class="nhsuk-table__row">
+                    <th class="nhsuk-table__cell">Adult deaths accepted</th>
+                    <td class="nhsuk-table__cell ">122</td>
+                  </tr>
+                  <tr role="row" class="nhsuk-table__row">
+                    <th class="nhsuk-table__cell">Child deaths accepted</th>
+                    <td class="nhsuk-table__cell ">2</td>
+                  </tr>
+              
+                  <tr role="row" class="nhsuk-table__row">
+                    <th class="nhsuk-table__cell">Adult deaths rejected</th>
+                    <td class="nhsuk-table__cell ">2</td>
+                  </tr>
+                  <tr role="row" class="nhsuk-table__row">
+                    <th class="nhsuk-table__cell">Child deaths rejected</th>
+                    <td class="nhsuk-table__cell ">2</td>
+                  </tr>
+              
+              <tr role="row" class="nhsuk-table__row">
+                 <th class="nhsuk-table__cell">Adult deaths not referred</th>
+                 <td class="nhsuk-table__cell ">2</td>
+               </tr>
+               <tr role="row" class="nhsuk-table__row">
+                  <th class="nhsuk-table__cell">Child deaths not referred</th>
+                  <td class="nhsuk-table__cell ">2</td>
+                </tr>
+
+ 
+                </tbody>
+              </table>
+             
+            </div>
+          </div>
+          
+      
+        </li>
+        
+        
+        
+        <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+      
+          <div class="nhsuk-card">
+            <div class="nhsuk-card__content">
+              <h3 class="nhsuk-heading-s">Non-acute deaths</h3>
+              
+              <table class="nhsuk-table report-table">
+                <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">Summary</caption>
+        
+                <tbody class="nhsuk-table__body">
+                  <tr role="row" class="nhsuk-table__row">
+                    <th class="nhsuk-table__cell">Adult deaths accepted</th>
+                    <td class="nhsuk-table__cell ">340</td>
+                  </tr>
+                  <tr role="row" class="nhsuk-table__row">
+                    <th class="nhsuk-table__cell">Child deaths accepted</th>
+                    <td class="nhsuk-table__cell ">3</td>
+                  </tr>
+              
+                  <tr role="row" class="nhsuk-table__row">
+                    <th class="nhsuk-table__cell">Adult deaths rejected</th>
+                    <td class="nhsuk-table__cell ">6</td>
+                  </tr>
+                  <tr role="row" class="nhsuk-table__row">
+                    <th class="nhsuk-table__cell">Child deaths rejected</th>
+                    <td class="nhsuk-table__cell ">1</td>
+                  </tr>
+              
+              <tr role="row" class="nhsuk-table__row">
+                 <th class="nhsuk-table__cell">Adult deaths not referred</th>
+                 <td class="nhsuk-table__cell ">12</td>
+               </tr>
+               <tr role="row" class="nhsuk-table__row">
+                  <th class="nhsuk-table__cell">Child deaths not referred</th>
+                  <td class="nhsuk-table__cell ">1</td>
+                </tr>
+
+ 
+                </tbody>
+              </table>
+             
+            </div>
+          </div>
+          
+      
+        </li>
+      -->
+        
+        
+         
+         
+         
+         <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+        
+            <div class="nhsuk-card">
+              <div class="nhsuk-card__content">
+                <h3 class="nhsuk-heading-s">Communications with those close to the deceased</h3>
+                
+                <table class="nhsuk-table report-table">
+                  <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">Summary</caption>
+          
+                  <tbody class="nhsuk-table__body">
+                    <tr role="row" class="nhsuk-table__row">
+                       <th class="nhsuk-table__cell">Cases with no ME office interaction with bereaved</th>
+                       <td class="nhsuk-table__cell ">29</td>
+                     </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <th class="nhsuk-table__cell">Declined</th>
+                      <td class="nhsuk-table__cell ">18</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                       <th class="nhsuk-table__cell">No response</th>
+                       <td class="nhsuk-table__cell ">8</td>
+                     </tr>
+                     <tr role="row" class="nhsuk-table__row">
+                        <th class="nhsuk-table__cell">No informant / next of kin</th>
+                        <td class="nhsuk-table__cell ">2</td>
+                      </tr>
+                      <tr role="row" class="nhsuk-table__row">
+                         <th class="nhsuk-table__cell">Other</th>
+                         <td class="nhsuk-table__cell ">1</td>
+                       </tr>
+   
+                  </tbody>
+                </table>
+
+               
+              </div>
+            </div>
+            
+        
+          </li>
+          
+          
+          <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+        
+            <div class="nhsuk-card">
+              <div class="nhsuk-card__content">
+                <h3 class="nhsuk-heading-s">Issues and actions at host organisation</h3>
+                
+                <table class="nhsuk-table report-table">
+                  <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">Summary</caption>
+          
+                  <tbody class="nhsuk-table__body">
+                    <tr role="row" class="nhsuk-table__row">
+                       <th class="nhsuk-table__cell">Case reviews recommended</th>
+                       <td class="nhsuk-table__cell ">149</td>
+                     </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                      <th class="nhsuk-table__cell">Significant concern raised by family/bereaved</th>
+                      <td class="nhsuk-table__cell ">71</td>
+                    </tr>
+                    <tr role="row" class="nhsuk-table__row">
+                       <th class="nhsuk-table__cell">Significant concern raised by Medical Examiner or staff</th>
+                       <td class="nhsuk-table__cell ">42</td>
+                     </tr>
+                     <tr role="row" class="nhsuk-table__row">
+                        <th class="nhsuk-table__cell">Learning disability and severe mental illness</th>
+                        <td class="nhsuk-table__cell ">11</td>
+                      </tr>
+                      <tr role="row" class="nhsuk-table__row">
+                         <th class="nhsuk-table__cell">Death in speciality service, particular diagnosis or treatment group where provider has raised an alarm</th>
+                         <td class="nhsuk-table__cell ">9</td>
+                       </tr>
+                       
+                       <tr role="row" class="nhsuk-table__row">
+                         <th class="nhsuk-table__cell">Deaths where people are not expected to die</th>
+                         <td class="nhsuk-table__cell ">3</td>
+                       </tr>
+                       <tr role="row" class="nhsuk-table__row">
+                          <th class="nhsuk-table__cell">Deaths that will inform learning</th>
+                          <td class="nhsuk-table__cell ">13</td>
+                        </tr>
+   
+                  </tbody>
+                </table>
+
+               
+              </div>
+            </div>
+            
+        
+          </li>
+          
+          
+          <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+         
+             <div class="nhsuk-card">
+               <div class="nhsuk-card__content">
+                 <h3 class="nhsuk-heading-s">
+                   Issues and actions at other organisation
+                   </h3>
+                 
+                 <table class="nhsuk-table report-table">
+                   <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">Summary</caption>
+           
+                   <tbody class="nhsuk-table__body">
+                     <tr role="row" class="nhsuk-table__row">
+                        <th class="nhsuk-table__cell">Case reviews recommended</th>
+                        <td class="nhsuk-table__cell ">83</td>
+                      </tr>
+                     <tr role="row" class="nhsuk-table__row">
+                       <th class="nhsuk-table__cell">Other NHS acute hospital/trust</th>
+                       <td class="nhsuk-table__cell ">58</td>
+                     </tr>
+                     <tr role="row" class="nhsuk-table__row">
+                        <th class="nhsuk-table__cell">NHS community trust/ hospital</th>
+                        <td class="nhsuk-table__cell ">12</td>
+                      </tr>
+                      <tr role="row" class="nhsuk-table__row">
+                        <th class="nhsuk-table__cell">NHS mental health trust or provider</th>
+                        <td class="nhsuk-table__cell ">7</td>
+                      </tr>
+                      <tr role="row" class="nhsuk-table__row">
+                        <th class="nhsuk-table__cell">NHS ambulance service</th>
+                        <td class="nhsuk-table__cell ">4</td>
+                      </tr>
+                      <tr role="row" class="nhsuk-table__row">
+                        <th class="nhsuk-table__cell">Primary care</th>
+                        <td class="nhsuk-table__cell ">3</td>
+                      </tr>
+                      <tr role="row" class="nhsuk-table__row">
+                        <th class="nhsuk-table__cell">Local authority</th>
+                        <td class="nhsuk-table__cell ">1</td>
+                      </tr>
+                      <tr role="row" class="nhsuk-table__row">
+                        <th class="nhsuk-table__cell">Independent provider</th>
+                        <td class="nhsuk-table__cell ">2</td>
+                      </tr>
+    
+                   </tbody>
+                 </table>
+                 
+         
+               </div>
+             </div>
+             
+         
+           </li>
+           
+           
+           <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+          
+              <div class="nhsuk-card">
+                <div class="nhsuk-card__content">
+                  <h3 class="nhsuk-heading-s">Other actions</h3>
+                  
+                  <table class="nhsuk-table report-table">
+                    <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">Summary</caption>
+            
+                    <tbody class="nhsuk-table__body">
+                      <tr role="row" class="nhsuk-table__row">
+                         <th class="nhsuk-table__cell">Deaths referred to other clinical governance</th>
+                         <td class="nhsuk-table__cell ">49</td>
+                       </tr>
+                      <tr role="row" class="nhsuk-table__row">
+                        <th class="nhsuk-table__cell">Patient safety incidents notified by ME Office</th>
+                        <td class="nhsuk-table__cell ">11</td>
+                      </tr>
+                      <tr role="row" class="nhsuk-table__row">
+                         <th class="nhsuk-table__cell">Recommended patient advice and liaison service (PALS)</th>
+                         <td class="nhsuk-table__cell ">16</td>
+                       </tr>
+     
+                    </tbody>
+                  </table>
+                  
+        
+                 
+                </div>
+              </div>
+              
+          
+            </li>
+         
+       
+      </ul>
+      
+      
+      <button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+        Export data
+      </button>
+
+</div>
+      
+  
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block sideNav %}
+  <!-- IF user has selected to Reopen a case then change the numbering -->
+  {% if data['reopen-this-case'] == 'yes' %}
+    <div class="side-nav">
+      <ul>
+        <div id="options" class="options">
+          <li><a href="open-cases">Open cases 3</a></li>
+          <li><a href="closed-cases">Closed cases 0</a></li>
+          <li><a href="reopened-cases">Reopened cases 2</a></li>
+          <li><a class="active" href="reporting">Reporting</a></li>
+        </div>
+      </ul>
+    </div>
+  {% else %}
+    <div class="side-nav">
+      <ul>
+        <div id="options" class="options">
+          <li><a href="open-cases">Open cases 3</a></li>
+          <li><a href="closed-cases">Closed cases 1</a></li>
+          <li><a href="reopened-cases">Reopened cases 1</a></li>
+          <li><a class="active" href="reporting">Reporting</a></li>
+        </div>
+      </ul>
+    </div>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,71 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-full-width.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+        {% from 'back-link/macro.njk' import backLink %}
+
+        {{ backLink({
+        "href": "javascript:history.back()",
+        "text": "Go back"
+        }) }}
+        <h1>
+            <span class="nhsuk-caption-m nhsuk-caption--bottom">
+                {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
+            </span>
+            Location of death
+        </h1>
+        <form action="location-of-death-sp11" method="post">
+            <div class="nhsuk-form-group">
+                <fieldset class="nhsuk-fieldset">
+                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                        Select where the person died
+                    </legend>
+                    <div class="nhsuk-radios">
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="locationOfDeathType" name="locationOfDeathType"
+                                type="radio" value="hospital-acute">
+                            <label class="nhsuk-label nhsuk-radios__label" for="locationOfDeathType">
+                                Hospital, acute setting or hospice
+                            </label>
+                        </div>
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="Community" name="locationOfDeathType" type="radio"
+                                value="community-non-acute">
+                            <label class="nhsuk-label nhsuk-radios__label" for="Community">
+                                Community or non-acute setting
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <button class="nhsuk-button" type="submit">
+                Save and continue
+            </button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

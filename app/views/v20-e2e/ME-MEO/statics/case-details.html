@@ -1,0 +1,393 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+{% block breadcrumbs %}
+<nav class="nhsuk-breadcrumb nhsuk-u-padding-bottom-0" aria-label="Breadcrumb">
+  <ol class="nhsuk-breadcrumb__list">
+    <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="../closed-cases">Closed cases</a></li>
+    <li class="nhsuk-breadcrumb__item">Case details - {{ data['deceased-full-name'] }}</li>
+  </ol>
+  <p class="nhsuk-breadcrumb__back">
+    <a class="nhsuk-breadcrumb__backlink" href="#">
+      <span class="nhsuk-u-visually-hidden">Back to &nbsp;</span>
+      Closed cases
+    </a>
+  </p>
+</nav>
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h1 class="nhsuk-heading-xl">Case details</h1>
+  </div>
+  <div class="nhsuk-grid-column-one-quarter">
+    {% if data['deceased-full-name'] == 'Kia Ravi' %}
+      {% if data['reopen-this-case'] == 'yes' %}
+        <a class="nhsuk-button nhsbsa-button--right-align" href="../case/close-case">Close case</a>
+      {% else %}
+        <form action="reopen-case" method="post">
+          <button class="nhsuk-button nhsbsa-button--right-align" type="submit">Reopen case</button>
+        </form>
+      {% endif %}
+    {% endif %}
+  </div>
+
+  <!-- ================================================== -->
+  <!-- DECEASED PERSONS DETAILS -->
+  <!-- ================================================== -->
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Deceased person's details</h2>
+  </div>
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag align-right">
+      Complete
+    </strong>
+  </div>
+
+  <div class="nhsuk-grid-column-full">
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Name
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['deceased-full-name'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="../case/deceased-person-details#deceased-full-name">
+            Change<span class="nhsuk-u-visually-hidden"> name</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          NHS number
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['nhsNumber'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="../../ME-MEO/create-new-case#nhsNumber">
+            Change<span class="nhsuk-u-visually-hidden"> NHS number</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Date of death
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          25 May 2023
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="../case/deceased-person-details#dateOfDeath">
+            Change<span class="nhsuk-u-visually-hidden"> date of death</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Time of death
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          13:00
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="../case/deceased-person-details#timeOfDeath">
+            Change<span class="nhsuk-u-visually-hidden"> time of death</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Rapid release
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          No
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="../case/deceased-person-details#timeOfDeath">
+            Change<span class="nhsuk-u-visually-hidden"> rapid release</span>
+          </a>
+        </dd>
+      </div>
+    </dl>
+  </div>
+
+  <!-- ================================================== -->
+  <!-- CASE ASSIGNMENT -->
+  <!-- ================================================== -->
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Case assignment</h2>
+  </div>
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag align-right">
+      Complete
+    </strong>
+  </div>
+
+  <div class="nhsuk-grid-column-full">
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Medical examiner
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          AB
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="../assign-case#assign-medical-examiner">
+            Change<span class="nhsuk-u-visually-hidden"> assigned medical examiner</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Medical examiner officer
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          CD
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="../assign-case#assign-medical-examiner-officer">
+            Change<span class="nhsuk-u-visually-hidden"> assigned medical examiner officer</span>
+          </a>
+        </dd>
+      </div>
+    </dl>
+  </div>
+
+  <!-- ================================================== -->
+  <!-- ADDITIONAL DETAILS -->
+  <!-- ================================================== -->
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Additional details</h2>
+  </div>
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag align-right">
+      Complete
+    </strong>
+  </div>
+
+  <div class="nhsuk-grid-column-full">
+      <dl class="nhsuk-summary-list">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Name deceased also known as
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="../case/additional-details#knownAs">
+                Change<span class="nhsuk-u-visually-hidden"> name known as</span>
+              </a>
+            </dd>
+          </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            15/11/1992
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="../case/additional-details#dateOfBirth">
+              Change<span class="nhsuk-u-visually-hidden"> date of birth</span>
+            </a>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            NHS number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+              Not known
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="../case/additional-details#nhsNumberKnown">
+              Change<span class="nhsuk-u-visually-hidden"> nhs number</span>
+            </a>
+          </dd>
+        </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Hospital number
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+                1234567890
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="../case/additional-details#hospitalNumber">
+                Change<span class="nhsuk-u-visually-hidden"> hospital number</span>
+              </a>
+            </dd>
+          </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Home address
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+              123 My Street<br>
+              Newcastle<br>
+              Tyne and Wear<br>
+              NE12 3AB
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="../case/additional-details#addressLine1">
+              Change<span class="nhsuk-u-visually-hidden"> home address</span>
+            </a>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Main job
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+              Domestic
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="../case/additional-details#occupationKnown">
+              Change<span class="nhsuk-u-visually-hidden"> main job</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+  </div>
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h2 class="nhsuk-heading-l">Location of death</h2>
+  </div>
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag align-right">
+      Complete
+    </strong>
+  </div>
+
+  <div class="nhsuk-grid-column-full">
+    <!-- Hospital Acute -->
+      <dl class="nhsuk-summary-list">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Location of death
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Hospital or acute setting<br>
+              South Tyneside Trust
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="../case/location-of-death">
+                Change<span class="nhsuk-u-visually-hidden"> location of death</span>
+              </a>
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Date of admission
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              20/05/2023
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="../case/hospital-acute-setting#dateOfAdmission">
+                Change<span class="nhsuk-u-visually-hidden"> date of admission</span>
+              </a>
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Location details
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Ward 4
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="../case/hospital-acute-setting#locationDetails">
+                Change<span class="nhsuk-u-visually-hidden"> location details</span>
+              </a>
+            </dd>
+          </div>
+      </dl>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block sideNav %}
+<div class="side-nav">
+  <h3>{{ data['deceased-full-name'] }}
+    <span class="nhsuk-caption-m nhsuk-caption--bottom nhsuk-u-margin-top-2">
+      {% if data['deceased-full-name'] == 'Milo Brett' %}
+        <strong class="nhsuk-tag nhsuk-tag--red">Urgent</strong>
+      {% else %}
+        {% if data['reopen-this-case'] == 'yes' %}
+          <strong class="nhsuk-tag nhsuk-tag--orange">Reopened</strong>
+        {% else %}
+          <strong class="nhsuk-tag nhsuk-tag--blue">Routine</strong>
+        {% endif %}
+      {% endif %}
+    </span>
+  </h3>
+  <ul>
+    <div id="options" class="options">
+      <li>
+        <a class="active" href="case-details">Case details
+        <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+          Complete
+        </strong>
+        </a>
+      </li>
+      <li>
+        <a href="case-scrutiny">Case scrutiny
+          <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+            Complete
+          </strong>
+        </a>
+      </li>
+      <li>
+        <a href="comms-concerns">Communications
+        {% if data['comms-patient-safety-email'] or data['remove-notification'] == 'yes' %}
+        <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
+          Complete
+        </strong>
+        {% else %}
+        <strong class="nhsuk-tag nhsuk-tag--red side-nav-tag">
+          Problem
+        </strong>
+        {% endif %}
+        </a>
+      </li>
+      <li>
+      <li>
+        <a href="coroner-notification">Coroner
+        <strong class="nhsuk-tag nhsuk-tag--blue side-nav-tag">
+          Raised
+        </strong>
+        </a>
+      </li>
+    </div>
+  </ul>
+</div>
+{% endblock %}

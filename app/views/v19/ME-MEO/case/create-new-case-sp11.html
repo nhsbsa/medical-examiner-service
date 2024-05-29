@@ -1,0 +1,518 @@
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-full-width.html' %}
+<!--
+  In /views/layout.html you can:
+    - edit the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Create new case
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+{% from 'back-link/macro.njk' import backLink %}
+
+{{ backLink({
+"href": "javascript:history.back()",
+"text": "Go back"
+}) }}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <h1>
+      <span class="nhsuk-caption-m nhsuk-caption--bottom">
+        Create new case
+      </span>
+      Deceased person's details
+    </h1>
+
+
+    <h2 id="primary-details-header">Primary details</h2>
+
+    <p>You must fill out the primary details section to create a new case.</p>
+
+    <form action="lod-sp11" method="post">
+
+      <div class="nhsuk-form-group">
+        <label class="nhsuk-label nhsuk-u-width-one-half" for="firstNames">
+          First name(s)
+        </label>
+        <input class="nhsuk-input nhsuk-u-width-one-half" id="firstNames" name="deceased-first-name" type="text"
+        value="{{ data['deceased-first-name'] }}">
+      </div>
+      <div class="nhsuk-form-group">
+        <label class="nhsuk-label nhsuk-u-width-one-half" for="lastName">
+          Last name
+        </label>
+        <input class="nhsuk-input nhsuk-u-width-one-half" id="lastName" name="deceased-last-name" type="text" value="{{ data['deceased-last-name'] }}">
+      </div>
+
+<!-- non toggle nhs number
+      <div class="nhsuk-form-group">
+        <label class="nhsuk-label nhsuk-u-width-one-third" for="nhsNumber">
+          NHS number (Do not include spaces)
+        </label>
+        <input class="nhsuk-input nhsuk-u-width-one-third" id="nhsNumber" name="nhsNumber" type="text" value="{{ data['nhsNumber'] }}">
+      </div>
+      
+
+      <div class="nhsuk-form-group">
+          <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+                  NHS number
+              </legend>
+
+              <div class="nhsuk-radios nhsuk-radios--conditional">
+                  <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="nhsNumberKnown" name="nhsNumberKnown" type="radio"
+                          value="yes" aria-controls="conditional-nhsNumberKnown" aria-expanded="false">
+                      <label class="nhsuk-label nhsuk-radios__label" for="nhsNumberKnown">
+                          Known
+                      </label>
+                  </div>
+                  <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden"
+                      id="conditional-nhsNumberKnown">
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label" for="nhsNumber">
+                            Enter details
+                        </label>
+
+                          <div class="nhsuk-hint nhsuk-u-width-one-half" id="nhsNumber-hint">
+                              NHS numbers are 10 digits long. For example, 485 777 3456 
+                              Do not enter spaces
+                          </div>
+                          <input class="nhsuk-input nhsuk-u-width-one-half" id="nhsNumber" name="nhsNumber"
+                              type="text" aria-describedby="nhsNumber-hint" value="{{ data['nhsNumber'] }}">
+                      </div>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="nhsNumberKnown-false" name="nhsNumberKnown"
+                          type="radio" value="no">
+                      <label class="nhsuk-label nhsuk-radios__label" for="nhsNumberKnown-false">
+                          Not known
+                      </label>
+                  </div>
+              </div>
+                      </fieldset>
+      </div>
+-->
+
+
+
+
+
+      <h3 id="date-time-death-header">Date and time death was verified</h3>
+
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="dateOfDeath-hint" role="group">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+            Date of death
+          </legend>
+          <div class="nhsuk-hint" id="dateOfDeath-hint">
+            For example, 15 3 2021
+          </div>
+          <div class="nhsuk-date-input" id="dateOfDeath">
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="dateOfDeath-day">
+                  Day
+                </label>
+                <!-- value="" matches the name attribute on the <input> using nunjucks example {{ data['name-attribute-value'] }} -->
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dateOfDeath-day"
+                  name="dodDayCreate" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['dodDayCreate'] }}">
+              </div>
+            </div>
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="dateOfDeath-dodMonth">
+                  Month
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dateOfDeath-dodMonth"
+                  name="dodMonthCreate" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['dodMonthCreate'] }}">
+              </div>
+            </div>
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="dateOfDeath-dodYear">
+                  Year
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="dateOfDeath-dodYear"
+                  name="dodYearCreate" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['dodYearCreate'] }}">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="timeOfDeath-hint" role="group">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+            Time of death
+          </legend>
+          <div class="nhsuk-hint" id="timeOfDeath-hint">
+            Use 24 hour format. For example, 16 23
+          </div>
+          <div class="nhsuk-date-input" id="timeOfDeath">
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="timeOfDeath-hour">
+                  Hour
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="timeOfDeath-hour"
+                  name="todHourCreate" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['todHourCreate'] }}">
+              </div>
+            </div>
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="timeOfDeath-todMinute">
+                  Minutes
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="timeOfDeath-todMinute"
+                  name="todMinuteCreate" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['todMinuteCreate'] }}">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+            Request for rapid release?
+          </legend>
+          <div class="nhsuk-hint nhsuk-u-reading-width" id="requestForRapidRelease-hint">
+            Rapid release means the deceased person needs to be released quickly. For example, the family wishes to arrange a funeral as soon as possible after death for religious reasons.
+          </div>
+          <div class="nhsuk-radios">
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="requestForRapidRelease" name="requestForRapidRelease" type="radio"
+                value="yes">
+              <label class="nhsuk-label nhsuk-radios__label" for="requestForRapidRelease">
+                Yes
+              </label>
+            </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="requestForRapidRelease-no" name="requestForRapidRelease"
+                type="radio" value="no">
+              <label class="nhsuk-label nhsuk-radios__label" for="requestForRapidRelease-no">
+                No
+              </label>
+            </div>
+
+          </div>
+        </fieldset>
+      </div>
+
+      <hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">
+
+
+      <h2 id="additional-details-header">Additional details</h2>
+
+      <p>Details about the deceased person can be added at any time to this case.</p>
+
+      <div class="nhsuk-form-group">
+        <label class="nhsuk-label nhsuk-u-width-one-half" for="knownAs">
+            Name deceased also known as <span class="optional-span"> (optional) </span>
+        </label>
+        <input class="nhsuk-input nhsuk-u-width-one-half " id="knownAs" name="knownAs" type="text" value="{{ data['knownAs'] }}">
+    </div>
+
+    <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="dateOfBirth-hint" role="group">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+                Date of birth
+            </legend>
+            <div class="nhsuk-hint" id="dateOfBirth-hint">
+                For example, 15 3 1984
+            </div>
+            <div class="nhsuk-date-input" id="dateOfBirth">
+                <div class="nhsuk-date-input__item">
+                    <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-date-input__label" for="dateOfBirth-day">
+                            Day
+                        </label>
+                        <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                            id="dateOfBirth-day" name="dobDay" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['dobDay'] }}">
+                    </div>
+                </div>
+                <div class="nhsuk-date-input__item">
+                    <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-date-input__label" for="dateOfBirth-dobMonth">
+                            Month
+                        </label>
+                        <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                            id="dateOfBirth-dobMonth" name="dobMonth" type="text" pattern="[0-9]*"
+                            inputmode="numeric" value="{{ data['dobMonth'] }}">
+                    </div>
+                </div>
+                <div class="nhsuk-date-input__item">
+                    <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-date-input__label" for="dateOfBirth-dobYear">
+                            Year
+                        </label>
+                        <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+                            id="dateOfBirth-dobYear" name="dobYear" type="text" pattern="[0-9]*"
+                            inputmode="numeric" value="{{ data['dobYear'] }}">
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+
+   <!-- <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+                NHS number
+            </legend>
+            {% if data['nhsNumber'] %}
+            <input class="nhsuk-input nhsuk-u-width-one-third" id="nhsNumber" name="nhsNumber"
+                type="text" aria-describedby="nhsNumber-hint" value="{{ data['nhsNumber'] }}">
+                {% else %}
+            <div class="nhsuk-radios nhsuk-radios--conditional">
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="nhsNumberKnown" name="nhsNumberKnown" type="radio"
+                        value="yes" aria-controls="conditional-nhsNumberKnown" aria-expanded="false">
+                    <label class="nhsuk-label nhsuk-radios__label" for="nhsNumberKnown">
+                        Known
+                    </label>
+                </div>
+                <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden"
+                    id="conditional-nhsNumberKnown">
+                    <div class="nhsuk-form-group">
+                        <label class="nhsuk-label" for="nhsNumber">
+                            Enter details
+                        </label>
+                        <div class="nhsuk-hint nhsuk-u-width-one-half" id="nhsNumber-hint">
+                            NHS numbers are 10 digits long. For example, 485 777 3456 
+                            Do not enter spaces
+                        </div>
+                        <input class="nhsuk-input nhsuk-u-width-one-half" id="nhsNumber" name="nhsNumber"
+                            type="text" aria-describedby="nhsNumber-hint" value="{{ data['nhsNumber'] }}">
+                    </div>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="nhsNumberKnown-false" name="nhsNumberKnown"
+                        type="radio" value="no">
+                    <label class="nhsuk-label nhsuk-radios__label" for="nhsNumberKnown-false">
+                        Not known
+                    </label>
+                </div>
+            </div>
+            {% endif %}
+        </fieldset>
+    </div>
+
+    <div class="nhsuk-form-group">
+        <label class="nhsuk-label nhsuk-u-width-one-half" for="hospitalNumber">
+           Patient reference number <span class="optional-span"> (optional) </span>
+        </label>
+        <input class="nhsuk-input nhsuk-u-width-one-half" id="hospitalNumber" name="hospitalNumber" type="text" value="{{ data['hospitalNumber'] }}"">
+    </div>-->
+
+
+
+
+    <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+                Home address
+            </legend>
+            <div class="nhsuk-radios nhsuk-radios--conditional">
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="homeAddressKnown" name="homeAddressKnown"
+                        type="radio" value="yes" aria-controls="conditional-homeAddressKnown"
+                        aria-expanded="false">
+                    <label class="nhsuk-label nhsuk-radios__label" for="homeAddressKnown">
+                        Known
+                    </label>
+                </div>
+                <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden"
+                    id="conditional-homeAddressKnown">
+                    <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-u-width-one-half" for="addressLine1">
+                            Address line 1 <span class="nhsuk-u-visually-hidden">line 1 of 2</span>
+                        </label>
+                        <input class="nhsuk-input nhsuk-u-width-one-half" id="addressLine1" name="addressLine1"
+                            type="text" value="{{ data['addressLine1'] }}">
+                    </div>
+                    <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-u-width-one-half" for="addressLine2">
+                            Address line 2 (optional) <span class="nhsuk-u-visually-hidden">line 2 of 2</span>
+                        </label>
+                        <input class="nhsuk-input nhsuk-u-width-one-half" id="addressLine2" name="addressLine2"
+                            type="text" value="{{ data['addressLine2'] }}">
+                    </div>
+                    <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-u-width-one-half" for="townOrCity">
+                            Town or city <span class="optional-span"> (optional) </span>
+                        </label>
+                        <input class="nhsuk-input nhsuk-u-width-one-half" id="townOrCity" name="townOrCity"
+                            type="text" value="{{ data['townOrCity'] }}">
+                    </div>
+                    <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-u-width-one-half" for="county">
+                            County <span class="optional-span"> (optional) </span>
+                        </label>
+                        <input class="nhsuk-input nhsuk-u-width-one-half" id="county" name="county" type="text">
+                    </div>
+                    <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-input--width-10" for="postCode">
+                            Postcode
+                        </label>
+                        <input class="nhsuk-input nhsuk-input--width-10" id="postCode" name="postCode"
+                            type="text" value="{{ data['postCode'] }}">
+                    </div>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="homeAddressKnown-false" name="homeAddressKnown"
+                        type="radio" value="no">
+                    <label class="nhsuk-label nhsuk-radios__label" for="homeAddressKnown-false">
+                        Not known
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+
+
+    {% set NHSnumberHtml %}
+    {{ input({
+      id: "email",
+      name: "email",
+      classes: "nhsuk-u-width-two-thirds",
+      label: {
+        text: "Enter NHS Number"
+      },
+      hint: {
+        text: "NHS numbers are 10 digits long. For example, 485 777 3456"
+      }
+    }) }}
+  {% endset -%}
+  
+  {% set RXRnumberHtml %}
+    {{ input({
+      id: "phone",
+      name: "phone",
+      classes: "nhsuk-u-width-two-thirds",
+      label: {
+        text: "Enter RXR number"
+      }
+    }) }}
+  {% endset -%}
+  
+  {% set mobileHtml %}
+    {{ input({
+      id: "mobile",
+      name: "mobile",
+      classes: "nhsuk-u-width-two-thirds",
+      label: {
+        text: "Enter patient reference number"
+      }
+    }) }}
+  {% endset -%}
+  
+
+    {{ checkboxes({
+      "idPrefix": "contact",
+      "name": "contact",
+      "fieldset": {
+        "legend": {
+          "text": "Add reference numbers",
+          "classes": "nhsuk-fieldset__legend--s nhsuk-u-font-weight-normal"
+        }
+      },
+      "items": [
+        {
+          "value": "NHS number",
+          "text": "NHS number",
+          "conditional": {
+            "html": NHSnumberHtml
+          }
+        },
+        {
+          "value": "RXR number",
+          "text": "RXR number",
+          "conditional": {
+            "html": RXRnumberHtml
+          }
+        },
+        {
+          "value": "text",
+          "text": "Patient reference number",
+          "conditional": {
+            "html": mobileHtml
+          }
+        }
+      ]
+    }) }}
+ 
+
+
+    <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+                Main job
+            </legend>
+            <div class="nhsuk-radios nhsuk-radios--conditional">
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="occupationKnown" name="occupationKnown" type="radio"
+                        value="yes" aria-controls="conditional-occupationKnown" aria-expanded="false">
+                    <label class="nhsuk-label nhsuk-radios__label" for="occupationKnown">
+                        Known
+                    </label>
+                </div>
+                <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden"
+                    id="conditional-occupationKnown">
+                    <div class="nhsuk-form-group">
+                        <label class="nhsuk-label" for="mainJob">
+                            Enter details
+                        </label>
+                        <input class="nhsuk-input nhsuk-u-width-one-half" id="mainJob" name="mainJob"
+                            type="text" value="{{ data['mainJob'] }}">
+                    </div>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="occupationKnown-false" name="occupationKnown"
+                        type="radio" value="no">
+                    <label class="nhsuk-label nhsuk-radios__label" for="occupationKnown-false">
+                        Not known
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+
+                <div class="nhsuk-form-group">
+        <label class="nhsuk-label nhsuk-u-width-two-thirds" for="furtherOccupationInfo">
+            Details about past jobs (optional)
+        </label>
+        <div class="nhsuk-hint" id="furtherOccupationInfo-hint">
+            For example, if the deceased person worked with harmful chemicals.
+        </div>
+        <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds minchar" id="furtherOccupationInfo" name="furtherOccupationInfo" rows="5" maxlength="250" aria-describedby="admissionDetails-hint">{{ data['furtherOccupationInfo'] }}</textarea>
+            <div class="nhsuk-hint nhsuk-character-count__message rechar" id="furtherOccupation-Info">
+                You can enter up to 3000 characters
+            </div>
+      </div>
+
+      <button class="nhsuk-button" type="submit">
+        Save and continue
+      </button>
+
+      <button formaction="save-draft-AD" method="post" class="nhsuk-button nhsuk-button--secondary" type="submit">
+        Save as draft
+    </button>
+
+    </form>
+
+  </div>
+</div>
+{% endblock %}

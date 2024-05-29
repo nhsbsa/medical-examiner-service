@@ -1,0 +1,127 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Closed cases
+{% endblock %}
+
+{% block breadcrumbs %}
+<p class="nhsuk-u-margin-bottom-2 nhsuk-u-margin-top-3">Royal Infirmary, Newcastle</p>
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-one-half">
+    <h1 class="nhsuk-u-margin-bottom-4">
+      Closed cases
+    </h1>
+  </div>
+
+  <div class="nhsuk-grid-column-full">
+
+    <hr class="nhsuk-divider blue-divider nhsuk-u-margin-top-3" role="presentation">
+    <table class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable main-table" id="sortable">
+      <thead class="nhsuk-table__head">
+        <tr class="nhsuk-table__row">
+          <th role="columnheader" class="nhsuk-table__header" scope="col">Name</th>
+          <th role="columnheader" class="nhsuk-table__header" scope="col">Date of death</th>
+          <th role="columnheader" class="nhsuk-table__header" scope="col">NHS number</th>
+          <th role="columnheader" class="nhsuk-table__header" scope="col">ME</th>
+          <th role="columnheader" class="nhsuk-table__header" scope="col">MEO</th>
+          <th role="columnheader" class="nhsuk-table__header" scope="col">Proposed COD</th>
+          <th role="columnheader" class="nhsuk-table__header" scope="col">Main contact</th>
+          <th role="columnheader" class="nhsuk-table__header" scope="col">ME scrutiny</th>
+          <th role="columnheader" class="nhsuk-table__header" scope="col">Case type</th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        {% if data['close-case'] == 'yes' %}
+          <tr class="nhsuk-table__row">
+            <td class="nhsuk-table__cell">
+              <a href="case/case-details">{{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}</a>
+            </td>
+            <td class="nhsuk-table__cell">{{ data['dodDayCreate'] }}/{{ data['dodMonthCreate'] }}/{{ data['dodYearCreate'] }}</td>
+            <td class="nhsuk-table__cell">{{ data['nhsNumber'] }}</td>
+            <td class="nhsuk-table__cell">{{ data['assign-medical-examiner'] }}</td>
+            <td class="nhsuk-table__cell">{{ data['assign-medical-examiner-officer'] }}</td>
+            <td class="nhsuk-table__cell">Complete</td>
+            <td class="nhsuk-table__cell">Complete</td>
+            <td class="nhsuk-table__cell">Complete</td>
+            <td class="nhsuk-table__cell">
+              <span class="nhsuk-tag nhsuk-tag--blue">Routine</span>
+            </td>
+          </tr>
+        {% endif %}
+          {% if data['reopen-this-case'] !== 'yes' %}
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell">
+                <a href="statics/case-details?deceased-full-name=Kia Ravi">Kia Ravi</a>
+              </td>
+              <td class="nhsuk-table__cell">15/05/2023</td>
+              <td class="nhsuk-table__cell">123 456 720</td>
+              <td class="nhsuk-table__cell">DC</td>
+              <td class="nhsuk-table__cell">FL</td>
+              <td class="nhsuk-table__cell">Complete</td>
+              <td class="nhsuk-table__cell">Complete</td>
+              <td class="nhsuk-table__cell">Complete</td>
+              <td class="nhsuk-table__cell">
+                <span class="nhsuk-tag nhsuk-tag--blue">Routine</span>
+              </td>
+            </tr>
+          {% endif %}
+      </tbody>
+    </table>
+    {% if data['reopen-this-case'] !== 'yes' %}
+      <nav class="nhsbsa-pagination" id="pagination-label">
+        <p class="nhsuk-u-visually-hidden">Pagination navigation</p>
+        <ul class="nhsbsa-pagination__list">
+          <li class="nhsbsa-pagination__item nhsbsa-pagination__item--active"><span class="nhsuk-u-visually-hidden">Page </span> 1</li>
+        </ul>
+        <p class="nhsbsa-pagination__results">Showing <b>1</b> to <b>1</b> of <b>1</b> results</p>
+      </nav>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}
+
+{% block sideNav %}
+  <!-- IF user has selected to Reopen a case then change the numbering -->
+  {% if data['reopen-this-case'] == 'yes' %}
+    <div class="side-nav">
+      <ul>
+        <div id="options" class="options">
+          <li><a href="open-cases">Open cases 3</a></li>
+          <li><a class="active" href="closed-cases">Closed cases 0</a></li>
+          <li><a href="reopened-cases">Reopened cases 2</a></li>
+          <li><a href="reporting">Reporting</a></li>
+        </div>
+      </ul>
+    </div>
+  {% else %}
+    <div class="side-nav">
+      <ul>
+        <div id="options" class="options">
+          <li><a href="open-cases">Open cases 3</a></li>
+          <li><a class="active" href="closed-cases">Closed cases 1</a></li>
+          <li><a href="reopened-cases">Reopened cases 1</a></li>
+          <li><a href="reporting">Reporting</a></li>
+        </div>
+      </ul>
+    </div>
+  {% endif %}
+{% endblock %}

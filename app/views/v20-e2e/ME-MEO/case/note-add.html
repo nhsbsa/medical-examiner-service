@@ -1,0 +1,66 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-full-width.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+        {% from 'back-link/macro.njk' import backLink %}
+
+        {{ backLink({
+        "href": "javascript:history.back()",
+        "text": "Go back"
+        }) }}
+
+        <h1>
+            <span class="nhsuk-caption-m nhsuk-caption--bottom">
+                {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
+            </span>
+            Add a case note
+        </h1>
+
+          <form action="notes1" method="post">
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-u-width-two-thirds" for="detailsOfNote">
+                    Enter case note
+                </label>            
+                <div class="nhsuk-hint nhsuk-character-count__message" id="detailsOfNoteMain-info">
+                    <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds minchar" id="detailsOfNote"
+                        name="detailsOfNote" rows="10" maxlength="3000" aria-describedby="detailsOfNoteMain-hint">{{ data['notesectionText'] }}</textarea>
+                        <div class="nhsuk-hint nhsuk-character-count__message rechar" id="charCount">
+                        You can enter up to 3000 characters
+                        </div>
+                </div>
+            </div>
+
+            <button class="nhsuk-button" type="submit">
+                Save and continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
