@@ -1,0 +1,77 @@
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-full-width.html' %}
+<!--
+  In /views/layout.html you can:
+    - edit the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Assign someone to case
+{% endblock %}
+
+{% block breadcrumbs %}
+<p class="nhsuk-u-margin-bottom-2 nhsuk-u-margin-top-3">Royal Infirmary, Newcastle</p>
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+{% from 'back-link/macro.njk' import backLink %}
+
+{{ backLink({
+"href": "javascript:history.back()",
+"text": "Go back"
+}) }}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <h1>
+      <span class="nhsuk-caption-m nhsuk-caption--bottom">
+        Assign case - {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
+      </span>
+      Assign the case
+    </h1>
+
+    <p>You can assign an ME and MEO to this case by entering their initials in the relevant field.</p>
+    <p>This is optional and assigning someone does not prevent others from dealing with the case. You can also amend
+      these at any time.</p>
+
+    <form action="case-details-sp11" method="post">
+
+      <div class="nhsuk-form-group">
+        <h2 class="nhsuk-label-wrapper">
+          <label class="nhsuk-label nhsuk-label--m" for="assign-medical-examiner">
+            Medical examiner (optional)
+          </label>
+          <div class="nhsuk-hint" id="contact-hint">
+            Enter initials
+          </div>
+        </h2>
+        <input class="nhsuk-input nhsuk-input--width-5" id="assign-medical-examiner" name="assign-medical-examiner"
+          type="text" value="{{ data['assign-medical-examiner'] }}">
+      </div>
+      <div class="nhsuk-form-group">
+        <h2 class="nhsuk-label-wrapper">
+          <label class="nhsuk-label nhsuk-label--m" for="assign-medical-examiner-officer">
+            Medical examiner officer (optional)
+          </label>
+          <div class="nhsuk-hint" id="contact-hint">
+            Enter initials
+          </div>
+        </h2>
+        <input class="nhsuk-input nhsuk-input--width-5" id="assign-medical-examiner-officer"
+          name="assign-medical-examiner-officer" type="text" value="{{ data['assign-medical-examiner-officer'] }}">
+      </div>
+
+      <button class="nhsuk-button" type="submit">Save and continue</button>
+
+    </form>
+
+  </div>
+</div>
+{% endblock %}

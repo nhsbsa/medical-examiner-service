@@ -37,8 +37,8 @@ Case details
             </span>
             Location of death
         </h1>
-        <form action="lod-sp11" method="post">
-            <div class="nhsuk-form-group">
+        <form action="location-of-death-check" method="post">
+            <!--<div class="nhsuk-form-group">
                 <fieldset class="nhsuk-fieldset">
                     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
                         Select where the person died
@@ -60,7 +60,32 @@ Case details
                         </div>
                     </div>
                 </fieldset>
-            </div>
+            </div>-->
+
+            {{ radios({
+                "idPrefix": "location-of-death-check",
+                "name": "location-of-death-check",
+                "fieldset": {
+                  "legend": {
+                    "text": "Where did the person die?",
+                    "classes": "nhsuk-fieldset__legend--l",
+                    "isPageHeading": true
+                  }
+                },
+                "items": [
+                  {
+                    "value": "Hospital",
+                    "text": "Hospital, acute setting or hospice"
+                  },
+                  {
+                    "value": "Community or non-acute setting",
+                    "text": "Community or non-acute setting"
+                  }
+                ]
+              }) }}
+
+
+
             <button class="nhsuk-button" type="submit">
                 Save and continue
             </button>

@@ -63,17 +63,16 @@ router.post(/location-of-death/, (req, res) => {
 
 
 // location of death
-router.post(/lod-sp11/, (req, res) => {
 
-    const locationOfDeath = req.session.data['locationOfDeathType']
 
-    if (locationOfDeath == 'hospital-acute') {
+
+router.post('/location-of-death-check', (req, res) => {
+    if(req.session.data['location-of-death-check'] == 'Hospital'){
         res.redirect('hospital-acute-setting-sp11')
-    } else {
+    } else if(req.session.data['location-of-death-check'] == 'Community or non-acute setting'){
         res.redirect('community-non-acute-sp11')
-    }
-
-})
+    } 
+  });
 
 
 
