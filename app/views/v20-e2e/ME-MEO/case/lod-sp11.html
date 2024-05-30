@@ -37,11 +37,12 @@ Case details
             </span>
             Location of death
         </h1>
-        <form action="location-of-death-check" method="post">
-            <!--<div class="nhsuk-form-group">
+      
+        <form class="form" action="location-of-death" method="post">
+            <div class="nhsuk-form-group">
                 <fieldset class="nhsuk-fieldset">
                     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
-                        Select where the person died
+                        Where did the death happen?
                     </legend>
                     <div class="nhsuk-radios">
                         <div class="nhsuk-radios__item">
@@ -60,9 +61,9 @@ Case details
                         </div>
                     </div>
                 </fieldset>
-            </div>-->
+            </div>
 
-            {{ radios({
+           <!--{{ radios({
                 "idPrefix": "location-of-death-check",
                 "name": "location-of-death-check",
                 "fieldset": {
@@ -78,11 +79,11 @@ Case details
                     "text": "Hospital, acute setting or hospice"
                   },
                   {
-                    "value": "Community or non-acute setting",
+                    "value": "Community",
                     "text": "Community or non-acute setting"
                   }
                 ]
-              }) }}
+              }) }}--> 
 
 
 

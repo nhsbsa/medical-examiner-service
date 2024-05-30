@@ -87,19 +87,7 @@ Case details
         </dd>
       </div>
 
-      <div class="nhsuk-summary-list__row">
-        <dt class="nhsuk-summary-list__key">
-          NHS number
-        </dt>
-        <dd class="nhsuk-summary-list__value">
-          {{ data['nhsNumber'] }}
-        </dd>
-        <dd class="nhsuk-summary-list__actions">
-          <a href="../../ME-MEO/create-new-case#nhsNumber">
-            Change<span class="nhsuk-u-visually-hidden"> NHS number</span>
-          </a>
-        </dd>
-      </div>
+      
 
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
@@ -140,19 +128,13 @@ Case details
           </a>
         </dd>
       </div>
-    </dl>
-  </div>
+   
 
   <!-- ================================================== -->
   <!-- ADDITIONAL DETAILS -->
   <!-- ================================================== -->
 
-  <div class="nhsuk-grid-column-three-quarters">
-    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Additional details</h2>
-  </div>
-
-  <div class="nhsuk-grid-column-full">
-    <dl class="nhsuk-summary-list">
+  
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
             Name deceased also known as
@@ -171,7 +153,11 @@ Case details
             Date of birth
         </dt>
         <dd class="nhsuk-summary-list__value">
-          {{ data['knownAs'] }} 
+          {% if data['dobDay'] and data['dobMonth'] and data['dobYear'] %}
+              {{ data['dobDay'] }} / {{ data['dobMonth'] }} / {{ data['dobYear'] }}
+            {% else %}
+              15/11/1992
+            {% endif %}
         </dd>
         <dd class="nhsuk-summary-list__actions">
           <a href="../../ME-MEO/create-new-case#firstNames">
@@ -184,7 +170,15 @@ Case details
             Home address
         </dt>
         <dd class="nhsuk-summary-list__value">
-          {{ data['knownAs'] }} 
+          {% if data['homeAddressKnown'] == 'yes' %}
+          {{ data['addressLine1'] }}<br>
+          {% if data['addressLine2'] %}{{ data['addressLine2'] }}<br>{% endif %}
+          {% if data['townOrCity'] %}{{ data['townOrCity'] }}<br>{% endif %}
+          {% if data['county'] %}{{ data['county'] }}<br>{% endif %}
+          {{ data['postCode'] }}
+        {% else %}
+          Not known
+        {% endif %}
         </dd>
         <dd class="nhsuk-summary-list__actions">
           <a href="../../ME-MEO/create-new-case#firstNames">
@@ -192,129 +186,73 @@ Case details
           </a>
         </dd>
       </div>
+
+      {% if data['ref-NHSnumber'] %}
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
-            Reference numbers
+            NHS number
         </dt>
         <dd class="nhsuk-summary-list__value">
-          {{ data['knownAs'] }} 
+          {{ data['ref-NHSnumber'] }} 
         </dd>
         <dd class="nhsuk-summary-list__actions">
           <a href="../../ME-MEO/create-new-case#firstNames">
-            Change<span class="nhsuk-u-visually-hidden"> reference numbers</span>
+            Change<span class="nhsuk-u-visually-hidden"> NHS number</span>
           </a>
         </dd>
       </div>
+      {% endif %}
+
+      {% if data['ref-RXRnumber'] %}
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            RXR number
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['ref-RXRnumber'] }} 
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="../../ME-MEO/create-new-case#firstNames">
+            Change<span class="nhsuk-u-visually-hidden"> NHS number</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %}
+
+      {% if data['ref-patientrefnumber'] %}
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Patient reference number
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['ref-patientrefnumber'] }} 
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="../../ME-MEO/create-new-case#firstNames">
+            Change<span class="nhsuk-u-visually-hidden"> NHS number</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %}
 
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
-            Main job
+          Deceased person's job
         </dt>
         <dd class="nhsuk-summary-list__value">
-          {{ data['nhsNumber'] }}
+          {{ data['furtherOccupationInfo'] }}
         </dd>
         <dd class="nhsuk-summary-list__actions">
           <a href="../../ME-MEO/create-new-case#nhsNumber">
-            Change<span class="nhsuk-u-visually-hidden"> main job</span>
-          </a>
-        </dd>
-      </div>
-      <div class="nhsuk-summary-list__row">
-        <dt class="nhsuk-summary-list__key">
-            Details about past jobs
-        </dt>
-        <dd class="nhsuk-summary-list__value">
-          {{ data['nhsNumber'] }}
-        </dd>
-        <dd class="nhsuk-summary-list__actions">
-          <a href="../../ME-MEO/create-new-case#nhsNumber">
-            Change<span class="nhsuk-u-visually-hidden"> details about past jobs</span>
+            Change<span class="nhsuk-u-visually-hidden"> deceased person's job</span>
           </a>
         </dd>
       </div>
       
+      
     </dl>
   </div>
 
-
-    <!-- ================================================== -->
-  <!-- NEXT OF KIN DETAILS -->
-  <!-- ================================================== -->
-
-  <div class="nhsuk-grid-column-three-quarters">
-    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Next of kin details</h2>
-  </div>
-
-  <div class="nhsuk-grid-column-full">
-    <dl class="nhsuk-summary-list">
-      <div class="nhsuk-summary-list__row">
-        <dt class="nhsuk-summary-list__key">
-            Name
-        </dt>
-        <dd class="nhsuk-summary-list__value">
-          {{ data['knownAs'] }} 
-        </dd>
-        <dd class="nhsuk-summary-list__actions">
-          <a href="../../ME-MEO/create-new-case#firstNames">
-            Change<span class="nhsuk-u-visually-hidden"> name deceased also known as</span>
-          </a>
-        </dd>
-      </div>
-      <div class="nhsuk-summary-list__row">
-        <dt class="nhsuk-summary-list__key">
-            Relationship to the deceased person
-        </dt>
-        <dd class="nhsuk-summary-list__value">
-          {{ data['knownAs'] }} 
-        </dd>
-        <dd class="nhsuk-summary-list__actions">
-          <a href="../../ME-MEO/create-new-case#firstNames">
-            Change<span class="nhsuk-u-visually-hidden"> date of birth</span>
-          </a>
-        </dd>
-      </div>
-      <div class="nhsuk-summary-list__row">
-        <dt class="nhsuk-summary-list__key">
-            How are you contacting the next of kin?
-        </dt>
-        <dd class="nhsuk-summary-list__value">
-          {{ data['knownAs'] }} 
-        </dd>
-        <dd class="nhsuk-summary-list__actions">
-          <a href="../../ME-MEO/create-new-case#firstNames">
-            Change<span class="nhsuk-u-visually-hidden"> home address</span>
-          </a>
-        </dd>
-      </div>
-      <div class="nhsuk-summary-list__row">
-        <dt class="nhsuk-summary-list__key">
-            Notes for contacting the next of kin
-        </dt>
-        <dd class="nhsuk-summary-list__value">
-          {{ data['knownAs'] }} 
-        </dd>
-        <dd class="nhsuk-summary-list__actions">
-          <a href="../../ME-MEO/create-new-case#firstNames">
-            Change<span class="nhsuk-u-visually-hidden"> reference numbers</span>
-          </a>
-        </dd>
-      </div>
-      <div class="nhsuk-summary-list__row">
-        <dt class="nhsuk-summary-list__key">
-            Details of conversation with the next of kin
-        </dt>
-        <dd class="nhsuk-summary-list__value">
-          {{ data['nhsNumber'] }}
-        </dd>
-        <dd class="nhsuk-summary-list__actions">
-          <a href="../../ME-MEO/create-new-case#nhsNumber">
-            Change<span class="nhsuk-u-visually-hidden"> main job</span>
-          </a>
-        </dd>
-      </div>
-
-    </dl>
-  </div>
 
 
 
@@ -324,6 +262,11 @@ Case details
 
   <div class="nhsuk-grid-column-three-quarters">
     <h2 class="nhsuk-heading-l">Location of death</h2>
+  </div>
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag align-right">
+      Complete
+    </strong>
   </div>
 
 
@@ -354,7 +297,7 @@ Case details
             </dd>
             <dd class="nhsuk-summary-list__actions">
               <a href="hospital-acute-setting#healthCareProvider">
-                Change<span class="nhsuk-u-visually-hidden"> location of death</span>
+                Change<span class="nhsuk-u-visually-hidden"> healthcare provider</span>
               </a>
             </dd>
           </div>
@@ -468,6 +411,161 @@ Case details
   </div>
   
 
+
+
+
+
+
+
+
+
+
+
+    <!-- ================================================== -->
+  <!-- NEXT OF KIN DETAILS -->
+  <!-- ================================================== -->
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Next of kin details</h2>
+  </div>
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag align-right">
+      Complete
+    </strong>
+  </div>
+
+  <div class="nhsuk-grid-column-full">
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Name
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['nok-first-name'] }} {{ data['nok-last-name'] }} 
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="../../ME-MEO/create-new-case#firstNames">
+            Change<span class="nhsuk-u-visually-hidden"> name</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Relationship to the deceased person
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['nok-relationship'] }} 
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="../../ME-MEO/create-new-case#firstNames">
+            Change<span class="nhsuk-u-visually-hidden"> relationship to the deceased person</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            How are you contacting the next of kin?
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+            {{ data['nok-contact'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="../../ME-MEO/create-new-case#firstNames">
+            Change<span class="nhsuk-u-visually-hidden"> how are you contacting the next of kin?</span>
+          </a>
+        </dd>
+      </div>
+      {% if data['nok-contact'] == 'Phone' %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+              Phone number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+              {{ data['nok-phone'] }}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="../../ME-MEO/create-new-case#firstNames">
+              Change<span class="nhsuk-u-visually-hidden"> phone number</span>
+            </a>
+          </dd>
+        </div>
+      {% elseif data['nok-contact'] == 'Email' %}
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Email address
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+            {{ data['nok-email'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="../../ME-MEO/create-new-case#firstNames">
+            Change<span class="nhsuk-u-visually-hidden"> email address</span>
+          </a>
+        </dd>
+      </div>
+    {% elseif data['nok-contact'] == 'Phone' or 'Email' %}
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Phone number
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+            {{ data['nok-phone'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="../../ME-MEO/create-new-case#firstNames">
+            Change<span class="nhsuk-u-visually-hidden"> phone number</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Email address
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+            {{ data['nok-email'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="../../ME-MEO/create-new-case#firstNames">
+            Change<span class="nhsuk-u-visually-hidden"> email address</span>
+          </a>
+        </dd>
+      </div>
+    {% endif %}
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Notes for contacting the next of kin
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['nok-notes'] }} 
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="../../ME-MEO/create-new-case#firstNames">
+            Change<span class="nhsuk-u-visually-hidden"> notes for contacting the next of kin</span>
+          </a>
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Details of conversation with the next of kin
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['nok-conversation'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="../../ME-MEO/create-new-case#nhsNumber">
+            Change<span class="nhsuk-u-visually-hidden"> main job</span>
+          </a>
+        </dd>
+      </div>
+
+    </dl>
+  </div>
+
+
+
+
+
  
 
 
@@ -479,6 +577,11 @@ Case details
 
   <div class="nhsuk-grid-column-three-quarters">
     <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Case assignment</h2>
+  </div>
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag align-right">
+      Complete
+    </strong>
   </div>
  
 
