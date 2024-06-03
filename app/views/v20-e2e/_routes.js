@@ -49,6 +49,17 @@ router.post(/additional-details/, (req, res) => {
 })
 
 
+// Next of kin
+router.post(/next-of-kin/, (req, res) => {
+
+    // creating a session key 'next-of-kin-details-section' and assigning it the value of complete
+    req.session.data['next-of-kin-details-section'] = 'complete'
+    req.session.data['draft-status-NOK'] = ''
+
+    res.redirect('case-details')
+
+})
+
 
 
 // location of death
@@ -57,29 +68,30 @@ router.post(/location-of-death/, (req, res) => {
     const locationOfDeath = req.session.data['locationOfDeathType']
 
     if (locationOfDeath == 'hospital-acute') {
-        res.redirect('hospital-acute-setting-sp11')
+        res.redirect('hospital-acute-setting')
     } else {
-        res.redirect('community-non-acute-sp11')
+        res.redirect('community-non-acute')
     }
 
 })
 
 
 
-// Branching example
-router.post('/examples/branching/answer', (req, res) => {
-  // Make a variable and give it the value from 'know-nhs-number'
-  const nhsNumber = req.session.data['know-nhs-number'];
 
-  // Check whether the variable matches a condition
-  if (nhsNumber === 'Yes') {
-    // Send user to next page
-    res.redirect('/docs/examples/branching/answer-yes');
-  } else {
-    // Send user to ineligible page
-    res.redirect('/docs/examples/branching/answer-no');
-  }
-});
+// location of death
+router.post(/location-of-death-b/, (req, res) => {
+
+    const locationOfDeathb = req.session.data['locationOfDeathTypeb']
+
+    if (locationOfDeathb == 'hospital-acute') {
+        res.redirect('hospital-acute-setting-sp11b')
+    } else {
+        res.redirect('community-non-acute-sp11b')
+    }
+
+})
+
+
 
 
 
@@ -550,6 +562,15 @@ router.post(/status-refresh/, (req, res) => {
 router.post(/save-draft-AD/, (req, res) => {
 
     req.session.data['draft-status-AD'] = 'draft'
+
+    res.redirect('case-details')
+
+})
+
+//Page: /case/next-of-kin
+router.post(/save-draft-NOK/, (req, res) => {
+
+    req.session.data['draft-status-NOK'] = 'draft'
 
     res.redirect('case-details')
 
