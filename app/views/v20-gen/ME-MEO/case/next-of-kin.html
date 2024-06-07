@@ -1,0 +1,170 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-full-width.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Next of kin details
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<script type="text/javascript">
+function getCharCount(limit)
+{
+var tArea       = document.getElementById("description"),
+ countDisplay = document.getElementById("charCount");
+ countRemains = limit - tArea.value.length
+countDisplay.innerHTML = countRemains + " characters remaining"  ;
+if (countRemains < 1) alert('');
+}
+</script>
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      {{ backLink({
+      "href": "javascript:history.back()",
+      "text": "Go back"
+      }) }}
+
+
+        
+        <h1 class="nhsuk-heading-l mb40">
+        Next of kin details
+          </h1>
+        
+        
+
+        <form action="case-details" method="post">
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-u-width-one-half" for="nok-first-name">
+                    First name(s)
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-one-half " id="nok-first-name" name="nok-first-name" type="text" value="{{ data['nok-first-name'] }}">
+            </div>
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-u-width-one-half" for="nok-last-name">
+                    Last name
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-one-half " id="nok-last-name" name="nok-last-name" type="text" value="{{ data['nok-last-name'] }}">
+            </div>
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-u-width-one-half" for="nok-relationship">
+                    Relationship to the deceased person
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-one-half " id="nok-relationship" name="nok-relationship" type="text" value="{{ data['nok-relationship'] }}">
+            </div>
+
+
+
+           
+            {% set emailHtml %}
+            {{ input({
+              id: "nok-email",
+              name: "nok-email",
+              classes: "nhsuk-u-width-one-half",
+              label: {
+                text: "Enter email address"
+              }
+            }) }}
+          {% endset -%}
+          
+          {% set phoneHtml %}
+            {{ input({
+              id: "nok-phone",
+              name: "nok-phone",
+              classes: "nhsuk-u-width-one-half",
+              label: {
+                text: "Enter phone number"
+              }
+            }) }}
+          {% endset -%}
+          
+ 
+            {{ checkboxes({
+              "idPrefix": "nok-contact",
+              "name": "nok-contact",
+              "fieldset": {
+                "legend": {
+                  "text": "How are you contacting the next of kin?",
+                  "classes": "nhsuk-fieldset__legend--s nhsuk-u-font-weight-normal"
+                }
+              },
+              "items": [
+                {
+                    "value": "Phone",
+                    "text": "Phone",
+                    "conditional": {
+                    "html": phoneHtml
+                    }
+                },
+                {
+                  "value": "Email",
+                  "text": "Email",
+                  "conditional": {
+                    "html": emailHtml
+                  }
+                }
+              ]
+            }) }}
+
+
+
+
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-u-width-two-thirds" for="nok-notes">
+                  Notes for contacting the next of kin
+                </label>
+                <textarea class="nhsuk-textarea nhsuk-u-width-one-half minchar" id="nok-notes" name="nok-notes" rows="5" maxlength="3000" aria-describedby="admissionDetails-hint">{{ data['nok-notes'] }}</textarea>
+                    <div class="nhsuk-hint nhsuk-character-count__message rechar" id="nok-notes">
+                        You can enter up to 3000 characters
+                    </div>
+              </div>
+
+
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-u-width-two-thirds" for="nok-conversation">
+                  Enter details about the conversation with the next of kin
+                </label>
+                <textarea class="nhsuk-textarea nhsuk-u-width-one-half minchar" id="nok-conversation" name="nok-conversation" rows="5" maxlength="3000" aria-describedby="admissionDetails-hint">{{ data['nok-conversation'] }}</textarea>
+                    <div class="nhsuk-hint nhsuk-character-count__message rechar" id="nok-conversation">
+                        You can enter up to 3000 characters
+                    </div>
+              </div>
+
+              
+        
+
+            <button class="nhsuk-button" id="save-and-continue-button" type="submit">
+                Save and continue
+            </button>
+
+            <button method="post" class="nhsuk-button nhsuk-button--secondary" type="submit">
+                Save as draft
+            </button>
+
+            </form>
+
+
+
+    </div>
+
+</div>
+
+{% endblock %}

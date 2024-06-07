@@ -1,0 +1,120 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case notes
+{% endblock %}
+
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h1 class="nhsuk-heading-l">Case notes</h1>
+  
+        <div class="nav-flow">
+          <a href="note-add" class="nhsuk-button" data-module="nhsuk-button">
+          Add a case note
+        </a>
+        </div>
+
+     <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <!--<dt class="nhsuk-summary-list__key">
+            Case Note 1<br>
+            <span style="font-weight: normal;">12 April 2024, 13:45. FD</span>
+          </dt>-->
+          <dt class="nhsuk-summary-list__key">
+            <h3 class="nhsuk-heading-s">Case note 1</h3>
+            <span style="font-weight: normal;">12 April 2024, 13:45<br>Added by Mark Denton</span>
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+             {{ data['detailsOfNote '] }}         
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <!--<a href="../../ME-MEO/case/additional-details#dateOfBirth-day">
+              Change<span class="nhsuk-u-visually-hidden"> date of birth</span>
+            </a> -->
+          </dd>
+        </div>
+      </dl>
+
+    </div>
+
+
+</div>
+
+{% endblock %}
+
+<!-- ====================================== -->
+<!-- SIDE NAV -->
+<!-- ====================================== -->
+{% block sideNav %}
+<div class="side-nav">
+    
+    
+   <div class="case-type-details">
+     
+        
+  <div class="nhsuk-back-link">
+  
+    <a class="nhsuk-back-link__link" href="../open-cases">
+      <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+        <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+      </svg>
+      Back to case list</a>
+  </div>
+     
+     
+     <!--<p class="deceased-name">Name of deceased:</p>-->
+    <h3 class="nhsuk-heading-s mt0">Kathleen Stark</h3>
+    <strong class="nhsuk-tag nhsuk-tag-blue">
+      Routine
+    </strong>
+    
+   </div>
+    
+    
+    <ul>
+      <div id="options" class="options mt40">
+        <li><a href="case-details">Case details</a></li>
+        <li><a href="case-scrutiny">Case scrutiny</a></li>
+        <li><a href="communications">Communications
+         {% if data['comms-type'] %}
+       
+         (<b>2</b>)
+
+       {% elif data['nok-conversation'] %}
+       
+     (<b>1</b>)
+       {% else %}
+       
+       {% endif %}
+        </a></li>
+        <li><a class="active" href="notes">Case notes</a></li>
+         <li><a href="concerns">Case concerns 
+            {% if data['concern-why'] %}
+            (<b>1</b>)
+          {% else %}
+    
+          {% endif %}</a></a></li>
+         <li><a href="coroner-notification">Coroner notification</a></li>
+      </div>
+    </ul>
+      
+  </div>
+
+{% endblock %}

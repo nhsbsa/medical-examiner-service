@@ -1,6 +1,6 @@
 
 
-// temp styles - CD //
+// temp styles - CD - gen stream //
 .nhs-task-flow {
   ul {
     list-style: none;
@@ -67,8 +67,24 @@
   margin-top: 5px;
 }
 
+.mt20 {
+  margin-top: 20px;
+}
+
+.mt30 {
+  margin-top: 30px;
+}
+
 .mt40 {
   margin-top: 40px;
+}
+
+.mb20 {
+  margin-bottom: 20px;
+}
+
+.mb30 {
+  margin-bottom: 30px;
 }
 
 .mb40 {
@@ -311,5 +327,220 @@ top: 50%;
     padding-left: 10px;
   }
 }
+
+
+.side-nav {
+  h3 {
+    padding: 0 30px;
+    margin: 0;
+    font-size: 19px;
+  }
+  h4 {
+    padding: 0 30px;
+    margin: 30px 0 20px 0;
+    font-size: 19px;
+  }
+}
+
+.side-head {
+  font-size: 19px;
+  font-weight: bold;
+  padding: 0 28px;
+  margin: 30px 0 0 0;
+}
+
+.deceased-name {
+  padding: 0 30px;
+  margin: 0;
+  color: $nhsuk-secondary-text-color;
+  font-size: 17px;
+}
+
+.case-type {
+  padding: 0 30px;
+  margin: 10px 0 0 0;
+  color: $nhsuk-secondary-text-color;
+  font-size: 17px;
+}
+
+.nav-flow {
+  margin-top: 40px;
+}
+
+.case-type-details {
+  //border-bottom: 2px solid $color_nhsuk-grey-2;
+  padding: 30px 0 0 0;
+  .nhsuk-tag {
+    margin: 10px 0 0 30px;
+  }
+  .nhsuk-back-link {
+    margin: 10px 0 20px 0!important;
+    padding: 0 30px!important;
+  }
+}
+
+
+.govuk-phase-banner {
+  border-bottom: 0!important;
+}
+
+/* ==========================================================================
+ #TIMELINE
+ ========================================================================== */
+
+.nhs-timeline {
+margin-top: 30px;
+margin-bottom:20px;
+overflow: hidden;
+position: relative;
+
+&:before {
+  background-color: #1d70b8;
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 14px;
+  width: 5px;
+}
+
+}
+
+.nhs-timeline--full {
+margin-bottom: 0;
+&:before {
+  height: calc(100% - 75px);
+}
+}
+
+.nhs-timeline__item {
+padding-bottom: 50px;
+padding-left: 30px;
+position: relative;
+
+&:before {
+  background-color: #1d70b8;
+  content: "";
+  height: 5px;
+  left: 0;
+  position: absolute;
+  top: 14px;
+  width: 15px;
+}
+
+}
+
+.nhs-timeline__title {
+  font-size: 22px;
+  margin: 0 0 10px 0;
+  .nhsuk-tag {
+    position: relative;
+    top: 0;
+    margin-left: 5px;
+    background: $nhsuk-secondary-button-color;
+  }
+}
+
+.nhs-timeline__description {
+  h4 {
+  font-size: 19px;
+  margin: 0;
+}
+p {
+  margin: 16px 0 0 0;
+  padding: 0;
+
+}
+
+
+}
+
+
+.nhs-timeline__byline {
+  color: $nhsuk-secondary-text-color;
+  font-weight: normal;
+  padding-top: 5px;
+}
+
+
+.nhsuk-tag {
+  padding: 6px 10px;
+  line-height: 1rem;
+  &.nhsuk-tag-red {
+    border-color: $color_nhsuk-red;
+    background: #fff;
+    color: $color_nhsuk-red;
+  }
+  &.nhsuk-tag-blue {
+    border-color: $color_nhsuk-blue;
+    background: #fff;
+    color: $color_nhsuk-blue;
+  }
+  &.nhsuk-tag-green {
+    border-color: $color_nhsuk-green;
+    background: #fff;
+    color: $color_nhsuk-green;
+  }
+  &.nhsuk-tag-grey {
+    border-color: $color_nhsuk-grey-2;
+    background: #fff;
+    color: $color_nhsuk-grey-2;
+  }
+}
+
+
+.govuk-caption-l {
+  display: block;
+  margin-bottom: 5px;
+  color: #505a5f;
+  font-weight: 400;
+  font-size: 1.4rem;
+}
+
+.nhsuk-visually-hidden {
+  position: absolute;
+  left: -99999px;
+  font-size: 0;
+}
+
+
+
+.nhsuk-table__body {
+  a {
+    font-weight: bold;
+  }
+  .author-tag {
+    color: $color_nhsuk-grey-2;
+    display: block;
+  }
+  .support-status {
+    display: block;
+    padding-top: 5px;
+  }
+}
+
+
+.table-card {
+  padding-bottom: 30px;
+}
+
+.nhsuk-card__content {
+  dl {
+    dd, dt {
+        font-size: 1.1rem;
+    }
+    dt {
+      width: 34%;
+    }
+  } 
+  .nhsuk-button--secondary {
+    font-size: 1.1rem;
+  }
+}
+
+//.nhsBSA-sidebar-content, body {
+  //background-color: #fff!important;
+//}
+
 
 

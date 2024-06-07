@@ -1,0 +1,140 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Open cases
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  
+  <div class="nhsuk-grid-column-one-half">
+
+
+    <h1 class="nhsuk-u-margin-bottom-4">
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">
+        Royal Infirmary, Newcastle
+    </span>
+      Open cases
+    </h1>
+  </div>
+    
+    <div class="nhsuk-grid-column-one-half">
+
+
+   <div class="create-new-case"> <a href="create-new-case" class="nhsuk-button align-right"> Create new case</a></div>
+   
+    </div>
+    
+</div>
+
+
+<div class="nhsuk-grid-row">
+  
+  <div class="nhsuk-grid-column-full">
+
+<p class="">Showing <b>1</b> to <b>2</b> of <b>2</b> results</p>
+
+
+    <hr class="nhsuk-divider blue-divider nhsuk-u-margin-top-3" role="presentation">
+    <table class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable main-table" id="sortable">
+      <thead class="nhsuk-table__head">
+        <tr class="nhsuk-table__row">
+          <th class="nhsuk-table__header" scope="col"><button class="blue-link-header" type="button">Name</button></th>
+          <th class="nhsuk-table__header" scope="col"><button class="blue-link-header" type="button">Date of death</button></th>
+          <th class="nhsuk-table__header" scope="col"><button class="blue-link-header" type="button">NHS number</button></th>
+          <th class="nhsuk-table__header" scope="col"><button class="blue-link-header" type="button">ME</button></th>
+          <th class="nhsuk-table__header" scope="col"><button class="blue-link-header" type="button">MEO</button></th>
+          <th class="nhsuk-table__header" scope="col"><button class="blue-link-header" type="button">Proposed COD</button></th>
+          <th class="nhsuk-table__header" scope="col"><button class="blue-link-header" type="button">Main contact</button></th>
+          <th class="nhsuk-table__header" scope="col"><button class="blue-link-header" type="button">ME scrutiny</button></th>
+          <th class="nhsuk-table__header fixed-side" scope="col"><button class="blue-link-header" type="button">Case type</button></th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="case-scenario-1/case-details">Mary Todd</a>
+          </td>
+          <td class="nhsuk-table__cell">12 April 2024</td>
+          <td class="nhsuk-table__cell">123 456 789</td>
+          <td class="nhsuk-table__cell">Joel Van Dijk</td>
+          <td class="nhsuk-table__cell"></td>
+          <td class="nhsuk-table__cell">Not started</td>
+          <td class="nhsuk-table__cell">Complete</td>
+          <td class="nhsuk-table__cell">Complete</td>
+          <td class="nhsuk-table__cell">
+           <span class="nhsuk-tag nhsuk-tag--blue">Routine</span>
+          </td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="case-scenario-2/case-details">Kathleen Stark</a>
+          </td>
+          <td class="nhsuk-table__cell">12 April 2024</td>
+          <td class="nhsuk-table__cell">123 456 723</td>
+          <td class="nhsuk-table__cell"></td>
+          <td class="nhsuk-table__cell">Ibrahima Gakpo</td>
+          <td class="nhsuk-table__cell">Not started</td>
+          <td class="nhsuk-table__cell">Not started</td>
+          <td class="nhsuk-table__cell">Not started</td>
+          <td class="nhsuk-table__cell">
+            <span class="nhsuk-tag nhsuk-tag--blue">Routine</span>
+          </td>
+        </tr>
+       
+      </tbody>
+    </table>
+    <nav class="nhsbsa-pagination" id="pagination-label">
+
+      <p class="nhsuk-u-visually-hidden">Pagination navigation</p>
+    
+      <ul class="nhsbsa-pagination__list">
+              <li class="nhsbsa-pagination__item nhsbsa-pagination__item--active"><span class="nhsuk-u-visually-hidden">Page </span> 1</li>
+            </ul>
+        
+      </nav>
+
+  </div>
+</div>
+
+{% endblock %}
+{% block sideNav %}
+  <!-- IF user has selected to Reopen a case then change the numbering -->
+  {% if data['reopen-this-case'] == 'yes' %}
+    <div class="side-nav">
+      <ul>
+        <div id="options" class="options">
+          <li><a class="active" href="open-cases">Open cases 3</a></li>
+          <li><a href="closed-cases">Closed cases 0</a></li>
+          <li><a href="reopened-cases">Reopened cases 2</a></li>
+          <li><a href="reporting">Reporting</a></li>
+        </div>
+      </ul>
+    </div>
+  {% else %}
+    <div class="side-nav">
+      <ul>
+        <div id="options" class="options">
+          <li><a class="active" href="open-cases">Open cases 3</a></li>
+          <li><a href="closed-cases">Closed cases 1</a></li>
+          <li><a href="reopened-cases">Reopened cases 1</a></li>
+          <li><a href="reporting">Reporting</a></li>
+        </div>
+      </ul>
+    </div>
+  {% endif %}
+{% endblock %}
