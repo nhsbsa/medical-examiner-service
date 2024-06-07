@@ -1,0 +1,67 @@
+{% extends 'layout-full-width.html' %}
+
+{% block pageTitle %}
+    Select your login method
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+    <div class="nhsuk-back-link">
+      <a class="nhsuk-back-link__link" href="javascript:history.back()">
+         <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+           <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+         </svg>
+         Go back</a>
+     </div>
+
+  
+
+        {% call fieldset({
+            legend: {
+              "text": "Select your login method",
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
+            }
+            }) %}
+            {{ hint({
+              "text": "Your choice will be saved as your preferred login method for this browser. You may have to repeat this step if you clear your browser’s cookies. ",
+              "classes": "nhsuk-u-margin-bottom-2 nhsuk-u-reading-width"
+            }) }}
+            {{ radios({
+              "idPrefix": "example-hints",
+              "name": "example-hints",
+              "items": [
+            {
+              "value": "Smartcard",
+              "text": "Smartcard"
+            },
+            {
+              "value": "Windows Hello for Business",
+              "text": "Windows Hello for Business"
+            },
+            {
+              "value": "Security Key",
+              "text": "Security Key"
+            },
+            {
+                "value": "Microsoft Authenticator",
+                "text": "Microsoft Authenticator"
+            }
+          ]
+          }) }}
+          {% endcall %}
+
+      <a href="care-id-authentication" class="nhsuk-button">Continue</a>
+
+    </div>
+
+  </div>
+{% endblock %}
+
+
+
+
+

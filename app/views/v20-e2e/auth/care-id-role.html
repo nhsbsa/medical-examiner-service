@@ -1,0 +1,78 @@
+{% extends 'layout-full-width.html' %}
+
+{% block pageTitle %}
+    Select a role
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-one-third">
+
+        <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h1 class="nhsuk-fieldset__heading">
+                Select a role
+              </h1>
+            </legend>
+            <style>
+              .nhsuk-card__link {
+                background: none;
+                border: none;
+                font-size: 19px;
+                color: #005EB8;
+                text-decoration: underline;
+                font-weight: bold;
+                cursor: pointer;
+                cursor: hand;
+              }
+              .nhsuk-card__link:hover,
+              .nhsuk-card__link:focus {
+                text-decoration: none;
+              }
+            </style>
+          <!-- AP ROLE -->
+            
+              <div class="nhsuk-grid-column-full-width nhsuk-card-group__item">
+                <div class="nhsuk-card nhsuk-card--clickable">
+                  <div class="nhsuk-card__content">
+                    <h5 class="nhsuk-card__heading nhsuk-heading-xs">
+                        <a class="nhsuk-card__link" href="../ME-MEO/open-cases">Royal Infirmary, Newcastle</a>
+                    </h5>
+                      <p class="nhsuk-body-m">Attending practitioner</p>
+                  </div>
+                </div>
+              </div>
+            <!-- ME ROLE -->
+              <div class="nhsuk-grid-column-full-width nhsuk-card-group__item">
+                <div class="nhsuk-card nhsuk-card--clickable">
+                  <div class="nhsuk-card__content">
+                    <h5 class="nhsuk-card__heading nhsuk-heading-xs">
+                        <a class="nhsuk-card__link" href="open-cases">Royal Infirmary, Newcastle</a>
+                    </h5>
+                    <p class="nhsuk-body-m">Medical examiner</p>
+                  </div>
+                </div>
+              </div>
+            <!-- MEO ROLE -->
+              <div class="nhsuk-grid-column-full-width nhsuk-card-group__item">
+                <div class="nhsuk-card nhsuk-card--clickable">
+                  <div class="nhsuk-card__content">
+                    <h5 class="nhsuk-card__heading nhsuk-heading-xs">
+                        <a class="nhsuk-card__link" href="open-cases">Royal Infirmary, Newcastle</a>
+                    </h5>
+                    <p class="nhsuk-body-m">Medical examiner officer</p>
+                  </div>
+                </div>
+              </div>
+           
+          </fieldset>
+    </div>
+
+  </div>
+{% endblock %}
+
+
+
+
+

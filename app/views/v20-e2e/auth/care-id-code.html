@@ -1,0 +1,48 @@
+{% extends 'layout-full-width.html' %}
+
+{% block pageTitle %}
+Enter the code shown on your authentication app
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <div class="nhsuk-back-link">
+
+        <a class="nhsuk-back-link__link" href="javascript:history.back()">
+          <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+            <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+          </svg>
+          Go back</a>
+      </div>
+
+
+        <form action="care-id-role" method="post" novalidate>
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                <h1 class="nhsuk-fieldset__heading">
+                  Enter the code shown on your authentication app
+                </h1>
+              </legend>
+              <div class="nhsuk-form-group">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label" for="example">
+                    Verification code
+                  </label>
+                  <input class="nhsuk-input nhsuk-input--width-10" id="example" name="example" type="text">
+                </div>
+            </fieldset>
+            <button class="nhsuk-button" data-module="govuk-button">Continue</button>
+          </form>
+
+    </div>
+
+  </div>
+{% endblock %}
+
+
+
+
+
