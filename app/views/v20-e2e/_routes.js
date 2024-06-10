@@ -191,6 +191,15 @@ router.post(/ap-prop-cause-of-death/, (req, res) => {
 
 })
 
+
+// Consultant details
+router.post(/consultant-details/, (req, res) => {
+
+    req.session.data['consultant-details-section'] = 'complete'
+    res.redirect('case-scrutiny')
+
+})
+
 // Record review
 router.post(/record-review/, (req, res) => {
 
