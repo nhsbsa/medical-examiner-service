@@ -46,44 +46,23 @@ Case details
           <dl class="nhsuk-summary-list nhsuk-!-margin-bottom-9">
              <div class="nhsuk-summary-list__row">
                <dt class="nhsuk-summary-list__key">
-                 Communication with
+                 Name of AP
                </dt>
                <dd class="nhsuk-summary-list__value">
-                 Ian
+                 {{ data['qapFirstNames'] }} {{ data['qapLastName'] }}
                </dd>
                <dd class="nhsuk-summary-list__actions">
                  <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> communication with</span></a>
                </dd>
              </div>
+
              
-             <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Role
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  Family member
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> role</span></a>
-                </dd>
-              </div>
-             <div class="nhsuk-summary-list__row">
-               <dt class="nhsuk-summary-list__key">
-                 Communication held with
-               </dt>
-               <dd class="nhsuk-summary-list__value">
-                 Sarah Philips
-               </dd>
-               <dd class="nhsuk-summary-list__actions">
-                 <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> conversation held by</span></a>
-               </dd>
-             </div>
              <div class="nhsuk-summary-list__row">
                <dt class="nhsuk-summary-list__key">
                  Date and time
                </dt>
                <dd class="nhsuk-summary-list__value">
-                 Yes
+                 11 June 2024
                </dd>
                <dd class="nhsuk-summary-list__actions">
                  <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> date and time</span></a>
@@ -91,38 +70,62 @@ Case details
              </div>
              <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Method
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  Email
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> method</span></a>
-                </dd>
-              </div>
-              
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
                   Details
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  Email
+                  {{ data['example-ap-discussion'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> details</span></a>
+                  <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> Details</span></a>
                 </dd>
               </div>
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Concern raised
+                  The cause of death used on the MCCD:
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  Email
+                  {% if data['cod-mccd'] %}
+                  {% if data['cod-mccd'].includes('cod-mccd-1') %}
+                  
+                  The attending practitioner's
+                    
+                  {% endif %}
+                  
+                  
+                  {% if data['cod-mccd'].includes('cod-mccd-2') %}
+                  
+                  The medical examiner's
+                    
+                  {% endif %}
+                 
+                 
+                  {% if data['cod-mccd'].includes('cod-mccd-3') %}
+                  
+                  A different COD agreed on by AP and ME
+                 
+                  {% endif %}
+                 
+                 
+                  {% if data['cod-mccd'].includes('cod-mccd-4') %}
+                  
+                  The coroner is being notified about this case
+          
+                  {% endif %}
+                  
+                
+                  {% endif %}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                  <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> concern raised</span></a>
+                  <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> Details</span></a>
                 </dd>
               </div>
+              
+              
+              
+             
+              
+              
+            
              
            </dl>
            
