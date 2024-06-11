@@ -1,0 +1,143 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Open cases
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  
+  <div class="nhsuk-grid-column-one-half">
+
+
+    <h1 class="nhsuk-u-margin-bottom-4">
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">
+        Royal Infirmary, Newcastle
+    </span>
+      Open cases
+    </h1>
+  </div>
+    
+    <div class="nhsuk-grid-column-one-half">
+
+
+   <div class="create-new-case"> <a href="create-new-case" class="nhsuk-button align-right"> Create new case</a></div>
+   
+    </div>
+    
+</div>
+
+
+<div class="nhsuk-grid-row">
+  
+  <div class="nhsuk-grid-column-full">
+
+<p class="">Showing <b>1</b> to <b>2</b> of <b>2</b> results</p>
+
+
+    <div class="nhsuk-card">
+    
+    
+      <div class="nhsuk-card__content">
+    
+    <table class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable main-table" id="sortable">
+      <thead class="nhsuk-table__head">
+        <tr class="nhsuk-table__row">
+          <th class="nhsuk-table__header" scope="col">Details</th>
+          <th class="nhsuk-table__header" scope="col">Death</th>
+          <th class="nhsuk-table__header" scope="col">Assigned to</th>
+          <th class="nhsuk-table__header fixed-side" scope="col">Case status</th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <div class="rapid-release">
+            <a href="case-scenario-1/case-details">Mary Todd</a>
+            <p class="td-first">NHS: 123 456 999</p>
+            <p class="td-secondary">Rapid release case</p>
+            </div>
+          </td>
+          <td class="nhsuk-table__cell">
+            12 May 2024
+          </td>
+          <td class="nhsuk-table__cell">
+            <p class="td-first">Joel Van Dijk (ME)</p>
+            <p class="td-first">Ibrahima Gakpo (MEO)</p>
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-blue">In progress</strong>
+          </td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="case-scenario-2/case-details">Kathleen Stark</a>
+            <p class="td-first">NHS: 123 456 999</p>
+
+          </td>
+          <td class="nhsuk-table__cell">
+            12 May 2024
+          </td>
+          <td class="nhsuk-table__cell">
+            <p class="td-first">Joel Van Dijk (ME)</p>
+            <p class="td-first">Ibrahima Gakpo (MEO)</p>
+          </td>
+          <td class="nhsuk-table__cell">
+            
+            
+            <strong class="nhsuk-tag nhsuk-tag-blue">In progress</strong>
+
+          </td>
+        </tr>
+       
+      </tbody>
+    </table>
+    
+    
+    
+      </div>
+    </div>
+    
+    
+    <nav class="nhsbsa-pagination" id="pagination-label">
+
+      <p class="nhsuk-u-visually-hidden">Pagination navigation</p>
+    
+      <ul class="nhsbsa-pagination__list">
+              <li class="nhsbsa-pagination__item nhsbsa-pagination__item--active"><span class="nhsuk-u-visually-hidden">Page </span> 1</li>
+            </ul>
+        
+      </nav>
+
+  </div>
+</div>
+
+{% endblock %}
+{% block sideNav %}
+
+    <div class="side-nav">
+      <ul>
+        <div id="options" class="options">
+          <li><a class="active" href="open-cases">Open cases (<b>2</b>)</a></li>
+          <li><a href="closed-cases">Closed cases (<b>0</b>)</a></li>
+          <li><a href="reopened-cases">Reopened cases (<b>2</b>)</a></li>
+          <li><a href="reporting">Reporting</a></li>
+        </div>
+      </ul>
+    </div>
+
+{% endblock %}

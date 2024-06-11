@@ -545,5 +545,28 @@ p {
   //background-color: #fff!important;
 //}
 
+.td-first {
+  margin: 4px 0 0 0;
+  padding: 0;
+}
+
+.td-secondary {
+  margin: 2px 0 0 0;
+  padding: 0;
+  color:  $color_nhsuk-red;
+}
+
+.mid-title {
+  display: block;
+}
+
+.rapid-release {
+  border-left: 5px solid $color_nhsuk-red;
+  padding-left: 10px;
+}
+
+
+
+
 
 
