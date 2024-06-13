@@ -1091,25 +1091,17 @@ Case details
     <dl class="nhsuk-summary-list">
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key nhsuk-u-font-weight-normal">
-          {% if data['ap-prop-cause-of-death-section'] == 'complete'
-          and data['me-independent-review-section'] == 'complete' %}
+         
           <a href="ap-prop-cod-discussion">Add discussion with the AP about the cause of death</a>
-          {% else %}
-          AP's proposed cause of death and Medical Examiners independent review must be complete before you can start
-          this section
-          {% endif %}
+         
         </dt>
         <dd class="nhsuk-summary-list__actions">
-          {% if data['ap-prop-cause-of-death-section'] == 'complete'
-          and data['me-independent-review-section'] == 'complete' %}
+   
           <strong class="nhsuk-tag nhsuk-tag--white align-right">
             Not started
           </strong>
-          {% else %}
-          <strong class="nhsuk-tag nhsuk-tag--red align-right">
-            Cannot start
-          </strong>
-          {% endif %}
+ 
+         
         </dd>
       </div>
     </dl>
