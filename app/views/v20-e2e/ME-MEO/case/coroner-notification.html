@@ -64,7 +64,7 @@ Case details
     <!-- ================================================== -->
 
     <div class="nhsuk-grid-column-full">
-      {% if data['notify-coroner'] == 'yes' %}
+      {% if data['notify-coroner'] %}
         <dl class="nhsuk-summary-list">
               <div class="nhsuk-summary-list__row summary-list__details-list">
                 <dt class="nhsuk-summary-list__key">
@@ -250,7 +250,7 @@ Case details
 
     <li><a class="active" href="coroner-notification">
         Coroner
-        {% if data['notify-coroner'] == 'yes' %}
+        {% if data['notify-coroner'] %}
         <strong class="nhsuk-tag nhsuk-tag--blue side-nav-tag">
           Raised
         </strong>

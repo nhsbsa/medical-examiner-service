@@ -42,7 +42,7 @@ Case details
 
         <form action="notification-method" method="post">
 
-            <div class="nhsuk-form-group">
+           <!-- <div class="nhsuk-form-group">
                 <fieldset class="nhsuk-fieldset" aria-describedby="internalNotification-hint">
                     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend">
                         Are you using this service to notify the coroner?
@@ -68,7 +68,32 @@ Case details
                         </div>
                     </div>
                 </fieldset>
-            </div>
+            </div>-->
+
+            {% call fieldset({
+                legend: {
+                  "text": "Are you using this service to notify the coroner?",
+                  "classes": "nhsuk-fieldset__legend--s nhsuk-u-font-weight-normal"
+                }
+                }) %}
+                {{ hint({
+                  "text": "If you're using this service, select yes. The coroner notification form will appear on the next page."
+                }) }}
+                {{ radios({
+                  "idPrefix": "notify-coroner",
+                  "name": "notify-coroner",
+                  "items": [
+                {
+                  "value": "Yes",
+                  "text": "Yes"
+                },
+                {
+                  "value": "No",
+                  "text": "No"
+                }
+              ]
+              }) }}
+              {% endcall %}
 
             <button class="nhsuk-button" id="save-and-continue-button" type="submit">
                 Save and continue

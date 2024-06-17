@@ -385,37 +385,12 @@ router.post(/any-further-action/, (req, res) => {
 
 // Notification method
 router.post(/notification-method/, (req, res) => {
-
-    const userType = req.session.data['user-type']
-    const meCompleted = req.session.data['me-independent-review-section']
-
-    const usingServiceToNotiftyCoroner = req.session.data['internalNotification']
-    req.session.data['notify-coroner'] = 'yes'
-
-    if (userType == 'me') {
-        if (usingServiceToNotiftyCoroner == 'yes') {
-            req.session.data['using-service-notify-coroner'] = 'yes'
-            res.redirect('me-comms-coroner')
-        } else {
-            req.session.data['using-service-notify-coroner'] = 'no'
-            res.redirect('notification-details')
-        }
-    } else if (userType == 'meo' && meCompleted == 'complete') {
-        if (usingServiceToNotiftyCoroner == 'yes') {
-            req.session.data['using-service-notify-coroner'] = 'yes'
-            res.redirect('me-comms-coroner')
-        } else {
-            req.session.data['using-service-notify-coroner'] = 'no'
-            res.redirect('notification-details')
-        }
-    } else if (userType == 'meo' && usingServiceToNotiftyCoroner == 'no' ){
+    if(req.session.data['notify-coroner'] == 'Yes'){
+        res.redirect('me-comms-coroner')
+    } else if(req.session.data['notify-coroner'] == 'No'){
         res.redirect('notification-details')
-    } else {
-        res.redirect('cannot-notify-coroner')
-    }
-
-
-})
+    } 
+  });
 
 // Notification details (method: No)
 router.post(/notification-details/, (req, res) => {
