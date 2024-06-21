@@ -49,81 +49,49 @@ Open cases
 <p class="">Showing <b>1</b> to <b>2</b> of <b>2</b> results</p>
 
 
-    <div class="nhsuk-card">
-    
-    
-      <div class="nhsuk-card__content">
-    
+    <hr class="nhsuk-divider blue-divider nhsuk-u-margin-top-3" role="presentation">
     <table class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable main-table" id="sortable">
       <thead class="nhsuk-table__head">
         <tr class="nhsuk-table__row">
-          <th class="nhsuk-table__header" scope="col">Details</th>
-          <th class="nhsuk-table__header" scope="col">Date received</th>
-          <th class="nhsuk-table__header" scope="col">Assigned to</th>
-          <th class="nhsuk-table__header fixed-side" scope="col">Case status</th>
+          <th class="nhsuk-table__header" scope="col"><button class="blue-link-header" type="button">Name</button></th>
+          <th class="nhsuk-table__header" scope="col"><button class="blue-link-header" type="button">Date of death</button></th>
+          <th class="nhsuk-table__header" scope="col"><button class="blue-link-header" type="button">NHS number</button></th>
+          <th class="nhsuk-table__header" scope="col"><button class="blue-link-header" type="button">ME</button></th>
+          <th class="nhsuk-table__header" scope="col"><button class="blue-link-header" type="button">MEO</button></th>
+
+          <th class="nhsuk-table__header fixed-side" scope="col"><button class="blue-link-header" type="button">Case type</button></th>
         </tr>
       </thead>
       <tbody class="nhsuk-table__body">
         <tr class="nhsuk-table__row">
           <td class="nhsuk-table__cell">
-            <div class="rapid-release">
             <a href="case-scenario-1/case-details">Mary Todd</a>
-            <p class="td-first">NHS: 123 456 999</p>
-            <p class="td-third">Rapid release case</p>
-            </div>
           </td>
+          <td class="nhsuk-table__cell">12 April 2024</td>
+          <td class="nhsuk-table__cell">123 456 789</td>
+          <td class="nhsuk-table__cell">Joel Van Dijk</td>
+          <td class="nhsuk-table__cell"></td>
+
           <td class="nhsuk-table__cell">
-            12 May 2024
-          </td>
-          <td class="nhsuk-table__cell">
-           
-            <p class="td-first">IG (MEO)</p>
-            <p class="td-first">JVD (ME)</p>
-          </td>
-          <td class="nhsuk-table__cell">
-           <span class="mid-title">
-              <strong class="nhsuk-tag nhsuk-tag-green">Pre-scrutiny complete</strong>
-           </span>
-           <span class="mid-title">
-            <strong class="nhsuk-tag nhsuk-tag-grey">ME review not started</strong>
-           </span>
+           <span class="nhsuk-tag nhsuk-tag--blue">Routine</span>
           </td>
         </tr>
         <tr class="nhsuk-table__row">
           <td class="nhsuk-table__cell">
             <a href="case-scenario-2/case-details">Kathleen Stark</a>
-            <p class="td-first">NHS: 123 456 999</p>
           </td>
-          <td class="nhsuk-table__cell">
-            12 May 2024
-          </td>
-          <td class="nhsuk-table__cell">
-           
-            <p class="td-first">IG (MEO)</p>
-            <p class="td-first">JVD (ME)</p>
-          </td>
-          <td class="nhsuk-table__cell">
-            
-            
-            <span class="mid-title">
-              <strong class="nhsuk-tag nhsuk-tag-blue">Pre-scrutiny started</strong>
-           </span>
-           <span class="mid-title">
-            <strong class="nhsuk-tag nhsuk-tag-grey">ME review not started</strong>
-           </span>
+          <td class="nhsuk-table__cell">12 April 2024</td>
+          <td class="nhsuk-table__cell">123 456 723</td>
+          <td class="nhsuk-table__cell"></td>
+          <td class="nhsuk-table__cell">Ibrahima Gakpo</td>
 
+          <td class="nhsuk-table__cell">
+            <span class="nhsuk-tag nhsuk-tag--blue">Routine</span>
           </td>
         </tr>
        
       </tbody>
     </table>
-    
-    
-    
-      </div>
-    </div>
-    
-    
     <nav class="nhsbsa-pagination" id="pagination-label">
 
       <p class="nhsuk-u-visually-hidden">Pagination navigation</p>
@@ -139,16 +107,28 @@ Open cases
 
 {% endblock %}
 {% block sideNav %}
-
+  <!-- IF user has selected to Reopen a case then change the numbering -->
+  {% if data['reopen-this-case'] == 'yes' %}
     <div class="side-nav">
       <ul>
         <div id="options" class="options">
-          <li><a class="active" href="open-cases">Open cases (<b>2</b>)</a></li>
-          <li><a href="closed-cases">Closed cases (<b>0</b>)</a></li>
-          <li><a href="reopened-cases">Reopened cases (<b>2</b>)</a></li>
+          <li><a class="active" href="open-cases">Open cases 3</a></li>
+          <li><a href="closed-cases">Closed cases 0</a></li>
+          <li><a href="reopened-cases">Reopened cases 2</a></li>
           <li><a href="reporting">Reporting</a></li>
         </div>
       </ul>
     </div>
-
+  {% else %}
+    <div class="side-nav">
+      <ul>
+        <div id="options" class="options">
+          <li><a class="active" href="open-cases">Open cases 3</a></li>
+          <li><a href="closed-cases">Closed cases 1</a></li>
+          <li><a href="reopened-cases">Reopened cases 1</a></li>
+          <li><a href="reporting">Reporting</a></li>
+        </div>
+      </ul>
+    </div>
+  {% endif %}
 {% endblock %}

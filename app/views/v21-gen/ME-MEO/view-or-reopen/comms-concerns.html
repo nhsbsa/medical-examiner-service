@@ -1,0 +1,142 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+{% block breadcrumbs %}
+<nav class="nhsuk-breadcrumb nhsuk-u-padding-bottom-0" aria-label="Breadcrumb">
+  <ol class="nhsuk-breadcrumb__list">
+    <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="../closed-cases">Closed cases</a></li>
+    <li class="nhsuk-breadcrumb__item">Communication and concerns - {{ data['deceased-full-name'] }}</li>
+  </ol>
+  <p class="nhsuk-breadcrumb__back">
+    <a class="nhsuk-breadcrumb__backlink" href="#">
+      <span class="nhsuk-u-visually-hidden">Back to &nbsp;</span>
+      Closed cases
+    </a>
+  </p>
+</nav>
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h1 class="nhsuk-heading-xl">Communication and concerns</h1>
+  </div>
+  <div class="nhsuk-grid-column-one-quarter">
+    {% if data['deceased-full-name'] == 'Kia Ravi' %}
+      {% if data['reopen-this-case'] == 'yes' %}
+        <a class="nhsuk-button nhsbsa-button--right-align" href="../case/close-case">Close case</a>
+      {% else %}
+        <form action="reopen-case" method="post">
+          <button class="nhsuk-button nhsbsa-button--right-align" type="submit">Reopen case</button>
+        </form>
+      {% endif %}
+    {% endif %}
+  </div>
+
+  <!-- ================================================== -->
+  <!-- DISCUSSION WITH THE MAIN CONTACT -->
+  <!-- ================================================== -->
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Discussion with the main contact about the cause of
+      death</h2>
+  </div>
+  <div class="nhsuk-grid-column-one-quarter">
+    <strong class="nhsuk-tag nhsuk-tag align-right">
+      Complete
+    </strong>
+  </div>
+      <div class="nhsuk-grid-column-full">
+        <dl class="nhsuk-summary-list" id="main-contact-discussion">
+          <div class="nhsuk-summary-list__row summary-list__details-list">
+            <dt class="nhsuk-summary-list__key nhsuk-u-font-weight-normal">
+              Discussion with main contact did not take place
+            </dt>
+            <dd class="nhsuk-summary-list__actions">
+                <a id="view-details-link" href="#"> View why discussion did not take place</a>
+            </dd>
+          </div>
+        </dl>
+      </div>
+  <div class="nhsuk-grid-column-full">
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Other communication and concerns</h2>
+
+      <p><a href="record-comm-or-concern">Record communication or a concern</a></p>
+
+      <div class="nhsuk-table-responsive nhsuk-u-margin-top-0 table-wrap">
+        <table id="sortable" class="nhsuk-table nhsuk-table-responsive">
+          <thead class="nhsuk-table__head">
+            <tr class="nhsuk-table__row">
+                <th role="columnheader" class="govuk-table__header">Name</th>
+                <th role="columnheader" class="govuk-table__header">Type</th>
+                <th role="columnheader" class="govuk-table__header">Date</th>
+                <th role="columnheader" class="govuk-table__header">Status</th>
+                <th role="columnheader" class="govuk-table__header">Action</th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Name </span>
+                    Milo Kar
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Type </span>
+                        Communication
+                    </td>
+                  <td class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Date </span>
+                    28/05/2023
+                  </td>
+                  <td class="nhsuk-table__cell" data-label="Status">
+                    <span class="nhsuk-table-responsive__heading">Status </span>
+                       <strong class="nhsuk-tag nhsuk-tag--green">Reviewed</strong>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Action </span>
+                    <a data-test-id="view-communication-link" href="#">
+                        View details of communication
+                    </a>
+                    </td>
+                </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block sideNav %}
+<div class="side-nav">
+  <h3>{{ data['deceased-full-name'] }}
+    <span class="nhsuk-caption-m nhsuk-caption--bottom nhsuk-u-margin-top-2">
+      <strong class="nhsuk-tag nhsuk-tag--blue">Routine</strong>
+    </span>
+  </h3>
+  <ul>
+    <div id="options" class="options">
+      <li><a href="case-details">Case details</a></li>
+      <li><a href="case-scrutiny">Case scrutiny</a></li>
+      <li><a class="active" href="comms-concerns">Communication and concerns</a></li>
+      <li><a href="coroner-notification">Coroner notification</a></li>
+    </div>
+  </ul>
+</div>
+{% endblock %}
