@@ -1,0 +1,455 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-full-width.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+        
+
+        <div class="nhsuk-grid-column-three-quarters">
+          
+          {% from 'back-link/macro.njk' import backLink %}
+  
+          {{ backLink({
+          "href": "javascript:history.back()",
+          "text": "Go back"
+          }) }}
+          
+          
+            <form action="discussion-main-cya" method="post">
+              
+              
+              
+              <fieldset class="nhsuk-fieldset">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                  <h1 class="nhsuk-fieldset__heading">
+                   <span class="nhsuk-caption-m nhsuk-caption--bottom">
+                     Communications
+                 </span>
+                 Record a communication
+                  </h1>
+                </legend>
+              
+              
+
+                <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-u-width-one-half" for="personName">
+                        Name of the person the communication was with
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-one-half" id="personName" name="personName"
+                        type="text">
+                </div>
+
+              <!--  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-u-width-one-half" for="contactLastName">
+                        What's the last name of the person the discussion was with?
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-one-half" id="contactLastName" name="contactLastName"
+                        type="text">
+                </div>  -->
+
+                <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-u-width-one-half" for="contactRole">
+                        Role or relevance of the person to the case
+                    </label>
+                    <div class="nhsuk-hint" id="contactRole-hint">
+                        For example, family member, or person involved in case.
+                    </div>
+                    <input class="nhsuk-input nhsuk-u-width-one-half" id="contactRole" name="contactRole" type="text"
+                        aria-describedby="contactRole-hint">
+                </div>
+
+<div class="nhsuk-form-group">
+
+  <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend">
+      <h1 class="nhsuk-fieldset__heading">
+       Did you have the discussion?
+      </h1>
+    </legend>
+
+
+    <div class="nhsuk-radios nhsuk-radios--conditional">
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="raised-yes" name="raised" type="radio" value="raised-yes">
+        <label class="nhsuk-label nhsuk-radios__label" for="raised-yes">
+          Yes
+        </label>
+      </div>
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="raised-no" name="raised" type="radio" value="raised-no" aria-controls="raised-no-control" aria-expanded="false">
+        <label class="nhsuk-label nhsuk-radios__label" for="raised-no">
+          No
+        </label>
+      </div>
+
+      <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="raised-no-control">
+
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="raised-who">
+            Name of team member
+          </label>
+          <input class="nhsuk-input nhsuk-u-width-one-half" id="raised-who" name="raised-who" type="text">
+        </div>
+
+      </div>
+
+      
+
+    </div>
+  </fieldset>
+
+</div>
+
+                <div class="nhsuk-form-group">
+                    <fieldset class="nhsuk-fieldset" aria-describedby="dateOfDiscussion-hint" role="group">
+                        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+                            Date of communication
+                        </legend>
+                        <div class="nhsuk-hint" id="dateOfDiscussion-hint">
+                            For example, 22 3 2021
+                        </div>
+                        <div class="nhsuk-date-input" id="dateOfDiscussion">
+                            <div class="nhsuk-date-input__item">
+                                <div class="nhsuk-form-group">
+                                    <label class="nhsuk-label nhsuk-date-input__label" for="dateOfDiscussion-day">
+                                        Day
+                                    </label>
+                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                                        id="dateOfDiscussion-day" name="dodDayCommsConcern" type="text" pattern="[0-9]*"
+                                        inputmode="numeric">
+                                </div>
+                            </div>
+                            <div class="nhsuk-date-input__item">
+                                <div class="nhsuk-form-group">
+                                    <label class="nhsuk-label nhsuk-date-input__label" for="dateOfDiscussion-month">
+                                        Month
+                                    </label>
+                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                                        id="dateOfDiscussion-month" name="dodMonthCommsConcern" type="text" pattern="[0-9]*"
+                                        inputmode="numeric">
+                                </div>
+                            </div>
+                            <div class="nhsuk-date-input__item">
+                                <div class="nhsuk-form-group">
+                                    <label class="nhsuk-label nhsuk-date-input__label" for="dateOfDiscussion-year">
+                                        Year
+                                    </label>
+                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+                                        id="dateOfDiscussion-year" name="dodYearCommsConcern" type="text" pattern="[0-9]*"
+                                        inputmode="numeric">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class="nhsuk-form-group">
+                    <fieldset class="nhsuk-fieldset" aria-describedby="timeOfDiscussion-hint" role="group">
+                        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+                            Time of communication
+                        </legend>
+                        <div class="nhsuk-hint" id="timeOfDiscussion-hint">
+                            Use 24 hour format. For example, 16 23
+                        </div>
+                        <div class="nhsuk-date-input" id="timeOfDiscussion">
+                            <div class="nhsuk-date-input__item">
+                                <div class="nhsuk-form-group">
+                                    <label class="nhsuk-label nhsuk-date-input__label" for="timeOfDiscussion-hour">
+                                        Hour
+                                    </label>
+                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                                        id="timeOfDiscussion-hour" name="todHourCommsConcern" type="text" pattern="[0-9]*"
+                                        inputmode="numeric">
+                                </div>
+                            </div>
+                            <div class="nhsuk-date-input__item">
+                                <div class="nhsuk-form-group">
+                                    <label class="nhsuk-label nhsuk-date-input__label" for="timeOfDiscussion-minute">
+                                        Minutes
+                                    </label>
+                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                                        id="timeOfDiscussion-minute" name="todMinuteCommsConcern" type="text" pattern="[0-9]*"
+                                        inputmode="numeric">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+
+
+<div class="nhsuk-form-group">
+
+  <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend">
+      <h1 class="nhsuk-fieldset__heading">
+        How did the communication happen?
+      </h1>
+    </legend>
+
+    <div class="nhsuk-radios nhsuk-radios--conditional">
+      
+      
+      
+      
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="phone-call" name="comms-type" type="radio" value="phone-call" aria-controls="conditional-contact-1" aria-expanded="false">
+        <label class="nhsuk-label nhsuk-radios__label" for="phone-call">
+          Phone call
+        </label>
+      </div>
+
+      <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-1">
+          
+          <label class="nhsuk-label nhsuk-u-width-two-thirds" for="comms-details-1">
+            Enter details of the communication
+        </label>
+        <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="comms-details-1"
+            name="comms-details-1" rows="5" value="comms-details-1"></textarea>
+
+      </div>
+      
+      
+      
+      
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="in-person" name="comms-type" type="radio" value="in-person" aria-controls="conditional-contact-2" aria-expanded="false">
+        <label class="nhsuk-label nhsuk-radios__label" for="in-person">
+          In person conversation
+        </label>
+      </div>
+
+      <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-2">
+
+        <label class="nhsuk-label nhsuk-u-width-two-thirds" for="comms-details-2">
+          Enter details of the communication
+      </label>
+      <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="comms-details-2"
+          name="comms-details-2" rows="5" value="comms-details-2"></textarea>
+        
+      </div>
+      
+  
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="email-comm" name="comms-type" type="radio" value="email-comm" aria-controls="conditional-contact-3" aria-expanded="false">
+        <label class="nhsuk-label nhsuk-radios__label" for="email-comm">
+          Email
+        </label>
+      </div>
+
+      <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-3">
+
+      <label class="nhsuk-label nhsuk-u-width-two-thirds" for="comms-details-3">
+        Enter details of the communication
+    </label>
+    <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="comms-details-3"
+        name="comms-details-3" rows="5" value="comms-details-3"></textarea>
+   
+      </div>
+      
+      
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="text-comm" name="comms-type" type="radio" value="text-comm" aria-controls="conditional-contact-4" aria-expanded="false">
+        <label class="nhsuk-label nhsuk-radios__label" for="text-comm">
+          Text message
+        </label>
+      </div>
+
+      <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-4">
+
+       <label class="nhsuk-label nhsuk-u-width-two-thirds" for="comms-details-4">
+         Enter details of the communication
+     </label>
+     <textarea class="nhsuk-textarea nhsuk-u-width-two-thirds" id="comms-details-4"
+         name="comms-details-4" rows="5" value="comms-details-4"></textarea>
+       
+      </div>
+
+
+
+    </div>
+  </fieldset>
+
+</div>
+
+
+
+
+
+<hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+
+
+
+                
+                
+                <div class="nhsuk-form-group">
+                
+                  <fieldset class="nhsuk-fieldset" aria-describedby="recordAsConcern-hint">
+                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                      <h1 class="nhsuk-fieldset__heading">
+                        Do you want to record this as a concern?
+                      </h1>
+                    </legend>
+                    <div class="nhsuk-hint" id="recordAsConcern-hint">
+                      A medical examiner will review concerns before any action is taken.
+                  </div>
+              
+                    <div class="nhsuk-radios nhsuk-radios--conditional">
+                
+                      <div class="nhsuk-radios__item">
+                        <input class="nhsuk-radios__input" id="concern-recorded-yes" name="concern-recorded" type="radio" value="concern-recorded-yes" aria-controls="conditional-contact-rec" aria-expanded="false" value="concern-recorded-yes">
+                        <label class="nhsuk-label nhsuk-radios__label" for="concern-recorded-yes">
+                          Yes
+                        </label>
+                      </div>
+                
+                      <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-rec">
+                
+                
+                
+                <div class="nhsuk-form-group">
+                        <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+                          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend">
+                            <h1 class="nhsuk-fieldset__heading">
+                              Choose a concern type
+                            </h1>
+                          </legend>
+                    
+                          <div class="nhsuk-hint" id="contact-hint">
+                            Select all that apply.
+                          </div>
+                    
+                          <div class="nhsuk-checkboxes nhsuk-checkboxes--conditional">
+                    
+                            <div class="nhsuk-checkboxes__item">
+                              <input class="nhsuk-checkboxes__input" id="case-review" name="concern-why2" type="checkbox" value="case-review">
+                              <label class="nhsuk-label nhsuk-checkboxes__label" for="case-review">
+                                Recommend case record review
+                              </label>
+                            </div>
+                            
+                            <div class="nhsuk-checkboxes__item">
+                              <input class="nhsuk-checkboxes__input" id="case-clinical" name="concern-why2" type="checkbox" value="case-clinical">
+                              <label class="nhsuk-label nhsuk-checkboxes__label" for="case-clinical">
+                                Recommend clinical governance processes review
+                              </label>
+                            </div>
+                    
+                            
+                            <div class="nhsuk-checkboxes__item">
+                              <input class="nhsuk-checkboxes__input" id="patient-safety" name="concern-why2" type="checkbox" value="patient-safety">
+                              <label class="nhsuk-label nhsuk-checkboxes__label" for="patient-safety">
+                                Patient safety incident
+                              </label>
+                            </div>
+                    
+                      
+                    
+                            <div class="nhsuk-checkboxes__item">
+                              <input class="nhsuk-checkboxes__input" id="pals-refer" name="concern-why2" type="checkbox" value="pals-refer">
+                              <label class="nhsuk-label nhsuk-checkboxes__label" for="pals-refer">
+                                Recommend referral to PALS
+                              </label>
+                            </div>
+                    
+                        
+                    
+                          </div>
+                        </fieldset>
+                        
+                </div>
+                        
+                        <div class="nhsuk-form-group">
+                         
+                           <fieldset class="nhsuk-fieldset">
+                             <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend">
+                               <h1 class="nhsuk-fieldset__heading">
+                                 Does the coroner need to be notified?
+                               </h1>
+                             </legend>
+                         
+                             <div class="nhsuk-radios nhsuk-radios--inline">
+                         
+                               <div class="nhsuk-radios__item">
+                                 <input class="nhsuk-radios__input" id="coroner-yes" name="coroner" type="radio" value="coroner-yes">
+                                 <label class="nhsuk-label nhsuk-radios__label" for="coroner-yes">
+                                   Yes
+                                 </label>
+                               </div>
+                         
+                               <div class="nhsuk-radios__item">
+                                 <input class="nhsuk-radios__input" id="coroner-no" name="coroner" type="radio" value="coroner-no">
+                                 <label class="nhsuk-label nhsuk-radios__label" for="coroner-no">
+                                   No
+                                 </label>
+                               </div>
+                         
+                             </div>
+                           </fieldset>
+                         
+                         </div>
+                        
+                        
+                
+                      </div>
+                
+                      <div class="nhsuk-radios__item">
+                        <input class="nhsuk-radios__input" id="concern-recorded-no" name="concern-recorded" type="radio" value="concern-recorded-no">
+                        <label class="nhsuk-label nhsuk-radios__label" for="concern-recorded-no">
+                          No
+                        </label>
+                      </div>
+                
+                      
+                
+                    </div>
+                  </fieldset>
+                
+                </div>
+                
+                
+                
+                
+                
+
+      
+<div class="nav-flow mt40">
+                <button class="nhsuk-button" type="submit">
+                    Save and continue
+                </button>
+</div>
+              </fieldset>
+            </form>
+
+        </div>
+    </div>
+
+    {% endblock %}

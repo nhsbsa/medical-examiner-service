@@ -553,11 +553,21 @@ p {
 .td-secondary {
   margin: 2px 0 0 0;
   padding: 0;
+  color:  $color_nhsuk-grey-1;
+}
+
+.td-third {
+  margin: 2px 0 0 0;
+  padding: 0;
   color:  $color_nhsuk-red;
 }
 
 .mid-title {
   display: block;
+  margin-top: 10px; 
+  &:first-child {
+    margin: 0;
+  }
 }
 
 .rapid-release {
@@ -565,6 +575,67 @@ p {
   padding-left: 10px;
 }
 
+.nhs-key-details-bar {
+  display: block;
+  background: $color_nhsuk-blue;
+  padding: 30px;
+  margin-bottom: 30px;
+  color: $color_nhsuk-white;
+}
+
+.nhs-key-details-bar-top {
+  overflow: hidden;
+
+  h1 {
+    padding: 0;
+    margin: 0;
+    display: block;
+    font-size: 2.2rem;
+  }
+  h2 {
+    display: block;
+    padding: 0;
+    margin: 0 0 20px 0;
+    font-size: 1.2rem;
+  }
+  .nhs-number {
+    display: block;
+    color: $color_nhsuk-grey-4;
+    font-size: 1.4rem;
+    font-weight: normal;
+    margin-bottom: 5px;
+  }
+  
+  ul {
+    margin: 0;
+    padding: 0;
+    li {
+      font-size: 1.1rem;
+    }
+  }
+  
+  div {
+    float: left;
+     width: auto;
+     padding: 10px 0
+  }
+  
+ .key-details-left {
+   padding-right: 30px;
+ }
+ 
+ .key-details-middle {
+   padding-left: 30px;
+   padding-right: 30px;
+   border-left: 1px solid $color_nhsuk-grey-3;
+   border-right: 1px solid $color_nhsuk-grey-3;
+  }
+  
+  .key-details-right {
+    border: 0;
+    padding-left: 30px;
+   }
+}
 
 
 
