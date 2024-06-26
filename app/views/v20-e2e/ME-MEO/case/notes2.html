@@ -134,108 +134,34 @@ Case notes
       <div id="options" class="options">
         <li><a href="case-details">
           Case details
-          <!-- if case details sections are all complete -->
-          {% if data['next-of-kin-details-section'] == 'complete' and data['location-of-death-section'] == 'complete' %} 
-          <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
-            Complete
-          </strong>
-          {% else %}
-          <strong class="nhsuk-tag nhsuk-tag--grey side-nav-tag">
-            In progress
-          </strong>
-          {% endif %}
         </a></li>
   
          <!-- If an answer has been provided already for Over or Under 28 days after birth then show case scrutiny screen otherwise if no answer provided show Over or Under 28 days screen -->
-         {% if data['over-under-28'] %}
+         
          <li><a href="case-scrutiny">
            Case scrutiny
-           {% if data['pre-scrutiny-note-section'] == 'complete' and 
-           data['ap-prop-cause-of-death-section'] == 'complete' and 
-           data['me-independent-review-section'] == 'complete' and 
-           data['ap-discussion-section'] == 'complete' and 
-           data['ap-details-section'] == 'complete'       
-           %}
-           <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
-             Complete
-           </strong>
-           {% elif data['pre-scrutiny-note-section'] == 'complete' or 
-           data['ap-prop-cause-of-death-section'] == 'complete' or 
-           data['me-independent-review-section'] == 'complete' or 
-           data['ap-discussion-section'] == 'complete' or 
-           data['ap-details-section'] == 'complete'       
-           %}
-           <strong class="nhsuk-tag nhsuk-tag--grey side-nav-tag">
-             In progress
-           </strong>
-           {% else %}
-           <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag">
-             Not started
-           </strong>
-           {% endif %}
          </a></li>
-       {% else %}
-       <form action="case-scrutiny-link" method="post" id="run-28-days-once">
-         <li><a href="#" onclick="document.getElementById('run-28-days-once').submit(); return false;">
-           Case scrutiny
-           {% if data['pre-scrutiny-note-section'] == 'complete' and 
-           data['ap-prop-cause-of-death-section'] == 'complete' and 
-           data['me-independent-review-section'] == 'complete' and 
-           data['ap-discussion-section'] == 'complete' and 
-           data['ap-details-section'] == 'complete'       
-           %}
-           <strong class="nhsuk-tag nhsuk-tag--complete side-nav-tag">
-             Complete
-           </strong>
-           {% elif data['pre-scrutiny-note-section'] == 'complete'  or 
-           data['ap-prop-cause-of-death-section'] == 'complete' or 
-           data['me-independent-review-section'] == 'complete' or 
-           data['ap-discussion-section'] == 'complete' or 
-           data['ap-details-section'] == 'complete'       
-           %}
-           <strong class="nhsuk-tag nhsuk-tag--grey side-nav-tag">
-             In progress
-           </strong>
-           {% else %}
-           <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag">
-             Not started
-           </strong>
-           {% endif %}
-         </a></li>
-       </form>
-       {% endif %}
+
+      
   
        <li><a href="comms-concerns">
         Communications
-        {% if data['discussion-with-main-section'] == 'complete' %}
-        <strong class="nhsuk-tag nhsuk-tag--blue side-nav-tag">
-          Raised
-        </strong>
-        {% else %}
-        <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag">
-          Not started
-        </strong>
-        {% endif %}
-      </a></li>
+      </a>
+      <strong class="nhsuk-tag nhsuk-tag--red side-nav-tag" style="border-radius: 15px; background-color: #005eb8; color: white; border:none">
+        2
+      </strong></li>
 
        <li><a href="coroner-notification">
         Coroner
-        {% if data['notify-coroner'] == 'yes' %}
-        <strong class="nhsuk-tag nhsuk-tag--blue side-nav-tag">
-          Raised
-        </strong>
-        {% else %}
-        <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag">
-          Not started
-        </strong>
-        {% endif %}
       </a></li>
 
       <li><a class="active" href="#">
-        Notes
-      </a></li>
-
-        <!-- <li><a href="concerns-notification">Concerns notifications</a></li> -->
+        Case notes 
+      
+      </a>
+      <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag" style="border-radius: 15px; color:	#005eb8; border:none">
+        3
+      </strong></li>
       </div>
     </ul>
 </div>
