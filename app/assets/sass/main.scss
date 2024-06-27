@@ -342,3 +342,14 @@
     box-shadow: 0 4px 0 #003087;
     top: 0;
   }
+
+  .nhsbsa-pagination__item {
+    float:left;
+    padding-right:20px
+  }
+
+  .nhsbsa-pagination__item--active{
+    margin: 0;
+    padding:0;
+    padding-right:20px
+  }
