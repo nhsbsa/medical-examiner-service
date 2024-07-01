@@ -1,0 +1,86 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-full-width.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Consultant details
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+        {{ backLink({
+        "href": "javascript:history.back()",
+        "text": "Go back"
+        }) }}
+        <h1>
+            <span class="nhsuk-caption-m nhsuk-caption--bottom">
+                Case scrutiny - {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
+            </span>
+            Consultant details
+        </h1>
+
+        <form action="case-scrutiny" method="post">
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-u-width-one-half" for="consultant-first-name">
+                    First name
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="consultant-first-name" name="consultant-first-name" type="text" value="{{ data['consultant-first-name'] }}">
+            </div>
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-u-width-one-half" for="consultant-last-name">
+                    Last name
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="consultant-last-name" name="consultant-last-name" type="text" value="{{ data['consultant-last-name'] }}">
+            </div>
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-u-width-one-half" for="consultant-department">
+                    Department <span class="optional-span">(optional)</span>
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="consultant-department" name="consultant-department" type="text" value="{{ data['consultant-department'] }}">
+            </div>
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-u-width-one-half" for="consultantContactBleepNumber">
+                    Contact phone or bleep number <span class="optional-span">(optional)</span>
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="consultantContactBleepNumber" name="consultantContactBleepNumber" type="text" value="{{ data['consultantContactBleepNumber'] }}">
+            </div>
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-u-width-one-half" for="consultantGmcNumber">
+                    GMC number <span class="optional-span">(optional)</span>
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="consultantGmcNumber" name="consultantGmcNumber" type="text" value="{{ data['consultantGmcNumber'] }}">
+            </div>
+
+            <button class="nhsuk-button" id="save-and-continue-button" type="submit">
+                Save and continue
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -309,6 +309,119 @@ Case details
     
   </div>
 </div>
+
+
+
+
+<div class="nhsuk-card">
+  <div class="nhsuk-card__content">
+
+  <!-- ================================================== -->
+  <!-- Consultant details -->
+  <!-- ================================================== -->
+
+  <h2 class="nhsuk-heading-m" id="deceased-persons-details-header">Consultant details 
+    {% if data['consultant-first-name'] %}
+     <strong class="nhsuk-tag nhsuk-tag-green align-right">Complete</strong>
+     {% else %}
+     <strong class="nhsuk-tag nhsuk-tag--white align-right">Not started</strong>
+   {% endif %}
+  </h2>
+
+  {% if data['consultant-first-name'] %}
+
+  <dl class="nhsuk-summary-list">
+
+
+    <!-- Consultant Section -->
+ 
+      <dl class="nhsuk-summary-list">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+              Consultant name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['consultant-first-name'] }} {{ data['consultant-last-name'] }} 
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="consultant-details#consultant-first-name">
+              Change<span class="nhsuk-u-visually-hidden"> consultant name</span>
+            </a>
+          </dd>
+        </div>
+
+        {% if data['consultant-department'] %}
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                  Department
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['consultant-department'] }} 
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="consultant-details#consultant-department">
+                  Change<span class="nhsuk-u-visually-hidden"> department</span>
+                </a>
+              </dd>
+            </div>
+        {% endif %}
+
+        {% if data['consultantContactBleepNumber'] %}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Contact phone or bleep number
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+                {{ data['consultantContactBleepNumber'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="consultant-details#consultantContactBleepNumber">
+                Change<span class="nhsuk-u-visually-hidden"> contact phone or bleep number</span>
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+
+        {% if data['consultantGmcNumber'] %}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              GMC number
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+                {{ data['consultantGmcNumber'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="consultant-details#consultantGmcNumber">
+                Change<span class="nhsuk-u-visually-hidden"> GMC number</span>
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+      
+      </dl>
+   
+
+
+  {% else %}
+
+
+    <p>No consultant details have been added.</p>
+      <div class="nav-flow">
+        <a href="consultant-details" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+        Add consultant details
+      </a>
+    </div>
+   {% endif %}
+
+<div style="clear:both"></div>
+  </div>
+</div>
+
+
+
+
+
   
   
   
@@ -706,7 +819,7 @@ Case details
      
      
      <!--<p class="deceased-name">Name of deceased:</p>-->
-    <h3 class="nhsuk-heading-s mt0">Ibrahima Gakpo</h3>
+     <h3 class="nhsuk-heading-s mt0">{{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}</h3>
     <strong class="nhsuk-tag nhsuk-tag-blue">
       Routine
     </strong>
