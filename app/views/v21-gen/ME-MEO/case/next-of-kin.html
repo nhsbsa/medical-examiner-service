@@ -70,10 +70,15 @@ if (countRemains < 1) alert('');
                 </label>
                 <input class="nhsuk-input nhsuk-u-width-one-half " id="nok-relationship" name="nok-relationship" type="text" value="{{ data['nok-relationship'] }}">
             </div>
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-u-width-one-half" for="nok-phone">
+                 Phone number
+              </label>
+              <input class="nhsuk-input nhsuk-u-width-one-half " id="nok-phone" name="nok-phone" type="text" value="{{ data['nok-phone'] }}">
+          </div>
 
 
-
-           
+           <!--
             {% set emailHtml %}
             {{ input({
               id: "nok-email",
@@ -124,7 +129,7 @@ if (countRemains < 1) alert('');
               ]
             }) }}
 
-
+            -->
 
 
               <div class="nhsuk-form-group">
@@ -138,7 +143,7 @@ if (countRemains < 1) alert('');
               </div>
 
 
-              <div class="nhsuk-form-group">
+              <!--<div class="nhsuk-form-group">
                 <label class="nhsuk-label nhsuk-u-width-two-thirds" for="nok-conversation">
                   Enter details about the conversation with the next of kin
                 </label>
@@ -146,7 +151,7 @@ if (countRemains < 1) alert('');
                     <div class="nhsuk-hint nhsuk-character-count__message rechar" id="nok-conversation">
                         You can enter up to 3000 characters
                     </div>
-              </div>
+              </div>-->
 
               
         
