@@ -64,24 +64,30 @@ Case details
      <b>Progress:</b> 0 of 4 sections complete
     </span>
     </h1> 
-    <p class="header-status">Status: <strong class="nhsuk-tag nhsuk-tag--grey">Not started</strong></p>
-    
-    
-    <div class="nhsuk-card">
 
+
+
+  <!-- ================================================== -->
+  <!-- Pre-scrutiny notes -->
+  <!-- ================================================== -->
+    <div class="nhsuk-card section-complete">
+      
+      <div class="nhs-card-heading">
+        
+        <h2 class="nhsuk-heading-m">
+          <span class="section-main-title">Pre-scrutiny notes</span> 
+          {% if data['noteText'] %}
+            <strong class="nhsuk-tag nhsuk-tag--green align-right">Complete</strong>
+            {% else %}
+            <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
+          {% endif %}
+        </h2>
+        
+      </div>
+
+
+      
       <div class="nhsuk-card__content">
-  
-    <h2 class="nhsuk-heading-m" id="deceased-persons-details-header">Pre-scrutiny notes
-      {% if data['noteText'] %}
-       <strong class="nhsuk-tag nhsuk-tag-green align-right">Complete</strong>
-       {% else %}
-       <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
-     {% endif %}
-    </h2>
-    
-   
-    
-    
     {% if data['noteText'] %}
     
     <dl class="nhsuk-summary-list">
@@ -93,14 +99,15 @@ Case details
          <dd class="nhsuk-summary-list__value">
            {{ data['noteText'] }}
          </dd>
-         <dd class="nhsuk-summary-list__actions">
-           <a href="pre-scrutiny-note">
-             Change<span class="nhsuk-u-visually-hidden"> name</span>
-           </a>
-         </dd>
        </div>
        
     </dl>
+
+    <div class="nav-flow">
+      <a href="pre-scrutiny-note" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+       Make changes
+     </a>
+   </div>
     
     {% else %}
        
@@ -116,20 +123,31 @@ Case details
     
       </div>
     </div>
+
+
+
+
+
+
+
+    <div class="nhsuk-card section-complete">
+      
+      <div class="nhs-card-heading">
+        
+        <h2 class="nhsuk-heading-m">
+          <span class="section-main-title">Attending practitioner's (AP) proposed cause of death</span> 
+          {% if data['declaration2'] %}
+            <strong class="nhsuk-tag nhsuk-tag-green align-right">Complete</strong>
+            {% else %}
+            <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
+          {% endif %}
+        </h2>
+        
+      </div>
   
 
-<div class="nhsuk-card">
 <div class="nhsuk-card__content">
     
-    <h2 class="nhsuk-heading-m" id="deceased-persons-details-header">Attending practitioner's (AP) proposed cause of
-      death
-    {% if data['declaration2'] %}
-     <strong class="nhsuk-tag nhsuk-tag-green align-right">Complete</strong>
-     {% else %}
-     <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
-   {% endif %}
-  </h2>
-  
   
   {% if data['declaration2'] %}
 
@@ -352,21 +370,26 @@ Case details
 
 
 
-
-<div class="nhsuk-card">
-  <div class="nhsuk-card__content">
-
-  <!-- ================================================== -->
+<!-- ================================================== -->
   <!-- Consultant details -->
-  <!-- ================================================== -->
+<!-- ================================================== -->
+<div class="nhsuk-card section-complete">
+      
+  <div class="nhs-card-heading">
+    
+    <h2 class="nhsuk-heading-m">
+      <span class="section-main-title">Consultant details</span> 
+      {% if data['consultant-first-name'] %}
+        <strong class="nhsuk-tag nhsuk-tag--green align-right">Complete</strong>
+        {% else %}
+        <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
+      {% endif %}
+    </h2>
+    
+  </div>
 
-  <h2 class="nhsuk-heading-m" id="deceased-persons-details-header">Consultant details 
-    {% if data['consultant-first-name'] %}
-     <strong class="nhsuk-tag nhsuk-tag-green align-right">Complete</strong>
-     {% else %}
-     <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
-   {% endif %}
-  </h2>
+
+  <div class="nhsuk-card__content">
 
   {% if data['consultant-first-name'] %}
 
@@ -384,11 +407,6 @@ Case details
           <dd class="nhsuk-summary-list__value">
             {{ data['consultant-first-name'] }} {{ data['consultant-last-name'] }} 
           </dd>
-          <dd class="nhsuk-summary-list__actions">
-            <a href="consultant-details#consultant-first-name">
-              Change<span class="nhsuk-u-visually-hidden"> consultant name</span>
-            </a>
-          </dd>
         </div>
 
         {% if data['consultant-department'] %}
@@ -398,11 +416,6 @@ Case details
               </dt>
               <dd class="nhsuk-summary-list__value">
                 {{ data['consultant-department'] }} 
-              </dd>
-              <dd class="nhsuk-summary-list__actions">
-                <a href="consultant-details#consultant-department">
-                  Change<span class="nhsuk-u-visually-hidden"> department</span>
-                </a>
               </dd>
             </div>
         {% endif %}
@@ -415,11 +428,6 @@ Case details
             <dd class="nhsuk-summary-list__value">
                 {{ data['consultantContactBleepNumber'] }}
             </dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="consultant-details#consultantContactBleepNumber">
-                Change<span class="nhsuk-u-visually-hidden"> contact phone or bleep number</span>
-              </a>
-            </dd>
           </div>
         {% endif %}
 
@@ -431,17 +439,17 @@ Case details
             <dd class="nhsuk-summary-list__value">
                 {{ data['consultantGmcNumber'] }}
             </dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="consultant-details#consultantGmcNumber">
-                Change<span class="nhsuk-u-visually-hidden"> GMC number</span>
-              </a>
-            </dd>
           </div>
         {% endif %}
       
       </dl>
    
-
+      <div class="nav-flow">
+        <a href="consultant-details" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+         Make changes
+       </a>
+     </div>
+      
 
   {% else %}
 
@@ -461,34 +469,29 @@ Case details
 
 
 
-
-  
-  
-  
-  <div class="nhsuk-card">
-
-  
-    <div class="nhsuk-card__content">
-  <!-- ================================================== -->
+<!-- ================================================== -->
   <!-- ME INDEPENDENT REVIEW -->
-  <!-- ================================================== -->
-
-
+<!-- ================================================== -->
+<div class="nhsuk-card section-complete">
+      
+  <div class="nhs-card-heading">
     
+    <h2 class="nhsuk-heading-m">
+      <span class="section-main-title">Medical examiner's independent review</span> 
+      {% if data['reviewConfirmed'] %}
+        <strong class="nhsuk-tag nhsuk-tag-green align-right">Complete</strong>
+        {% else %}
+        <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
+      {% endif %}
+    </h2>
     
-    <h2 class="nhsuk-heading-m" id="deceased-persons-details-header">Medical examiner's independent review
-    {% if data['reviewConfirmed'] %}
-     <strong class="nhsuk-tag nhsuk-tag-green align-right">Complete</strong>
-     {% else %}
-     <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
-   {% endif %}
-  </h2>
+  </div>
   
-  
+
+  <div class="nhsuk-card__content">
   {% if data['reviewConfirmed'] %}
     
-    
-    
+
     <dl class="nhsuk-summary-list">
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
@@ -668,24 +671,27 @@ Case details
 
 
 
-
-<div class="nhsuk-card">
-
-
-  <div class="nhsuk-card__content">
   <!-- ================================================== -->
   <!-- DISCUSSION WITH THE AP ABOUT THE CAUSE OF DEATH -->
   <!-- ================================================== -->
+  <div class="nhsuk-card section-complete">
+      
+    <div class="nhs-card-heading">
+      
+      <h2 class="nhsuk-heading-m">
+        <span class="section-main-title">Discussion with the AP about the cause of death</span> 
+        {% if data['ap-discuss'] %}
+          <strong class="nhsuk-tag nhsuk-tag-green align-right">Complete</strong>
+          {% else %}
+          <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
+        {% endif %}
+      </h2>
+      
+    </div>
 
 
-    <h2 class="nhsuk-heading-m" id="deceased-persons-details-header">Discussion with the AP about the cause of death
-     {% if data['ap-discuss'] %}
-      <strong class="nhsuk-tag nhsuk-tag-green align-right">Complete</strong>
-      {% else %}
-      <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
-    {% endif %}
-    </h2>
-    
+  <div class="nhsuk-card__content">
+
     {% if data['ap-discuss'] %}
   
 {% if data['ap-discuss']=='ap-discuss-yes'%}
