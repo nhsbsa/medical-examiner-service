@@ -1,0 +1,145 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+
+
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    
+   <section class="key-details">
+     <ul>
+       <li>
+         <div class="patient-name">
+           <span class="p-name">Patient name:</span>
+           <h1>{{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}</h1>
+         </div>
+       </li>
+       <li>
+         <span>NHS number:</span>
+         <p>{{ data['ref-NHSnumber'] }} </p>
+       </li>
+       <li>
+         <span>Date of death:</span>
+         <p>{{ data['dodDayCreate'] }} <span class="convert-month" style="display:inline">{{ data['dodMonthCreate'] }}</span> {{ data['dodYearCreate'] }}</p>
+       </li>
+       <li>
+         <span>Place of death:</span>
+
+       </li>
+      <!-- <li>
+         <a href="#" class="nhsuk-button nhsuk-button--secondary mb0">Close case</a>
+       </li> -->
+     </ul>
+   </section>
+    
+  </div>
+</div>
+
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+<h1 class="nhsuk-heading-l mb30">Case timeline</h1>
+
+<!--<div class="nhsuk-inset-text">
+  <p>Case concerns can be raised when recording a communication or note.</p>
+</div>-->
+
+<p><a href="record-event" class="nhsuk-button">Add a communication or note</a></p>
+
+
+
+<section class="timeline-filter">
+  <h3 class="nhsuk-heading-s mb0">Filter by:</h3>
+  <ul>
+    <li><a href="#" class="active">All (<b>1</b>)</a></li>
+    <li><a href="case-timeline-comm">Communications <span class="nhs-notification">0</span></a></a></li>
+    <li><a href="case-timeline-note">Notes <span class="nhs-notification">0</span></a></li>
+    <li><a href="case-timeline-concern">Concerns <span class="nhs-notification urgent-notify">0</span></a></li>
+    <li><a href="case-timeline-mile">Milestones (<b>1</b>)</a></li>
+  </ul>
+</section>
+
+
+
+
+<div class="nhs-timeline">
+  
+  <div class="nhs-timeline__item">
+
+    <div class="nhs-timeline__header">
+      <h2 class="nhs-timeline__title">
+        Case created
+      </h2>
+      <p class="nhs-timeline__byline">Created by Ibrahima Gakpo on <time datetime="2019-06-14T14:01:00.000Z">4 July 2024 at 2:00pm</time></p>
+    </div>
+
+  </div>
+  
+
+</div>
+
+
+
+
+  </div>
+</div>
+
+{% endblock %}
+
+
+
+
+{% block sideNav %}
+<div class="side-nav">
+  
+  
+ <div class="case-type-details">
+   
+      
+<div class="nhsuk-back-link">
+
+  <a class="nhsuk-back-link__link" href="../open-cases2">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Back to case list</a>
+</div>
+
+  
+ </div>
+  
+  
+  <ul>
+    <div id="options" class="options">
+      <li><a class="active" href="case-timeline">Case timeline</a></li>
+      <li><a href="case-details">Case details</a></li>
+      <li><a href="case-scrutiny">Case scrutiny</a></li>
+      
+    </div>
+  </ul>
+  
+    
+</div>
+{% endblock %}
