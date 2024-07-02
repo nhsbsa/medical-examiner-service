@@ -37,7 +37,7 @@ Create new case
 
     <!--<p>You must fill out the primary details section to create a new case.</p>-->
 
-    <form action="assign-case" method="post">
+    <form action="case/case-details" method="post">
 
       <div class="nhsuk-form-group">
         <label class="nhsuk-label nhsuk-u-width-one-half" for="firstNames">
@@ -295,16 +295,6 @@ Create new case
     }) }}
   {% endset -%}
   
-  {% set RXRnumberHtml %}
-    {{ input({
-      id: "ref-RXRnumber",
-      name: "ref-RXRnumber",
-      classes: "nhsuk-u-width-two-thirds",
-      label: {
-        text: "Enter RXR number"
-      }
-    }) }}
-  {% endset -%}
   
   {% set patrefeHtml %}
     {{ input({
@@ -333,13 +323,6 @@ Create new case
           "text": "NHS number",
           "conditional": {
             "html": NHSnumberHtml
-          }
-        },
-        {
-          "value": "RXR number",
-          "text": "RXR number",
-          "conditional": {
-            "html": RXRnumberHtml
           }
         },
         {
