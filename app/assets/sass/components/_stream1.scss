@@ -690,7 +690,7 @@ p {
         color: $color_nhsuk-black;
         text-decoration: none;
         &:hover, &.active {
-          border: 1px solid rgba($color_nhsuk-blue, 0.08);
+          border: 1px solid $color_nhsuk-blue;
           background: rgba($color_nhsuk-blue, 0.08);
         }
       }
