@@ -92,6 +92,21 @@ router.post(/location-of-death-b/, (req, res) => {
 })
 
 
+// location of death alt
+router.post(/location-of-death-alt/, (req, res) => {
+
+    const locationOfDeathb = req.session.data['hospitalDeath']
+
+    if (hospitalDeath == 'hospitalDeath-Y') {
+        res.redirect('hospital-acute-setting')
+    } else {
+        res.redirect('community-non-acute')
+    }
+
+})
+
+
+
 
 
 
@@ -691,6 +706,15 @@ router.post(/refresh-email-concern/, (req, res) => {
     res.redirect('comms-concerns')
 
 })
+
+
+router.post('/hospital-death-check/', (req, res) => {
+    if(req.session.data['hospital-death'] == 'Yes'){
+        res.redirect('hospital-name-postcode')
+    } else if(req.session.data['hospital-death'] == 'No'){
+        res.redirect('community-non-acute')
+    } 
+  });
 
 
 module.exports = router;
