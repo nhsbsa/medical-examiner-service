@@ -60,69 +60,51 @@ Case details
   <div class="nhsuk-grid-column-three-quarters">
     
     
-    <h1 class="nhsuk-heading-l mb0">
+    <h1 class="nhsuk-heading-l mb40">
       Case scrutiny <span class="nhsuk-caption-m caption-progress">
-     <b>Progress:</b> 0 of 4 sections complete
+     <b>Progress:</b> 1 of 4 sections complete
     </span>
     </h1>
-    <p class="header-status">Status: <strong class="nhsuk-tag nhsuk-tag--grey">Not started</strong></p>
+   <!-- <p class="header-status">Status: <strong class="nhsuk-tag nhsuk-tag--blue">In progress</strong></p>-->
     
     
     <div class="nhsuk-card">
+      
+      
+     <div class="nhs-card-heading">
+        <h2 class="nhsuk-heading-m" id="deceased-persons-details-header">
+          <span class="section-main-title">Medical record notes</span>
+    
+           <strong class="nhsuk-tag nhsuk-tag--green align-right">Complete</strong>
+    
+        </h2>
+      </div>
 
       <div class="nhsuk-card__content">
   
-    <h2 class="nhsuk-heading-m" id="deceased-persons-details-header">
-      <span class="section-main-title">Pre-scrutiny notes</span>
-      {% if data['noteText'] %}
-       <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
-       {% else %}
-       <strong class="nhsuk-tag nhsuk-tag--grey">Not started</strong>
-     {% endif %}
-    </h2>
-    
    
     
-    
-    {% if data['noteText'] %}
-    
-    <dl class="nhsuk-summary-list">
-        
-       <div class="nhsuk-summary-list__row">
-         <dt class="nhsuk-summary-list__key">
-           Medical record notes
-         </dt>
-         <dd class="nhsuk-summary-list__value">
-           {{ data['noteText'] }}
-         </dd>
-         <dd class="nhsuk-summary-list__actions">
-           <a href="pre-scrutiny-note">
-             Change<span class="nhsuk-u-visually-hidden"> name</span>
-           </a>
-         </dd>
-       </div>
-       
-    </dl>
-    
-    {% else %}
-       
-  
-    <p>No pre-scrutiny notes have been added.</p>
+
+    <p>
+           PMH: Angina, Hypertension, Ulcerative Colitis, IHD/MI Kathleen self discharged 01.05.2024 after treatment for Ulcerative Colitis flare up.</p>
+          <p> Returned 06.05.2024 due to concerns from family re increasing lethargy and low in mood/energy. Increased bowel frequency and red blood noted on wiping. Reduced appetite. Family concern re Weight loss. Attended SDEC 08.05.2024 as per ED Referral. Confused. Aching in abdo. Opening bowels - very watery. CRP 71, hb 96. Working diagnosis - UC Flare vs Infectious cause.</p>
+          <p> 09.05 Temp Spike. ongoing loose stools. Radiological evidence of Pneumonia. 10.05 Urine & Stool cultures - Negative CRP still climbing - now 300. No temp spikes. Suddenly became unresponsive. BP dropped 60/40. Unrecordable on attendance of On Call Dr. Pupils fixed and dilated. Death verified
+    </p>
+
     <div class="nav-flow">
-      <a href="pre-scrutiny-note" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
-       Add pre-scrutiny notes
+      <a href="#" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+       Make changes
      </a>
    </div>
    
-   {% endif %}
     
       </div>
     </div>
   
 
 <div class="nhsuk-card">
-<div class="nhsuk-card__content">
-    
+  
+  <div class="nhs-card-heading">
     <h2 class="nhsuk-heading-m" id="deceased-persons-details-header">
       <span class="section-main-title">AP proposed cause of death</span>
     {% if data['declaration2'] %}
@@ -131,6 +113,11 @@ Case details
      <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
    {% endif %}
   </h2>
+    
+  </div>
+  
+<div class="nhsuk-card__content">
+    
   
   
   {% if data['declaration2'] %}
@@ -355,6 +342,21 @@ Case details
   
   
   <div class="nhsuk-card">
+    
+    
+    <div class="nhs-card-heading">
+      
+      <h2 class="nhsuk-heading-m" id="deceased-persons-details-header">
+        <span class="section-main-title">Medical examiner's independent review</span>
+      {% if data['reviewConfirmed'] %}
+       <strong class="nhsuk-tag nhsuk-tag-green align-right">Complete</strong>
+       {% else %}
+       <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
+     {% endif %}
+    </h2>
+    
+    </div>
+    
 
   
     <div class="nhsuk-card__content">
@@ -365,14 +367,7 @@ Case details
 
     
     
-    <h2 class="nhsuk-heading-m" id="deceased-persons-details-header">
-      <span class="section-main-title">Medical examiner's independent review</span>
-    {% if data['reviewConfirmed'] %}
-     <strong class="nhsuk-tag nhsuk-tag-green align-right">Complete</strong>
-     {% else %}
-     <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
-   {% endif %}
-  </h2>
+
   
   
   {% if data['reviewConfirmed'] %}
@@ -560,14 +555,9 @@ Case details
 
 
 <div class="nhsuk-card">
-
-
-  <div class="nhsuk-card__content">
-  <!-- ================================================== -->
-  <!-- DISCUSSION WITH THE AP ABOUT THE CAUSE OF DEATH -->
-  <!-- ================================================== -->
-
-
+  
+  <div class="nhs-card-heading">
+    
     <h2 class="nhsuk-heading-m" id="deceased-persons-details-header">
       <span class="section-main-title">Discussion with the AP about the cause of death</span>
      {% if data['ap-discuss'] %}
@@ -576,6 +566,17 @@ Case details
       <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
     {% endif %}
     </h2>
+    
+  </div>
+
+
+  <div class="nhsuk-card__content">
+  <!-- ================================================== -->
+  <!-- DISCUSSION WITH THE AP ABOUT THE CAUSE OF DEATH -->
+  <!-- ================================================== -->
+
+
+    
     
     {% if data['ap-discuss'] %}
   

@@ -735,8 +735,12 @@ p {
 }
 
 .nhs-card-heading {
- // background: red;
+ background: #f3f2f1;
   padding: 20px 32px;
+  h2 {
+    margin: 0;
+    font-size: 1.3rem!important;
+  }
 }
 
 
