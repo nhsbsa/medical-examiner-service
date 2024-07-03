@@ -33,31 +33,26 @@ Case details
         }) }}
 
         
-        <form action="hospital-name-postcode" method="post">
+        <form action="address-of-death" method="post">
         
             <span class="nhsuk-caption-m nhsuk-caption--bottom">
                 Location of death
              </span>
-            {{ radios({
-                "idPrefix": "hospital-death",
-                "name": "hospital-death",
-                "fieldset": {
-                  "legend": {
-                    "text": "Did the deceased person die in hospital?",
-                    "classes": "nhsuk-fieldset__legend--l",
-                    "isPageHeading": true
-                  }
+
+             <h1 class="nhsuk-heading-l mb40">
+              Where approximately did the death take place?
+             </h1>
+              
+
+              {{ textarea({
+                "name": "example",
+                "id": "example",
+                "label": {
+                  "text": "Enter details"
                 },
-                "items": [
-                  {
-                    "value": "Yes",
-                    "text": "Yes"
-                  },
-                  {
-                    "value": "No",
-                    "text": "No"
-                  }
-                ]
+                "hint": {
+                  "text": "For example, in Castle Park, Bingley near the fountain"
+                }
               }) }}
 
               <button class="nhsuk-button" type="submit">

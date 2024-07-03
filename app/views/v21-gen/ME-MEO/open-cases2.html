@@ -69,6 +69,32 @@ Open cases
             <p class="td-first">JVD (ME)</p>
           </td>
         </tr> -->
+
+        {% if data['deceased-first-name'] %}
+
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="case/case-timeline">{{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}</a>
+            <p class="td-first">NHS: {{ data['ref-NHSnumber'] }} </p>
+          </td>
+          <td class="nhsuk-table__cell">
+            {{ data['dodDayCreate'] }} <span class="convert-month">{{ data['dodMonthCreate'] }}</span> {{ data['dodYearCreate'] }}
+          </td>
+         <td class="nhsuk-table__cell">
+           <strong class="nhsuk-tag nhsuk-tag--green">Complete</strong>
+         </td>
+         <td class="nhsuk-table__cell">
+           <strong class="nhsuk-tag nhsuk-tag--blue">In progress</strong>
+         </td>
+         <td class="nhsuk-table__cell">
+           <p class="td-first">IG (MEO)</p>
+           <p class="td-first">JVD (ME)</p>
+         </td>
+        </tr>
+           
+        {% endif %}
+
+
         <tr class="nhsuk-table__row">
           <td class="nhsuk-table__cell">
             <a href="case-scenario-2/case-timeline">Kathleen Stark</a>

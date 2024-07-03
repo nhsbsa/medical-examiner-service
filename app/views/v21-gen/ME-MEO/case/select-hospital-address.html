@@ -1,0 +1,91 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-full-width.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+        {% from 'back-link/macro.njk' import backLink %}
+
+        {{ backLink({
+        "href": "javascript:history.back()",
+        "text": "Go back"
+        }) }}
+
+        
+        <form action="confirm-hospital-address" method="post">
+        
+            <span class="nhsuk-caption-m nhsuk-caption--bottom">
+                Location of death
+             </span>
+             <h1 class="nhsuk-heading-l">
+              Select a hospital address
+                </h1>
+              
+            
+             
+                <p><strong>4</strong> addresses found for <strong>LS1 3EX</strong>. If you can't find the address, check the postcode and <a href="">search again</a>, or <a href="">enter the address manually</a>.</p>
+
+                {{ radios({
+                    "idPrefix": "example",
+                    "name": "example",
+                    "fieldset": {
+                      "legend": {
+                 
+                      }
+                    },
+                    "items": [
+                      {
+                        "value": "Leeds General Infirmary, Great George Street, Leeds, LS1 3EX",
+                        "text": "Leeds General Infirmary, Great George Street, Leeds, LS1 3EX"
+                      },
+                      {
+                        "value": "The Old Medical School, Leeds General Infirmary, Great George Street, LS1 3EX",
+                        "text": "The Old Medical School, Leeds General Infirmary, Great George Street, LS1 3EX"
+                      },
+                      {
+                        "value": "Microbiology, Great George Street, Leeds, LS1 3EX",
+                        "text": "Microbiology, Great George Street, Leeds, LS1 3EX"
+                      },
+                      {
+                        "value": "Department of Neurosurgery, Leeds General Infirmary, Great George Street, Leeds, LS1 3EX",
+                        "text": "Department of Neurosurgery, Leeds General Infirmary, Great George Street, Leeds, LS1 3EX"
+                      }
+                    ]
+                  }) }}
+
+            </fieldset>
+
+            <button class="nhsuk-button" id="save-and-continue-button" type="submit">
+                Use this address
+            </button>
+
+            <p><a href="location-death-hospital">Enter address manually</a></p>
+            
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+
