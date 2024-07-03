@@ -24,7 +24,7 @@ Case details
 {% block content %}
 
 <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-grid-column-three-quarters">
         {% from 'back-link/macro.njk' import backLink %}
 
         {{ backLink({
@@ -32,42 +32,34 @@ Case details
         "text": "Go back"
         }) }}
 
-
-         <!-- Permanent destruction redirect -->
-         {% if data['address-of-death'] == 'Yes' %}
-         <script>
-             window.location.href = 'another-location-postcode'
-         </script>
-         {% endif %}
-
         
-        <form action="address-of-death" method="post">
+        <form action="confirm-hospital-address" method="post">
         
             <span class="nhsuk-caption-m nhsuk-caption--bottom">
                 Location of death
              </span>
-
-             <h1 class="nhsuk-heading-l mb40">
-              Where approximately did the death take place?
+             <h1 class="nhsuk-heading-l">
+               Confirm address
              </h1>
-              
 
-              {{ textarea({
-                "name": "example",
-                "id": "example",
-                "label": {
-                  "text": "Enter details"
-                },
-                "hint": {
-                  "text": "For example, in Castle Park, Bingley near the fountain"
-                }
-              }) }}
 
-              <button class="nhsuk-button" type="submit">
-                Save and continue
+              <div class="nhsuk-inset-text">
+                <span class="nhsuk-u-visually-hidden">Information: </span>
+                <p>505, Spen Lane, Leeds, LS16 6HL</p>
+              </div>
+
+            <button class="nhsuk-button" id="save-and-continue-button" type="submit">
+                Use this address
             </button>
+
+            <p><a href="location-death-hospital">Select a different address</a></p>
+
+            <p><a href="location-death-hospital">Enter address manually</a></p>
+            
         </form>
     </div>
 </div>
 
 {% endblock %}
+
+

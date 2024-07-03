@@ -24,7 +24,7 @@ Case details
 {% block content %}
 
 <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-grid-column-three-quarters">
         {% from 'back-link/macro.njk' import backLink %}
 
         {{ backLink({
@@ -32,40 +32,44 @@ Case details
         "text": "Go back"
         }) }}
 
-
          <!-- Permanent destruction redirect -->
-         {% if data['address-of-death'] == 'Yes' %}
-         <script>
-             window.location.href = 'another-location-postcode'
-         </script>
-         {% endif %}
-
+          {% if data['hospital-death'] == 'No' %}
+          <script>
+              window.location.href = 'address-of-death'
+          </script>
+          {% endif %}
         
-        <form action="address-of-death" method="post">
+        
+        <form action="select-another-address" method="post">
         
             <span class="nhsuk-caption-m nhsuk-caption--bottom">
                 Location of death
              </span>
+            
+             <fieldset class="nhsuk-fieldset">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l ">
+                    <h1 class="govuk-fieldset__heading nhsuk-heading-l">
+                        What is the postcode of where the death took place?
+                    </h1>
+                </legend>
 
-             <h1 class="nhsuk-heading-l mb40">
-              Where approximately did the death take place?
-             </h1>
-              
+                  {{ input({
+                    "label": {
+                      "text": "Postcode"
+                    },
+                    "id": "example",
+                    "name": "example",
+                    "classes": "nhsuk-input--width-10"
+                  }) }}
 
-              {{ textarea({
-                "name": "example",
-                "id": "example",
-                "label": {
-                  "text": "Enter details"
-                },
-                "hint": {
-                  "text": "For example, in Castle Park, Bingley near the fountain"
-                }
-              }) }}
+            </fieldset>
 
-              <button class="nhsuk-button" type="submit">
-                Save and continue
-            </button>
+            <button class="nhsuk-button" id="save-and-continue-button" type="submit">
+              Find address
+          </button>
+
+            <p><a href="location-death-hospital">Enter address manually</a></p>
+            
         </form>
     </div>
 </div>
