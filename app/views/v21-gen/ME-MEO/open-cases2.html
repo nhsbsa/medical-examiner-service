@@ -29,7 +29,13 @@ Open cases
       <span class="nhsuk-caption-l nhsuk-caption--bottom">
         Royal Infirmary, Newcastle
     </span>
-      Open cases (4)
+
+      {% if data['deceased-first-name'] %}
+          Open cases (5)
+      {% else %}
+          Open cases (4)
+      {% endif %}
+      
     </h1>
     
     
@@ -192,7 +198,13 @@ Open cases
         <div id="options" class="options">
           <li>
             <a class="active" href="open-cases2">Open cases</a>
-            <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag" style="border-radius: 15px; color:	#005eb8; border:none">4</strong>
+            <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag" style="border-radius: 15px; color:	#005eb8; border:none">
+              {% if data['deceased-first-name'] %}
+                  5
+              {% else %}
+                  4
+              {% endif %}
+            </strong>
           </li>
           <li>
             <a href="#">Closed cases</a>
