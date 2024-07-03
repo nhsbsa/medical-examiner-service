@@ -43,7 +43,7 @@ Case details
           <p>2 July 2024</p>
         </li>
         <li>
-          <span>Place of death:</span>
+          <span>Case type:</span>
           <p>Hospital</p>
         </li>
        <!-- <li>
@@ -74,7 +74,15 @@ Case details
 <section class="timeline-filter">
   <h3 class="nhsuk-heading-s mb0">Filter by:</h3>
   <ul>
-    <li><a href="case-timeline">All (<b>5</b>)</a></li>
+    <li><a href="case-timeline">All 
+      
+      {% if data['timeline-event']=='event-comm'%}
+      (<b>7</b>)
+      {% else %}
+       (<b>6</b>)
+       {% endif %} 
+
+     </a></li>
     <li><a href="case-timeline-comm">Communications 
       
       {% if data['timeline-event']=='event-comm'%}
@@ -102,7 +110,7 @@ Case details
      {% endif %} 
      
      </a></li>
-    <li><a href="case-timeline-mile">Case progress (<b>3</b>)</a></li>
+    <li><a href="case-timeline-mile">Case progress (<b>4</b>)</a></li>
   </ul>
   </ul>
 </section>
@@ -228,7 +236,7 @@ Case details
   
    {% if data['concern-why2'].includes('pals-refer') %}
   
-  <p><strong class="nhsuk-tag nhsuk-tag--red">Recommend referral to PALS</strong></p>
+  <p><strong class="nhsuk-tag nhsuk-tag--red">Signposted to PALS</strong></p>
 
    {% endif %}
    
@@ -306,7 +314,7 @@ Case details
        
         {% if data['concern-why2'].includes('pals-refer') %}
        
-       <p><strong class="nhsuk-tag nhsuk-tag--red">Recommend referral to PALS</strong></p>
+       <p><strong class="nhsuk-tag nhsuk-tag--red">Signposted to PALS</strong></p>
     
         {% endif %}
         
