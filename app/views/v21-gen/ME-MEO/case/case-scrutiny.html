@@ -107,7 +107,7 @@ Case details
 
     <div class="nav-flow">
       <a href="pre-scrutiny-note" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
-       Make changes
+       Change details
      </a>
    </div>
     
@@ -448,7 +448,7 @@ Case details
    
       <div class="nav-flow">
         <a href="consultant-details" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
-         Make changes
+        Change details
        </a>
      </div>
       
@@ -683,7 +683,7 @@ Case details
       <h2 class="nhsuk-heading-m">
         <span class="section-main-title">Discussion with the AP about the cause of death</span> 
         {% if data['ap-discuss'] %}
-          <strong class="nhsuk-tag nhsuk-tag-green align-right">Complete</strong>
+          <strong class="nhsuk-tag nhsuk-tag--green align-right">Complete</strong>
           {% else %}
           <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
         {% endif %}
@@ -706,11 +706,6 @@ Case details
   <dd class="nhsuk-summary-list__value">
     Yes
   </dd>
-  <dd class="nhsuk-summary-list__actions">
-    <a href="ap-discussion">
-      Change<span class="nhsuk-u-visually-hidden"> Have you and the Attending Practitioner agreed on a cause of death?</span>
-    </a>
-  </dd>
 </div>
 <div class="nhsuk-summary-list__row">
   <dt class="nhsuk-summary-list__key">
@@ -718,11 +713,6 @@ Case details
   </dt>
   <dd class="nhsuk-summary-list__value">
     {{ data['qapFirstNames'] }} {{ data['qapLastName'] }}
-  </dd>
-  <dd class="nhsuk-summary-list__actions">
-    <a href="ap-discussion#qapLastName">
-      Change<span class="nhsuk-u-visually-hidden"> Have you and the Attending Practitioner agreed on a cause of death?</span>
-    </a>
   </dd>
 </div>
 <div class="nhsuk-summary-list__row">
@@ -732,11 +722,6 @@ Case details
    <dd class="nhsuk-summary-list__value">
      {{ data['example-day-ap'] }}/{{ data['example-month-ap'] }}/{{ data['example-year-ap'] }}
    </dd>
-   <dd class="nhsuk-summary-list__actions">
-     <a href="ap-discussion-2">
-       Change<span class="nhsuk-u-visually-hidden"> Date of discussion</span>
-     </a>
-   </dd>
  </div>
  <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">
@@ -744,11 +729,6 @@ Case details
     </dt>
     <dd class="nhsuk-summary-list__value">
       {{ data['example-ap-discussion'] }}
-    </dd>
-    <dd class="nhsuk-summary-list__actions">
-      <a href="ap-discussion-2">
-        Change<span class="nhsuk-u-visually-hidden"> details of the discussion</span>
-      </a>
     </dd>
   </div>
 <div class="nhsuk-summary-list__row">
@@ -782,14 +762,15 @@ Case details
    
    {% endif %}
   </dd>
-  <dd class="nhsuk-summary-list__actions">
-    <a href="ap-discussion-2">
-      Change<span class="nhsuk-u-visually-hidden"> details of the discussion</span>
-    </a>
-  </dd>
 </div>
 
 </dl>
+
+<div class="nav-flow">
+  <a href="ap-discussion" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+   Change details
+ </a>
+</div>
 
 {% else %}
 
@@ -800,11 +781,6 @@ Case details
     </dt>
     <dd class="nhsuk-summary-list__value">
       No
-    </dd>
-    <dd class="nhsuk-summary-list__actions">
-      <a href="ap-discussion">
-        Change<span class="nhsuk-u-visually-hidden"> Have you and the Attending Practitioner agreed on a cause of death?</span>
-      </a>
     </dd>
   </div>
   <div class="nhsuk-summary-list__row">
@@ -817,13 +793,15 @@ Case details
 
 
     </dd>
-    <dd class="nhsuk-summary-list__actions">
-      <a href="ap-discussion">
-        Change<span class="nhsuk-u-visually-hidden"> Have you had a discussion with AP to agree on cause of death?</span>
-      </a>
-    </dd>
+
   </div>
   </dl>
+
+  <div class="nav-flow">
+    <a href="ap-discussion" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+     Change details
+   </a>
+ </div>
 
 
 {% endif %}

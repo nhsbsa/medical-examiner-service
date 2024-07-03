@@ -1,5 +1,5 @@
 <!-- Extends the layout from /views/layout.html -->
-{% extends 'layout-full-width.html' %}
+{% extends 'layout-admin-interface.html' %}
 <!-- 
   In /views/layout.html you can:
     - edit the header and footer 
@@ -14,6 +14,47 @@ Create new case
 <!-- For adding page content -->
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
+
+
+
+{% if data['deceased-first-name'] %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      
+    <section class="key-details">
+      <ul>
+        <li>
+          <div class="patient-name">
+            <span class="p-name">Patient name:</span>
+            <h1>{{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}</h1>
+          </div>
+        </li>
+        <li>
+          <span>NHS number:</span>
+          <p>{{ data['ref-NHSnumber'] }} </p>
+        </li>
+        <li>
+          <span>Date of death:</span>
+          <p>{{ data['dodDayCreate'] }} <span class="convert-month" style="display:inline">{{ data['dodMonthCreate'] }}</span> {{ data['dodYearCreate'] }}</p>
+        </li>
+        <li>
+          <span>Case type:</span>
+          {% if data['hospital-death'] %}
+            <p>Hospital</p>
+          {% endif %}
+        </li>
+        <!-- <li>
+          <a href="#" class="nhsuk-button nhsuk-button--secondary mb0">Close case</a>
+        </li> -->
+      </ul>
+    </section>
+      
+    </div>
+  </div>
+{% endif %}
+
+
+
 
 {% from 'back-link/macro.njk' import backLink %}
 
@@ -327,7 +368,7 @@ Create new case
         },
         {
           "value": "text",
-          "text": "Patient reference number",
+          "text": "Other patient reference number",
           "conditional": {
             "html": patrefeHtml
           }
@@ -359,5 +400,39 @@ Create new case
     </form>
 
   </div>
+</div>
+{% endblock %}
+
+
+{% block sideNav %}
+<div class="side-nav">
+  
+  
+ <!--<div class="case-type-details">
+   
+      
+<div class="nhsuk-back-link">
+
+  <a class="nhsuk-back-link__link" href="../open-cases2">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Back to case list</a>
+</div>
+
+  
+ </div>
+  
+  
+  <ul>
+    <div id="options" class="options">
+      <li><a class="active" href="case-timeline">Case timeline</a></li>
+      <li><a href="case-details">Case details</a></li>
+      <li><a href="case-scrutiny">Case scrutiny</a></li>
+      
+    </div>
+  </ul>
+-->
+    
 </div>
 {% endblock %}
