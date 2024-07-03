@@ -46,7 +46,9 @@ Case details
        </li>
        <li>
          <span>Place of death:</span>
-
+         {% if data['hospital-death'] %}
+          <p>Lewes Victoria Hospital</p>
+         {% endif %}
        </li>
       <!-- <li>
          <a href="#" class="nhsuk-button nhsuk-button--secondary mb0">Close case</a>
@@ -66,7 +68,7 @@ Case details
     <h1 class="nhsuk-heading-l mb40">
       Case details <span class="nhsuk-caption-m caption-progress">
 
-      {% if data['nok-first-name'] %}
+      {% if data['hospital-death'] %}
         <b>Progress:</b> 2 of 4 sections complete
       {% else %}
         <b>Progress:</b> 1 of 4 sections complete
@@ -75,6 +77,7 @@ Case details
     </span>
     </h1> 
 
+    
     
     <!-- ================================================== -->
     <!-- DECESEASED PERSONS DETAILS -->
@@ -233,13 +236,14 @@ Case details
   <!-- LOCATION OF DEATH -->
   <!-- ================================================== -->
 
+
   <div class="nhsuk-card section-complete">
       
     <div class="nhs-card-heading">
       
       <h2 class="nhsuk-heading-m">
         <span class="section-main-title">Location of death</span>
-        {% if data['locationOfDeathType'] %}
+        {% if data['hospital-death'] %}
           <strong class="nhsuk-tag nhsuk-tag--green align-right">Complete</strong>
         {% else %}
           <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
@@ -249,39 +253,27 @@ Case details
     </div>
     
     <div class="nhsuk-card__content">
+      {% if data['hospital-death'] %}
 
-    {% if data['locationOfDeathType'] %}
-
-
-    {% if data['locationOfDeathType']=='locationOfDeathType-H'%}
+      {% if data['hospital-death'] == 'Yes' %}
           <!-- Hospital Acute -->
           <dl class="nhsuk-summary-list">
             
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Location of death
+                  Did the deceased person die in hospital?
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  Hospital or acute setting
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="location-of-death">
-                    Change<span class="nhsuk-u-visually-hidden"> location of death</span>
-                  </a>
+                  Yes
                 </dd>
               </div>
               
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Healthcare provider
+                  Hospital
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  {{ data['healthCareProvider'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="hospital-acute-setting#healthCareProvider">
-                    Change<span class="nhsuk-u-visually-hidden"> location of death</span>
-                  </a>
+                  Lewes Victoria Hospital
                 </dd>
               </div>
               
@@ -290,12 +282,7 @@ Case details
                   Location details
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  {{ data['locationDetails'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="hospital-acute-setting#locationDetails">
-                    Change<span class="nhsuk-u-visually-hidden"> location details</span>
-                  </a>
+                  Ward 2B
                 </dd>
               </div>
               
@@ -306,11 +293,6 @@ Case details
                 <dd class="nhsuk-summary-list__value">
                   {{ data['doaDay'] }}/{{ data['doaMonth'] }}/{{ data['doaYear'] }}
                 </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="hospital-acute-setting#dateOfAdmission">
-                    Change<span class="nhsuk-u-visually-hidden"> date of admission</span>
-                  </a>
-                </dd>
               </div>
           
               <div class="nhsuk-summary-list__row">
@@ -320,11 +302,6 @@ Case details
                 <dd class="nhsuk-summary-list__value">
                   {{ data['todHourAdmissionCreate'] }}:{{ data['todMinuteAdmissionCreate'] }}
                 </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a href="hospital-acute-setting#timeOfAdmission">
-                    Change<span class="nhsuk-u-visually-hidden"> time of admission</span>
-                  </a>
-                </dd>
               </div>
 
             <div class="nhsuk-summary-list__row">
@@ -333,11 +310,6 @@ Case details
               </dt>
               <dd class="nhsuk-summary-list__value">
                 {{ data['admissionDetails'] }}
-              </dd>
-              <dd class="nhsuk-summary-list__actions">
-                <a href="hospital-acute-setting#admissionDetails">
-                  Change<span class="nhsuk-u-visually-hidden"> admission details</span>
-                </a>
               </dd>
             </div>
 
@@ -353,11 +325,6 @@ Case details
               <dd class="nhsuk-summary-list__value">
                 Community or non-acute setting
               </dd>
-              <dd class="nhsuk-summary-list__actions">
-                <a href="location-of-death">
-                  Change<span class="nhsuk-u-visually-hidden"> location of death</span>
-                </a>
-              </dd>
             </div>
             
             <div class="nhsuk-summary-list__row">
@@ -367,14 +334,16 @@ Case details
               <dd class="nhsuk-summary-list__value">
                 Same as home address
               </dd>
-              <dd class="nhsuk-summary-list__actions">
-                <a href="community-non-acute">
-                  Change<span class="nhsuk-u-visually-hidden"> location details</span>
-                </a>
-              </dd>
             </div>
           </dl>
           {% endif %}
+
+          <div class="nav-flow">
+            <a href="next-of-kin" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+             Make changes
+           </a>
+         </div>
+
 
           
           {% else %}

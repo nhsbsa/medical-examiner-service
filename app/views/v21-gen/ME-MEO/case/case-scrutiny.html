@@ -40,9 +40,11 @@ Case details
          <p>{{ data['dodDayCreate'] }} <span class="convert-month" style="display:inline">{{ data['dodMonthCreate'] }}</span> {{ data['dodYearCreate'] }}</p>
        </li>
        <li>
-         <span>Place of death:</span>
-
-       </li>
+        <span>Place of death:</span>
+        {% if data['hospital-death'] %}
+         <p>Lewes Victoria Hospital</p>
+        {% endif %}
+      </li>
       <!-- <li>
          <a href="#" class="nhsuk-button nhsuk-button--secondary mb0">Close case</a>
        </li> -->
