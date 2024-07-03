@@ -27,30 +27,30 @@ Case details
   <div class="nhsuk-grid-column-full">
     
     <section class="key-details">
-      <ul>
-        <li>
-          <div class="patient-name">
-            <span class="p-name">Patient name:</span>
-            <h1>Kathleen Stark</h1>
-          </div>
-        </li>
-        <li>
-          <span>NHS number:</span>
-          <p>123 456 789</p>
-        </li>
-        <li>
-          <span>Date of death:</span>
-          <p>12 September 2023</p>
-        </li>
-        <li>
-          <span>Place of death:</span>
-          <p>Hospital</p>
-        </li>
-       <!-- <li>
-          <a href="#" class="nhsuk-button nhsuk-button--secondary mb0">Close case</a>
-        </li> -->
-      </ul>
-    </section>
+       <ul>
+         <li>
+           <div class="patient-name">
+             <span class="p-name">Patient name:</span>
+             <h1>Kathleen Stark</h1>
+           </div>
+         </li>
+         <li>
+           <span>NHS number:</span>
+           <p>123 456 789</p>
+         </li>
+         <li>
+           <span>Date of death:</span>
+           <p>2 July 2024</p>
+         </li>
+         <li>
+           <span>Place of death:</span>
+           <p>Hospital</p>
+         </li>
+        <!-- <li>
+           <a href="#" class="nhsuk-button nhsuk-button--secondary mb0">Close case</a>
+         </li> -->
+       </ul>
+     </section>
     
   </div>
 </div>
@@ -73,11 +73,43 @@ Case details
 <section class="timeline-filter">
   <h3 class="nhsuk-heading-s mb0">Filter by:</h3>
   <ul>
-    <li><a href="case-timeline">All (<b>5</b>)</a></li>
-    <li><a href="case-timeline-comm">Communications <span class="nhs-notification">1</span></a></a></li>
-    <li><a href="case-timeline-note">Notes <span class="nhs-notification">1</span></a></li>
-    <li><a href="case-timeline-concern">Concerns <span class="nhs-notification urgent-notify">0</span></a></li>
-    <li><a href="#" class="active">Milestones (<b>3</b>)</a></li>
+    <li><a href="case-timeline">All 
+      
+      {% if data['timeline-event']=='event-comm'%}
+      (<b>6</b>)
+      {% else %}
+       (<b>5</b>)
+       {% endif %} 
+
+     </a></li>
+    <li><a href="case-timeline-comm">Communications 
+      
+      {% if data['timeline-event']=='event-comm'%}
+      <span class="nhs-notification">2</span>
+      {% else %}
+       <span class="nhs-notification">1</span>
+       {% endif %} 
+    
+    </a></li>
+    <li><a href="case-timeline-note">Notes 
+      
+      {% if data['timeline-event']=='event-note'%}
+      <span class="nhs-notification">2</span>
+      {% else %}
+       <span class="nhs-notification">1</span>
+       {% endif %} 
+      
+      </a></li>
+    <li><a href="case-timeline-concern">Concerns 
+      
+      {% if data['concern-recorded']=='concern-recorded-yes'%}
+     <span class="nhs-notification urgent-notify">1</span>
+     {% else %}
+     <span class="nhs-notification urgent-notify">0</span>
+     {% endif %} 
+     
+     </a></li>
+    <li><a href="#" class="active">Case progress (<b>3</b>)</a></li>
   </ul>
   </ul>
 </section>
