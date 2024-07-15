@@ -1,0 +1,496 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+
+
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    
+    <section class="key-details">
+       <ul>
+         <li>
+           <div class="patient-name">
+             <span class="p-name">Patient name:</span>
+             <h1>Kathleen Stark</h1>
+           </div>
+         </li>
+         <li>
+           <span>NHS number:</span>
+           <p>123 456 789</p>
+         </li>
+         <li>
+           <span>Date of death:</span>
+           <p>2 July 2024</p>
+         </li>
+         <li>
+           <span>Case type:</span>
+           <p>Hospital</p>
+         </li>
+        <!-- <li>
+           <a href="#" class="nhsuk-button nhsuk-button--secondary mb0">Close case</a>
+         </li> -->
+       </ul>
+     </section>
+    
+  </div>
+</div>
+
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+<h1 class="nhsuk-heading-l mb30">Case timeline</h1>
+
+<!--<div class="nhsuk-inset-text">
+  <p>Case concerns can be raised when recording a communication or note.</p>
+</div>-->
+
+<p><a href="record-event" class="nhsuk-button">Add a communication or note</a></p>
+
+
+
+<section class="timeline-filter">
+  <h3 class="nhsuk-heading-s mb0">Filter by:</h3>
+  <ul>
+    <li><a href="case-timeline" class="active">All 
+      
+      {% if data['timeline-event']=='event-comm'%}
+      (<b>7</b>)
+      {% else %}
+       (<b>6</b>)
+       {% endif %} 
+
+     </a></li>
+    <li><a href="case-timeline-comm">Communications 
+      
+      {% if data['timeline-event']=='event-comm'%}
+      <span class="nhs-notification">2</span>
+      {% else %}
+       <span class="nhs-notification">2</span>
+       {% endif %} 
+    
+    </a></li>
+    <li><a href="case-timeline-note">Notes 
+      
+      {% if data['timeline-event']=='event-note'%}
+      <span class="nhs-notification">2</span>
+      {% else %}
+       <span class="nhs-notification">1</span>
+       {% endif %} 
+      
+      </a></li>
+    <li><a href="case-timeline-concern">Concerns 
+      
+      {% if data['concern-recorded']=='concern-recorded-yes'%}
+     <span class="nhs-notification urgent-notify">1</span>
+     {% else %}
+     <span class="nhs-notification urgent-notify">0</span>
+     {% endif %} 
+     
+     </a></li>
+    <li><a href="case-timeline-mile">Case progress (<b>4</b>)</a></li>
+  </ul>
+</section>
+
+  </div>
+</div>
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+
+
+
+
+<div class="nhs-timeline">
+
+
+{% if data['timeline-event']=='event-comm'%}
+
+
+<div class="nhs-timeline__item">
+
+  <div class="nhs-timeline__header">
+    <h2 class="nhs-timeline__title">
+      
+      {% if data['comms-type'] %}
+ 
+       {% if data['comms-type'].includes('phone-call') %}
+       
+       Phone conversation
+         
+       {% endif %}
+       
+       
+       {% if data['comms-type'].includes('in-person') %}
+       
+       In-person conversation
+         
+       {% endif %}
+      
+      
+       {% if data['comms-type'].includes('email-comm') %}
+       
+       Email conversation
+      
+       {% endif %}
+      
+      
+       {% if data['comms-type'].includes('text-comm') %}
+       
+       Text message conversation
+
+       {% endif %}
+      
+ 
+     {% else %}
+     No comms selected
+     {% endif %} 
+     with {{ data['personName'] }} ({{ data['contactRole'] }}) 
+      
+        
+    </h2>
+    <p class="nhs-timeline__byline">Added by Ibrahima Gakpo on <time datetime="2019-06-14T14:01:00.000Z">4 July 2024 at 12:00pm</time></p>
+  </div>
+
+  <div class="nhs-timeline__description">
+    <h4>Details</h4>
+    
+    {% if data['comms-type'] %}
+
+     {% if data['comms-type'].includes('phone-call') %}
+     
+     <p class="mt20">{{ data['comms-details-1'] }}</p>
+       
+     {% endif %}
+     
+     
+     {% if data['comms-type'].includes('in-person') %}
+     
+     <p class="mt20">{{ data['comms-details-2'] }}</p>
+       
+     {% endif %}
+    
+    
+     {% if data['comms-type'].includes('email-comm') %}
+     
+     <p class="mt20">{{ data['comms-details-3'] }}</p>
+    
+     {% endif %}
+    
+    
+     {% if data['comms-type'].includes('text-comm') %}
+    
+     <p class="mt20">{{ data['comms-details-4'] }}</p>
+
+     {% endif %}
+    
+
+   {% else %}
+   <p>No comms selected.</p>
+   {% endif %}
+   
+   
+ {% if data['concern-recorded']=='concern-recorded-yes'%}
+  
+  
+  <div class="concerns-card">
+
+   {% if data['concern-why2'].includes('case-review') %}
+   
+  <p><strong class="nhsuk-tag nhsuk-tag--red">Recommend case record review</strong></p>
+ 
+     
+   {% endif %}
+   
+   
+   {% if data['concern-why2'].includes('case-clinical') %}
+   
+  <p> <strong class="nhsuk-tag nhsuk-tag--red">Recommend clinical governance processes review</strong></p>
+     
+   {% endif %}
+  
+  
+   {% if data['concern-why2'].includes('patient-safety') %}
+   
+  <p> <strong class="nhsuk-tag nhsuk-tag--red">Patient safety incident</strong></p>
+  
+   {% endif %}
+  
+  
+   {% if data['concern-why2'].includes('pals-refer') %}
+  
+  <p><strong class="nhsuk-tag nhsuk-tag--red">Signposted to PALS</strong></p>
+
+   {% endif %}
+   
+   </div>
+  
+
+ {% else %}
+ 
+ 
+
+
+
+ {% endif %}
+   
+   
+   
+    
+  </div>
+  
+</div>
+
+
+{% else %}
+
+
+{% endif %}
+
+
+
+
+{% if data['timeline-event']=='event-note'%}
+
+<div class="nhs-timeline__item">
+
+  <div class="nhs-timeline__header">
+    <h2 class="nhs-timeline__title">
+      Case note  
+    </h2>
+    <p class="nhs-timeline__byline">Added by Ibrahima Gakpo on <time datetime="2019-06-14T14:01:00.000Z">4 July 2024 at 12:00pm</time></p>
+  </div>
+
+
+  <div class="nhs-timeline__description">
+    <h4>Details</h4>
+    
+      <p>{{ data['detailsOfNote'] }}</p>
+      
+      
+      {% if data['concern-recorded']=='concern-recorded-yes'%}
+       
+       
+       <div class="concerns-card">
+    
+        {% if data['concern-why2'].includes('case-review') %}
+        
+       <p><strong class="nhsuk-tag nhsuk-tag--red">Recommend case record review</strong></p>
+      
+          
+        {% endif %}
+        
+        
+        {% if data['concern-why2'].includes('case-clinical') %}
+        
+       <p> <strong class="nhsuk-tag nhsuk-tag--red">Recommend clinical governance processes review</strong></p>
+          
+        {% endif %}
+       
+       
+        {% if data['concern-why2'].includes('patient-safety') %}
+        
+       <p> <strong class="nhsuk-tag nhsuk-tag--red">Patient safety incident</strong></p>
+       
+        {% endif %}
+       
+       
+        {% if data['concern-why2'].includes('pals-refer') %}
+       
+       <p><strong class="nhsuk-tag nhsuk-tag--red">Signposted to PALS</strong></p>
+    
+        {% endif %}
+        
+        </div>
+       
+    
+      {% else %}
+      
+      
+    
+    
+    
+      {% endif %}
+      
+  </div>
+  
+</div>
+
+{% else %}
+
+
+{% endif %}
+
+<div class="nhs-timeline__item">
+
+    <div class="nhs-timeline__header">
+      <h2 class="nhs-timeline__title"  style="margin-bottom:1px">
+        Communication added
+      </h2>
+      <p class="nhs-timeline__byline" style="font-size:17px">Sue Johnson, <time datetime="2019-06-14T14:01:00.000Z">4 July 2024, 12:00pm</time></p>
+    </div>
+    <div class="nhs-timeline__description" style="margin-top:-15px; margin-bottom:15px; border:1px solid #d8dde0; background-color: #f0f4f5; padding:0 15px 15px 15px">
+        <p>Phone conversation with Dougie Howser (Consultant)</p>
+        <p>Consultant had concerns around delay in recording the patients time of death.</p>
+         <div class="concerns-card">
+            <p><strong class="nhsuk-tag nhsuk-tag--red">Recommend case record review</strong></p>
+        </div>
+    </div>
+  </div>
+  
+
+
+
+    <div class="nhs-timeline__item">
+      <div class="nhs-timeline__header">
+        <h2 class="nhs-timeline__title"  style="margin-bottom:1px">
+          AP proposed cause of death added
+        </h2>
+        <p class="nhs-timeline__byline" style="font-size:17px">Sue Johnson, <time datetime="2019-06-14T14:01:00.000Z">2 July 2024, 1:10pm</time></p>
+      </div>
+    </div>
+  
+  
+  <div class="nhs-timeline__item">
+
+    <div class="nhs-timeline__header">
+      <h2 class="nhs-timeline__title"  style="margin-bottom:1px">
+        Communication added
+      </h2>
+      <p class="nhs-timeline__byline" style="font-size:17px">Sue Johnson, <time datetime="2019-06-14T14:01:00.000Z">3 July 2024, 2:00pm</time></p>
+    </div>
+    <div class="nhs-timeline__description" style="margin-top:-15px; margin-bottom:15px; border:1px solid #d8dde0; background-color: #f0f4f5; padding:0 15px 15px 15px">
+        <p>Phone conversation with Billy Fagan (Brother)  </p>
+        <p class="nhsuk-u-reading-width">Brother has confirmed that his sister Kathleen had learning difficulties. Need to ring GP to learn more - 07891566833</p>
+    </div>
+  </div>
+  
+  
+  <div class="nhs-timeline__item">
+    <div class="nhs-timeline__header">
+      <h2 class="nhs-timeline__title"  style="margin-bottom:1px">
+        Pre scrutiny details added
+      </h2>
+      <p class="nhs-timeline__byline" style="font-size:17px">Sue Johnson, <time datetime="2019-06-14T14:01:00.000Z">2 July 2024, 1:10pm</time></p>
+    </div>
+  </div>
+  
+  
+  <div class="nhs-timeline__item">
+
+    <div class="nhs-timeline__header">
+      <h2 class="nhs-timeline__title" style="margin-bottom:1px">
+        Next of kin details completed
+      </h2>
+      <p class="nhs-timeline__byline" style="font-size:17px">Sue Johnson, <time datetime="2019-06-14T14:01:00.000Z">2 July 2024, 10:10am</time></p>
+    </div>
+
+  </div>
+  
+  <div class="nhs-timeline__item">
+
+    <div class="nhs-timeline__header">
+      <h2 class="nhs-timeline__title" style="margin-bottom:1px">
+        Location of death details completed
+      </h2>
+      <p class="nhs-timeline__byline" style="font-size:17px">James Moorhouse, <time datetime="2019-06-14T14:01:00.000Z">2 July 2024, 09:30am</time></p>
+    </div>
+
+    
+  </div>
+  
+  
+  <div class="nhs-timeline__item">
+    <div class="nhs-timeline__header">
+      <h2 class="nhs-timeline__title" style="margin-bottom:1px">
+        Case note added
+      </h2>
+      <p class="nhs-timeline__byline" style="font-size:17px">James Moorhouse, <time datetime="2019-06-14T14:01:00.000Z">2 July 2024, 09:20am</time></p>
+    </div>
+    <div class="nhs-timeline__description" style="margin-top:-15px; margin-bottom:15px; border:1px solid #d8dde0; background-color: #f0f4f5; padding:0 15px 15px 15px"> 
+        <p class="nhsuk-u-reading-width">Some medical records suggest that the deceased may have had learning difficulties.</p>
+    </div>
+  </div>
+  
+  <div class="nhs-timeline__item">
+
+    <div class="nhs-timeline__header">
+      <h2 class="nhs-timeline__title" style="margin-bottom:1px">
+        Deceased person's details completed 
+      </h2>
+      <p class="nhs-timeline__byline" style="font-size:17px">Sue Johnson, <time datetime="2019-06-14T14:01:00.000Z">2 July 2024, 09:10am</time></p>
+    </div>
+
+  </div>
+  
+  
+  
+  
+</div>
+
+
+
+
+  </div>
+</div>
+
+{% endblock %}
+
+
+
+
+{% block sideNav %}
+<div class="side-nav">
+  
+  
+ <div class="case-type-details">
+   
+      
+<div class="nhsuk-back-link">
+
+  <a class="nhsuk-back-link__link" href="../open-cases2">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Back to case list</a>
+</div>
+
+  
+ </div>
+  
+  
+  <ul>
+    <div id="options" class="options">
+      <li><a class="active" href="case-timeline">Case timeline</a></li>
+      <li><a href="case-details">Case details</a></li>
+      <li><a href="case-scrutiny">Case scrutiny</a></li>
+      
+    </div>
+  </ul>
+  
+    
+</div>
+{% endblock %}
