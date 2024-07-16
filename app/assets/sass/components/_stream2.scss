@@ -1,3 +1,39 @@
 
 
 // styles - Stu //
+
+
+.nhs-timeline__title-alt {
+    font-size: 22px;
+    margin: 0 0 1px 0;
+    .nhsuk-tag {
+      position: relative;
+      top: 0;
+      margin-left: 5px;
+      background: $nhsuk-secondary-button-color;
+    }
+  }
+
+  .nhs-timeline__byline-alt {
+    color: $nhsuk-secondary-text-color;
+    font-weight: normal;
+    padding-top: 2px;
+    font-size:17px;
+  }
+
+  .nhs-timeline__description-alt {
+    margin-top:-10px;
+    margin-bottom:15px;
+    border:1px solid #d8dde0;
+    background-color: #f0f4f5;
+    padding:0 15px 15px 15px;
+
+    h4 {
+    font-size: 19px;
+    margin: 0;
+    }
+    p {
+    margin: 13px 0 0 0;
+    padding: 0;
+    }
+  }
