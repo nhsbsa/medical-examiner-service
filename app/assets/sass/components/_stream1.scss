@@ -446,7 +446,7 @@ position: relative;
 
 .nhs-timeline__title {
   font-size: 22px;
-  margin: 0 0 10px 0;
+  margin: 0 0 1px 0;
   .nhsuk-tag {
     position: relative;
     top: 0;
@@ -456,6 +456,7 @@ position: relative;
 }
 
 .nhs-timeline__description {
+  margin-top:-15px; margin-bottom:15px;
   h4 {
   font-size: 19px;
   margin: 0;
@@ -463,10 +464,7 @@ position: relative;
 p {
   margin: 16px 0 0 0;
   padding: 0;
-
-}
-
-
+  }
 }
 
 
@@ -474,6 +472,7 @@ p {
   color: $nhsuk-secondary-text-color;
   font-weight: normal;
   padding-top: 5px;
+  font-size:17px;
 }
 
 
