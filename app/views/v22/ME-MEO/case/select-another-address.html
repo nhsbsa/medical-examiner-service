@@ -1,0 +1,119 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-full-width.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+        {% from 'back-link/macro.njk' import backLink %}
+
+        {{ backLink({
+        "href": "javascript:history.back()",
+        "text": "Go back"
+        }) }}
+
+        
+        <form action="confirm-address" method="post">
+        
+            <span class="nhsuk-caption-m nhsuk-caption--bottom">
+                Location of death
+             </span>
+             <h1 class="nhsuk-heading-l">
+              Select an address
+                </h1>
+              
+            
+             
+                <p><strong>11</strong> addresses found for <strong>LS16 6HL</strong>. If you can't find the address, check the postcode and <a href="">search again</a>, or <a href="">enter the address manually</a>.</p>
+
+                {{ radios({
+                    "idPrefix": "example",
+                    "name": "example",
+                    "fieldset": {
+                      "legend": {
+                 
+                      }
+                    },
+                    "items": [
+                      {
+                        "value": "487, Spen Lane, Leeds, LS166HL",
+                        "text": "487, Spen Lane, Leeds, LS166HL"
+                      },
+                      {
+                        "value": "489, Spen Lane, Leeds, LS166HL",
+                        "text": "489, Spen Lane, Leeds, LS166HL"
+                      },
+                      {
+                        "value": "491, Spen Lane, Leeds, LS166HL",
+                        "text": "491, Spen Lane, Leeds, LS166HL"
+                      },
+                      {
+                        "value": "493, Spen Lane, Leeds, LS166HL",
+                        "text": "493, Spen Lane, Leeds, LS166HL"
+                      },
+                      {
+                        "value": "495, Spen Lane, Leeds, LS166HL",
+                        "text": "495, Spen Lane, Leeds, LS166HL"
+                      },
+                      {
+                        "value": "497, Spen Lane, Leeds, LS166HL",
+                        "text": "497, Spen Lane, Leeds, LS166HL"
+                      },
+                      {
+                        "value": "499, Spen Lane, Leeds, LS166HL",
+                        "text": "499, Spen Lane, Leeds, LS166HL"
+                      },
+                      {
+                        "value": "501, Spen Lane, Leeds, LS166HL",
+                        "text": "501, Spen Lane, Leeds, LS166HL"
+                      },
+                      {
+                        "value": "503, Spen Lane, Leeds, LS166HL",
+                        "text": "503, Spen Lane, Leeds, LS166HL"
+                      },
+                      {
+                        "value": "505, Spen Lane, Leeds, LS166HL",
+                        "text": "505, Spen Lane, Leeds, LS166HL"
+                      },
+                      {
+                        "value": "507, Spen Lane, Leeds, LS166HL",
+                        "text": "507, Spen Lane, Leeds, LS166HL"
+                      }
+                    ]
+                  }) }}
+
+            </fieldset>
+
+            <button class="nhsuk-button" id="save-and-continue-button" type="submit">
+                Use this address
+            </button>
+
+            <p><a href="location-death-hospital">Enter address manually</a></p>
+            
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+

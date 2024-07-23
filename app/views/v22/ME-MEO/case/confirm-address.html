@@ -1,0 +1,65 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-full-width.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+        {% from 'back-link/macro.njk' import backLink %}
+
+        {{ backLink({
+        "href": "javascript:history.back()",
+        "text": "Go back"
+        }) }}
+
+        
+        <form action="confirm-hospital-address" method="post">
+        
+            <span class="nhsuk-caption-m nhsuk-caption--bottom">
+                Location of death
+             </span>
+             <h1 class="nhsuk-heading-l">
+               Confirm address
+             </h1>
+
+
+              <div class="nhsuk-inset-text">
+                <span class="nhsuk-u-visually-hidden">Information: </span>
+                <p>505, Spen Lane, Leeds, LS16 6HL</p>
+              </div>
+
+            <button class="nhsuk-button" id="save-and-continue-button" type="submit">
+                Use this address
+            </button>
+
+            <p><a href="location-death-hospital">Select a different address</a></p>
+
+            <p><a href="location-death-hospital">Enter address manually</a></p>
+            
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+

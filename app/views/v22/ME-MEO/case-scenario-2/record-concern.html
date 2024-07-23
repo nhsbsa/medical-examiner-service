@@ -1,0 +1,236 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-full-width.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+        
+
+        <div class="nhsuk-grid-column-three-quarters">
+          
+          {% from 'back-link/macro.njk' import backLink %}
+  
+          {{ backLink({
+          "href": "javascript:history.back()",
+          "text": "Go back"
+          }) }}
+
+          
+            <form action="concerns-cya" method="post">
+              
+              
+              
+              
+           
+              
+              <div class="nhsuk-form-group">
+            
+                <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+                  <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                    <h1 class="nhsuk-fieldset__heading">
+                      Record concerns
+                    </h1>
+                  </legend>
+            
+                  <div class="nhsuk-hint" id="contact-hint">
+                    Select all that apply.
+                  </div>
+            
+                  <div class="nhsuk-checkboxes nhsuk-checkboxes--conditional">
+            
+                    <div class="nhsuk-checkboxes__item">
+                      <input class="nhsuk-checkboxes__input" id="case-review" name="concern-why" type="checkbox" value="case-review" aria-controls="conditional-case-review1" aria-expanded="false">
+                      <label class="nhsuk-label nhsuk-checkboxes__label" for="case-review">
+                        Recommend case record review
+                      </label>
+                    </div>
+            
+                    <div class="nhsuk-checkboxes__conditional nhsuk-checkboxes__conditional--hidden" id="conditional-case-review1">
+            
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label" for="review-detail">
+                          Enter details of concern
+                        </label>
+                        <textarea class="nhsuk-textarea nhsuk-u-width-three-quarters" id="review-detail" name="review-detail" rows="5" value="review-detail"></textarea>
+                      </div>
+            
+                    </div>
+                    
+                    
+                    <div class="nhsuk-checkboxes__item">
+                      <input class="nhsuk-checkboxes__input" id="case-clinical" name="concern-why" type="checkbox" value="case-clinical" aria-controls="conditional-case-review1a" aria-expanded="false">
+                      <label class="nhsuk-label nhsuk-checkboxes__label" for="case-clinical">
+                        Recommend clinical governance processes review
+                      </label>
+                    </div>
+                    
+                    
+                    <div class="nhsuk-checkboxes__conditional nhsuk-checkboxes__conditional--hidden" id="conditional-case-review1a">
+            
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label" for="clinical-detail">
+                          Enter details of concern
+                        </label>
+                        <textarea class="nhsuk-textarea nhsuk-u-width-three-quarters" id="clinical-detail" name="clinical-detail" rows="5" value="clinical-detail"></textarea>
+                      </div>
+            
+                    </div>
+                    
+            
+                    <div class="nhsuk-checkboxes__item">
+                      <input class="nhsuk-checkboxes__input" id="patient-safety" name="concern-why" type="checkbox" value="patient-safety" aria-controls="conditional-case-review2" aria-expanded="false">
+                      <label class="nhsuk-label nhsuk-checkboxes__label" for="patient-safety">
+                        Patient safety incident
+                      </label>
+                    </div>
+            
+                    <div class="nhsuk-checkboxes__conditional nhsuk-checkboxes__conditional--hidden" id="conditional-case-review2">
+            
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label" for="safety-detail">
+                          Enter details of concern
+                        </label>
+                        <textarea class="nhsuk-textarea nhsuk-u-width-three-quarters" id="safety-detail" name="safety-detail" rows="5" value="safety-detail"></textarea>
+                      </div>
+            
+                    </div>
+            
+                    <div class="nhsuk-checkboxes__item">
+                      <input class="nhsuk-checkboxes__input" id="pals-refer" name="concern-why" type="checkbox" value="pals-refer" aria-controls="conditional-case-review3" aria-expanded="false">
+                      <label class="nhsuk-label nhsuk-checkboxes__label" for="pals-refer">
+                        Recommend referral to PALS
+                      </label>
+                    </div>
+            
+                    <div class="nhsuk-checkboxes__conditional nhsuk-checkboxes__conditional--hidden" id="conditional-case-review3">
+            
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label" for="refer-detail">
+                          Enter details of concern
+                        </label>
+                        <textarea class="nhsuk-textarea nhsuk-u-width-three-quarters" id="refer-detail" name="refer-detail" rows="5" value="refer-detail"></textarea>
+                      </div>
+            
+                    </div>
+            
+                  </div>
+                </fieldset>
+            
+              </div>
+              
+              
+              <div class="nhsuk-form-group">
+              
+                <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+                  <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend">
+                    <h1 class="nhsuk-fieldset__heading">
+                      Are you raising the concern?
+                    </h1>
+                  </legend>
+              
+              
+                  <div class="nhsuk-radios nhsuk-radios--conditional">
+              
+                    <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="raised-yes" name="raised" type="radio" value="raised-yes">
+                      <label class="nhsuk-label nhsuk-radios__label" for="raised-yes">
+                        Yes
+                      </label>
+                    </div>
+              
+                    <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="raised-no" name="raised" type="radio" value="raised-no" aria-controls="raised-no-control" aria-expanded="false">
+                      <label class="nhsuk-label nhsuk-radios__label" for="raised-no">
+                        No
+                      </label>
+                    </div>
+              
+                    <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="raised-no-control">
+              
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label" for="raised-who">
+                          Name of person raising concern
+                        </label>
+                        <input class="nhsuk-input nhsuk-u-width-two-thirds" id="raised-who" name="raised-who" type="text">
+                      </div>
+              
+                    </div>
+              
+                    
+              
+                  </div>
+                </fieldset>
+              
+              </div>
+              
+   
+
+
+               
+               <div class="nhsuk-form-group">
+               
+                 <fieldset class="nhsuk-fieldset">
+                   <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend">
+                     <h1 class="nhsuk-fieldset__heading">
+                       Does the coroner need to be notified?
+                     </h1>
+                   </legend>
+               
+                   <div class="nhsuk-radios">
+               
+                     <div class="nhsuk-radios__item">
+                       <input class="nhsuk-radios__input" id="coroner-yes" name="coroner" type="radio" value="coroner-yes">
+                       <label class="nhsuk-label nhsuk-radios__label" for="coroner-yes">
+                         Yes
+                       </label>
+                     </div>
+               
+                     <div class="nhsuk-radios__item">
+                       <input class="nhsuk-radios__input" id="coroner-no" name="coroner" type="radio" value="coroner-no">
+                       <label class="nhsuk-label nhsuk-radios__label" for="coroner-no">
+                         No
+                       </label>
+                     </div>
+               
+                   </div>
+                 </fieldset>
+               
+               </div>
+             
+             
+              
+              
+              <div class="nav-flow">
+                <button class="nhsuk-button" type="submit">
+                  Save and continue
+              </button>
+              </a>
+              </div>
+              
+              </form>
+
+        </div>
+    </div>
+
+    {% endblock %}

@@ -1,0 +1,142 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    
+   <section class="key-details">
+     <ul>
+       <li>
+         <div class="patient-name">
+           <span class="p-name">Patient name:</span>
+           <h1>{{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}</h1>
+         </div>
+       </li>
+       <li>
+         <span>NHS number:</span>
+         <p>{{ data['ref-NHSnumber'] }} </p>
+       </li>
+       <li>
+         <span>Date of death:</span>
+         <p>{{ data['dodDayCreate'] }} <span class="convert-month" style="display:inline">{{ data['dodMonthCreate'] }}</span> {{ data['dodYearCreate'] }}</p>
+       </li>
+       <li>
+        <span>Case type:</span>
+        {% if data['hospital-death'] %}
+         <p>Hospital</p>
+        {% endif %}
+      </li>
+      <!-- <li>
+         <a href="#" class="nhsuk-button nhsuk-button--secondary mb0">Close case</a>
+       </li> -->
+     </ul>
+   </section>
+    
+  </div>
+</div>
+
+
+
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+        {% from 'back-link/macro.njk' import backLink %}
+
+        {{ backLink({
+        "href": "javascript:history.back()",
+        "text": "Go back"
+        }) }}
+
+
+         <!-- Permanent destruction redirect -->
+         {% if data['address-of-death'] == 'Yes' %}
+         <script>
+             window.location.href = 'another-location-postcode'
+         </script>
+         {% endif %}
+
+        
+        <form action="#" method="post">
+        
+            <span class="nhsuk-caption-m nhsuk-caption--bottom">
+                Location of death
+             </span>
+
+             <h1 class="nhsuk-heading-l mb40">
+              Where approximately did the death take place?
+             </h1>
+              
+
+              {{ textarea({
+                "name": "example",
+                "id": "example",
+                "label": {
+                  "text": "Enter details"
+                },
+                "hint": {
+                  "text": "For example, in Castle Park, Bingley near the fountain"
+                }
+              }) }}
+
+              <button class="nhsuk-button" type="submit">
+                Save and continue
+            </button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block sideNav %}
+<div class="side-nav">
+  
+ <!--<div class="case-type-details">
+   
+      
+<div class="nhsuk-back-link">
+
+  <a class="nhsuk-back-link__link" href="../open-cases2">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Back to case list</a>
+</div>
+
+  
+ </div>
+  
+  
+  <ul>
+    <div id="options" class="options">
+      <li><a class="active" href="case-timeline">Case timeline</a></li>
+      <li><a href="case-details">Case details</a></li>
+      <li><a href="case-scrutiny">Case scrutiny</a></li>
+      
+    </div>
+  </ul>
+-->
+    
+</div>
+{% endblock %}
