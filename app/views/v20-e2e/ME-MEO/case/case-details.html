@@ -64,6 +64,7 @@ Case details
 
   <div class="nhsuk-grid-column-three-quarters">
     <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Deceased person's details</h2>
+    <p class="nhs-timestamp-alt">Completed by David Wilson on 4 July 2024 at 2:00pm</p>
   </div>
   <div class="nhsuk-grid-column-one-quarter">
     <strong class="nhsuk-tag nhsuk-tag align-right">
@@ -272,6 +273,7 @@ Case details
 
   <div class="nhsuk-grid-column-three-quarters">
     <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Case assignment</h2>
+    <p class="nhs-timestamp-alt">Completed by David Wilson on 4 July 2024 at 2:00pm</p>
   </div>
   <div class="nhsuk-grid-column-one-quarter">
     <strong class="nhsuk-tag nhsuk-tag align-right">
@@ -313,14 +315,21 @@ Case details
   
 
 
-
  <!-- ================================================== -->
   <!-- LOCATION OF DEATH -->
   <!-- ================================================== -->
 
   <div class="nhsuk-grid-column-three-quarters">
     <h2 class="nhsuk-heading-l">Location of death</h2>
+    {% if data['draft-status-HAS'] == 'draft' %}
+      <p class="nhs-timestamp-alt">Started by David Wilson on 4 July 2024 at 2:00pm</p>
+    {% elif data['location-of-death-section'] == 'complete' %}
+      <p class="nhs-timestamp-alt">Completed by David Wilson on 4 July 2024 at 2:10pm</p>
+    {% endif %}
   </div>
+
+ 
+  
   {% if data['draft-status-HAS'] == 'draft' %}
   <div class="nhsuk-grid-column-one-quarter">
     <strong class="nhsuk-tag nhsuk-tag--grey align-right">
@@ -496,14 +505,19 @@ Case details
 
 
 
-
   <!-- ================================================== -->
   <!-- NEXT OF KIN DETAILS -->
   <!-- ================================================== -->
 
   <div class="nhsuk-grid-column-three-quarters">
     <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Next of kin details</h2>
+    {% if data['draft-status-NOK'] == 'draft' %}
+      <p class="nhs-timestamp-alt">Started by David Wilson on 4 July 2024 at 2:00pm</p>
+    {% elif data['next-of-kin-details-section'] == 'complete' %}
+      <p class="nhs-timestamp-alt">Completed by David Wilson on 4 July 2024 at 2:10pm</p>
+    {% endif %}
   </div>
+  
   {% if data['draft-status-NOK'] == 'draft' %}
   <div class="nhsuk-grid-column-one-quarter">
     <strong class="nhsuk-tag nhsuk-tag--grey align-right">

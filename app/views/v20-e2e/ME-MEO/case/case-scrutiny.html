@@ -64,6 +64,13 @@ Case details
 
   <div class="nhsuk-grid-column-three-quarters">
     <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Pre-scrutiny notes (optional)</h2>
+    {% if data['pre-scrutiny-note-section'] == 'incomplete' %}
+      <p class="nhs-timestamp-alt">Started by David Wilson on 4 July 2024 at 2:00pm</p>
+    {% elif  data['draft-status-PSN'] == 'draft' %}
+      <p class="nhs-timestamp-alt">Started by David Wilson on 4 July 2024 at 2:00pm</p>
+    {% elif data['pre-scrutiny-note-section'] == 'complete' %}
+      <p class="nhs-timestamp-alt">Completed by David Wilson on 4 July 2024 at 2:10pm</p>
+    {% endif %}
   </div>
 
   {% if data['pre-scrutiny-note-section'] == 'complete' %}
@@ -156,8 +163,18 @@ Case details
   <!-- ================================================== -->
 
   <div class="nhsuk-grid-column-three-quarters">
-    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Attending practitioner's (AP) proposed cause of
-      death</h2>
+    <h2 class="nhsuk-heading-l" id="deceased-persons-details-header">Attending practitioner's (AP) proposed cause of death</h2>
+    {% if data['draft-status-APCOD'] == 'draft' %}
+      <p class="nhs-timestamp-alt">Started by David Wilson on 4 July 2024 at 2:00pm</p>
+    {% elif data['ap-prop-cause-of-death-section'] == 'complete' and data['ap-details-section'] == 'complete'  %}
+      <p class="nhs-timestamp-alt">Completed by David Wilson on 4 July 2024 at 2:00pm</p>
+    {% elif data['ap-prop-cause-of-death-section'] !== 'complete' and data['ap-details-section'] == 'complete' %}
+      <p class="nhs-timestamp-alt">Started by David Wilson on 4 July 2024 at 2:00pm</p>
+    {% elif data['ap-prop-cause-of-death-section'] == 'complete' and data['ap-details-section'] !== 'complete' %}
+      <p class="nhs-timestamp-alt">Started by David Wilson on 4 July 2024 at 2:00pm</p>
+    {% else %}
+    <!-- dont show status -->
+    {% endif %}
   </div>
     {% if data['draft-status-APCOD'] == 'draft' %}
   <div class="nhsuk-grid-column-one-quarter">
