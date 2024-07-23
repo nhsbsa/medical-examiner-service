@@ -84,7 +84,14 @@ Case details
             <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
           {% endif %}
         </h2>
-        
+
+        <!-- Add timestamp if complete -->
+        {% if data['noteText'] %}
+          <p class="nhs-timestamp">Completed by Ibrahima Gakpo on 4 July 2024 at 2:21pm</p>
+        {% else %}
+          <!-- No timestamp-->
+        {% endif %}
+          
       </div>
 
 
@@ -116,7 +123,7 @@ Case details
   
     <p>No pre-scrutiny notes have been added.</p>
     <div class="nav-flow">
-      <a href="not-testing" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+      <a href="pre-scrutiny-note" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
        Add pre-scrutiny notes
      </a>
    </div>
@@ -144,6 +151,13 @@ Case details
             <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
           {% endif %}
         </h2>
+
+        <!-- Add timestamp if complete -->
+        {% if data['declaration2'] %}
+          <p class="nhs-timestamp">Completed by Ibrahima Gakpo on 4 July 2024 at 2:21pm</p>
+        {% else %}
+          <!-- No timestamp-->
+        {% endif %}
         
       </div>
   
@@ -361,7 +375,7 @@ Case details
 {% else %}
     <p>No details have been added for the AP proposed cause of death.</p>
     <div class="nav-flow">
-      <a href="not-testing" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+      <a href="ap-details" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
        Add AP proposed cause of death
      </a>
    </div>

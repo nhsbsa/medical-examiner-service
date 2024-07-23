@@ -255,8 +255,16 @@ Case details
           <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
         {% endif %}
       </h2>
-      
+
+       <!-- Add timestamp if complete -->
+      {% if data['hospital-death'] %}
+        <p class="nhs-timestamp">Completed by Ibrahima Gakpo on 4 July 2024 at 2:00pm</p>
+      {% else %}
+        <!-- No timestamp-->
+      {% endif %}
     </div>
+
+
     
     <div class="nhsuk-card__content">
       {% if data['hospital-death'] %}
@@ -385,8 +393,17 @@ Case details
           <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
         {% endif %}
       </h2>
+
+       <!-- Add timestamp if complete -->
+       {% if data['nok-first-name'] %}
+        <p class="nhs-timestamp">Completed by Ibrahima Gakpo on 4 July 2024 at 2:20pm</p>
+       {% else %}
+        <!-- No timestamp-->
+       {% endif %}
       
     </div>
+
+
     
     <div class="nhsuk-card__content">
      
@@ -568,6 +585,13 @@ Case details
               <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
             {% endif %}
           </h2>
+
+          <!-- Add timestamp if complete -->
+          {% if data['assign-medical-examiner'] %}
+            <p class="nhs-timestamp">Completed by Ibrahima Gakpo on 4 July 2024 at 2:21pm</p>
+          {% else %}
+            <!-- No timestamp-->
+          {% endif %}
           
         </div>
         
