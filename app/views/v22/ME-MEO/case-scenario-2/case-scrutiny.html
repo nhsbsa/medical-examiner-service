@@ -78,6 +78,7 @@ Case details
            <strong class="nhsuk-tag nhsuk-tag--green align-right">Complete</strong>
     
         </h2>
+        <p class="nhs-timestamp">Completed by Ibrahima Gakpo on 4 July 2024 at 2:21pm</p>
       </div>
 
       <div class="nhsuk-card__content">
@@ -102,7 +103,7 @@ Case details
   
   <div class="nhs-card-heading">
     <h2 class="nhsuk-heading-m" id="deceased-persons-details-header">
-      <span class="section-main-title">AP proposed cause of death</span>
+      <span class="section-main-title">Attending practitioner (AP) proposed cause of death</span>
     {% if data['declaration2'] %}
      <strong class="nhsuk-tag nhsuk-tag-green align-right">Complete</strong>
      {% else %}
@@ -324,9 +325,15 @@ Case details
 
 
 {% else %}
+<p>No details have been added for the AP.</p>
+    <div class="nav-flow">
+      <a href="ap-details" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+       Add details for the AP
+     </a>
+   </div>
     <p>No details have been added for the AP proposed cause of death.</p>
     <div class="nav-flow">
-      <a href="not-testing" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+      <a href="ap-prop-cause-of-death" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
        Add AP proposed cause of death
      </a>
    </div>
@@ -536,7 +543,7 @@ Case details
   
     <p>No details have been added.</p>
     <div class="nav-flow">
-      <a href="not-testing" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+      <a href="record-review" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
        Add medical examiner's independent review
      </a>
    </div>
@@ -712,7 +719,7 @@ Case details
 
    <p>No details have been added.</p>
    <div class="nav-flow">
-     <a href="not-testing" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+     <a href="ap-discussion" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
       Add discussion with the AP about the cause of death
     </a>
   </div>

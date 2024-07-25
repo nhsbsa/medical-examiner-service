@@ -90,18 +90,21 @@ Case details
         </div>
 
         <form action="case-scrutiny" method="post">
+
+
+            <h2 class="nhsuk-heading-m" id="primary-details-header">Attending practitioner's (AP) details</h2>
           
 
             <div class="nhsuk-form-group">
                 <label class="nhsuk-label nhsuk-u-width-one-half" for="qapFirstNames">
-                    First name of the AP who proposed the cause of death
+                    First name <!--of the AP who proposed the cause of death-->
                 </label>
                 <input class="nhsuk-input nhsuk-u-width-one-half" id="qapFirstNames" name="qapFirstNames" type="text">
             </div>
 
             <div class="nhsuk-form-group">
                 <label class="nhsuk-label nhsuk-u-width-one-half" for="qapLastName">
-                    Last name of the AP who proposed the cause of death
+                    Last name <!--of the AP who proposed the cause of death-->
                 </label>
                 <input class="nhsuk-input nhsuk-u-width-one-half" id="qapLastName" name="qapLastName" type="text">
             </div>
@@ -119,6 +122,19 @@ Case details
               </label>
               <input class="nhsuk-input nhsuk-input--width-20" id="gmcNumber" name="gmcNumber" type="text" value="{{ data['gmcNumber'] }}">
           </div>
+
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-u-width-one-half" for="gmcNumber">
+                Alternative contact method <span class="optional-span">(optional)
+            </label>
+            <input class="nhsuk-input nhsuk-input--width-20" id="gmcNumber" name="gmcNumber" type="text" value="{{ data['gmcNumber'] }}">
+        </div>
+
+        <hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">
+
+
+        <h2 class="nhsuk-heading-m" id="primary-details-header">Proposed cause of death</h2>
+
 
             <div class="nhsuk-form-group">
                 <label class="nhsuk-label nhsuk-u-width-two-thirds" for="causeOfDeathSummary">
@@ -193,7 +209,86 @@ Case details
                 </div>
             </div>
 
+
+            {% set consultantHtml %}
             
+                {{ input({
+                    "label": {
+                    "text": "First name"
+                    },
+                    "id": "consultant-first-name",
+                    "name": "consultant-first-name",
+                    "classes": "nhsuk-u-width-one-half"
+                }) }}
+                {{ input({
+                    "label": {
+                    "text": "Last name"
+                    },
+                    "id": "consultant-last-name",
+                    "name": "consultant-last-name",
+                    "classes": "nhsuk-u-width-one-half"
+                }) }}
+                {{ input({
+                    "label": {
+                    "text": "Department (optional)"
+                    },
+                    "id": "consultant-department",
+                    "name": "consultant-department",
+                    "classes": "nhsuk-u-width-one-half"
+                }) }}
+                {{ input({
+                    "label": {
+                    "text": "Contact phone or bleep number (optional)"
+                    },
+                    "id": "consultant-phone-bleep",
+                    "name": "consultant-phone-bleep",
+                    "classes": "nhsuk-u-width-one-half"
+                }) }}
+                {{ input({
+                    "label": {
+                    "text": "GMC number (optional)"
+                    },
+                    "id": "consultant-gmc",
+                    "name": "consultant-gmc",
+                    "classes": "nhsuk-u-width-one-half"
+                }) }}
+                {{ textarea({
+                    "name": "consultant-notes",
+                    "id": "consultant-notes",
+                    "classes": "nhsuk-u-width-one-half",
+                    "label": {
+                      "text": "Notes for consultant details"
+                    }
+                  }) }}
+
+            {% endset -%}
+
+
+
+            {{ radios({
+            "idPrefix": "contact",
+            "name": "contact",
+            "fieldset": {
+                "legend": {
+                "text": "Deceased's consultant details known?",
+                "classes": "nhsuk-fieldset__legend--m"
+                }
+            },
+            "items": [
+                {
+                "value": "Yes",
+                "text": "Yes",
+                "conditional": {
+                    "html": consultantHtml
+                }
+                },
+                {
+                "value": "No",
+                "text": "No"
+                }
+            ]
+            }) }}
+                        
             <button class="nhsuk-button" id="save-and-continue-button" type="submit" name="ap-complete-section">
                 Save and continue
             </button>
