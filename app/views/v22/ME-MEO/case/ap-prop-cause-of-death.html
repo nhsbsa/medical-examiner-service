@@ -127,13 +127,106 @@ Case details
             <label class="nhsuk-label nhsuk-u-width-one-half" for="gmcNumber">
                 Alternative contact method <span class="optional-span">(optional)
             </label>
-            <input class="nhsuk-input nhsuk-input--width-20" id="gmcNumber" name="gmcNumber" type="text" value="{{ data['gmcNumber'] }}">
+            <input class="nhsuk-input nhsuk-u-width-one-half" id="gmcNumber" name="gmcNumber" type="text" value="{{ data['gmcNumber'] }}">
         </div>
+
+
+        {% set consultantHtml %}
+            
+        {{ input({
+            "label": {
+            "text": "First name"
+            },
+            "id": "consultant-first-name",
+            "name": "consultant-first-name",
+            "classes": "nhsuk-u-width-one-half"
+        }) }}
+        {{ input({
+            "label": {
+            "text": "Last name"
+            },
+            "id": "consultant-last-name",
+            "name": "consultant-last-name",
+            "classes": "nhsuk-u-width-one-half"
+        }) }}
+        {{ input({
+            "label": {
+            "text": "Department (optional)"
+            },
+            "id": "consultant-department",
+            "name": "consultant-department",
+            "classes": "nhsuk-u-width-one-half"
+        }) }}
+        {{ input({
+            "label": {
+            "text": "Contact phone or bleep number (optional)"
+            },
+            "id": "consultant-phone-bleep",
+            "name": "consultant-phone-bleep",
+            "classes": "nhsuk-input--width-20"
+        }) }}
+        {{ input({
+            "label": {
+            "text": "GMC number (optional)"
+            },
+            "id": "consultant-gmc",
+            "name": "consultant-gmc",
+            "classes": "nhsuk-input--width-20"
+        }) }}
+        {{ input({
+            "label": {
+            "text": "Alternative contact method (optional)"
+            },
+            "id": "consultant-gmc",
+            "name": "consultant-gmc",
+            "classes": "nhsuk-u-width-one-half"
+        }) }}
+        {{ textarea({
+            "name": "consultant-notes",
+            "id": "consultant-notes",
+            "classes": "nhsuk-u-width-one-half",
+            "label": {
+              "text": "Notes for consultant details (optional)"
+            }
+          }) }}
+
+    {% endset -%}
+
+
+
+    {{ radios({
+    "idPrefix": "contact",
+    "name": "contact",
+    "fieldset": {
+        "legend": {
+        "text": "Do you want add contact details for the deceased's consultant?",
+        "classes": "nhsuk-fieldset__legend--m"
+        }
+    },
+    "hint": {
+        "text": "This question may need some hint text."
+      },
+    "items": [
+        {
+        "value": "Yes",
+        "text": "Yes",
+        "conditional": {
+            "html": consultantHtml
+        }
+        },
+        {
+        "value": "No",
+        "text": "No"
+        }
+    ]
+    }) }}
+
+
 
         <hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">
 
 
-        <h2 class="nhsuk-heading-m" id="primary-details-header">Proposed cause of death</h2>
+        <h2 class="nhsuk-heading-m" id="primary-details-header">AP's proposed cause of death</h2>
 
 
             <div class="nhsuk-form-group">
@@ -210,84 +303,7 @@ Case details
             </div>
 
 
-            {% set consultantHtml %}
-            
-                {{ input({
-                    "label": {
-                    "text": "First name"
-                    },
-                    "id": "consultant-first-name",
-                    "name": "consultant-first-name",
-                    "classes": "nhsuk-u-width-one-half"
-                }) }}
-                {{ input({
-                    "label": {
-                    "text": "Last name"
-                    },
-                    "id": "consultant-last-name",
-                    "name": "consultant-last-name",
-                    "classes": "nhsuk-u-width-one-half"
-                }) }}
-                {{ input({
-                    "label": {
-                    "text": "Department (optional)"
-                    },
-                    "id": "consultant-department",
-                    "name": "consultant-department",
-                    "classes": "nhsuk-u-width-one-half"
-                }) }}
-                {{ input({
-                    "label": {
-                    "text": "Contact phone or bleep number (optional)"
-                    },
-                    "id": "consultant-phone-bleep",
-                    "name": "consultant-phone-bleep",
-                    "classes": "nhsuk-u-width-one-half"
-                }) }}
-                {{ input({
-                    "label": {
-                    "text": "GMC number (optional)"
-                    },
-                    "id": "consultant-gmc",
-                    "name": "consultant-gmc",
-                    "classes": "nhsuk-u-width-one-half"
-                }) }}
-                {{ textarea({
-                    "name": "consultant-notes",
-                    "id": "consultant-notes",
-                    "classes": "nhsuk-u-width-one-half",
-                    "label": {
-                      "text": "Notes for consultant details"
-                    }
-                  }) }}
 
-            {% endset -%}
-
-
-
-            {{ radios({
-            "idPrefix": "contact",
-            "name": "contact",
-            "fieldset": {
-                "legend": {
-                "text": "Deceased's consultant details known?",
-                "classes": "nhsuk-fieldset__legend--m"
-                }
-            },
-            "items": [
-                {
-                "value": "Yes",
-                "text": "Yes",
-                "conditional": {
-                    "html": consultantHtml
-                }
-                },
-                {
-                "value": "No",
-                "text": "No"
-                }
-            ]
-            }) }}
                         
             <button class="nhsuk-button" id="save-and-continue-button" type="submit" name="ap-complete-section">
                 Save and continue
