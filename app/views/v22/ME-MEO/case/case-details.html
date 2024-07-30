@@ -68,7 +68,12 @@ Case details
     <h1 class="nhsuk-heading-l mb40">
       Case details <span class="nhsuk-caption-m caption-progress">
 
-      {% if data['hospital-death'] %}
+
+      {% if data['nok-first-name'] and data['hospital-death'] and data['assign-medical-examiner'] %}
+        <b>Progress:</b> 4 of 4 sections complete
+      {% elif data['nok-first-name'] and data['hospital-death'] %}
+        <b>Progress:</b> 3 of 4 sections complete
+      {% elif data['hospital-death'] %}
         <b>Progress:</b> 2 of 4 sections complete
       {% else %}
         <b>Progress:</b> 1 of 4 sections complete
