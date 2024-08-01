@@ -66,7 +66,13 @@ Case details
   <p>Case concerns can be raised when recording a communication or note.</p>
 </div>-->
 
-<p><a href="record-event" class="nhsuk-button">Add a communication or note</a></p>
+<p><a href="record-event" class="nhsuk-button">Record a communication</a>
+
+<a href="record-note" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+   Record a note
+ </a>
+
+</p>
 
 
 
@@ -75,7 +81,7 @@ Case details
   <ul>
     <li><a href="case-timeline">All 
       
-      {% if data['timeline-event']=='event-comm'%}
+      {% if data['timeline-event'] %}
       (<b>7</b>)
       {% else %}
        (<b>6</b>)
@@ -84,7 +90,7 @@ Case details
      </a></li>
     <li><a href="case-timeline-comm">Communications 
       
-      {% if data['timeline-event']=='event-comm'%}
+      {% if data['timeline-event'] %}
       <span class="nhs-notification">2</span>
       {% else %}
        <span class="nhs-notification">1</span>
@@ -93,7 +99,7 @@ Case details
     </a></li>
     <li><a href="case-timeline-note">Notes 
       
-      {% if data['timeline-event']=='event-note'%}
+      {% if data['detailsOfNote'] %}
       <span class="nhs-notification">2</span>
       {% else %}
        <span class="nhs-notification">1</span>
@@ -105,7 +111,7 @@ Case details
       {% if data['concern-recorded']=='concern-recorded-yes'%}
      <span class="nhs-notification urgent-notify">1</span>
      {% else %}
-     <span class="nhs-notification urgent-notify">0</span>
+     <span class="nhs-notification">0</span>
      {% endif %} 
      
      </a></li>

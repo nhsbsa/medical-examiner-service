@@ -762,3 +762,23 @@ p {
   }
 }
 
+.nhsuk-warning-callout {
+  margin-top: 20px!important;
+
+}
+
+
+.urgent-note {
+  background: rgba($color_nhsuk-red, 0.08);
+ //border-left: 5px solid $color_nhsuk-red;
+  padding: 20px!important;
+}
+
+
+.nok-complete {
+  background: rgba($color_nhsuk-green, 0.08);
+  //border-left: 5px solid $color_nhsuk-green;
+  padding: 20px!important;
+  margin-top: 20px;
+}
+
