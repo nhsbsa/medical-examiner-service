@@ -66,10 +66,10 @@ Case details
 <!--<div class="nhsuk-inset-text">
   <p>Case concerns can be raised when recording a communication or note.</p>
 </div>-->
-<p><a href="record-event" class="nhsuk-button">Record a communication</a>
+<p><a href="record-event" class="nhsuk-button">Add a communication</a>
 
 <a href="record-note" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
-   Record a note
+   Add a note
  </a>
 
 </p>
@@ -82,40 +82,40 @@ Case details
     <li><a href="case-timeline">All 
       
       {% if data['timeline-event'] %}
-      (<b>7</b>)
+      (<b>2</b>)
       {% else %}
-       (<b>6</b>)
+       (<b>1</b>)
        {% endif %} 
 
      </a></li>
     <li><a href="case-timeline-comm">Communications 
       
       {% if data['timeline-event'] %}
-      <span class="nhs-notification">2</span>
+      <span class="nhs-notification">1</span>
       {% else %}
-       <span class="nhs-notification">1</span>
+       <span class="nhs-notification">0</span>
        {% endif %} 
     
     </a></li>
     <li><a href="case-timeline-note">Notes 
       
       {% if data['detailsOfNote'] %}
-      <span class="nhs-notification">2</span>
+      <span class="nhs-notification">1</span>
       {% else %}
-       <span class="nhs-notification">1</span>
+       <span class="nhs-notification">0</span>
        {% endif %} 
       
       </a></li>
     <li><a href="case-timeline-concern" class="active">Concerns 
       
       {% if data['concern-recorded']=='concern-recorded-yes'%}
-     <span class="nhs-notification urgent-notify">1</span>
+     <span class="nhs-notification">1</span>
      {% else %}
      <span class="nhs-notification">0</span>
      {% endif %} 
      
      </a></li>
-    <li><a href="case-timeline-mile">Case progress (<b>4</b>)</a></li>
+    <li><a href="case-timeline-mile">Case progress (<b>1</b>)</a></li>
   </ul>
   </ul>
 </section>
@@ -179,11 +179,11 @@ Case details
        {% else %}
       
       <h2 class="nhs-timeline__title">
-        The proposed cause of death has been discussed and agreed with John Doe (Next of kin).
+        Phone conversation with John Doe (Next of kin)
       </h2>
       
       {% endif %}
-      <p class="nhs-timeline__byline">Added by Ibrahima Gakpo on <time datetime="2019-06-14T14:01:00.000Z">4 August 2024 at 12:00pm</time></p>
+      
     </div>
   
     <div class="nhs-timeline__description">    
@@ -192,63 +192,78 @@ Case details
       
       
       {% if data['nok-detail']=='nok-detail-no'%}
-  
-     <p class="mt20">{{ data['comms-details-1'] }}</p>
+      
+      
+      {% if data['concern-recorded']=='concern-recorded-yes'%}
+       <div class="nhsuk-warning-callout callout-blue">
+       <h3 class="nhsuk-warning-callout__label">
+         Concerns raised<span class="nhsuk-u-visually-hidden">:</span>
+       </h3>
+      <p>{{ data['comms-details-99'] }}</p>
+      
+      
+      <div class="concerns-card">
+      
+         {% if data['concern-why2'].includes('case-review') %}
+         
+        <p><strong class="nhsuk-tag nhsuk-tag--blue">Recommend case record review</strong></p>
+       
+         
+         {% endif %}
+         
+         
+         {% if data['concern-why2'].includes('case-clinical') %}
+         
+        <p> <strong class="nhsuk-tag nhsuk-tag--blue">Recommend clinical governance processes review</strong></p>
+         
+         {% endif %}
+        
+        
+         {% if data['concern-why2'].includes('patient-safety') %}
+         
+        <p> <strong class="nhsuk-tag nhsuk-tag--blue">Patient safety incident</strong></p>
+        
+         {% endif %}
+        
+        
+         {% if data['concern-why2'].includes('pals-refer') %}
+        
+        <p><strong class="nhsuk-tag nhsuk-tag--blue">Signposted to PALS</strong></p>
+      
+         {% endif %}
+         
+         </div>
+      
+     </div>
+     
+     
      
      {% else %}
      
-    
-     <p class="nok-complete">{{ data['comms-details-nok'] }}</p>
+     <p>{{ data['comms-details-99'] }}</p>
+  
+     {% endif %} 
+  
+     
+     {% else %}
+     
+     <div class="nhsuk-warning-callout callout-green">
+       <h3 class="nhsuk-warning-callout__label">
+         Next of kin conversation completed<span class="nhsuk-u-visually-hidden">:</span>
+       </h3>
+       <p>{{ data['comms-details-nok'] }}</p>
+     </div>
      
     
      
      {% endif %}
          
-     
-     
-   {% if data['concern-recorded']=='concern-recorded-yes'%}
-    
-    
-    <div class="concerns-card">
   
-     {% if data['concern-why2'].includes('case-review') %}
      
-    <p><strong class="nhsuk-tag nhsuk-tag--red">Recommend case record review</strong></p>
-   
-       
-     {% endif %}
-     
-     
-     {% if data['concern-why2'].includes('case-clinical') %}
-     
-    <p> <strong class="nhsuk-tag nhsuk-tag--red">Recommend clinical governance processes review</strong></p>
-       
-     {% endif %}
-    
-    
-     {% if data['concern-why2'].includes('patient-safety') %}
-     
-    <p> <strong class="nhsuk-tag nhsuk-tag--red">Patient safety incident</strong></p>
-    
-     {% endif %}
-    
-    
-     {% if data['concern-why2'].includes('pals-refer') %}
-    
-    <p><strong class="nhsuk-tag nhsuk-tag--red">Signposted to PALS</strong></p>
-  
-     {% endif %}
      
      </div>
      
-     {% else %}
-     
-      
-      {% endif %}
-     
-     
-     
-     </div>
+     <p class="nhs-timeline__byline">Added by Roberto Gerrard on <time datetime="2019-06-14T14:01:00.000Z">4 August 2024 at 12:00pm</time></p>
        
      </div>
      
@@ -306,61 +321,67 @@ Case details
      </h2>
       
      
-     <p class="nhs-timeline__byline">Added by Ibrahima Gakpo on <time datetime="2019-06-14T14:01:00.000Z">4 August 2024 at 12:00pm</time></p>
+  
      </div>
    
      <div class="nhs-timeline__description">    
+       
+       {% if data['concern-recorded']=='concern-recorded-yes'%}
+       <div class="nhsuk-warning-callout callout-blue">
+       <h3 class="nhsuk-warning-callout__label">
+         Concerns raised<span class="nhsuk-u-visually-hidden">:</span>
+       </h3>
+      <p>{{ data['other-comms-detail'] }}</p>
+      
+      
+      <div class="concerns-card">
      
+        {% if data['concern-why2'].includes('case-review') %}
+        
+       <p><strong class="nhsuk-tag nhsuk-tag--blue">Recommend case record review</strong></p>
+      
+        
+        {% endif %}
+        
+        
+        {% if data['concern-why2'].includes('case-clinical') %}
+        
+       <p> <strong class="nhsuk-tag nhsuk-tag--blue">Recommend clinical governance processes review</strong></p>
+        
+        {% endif %}
+       
+       
+        {% if data['concern-why2'].includes('patient-safety') %}
+        
+       <p> <strong class="nhsuk-tag nhsuk-tag--blue">Patient safety incident</strong></p>
+       
+        {% endif %}
+       
+       
+        {% if data['concern-why2'].includes('pals-refer') %}
+       
+       <p><strong class="nhsuk-tag nhsuk-tag--blue">Signposted to PALS</strong></p>
      
+        {% endif %}
+        
+        </div>
+      
+     </div>
+     
+     {% else %}
+   <p class="mt20">{{ data['other-comms-detail'] }}</p>
+     {% endif %} 
    
    
-      <p class="mt20">{{ data['other-comms-detail'] }}</p>
       
       
       
-    {% if data['concern-recorded']=='concern-recorded-yes'%}
-     
-     
-     <div class="concerns-card">
-   
-      {% if data['concern-why2'].includes('case-review') %}
-      
-     <p><strong class="nhsuk-tag nhsuk-tag--red">Recommend case record review</strong></p>
-    
-      
-      {% endif %}
-      
-      
-      {% if data['concern-why2'].includes('case-clinical') %}
-      
-     <p> <strong class="nhsuk-tag nhsuk-tag--red">Recommend clinical governance processes review</strong></p>
-      
-      {% endif %}
-     
-     
-      {% if data['concern-why2'].includes('patient-safety') %}
-      
-     <p> <strong class="nhsuk-tag nhsuk-tag--red">Patient safety incident</strong></p>
-     
-      {% endif %}
-     
-     
-      {% if data['concern-why2'].includes('pals-refer') %}
-     
-     <p><strong class="nhsuk-tag nhsuk-tag--red">Signposted to PALS</strong></p>
-   
-      {% endif %}
-      
-      </div>
-   
-   
-   {% else %}
-   
-   
-    
-    {% endif %}
+  
     
     </div>
+    
+    
+    <p class="nhs-timeline__byline">Added by Roberto Gerrard on <time datetime="2019-06-14T14:01:00.000Z">4 August 2024 at 12:00pm</time></p>
        
      </div>
      
@@ -371,95 +392,6 @@ Case details
   
    
    {% endif %}
-   
-   
-   
-     
-  
-  
-  
-  
- {% if data['detailsOfNote'] %}
- 
- <div class="nhs-timeline__item">
- 
-   <div class="nhs-timeline__header">
- 
-      <h2 class="nhs-timeline__title">
-        Case note  {% if data['urgent-note']=='urgent-note-yes'%}(Urgent){% else %}{% endif %}
-      </h2>
-     
-     <p class="nhs-timeline__byline">Added by Ibrahima Gakpo on <time datetime="2019-06-14T14:01:00.000Z">4 July 2024 at 12:00pm</time></p>
-   </div>
- 
- 
-   <div class="nhs-timeline__description">    
-      
-       
-       {% if data['urgent-note']=='urgent-note-yes'%}
-       
- <p class="urgent-note">{{ data['detailsOfNote'] }}</p>
-          
-          {% else %}
-          
- <p>{{ data['detailsOfNote'] }}</p>
-     
-          {% endif %}
-       
-       
-       
-       {% if data['concern-recorded']=='concern-recorded-yes'%}
-        
-        
-        <div class="concerns-card">
-     
-         {% if data['concern-why2'].includes('case-review') %}
-         
-        <p><strong class="nhsuk-tag nhsuk-tag--red">Recommend case record review</strong></p>
-       
-           
-         {% endif %}
-         
-         
-         {% if data['concern-why2'].includes('case-clinical') %}
-         
-        <p> <strong class="nhsuk-tag nhsuk-tag--red">Recommend clinical governance processes review</strong></p>
-           
-         {% endif %}
-        
-        
-         {% if data['concern-why2'].includes('patient-safety') %}
-         
-        <p> <strong class="nhsuk-tag nhsuk-tag--red">Patient safety incident</strong></p>
-        
-         {% endif %}
-        
-        
-         {% if data['concern-why2'].includes('pals-refer') %}
-        
-        <p><strong class="nhsuk-tag nhsuk-tag--red">Signposted to PALS</strong></p>
-     
-         {% endif %}
-         
-         </div>
-        
-     
-       {% else %}
-       
-       
-     
-     
-     
-       {% endif %}
-       
-   </div>
-   
- </div>
- 
- {% else %}
- 
- 
- {% endif %}
   
   
   

@@ -456,7 +456,7 @@ position: relative;
 }
 
 .nhs-timeline__description {
-  margin-top:-15px; margin-bottom:15px;
+ 
   h4 {
   font-size: 19px;
   margin: 0;
@@ -465,13 +465,19 @@ p {
   margin: 16px 0 0 0;
   padding: 0;
   }
+  
+  .nhsuk-warning-callout {
+    p {
+      margin-top: 0!important;
+    }
+  }
 }
 
 
 .nhs-timeline__byline {
   color: $nhsuk-secondary-text-color;
   font-weight: normal;
-  padding-top: 5px;
+  padding-top: 14px;
   font-size:17px;
 }
 
@@ -781,4 +787,32 @@ p {
   padding: 20px!important;
   margin-top: 20px;
 }
+
+
+.nhs-timeline__item {
+  .nhsuk-warning-callout {
+    margin: 36px 0 0 0!important;
+    //width: 80%;
+    &.callout-green {
+      background: rgba($color_nhsuk-green, 0.08);
+      border-color: $color_nhsuk-green;
+      .nhsuk-warning-callout__label {
+        background: $color_nhsuk-green;
+        color: $color_nhsuk-white;
+      }
+    }
+    &.callout-blue {
+      background: rgba($color_nhsuk-blue, 0.08);
+      border-color: $color_nhsuk-blue;
+      .nhsuk-warning-callout__label {
+        background: $color_nhsuk-blue;
+        color: $color_nhsuk-white;
+      }
+    }
+  }
+  .nhsuk-warning-callout__label {
+    font-size: 17px;
+  }
+}
+
 

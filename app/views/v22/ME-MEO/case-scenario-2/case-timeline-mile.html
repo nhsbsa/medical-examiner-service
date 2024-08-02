@@ -66,10 +66,10 @@ Case details
   <p>Case concerns can be raised when recording a communication or note.</p>
 </div>-->
 
-<p><a href="record-event" class="nhsuk-button">Record a communication</a>
+<p><a href="record-event" class="nhsuk-button">Add a communication</a>
 
 <a href="record-note" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
-   Record a note
+   Add a note
  </a>
 
 </p>
@@ -82,40 +82,40 @@ Case details
     <li><a href="case-timeline">All 
       
       {% if data['timeline-event'] %}
-      (<b>7</b>)
+      (<b>2</b>)
       {% else %}
-       (<b>6</b>)
+       (<b>1</b>)
        {% endif %} 
 
      </a></li>
     <li><a href="case-timeline-comm">Communications 
       
       {% if data['timeline-event'] %}
-      <span class="nhs-notification">2</span>
+      <span class="nhs-notification">1</span>
       {% else %}
-       <span class="nhs-notification">1</span>
+       <span class="nhs-notification">0</span>
        {% endif %} 
     
     </a></li>
     <li><a href="case-timeline-note">Notes 
       
       {% if data['detailsOfNote'] %}
-      <span class="nhs-notification">2</span>
+      <span class="nhs-notification">1</span>
       {% else %}
-       <span class="nhs-notification">1</span>
+       <span class="nhs-notification">0</span>
        {% endif %} 
       
       </a></li>
     <li><a href="case-timeline-concern">Concerns 
       
       {% if data['concern-recorded']=='concern-recorded-yes'%}
-     <span class="nhs-notification urgent-notify">1</span>
+     <span class="nhs-notification">1</span>
      {% else %}
      <span class="nhs-notification">0</span>
      {% endif %} 
      
      </a></li>
-    <li><a href="#" class="active">Case progress (<b>4</b>)</a></li>
+    <li><a href="#" class="active">Case progress (<b>1</b>)</a></li>
   </ul>
   </ul>
 </section>
@@ -134,51 +134,14 @@ Case details
 <div class="nhs-timeline">
 
 
-<div class="nhs-timeline__item">
-
-  <div class="nhs-timeline__header">
-    <h2 class="nhs-timeline__title">
-      Pre scrutiny details added
-    </h2>
-    <p class="nhs-timeline__byline">by Ibrahima Gakpo on <time datetime="2019-06-14T14:01:00.000Z">2 July 2024 at 13:10pm</time></p>
-  </div>
-
-</div>
-
 
 <div class="nhs-timeline__item">
 
   <div class="nhs-timeline__header">
     <h2 class="nhs-timeline__title">
-      Next of kin details completed
+      Case created
     </h2>
-    <p class="nhs-timeline__byline">by Ibrahima Gakpo on <time datetime="2019-06-14T14:01:00.000Z">2 July 2024 at 09:40am</time></p>
-  </div>
-
-</div>
-
-<div class="nhs-timeline__item">
-
-  <div class="nhs-timeline__header">
-    <h2 class="nhs-timeline__title">
-      Location of death details completed
-    </h2>
-    <p class="nhs-timeline__byline">by Ibrahima Gakpo on <time datetime="2019-06-14T14:01:00.000Z">2 July 2024 at 09:30am</time></p>
-  </div>
-
-  
-</div>
-
-
-
-
-<div class="nhs-timeline__item">
-
-  <div class="nhs-timeline__header">
-    <h2 class="nhs-timeline__title">
-      Deceased person's details completed 
-    </h2>
-    <p class="nhs-timeline__byline">by Ibrahima Gakpo on <time datetime="2019-06-14T14:01:00.000Z">2 July 2024 at 09:10am</time></p>
+    <p class="nhs-timeline__byline">by Roberto Gerrard on <time datetime="2019-06-14T14:01:00.000Z">2 July 2024 at 13:10pm</time></p>
   </div>
 
 </div>
