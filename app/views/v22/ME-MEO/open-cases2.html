@@ -31,9 +31,9 @@ Open cases
     </span>
 
       {% if data['deceased-first-name'] %}
-          Open cases (5)
+          Open cases (6)
       {% else %}
-          Open cases (4)
+          Open cases (5)
       {% endif %}
       
     </h1>
@@ -99,6 +99,26 @@ Open cases
         </tr>
            
         {% endif %}
+
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="case-scenario-3/case-timeline">Nicola Swift</a>
+            <p class="td-first">NHS: 123 456 789</p>
+          </td>
+          <td class="nhsuk-table__cell">
+            2 August 2024
+          </td>
+         <td class="nhsuk-table__cell">
+           <strong class="nhsuk-tag nhsuk-tag--green">Complete</strong>
+         </td>
+         <td class="nhsuk-table__cell">
+           <strong class="nhsuk-tag nhsuk-tag--blue">In progress</strong>
+         </td>
+         <td class="nhsuk-table__cell">
+           <p class="td-first">IG (MEO)</p>
+           <p class="td-first">BH (ME)</p>
+         </td>
+        </tr>
 
 
         <tr class="nhsuk-table__row">
@@ -200,9 +220,9 @@ Open cases
             <a class="active" href="open-cases2">Open cases</a>
             <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag" style="border-radius: 15px; color:	#005eb8; border:none">
               {% if data['deceased-first-name'] %}
-                  5
+                  6
               {% else %}
-                  4
+                  5
               {% endif %}
             </strong>
           </li>
