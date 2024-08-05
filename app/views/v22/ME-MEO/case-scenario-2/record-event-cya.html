@@ -95,10 +95,10 @@ Case details
             Communication with
           </dt>
           <dd class="nhsuk-summary-list__value">
-            <!--{{ data['personName'] }}-->John Doe
+            <!--{{ data['personName'] }}-->Mary Todd
           </dd>
           <dd class="nhsuk-summary-list__actions">
-            <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> communication with</span></a>
+           
           </dd>
         </div>
         
@@ -111,10 +111,54 @@ Case details
              <!--{{ data['contactRole'] }}-->Next of kin
            </dd>
            <dd class="nhsuk-summary-list__actions">
-             <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> role</span></a>
+            
            </dd>
          </div>
+         
+         
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Details
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+             {{ data['comms-details-99'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> details</span></a>
+            </dd>
+          </div>
+          
+          
+          <div class="nhsuk-summary-list__row">
+             <dt class="nhsuk-summary-list__key">
+               Method
+             </dt>
+             <dd class="nhsuk-summary-list__value">
+               Phone call
+             </dd>
+             <dd class="nhsuk-summary-list__actions">
+               <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> method</span></a>
+             </dd>
+           </div>
 
+        
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Concerns raised
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if data['concern-recorded']=='concern-recorded-yes'%}
+            Yes
+            {% else %}
+            No
+            {% endif %}
+
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> concerns</span></a>
+          </dd>
+        </div>
+        
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Date
@@ -126,29 +170,8 @@ Case details
             <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> date and time</span></a>
           </dd>
         </div>
-        <div class="nhsuk-summary-list__row">
-           <dt class="nhsuk-summary-list__key">
-             Method
-           </dt>
-           <dd class="nhsuk-summary-list__value">
-             Phone call
-           </dd>
-           <dd class="nhsuk-summary-list__actions">
-             <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> method</span></a>
-           </dd>
-         </div>
+       
          
-         <div class="nhsuk-summary-list__row">
-           <dt class="nhsuk-summary-list__key">
-             Details
-           </dt>
-           <dd class="nhsuk-summary-list__value">
-            {{ data['comms-details-1'] }}
-           </dd>
-           <dd class="nhsuk-summary-list__actions">
-             <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> details</span></a>
-           </dd>
-         </div>
         
       </dl>
       

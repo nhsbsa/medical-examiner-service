@@ -84,7 +84,7 @@ Case details
        <h3 class="nhsuk-warning-callout__label">
          Important<span class="nhsuk-u-visually-hidden">:</span>
        </h3>
-       <p>You cannot edit communications or notes after submitting them.</p>
+      <p>You cannot edit communications or notes after submitting them.</p>
      </div>
      
      
@@ -95,11 +95,10 @@ Case details
             Communication with
           </dt>
           <dd class="nhsuk-summary-list__value">
-            {{ data['personName'] }}
+            <!--{{ data['personName'] }}-->Mary Todd
           </dd>
-          <dd class="nhsuk-summary-list__actions">
-            <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> communication with</span></a>
-          </dd>
+          <dd class="nhsuk-summary-list__actions"></dd>
+          
         </div>
         
         
@@ -108,11 +107,10 @@ Case details
              Role or relevance 
            </dt>
            <dd class="nhsuk-summary-list__value">
-             {{ data['contactRole'] }}
+             <!--{{ data['contactRole'] }}-->Next of kin
            </dd>
-           <dd class="nhsuk-summary-list__actions">
-             <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> role</span></a>
-           </dd>
+           <dd class="nhsuk-summary-list__actions"></dd>
+
          </div>
          
          <div class="nhsuk-summary-list__row">
@@ -120,7 +118,7 @@ Case details
               Details
             </dt>
             <dd class="nhsuk-summary-list__value">
-             {{ data['other-comms-detail'] }}
+             {{ data['comms-details-nok'] }}
             </dd>
             <dd class="nhsuk-summary-list__actions">
               <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> details</span></a>
@@ -139,39 +137,20 @@ Case details
              </dd>
            </div>
 
-      
-        
-        
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
-            Concerns raised
+            Date
           </dt>
           <dd class="nhsuk-summary-list__value">
-            {% if data['concern-recorded']=='concern-recorded-yes'%}
-            Yes
-            {% else %}
-            No
-            {% endif %}
-
+            4 June 2024
           </dd>
           <dd class="nhsuk-summary-list__actions">
-            <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> concerns</span></a>
+            <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> date and time</span></a>
           </dd>
         </div>
+       
          
          
-         <div class="nhsuk-summary-list__row">
-           <dt class="nhsuk-summary-list__key">
-             Date
-           </dt>
-           <dd class="nhsuk-summary-list__value">
-             4 June 2024
-           </dd>
-           <dd class="nhsuk-summary-list__actions">
-             <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> date and time</span></a>
-           </dd>
-         </div>
-        
         
       </dl>
       
