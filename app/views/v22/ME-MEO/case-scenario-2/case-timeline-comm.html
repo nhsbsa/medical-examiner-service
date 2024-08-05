@@ -94,7 +94,7 @@ Case details
       {% if data['timeline-event'] %}
       <span class="nhs-notification">1</span>
       {% else %}
-       <span class="nhs-notification">0</span>
+       (<b>0</b>)
        {% endif %} 
     
     </a></li>
@@ -103,7 +103,7 @@ Case details
       {% if data['detailsOfNote'] %}
       <span class="nhs-notification">1</span>
       {% else %}
-       <span class="nhs-notification">0</span>
+       (<b>0</b>)
        {% endif %} 
       
       </a></li>
@@ -112,7 +112,7 @@ Case details
       {% if data['concern-recorded']=='concern-recorded-yes'%}
      <span class="nhs-notification">1</span>
      {% else %}
-     <span class="nhs-notification">0</span>
+     (<b>0</b>)
      {% endif %} 
      
      </a></li>
