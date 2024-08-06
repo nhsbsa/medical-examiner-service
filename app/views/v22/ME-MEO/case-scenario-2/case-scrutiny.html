@@ -329,7 +329,7 @@ Case details
 {% else %}
     <p>No details have been added for the AP proposed cause of death.</p>
     <div class="nav-flow">
-      <a href="ap-prop-cause-of-death" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+      <a href="not-testing" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
       Add AP proposed cause of death
     </a>
     </div>
@@ -348,7 +348,7 @@ Case details
       <h2 class="nhsuk-heading-m" id="deceased-persons-details-header">
         <span class="section-main-title">Medical examiner's independent review</span>
       {% if data['reviewConfirmed'] %}
-       <strong class="nhsuk-tag nhsuk-tag-green align-right">Complete</strong>
+       <strong class="nhsuk-tag nhsuk-tag--green align-right">Complete</strong>
        {% else %}
        <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
      {% endif %}
@@ -381,11 +381,7 @@ Case details
         <dd class="nhsuk-summary-list__value">
           {{ data['accessToRequestedDocumentation'] }}
         </dd>
-        <dd class="nhsuk-summary-list__actions">
-          <a href="record-review">
-            Change<span class="nhsuk-u-visually-hidden"> Access to required documentation</span>
-          </a>
-        </dd>
+
       </div>
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
@@ -394,11 +390,7 @@ Case details
         <dd class="nhsuk-summary-list__value">
           {{ data['reviewDetails'] }}
         </dd>
-        <dd class="nhsuk-summary-list__actions">
-          <a href="record-review">
-            Change<span class="nhsuk-u-visually-hidden"> Review details</span>
-          </a>
-        </dd>
+
       </div>
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
@@ -407,11 +399,7 @@ Case details
         <dd class="nhsuk-summary-list__value">
           {{ data['reviewCauseOfDeathSummary'] }}
         </dd>
-        <dd class="nhsuk-summary-list__actions">
-          <a href="record-review#reviewCauseOfDeathSummary">
-            Change<span class="nhsuk-u-visually-hidden"> cause of death summary</span>
-          </a>
-        </dd>
+
       </div>
 
 
@@ -423,11 +411,7 @@ Case details
           <dd class="nhsuk-summary-list__value">
             {{ data['reviewCauseOfDeath1a'] }}
           </dd>
-          <dd class="nhsuk-summary-list__actions">
-            <a href="record-review#reviewCauseOfDeath1a">
-              Change<span class="nhsuk-u-visually-hidden"> 1(a) disease or condition directly leading to death</span>
-            </a>
-          </dd>
+
         </div>
 
         <div class="nhsuk-summary-list__row">
@@ -438,11 +422,7 @@ Case details
             {{ data['reviewOnsetInterval1a'] }}
             {{ data['reviewOnsetInterval1ab'] }}
           </dd>
-          <dd class="nhsuk-summary-list__actions">
-            <a href="record-review#reviewOnsetInterval1a">
-              Change<span class="nhsuk-u-visually-hidden"> Approximate interval between onset of 1(a) and death</span>
-            </a>
-          </dd>
+
         </div>
 
         <div class="nhsuk-summary-list__row">
@@ -452,11 +432,7 @@ Case details
           <dd class="nhsuk-summary-list__value">
             {{ data['reviewCauseOfDeath1b'] }}
           </dd>
-          <dd class="nhsuk-summary-list__actions">
-            <a href="record-review#reviewCauseOfDeath1b">
-              Change<span class="nhsuk-u-visually-hidden"> 1(b) other disease or condition leading to 1(a)</span>
-            </a>
-          </dd>
+
         </div>
 
         <div class="nhsuk-summary-list__row">
@@ -467,11 +443,7 @@ Case details
             {{ data['reviewOnsetInterval1b'] }}
              {{ data['reviewOnsetInterval1bb'] }}
           </dd>
-          <dd class="nhsuk-summary-list__actions">
-            <a href="record-review#reviewOnsetInterval1b">
-              Change<span class="nhsuk-u-visually-hidden"> Approximate interval between onset of 1(b) and death</span>
-            </a>
-          </dd>
+
         </div>
 
         <div class="nhsuk-summary-list__row">
@@ -481,11 +453,7 @@ Case details
           <dd class="nhsuk-summary-list__value">
             {{ data['reviewCauseOfDeath1c'] }}
           </dd>
-          <dd class="nhsuk-summary-list__actions">
-            <a href="record-review#reviewCauseOfDeath1c">
-              Change<span class="nhsuk-u-visually-hidden"> 1(c) other disease or condition leading to 1(b)</span>
-            </a>
-          </dd>
+
         </div>
 
         <div class="nhsuk-summary-list__row">
@@ -496,11 +464,7 @@ Case details
             {{ data['reviewOnsetInterval1c'] }}
             {{ data['reviewOnsetInterval1cb'] }}
           </dd>
-          <dd class="nhsuk-summary-list__actions">
-            <a href="record-review#reviewOnsetInterval1c">
-              Change<span class="nhsuk-u-visually-hidden"> Approximate interval between onset of 1(c) and death</span>
-            </a>
-          </dd>
+
         </div>
 
         <div class="nhsuk-summary-list__row">
@@ -510,11 +474,7 @@ Case details
           <dd class="nhsuk-summary-list__value">
             {{ data['reviewCauseOfDeath2'] }}
           </dd>
-          <dd class="nhsuk-summary-list__actions">
-            <a href="record-review#reviewCauseOfDeath2">
-              Change<span class="nhsuk-u-visually-hidden"> 2 - Other significant conditions</span>
-            </a>
-          </dd>
+  
         </div>
 
         <div class="nhsuk-summary-list__row">
@@ -525,21 +485,25 @@ Case details
             {{ data['reviewOnsetInterval2'] }}
             {{ data['reviewOnsetInterval2b'] }}
           </dd>
-          <dd class="nhsuk-summary-list__actions">
-            <a href="record-review#reviewOnsetInterval2">
-              Change<span class="nhsuk-u-visually-hidden"> Approximate interval between onset of 2 and death</span>
-            </a>
-          </dd>
+          
         </div>
 
     </dl>
+    
+    
+    <div class="nav-flow">
+      <a href="record-mer" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+      Change details
+     </a>
+   </div>
+
     
     
     {% else %}
   
     <p>No details have been added.</p>
     <div class="nav-flow">
-      <a href="record-review" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+      <a href="record-mer" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
        Add medical examiner's independent review
      </a>
    </div>
@@ -560,7 +524,7 @@ Case details
     <h2 class="nhsuk-heading-m" id="deceased-persons-details-header">
       <span class="section-main-title">Discussion with the AP about the cause of death</span>
      {% if data['ap-discuss'] %}
-      <strong class="nhsuk-tag nhsuk-tag-green align-right">Complete</strong>
+      <strong class="nhsuk-tag nhsuk-tag--green align-right">Complete</strong>
       {% else %}
       <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
     {% endif %}
@@ -589,11 +553,7 @@ Case details
   <dd class="nhsuk-summary-list__value">
     Yes
   </dd>
-  <dd class="nhsuk-summary-list__actions">
-    <a href="ap-discussion">
-      Change<span class="nhsuk-u-visually-hidden"> Have you and the Attending Practitioner agreed on a cause of death?</span>
-    </a>
-  </dd>
+  
 </div>
 <div class="nhsuk-summary-list__row">
   <dt class="nhsuk-summary-list__key">
@@ -602,11 +562,7 @@ Case details
   <dd class="nhsuk-summary-list__value">
     {{ data['qapFirstNames'] }} {{ data['qapLastName'] }}
   </dd>
-  <dd class="nhsuk-summary-list__actions">
-    <a href="ap-discussion#qapLastName">
-      Change<span class="nhsuk-u-visually-hidden"> Have you and the Attending Practitioner agreed on a cause of death?</span>
-    </a>
-  </dd>
+  
 </div>
 <div class="nhsuk-summary-list__row">
    <dt class="nhsuk-summary-list__key">
@@ -615,11 +571,7 @@ Case details
    <dd class="nhsuk-summary-list__value">
     11 June 2024
    </dd>
-   <dd class="nhsuk-summary-list__actions">
-     <a href="ap-discussion-2">
-       Change<span class="nhsuk-u-visually-hidden"> Date of discussion</span>
-     </a>
-   </dd>
+   
  </div>
  <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">
@@ -628,11 +580,7 @@ Case details
     <dd class="nhsuk-summary-list__value">
       {{ data['example-ap-discussion'] }}
     </dd>
-    <dd class="nhsuk-summary-list__actions">
-      <a href="ap-discussion-2">
-        Change<span class="nhsuk-u-visually-hidden"> details of the discussion</span>
-      </a>
-    </dd>
+    
   </div>
 <div class="nhsuk-summary-list__row">
   <dt class="nhsuk-summary-list__key">
@@ -665,11 +613,7 @@ Case details
    
    {% endif %}
   </dd>
-  <dd class="nhsuk-summary-list__actions">
-    <a href="ap-discussion-2">
-      Change<span class="nhsuk-u-visually-hidden"> details of the discussion</span>
-    </a>
-  </dd>
+  
 </div>
 
 </dl>
@@ -700,13 +644,15 @@ Case details
 
 
     </dd>
-    <dd class="nhsuk-summary-list__actions">
-      <a href="ap-discussion">
-        Change<span class="nhsuk-u-visually-hidden"> Have you had a discussion with AP to agree on cause of death?</span>
-      </a>
-    </dd>
+    
   </div>
   </dl>
+  
+  <div class="nav-flow">
+    <a href="not-testing" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+    Change details
+   </a>
+ </div>
 
 
 {% endif %}
@@ -715,7 +661,7 @@ Case details
 
    <p>No details have been added.</p>
    <div class="nav-flow">
-     <a href="ap-discussion" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+     <a href="not-testing" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
       Add discussion with the AP about the cause of death
     </a>
   </div>
