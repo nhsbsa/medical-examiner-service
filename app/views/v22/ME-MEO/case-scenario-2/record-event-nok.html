@@ -136,6 +136,24 @@ Case details
                <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> method</span></a>
              </dd>
            </div>
+           
+           
+           <div class="nhsuk-summary-list__row">
+             <dt class="nhsuk-summary-list__key">
+               Concerns raised
+             </dt>
+             <dd class="nhsuk-summary-list__value">
+               {% if data['concern-recorded']=='concern-recorded-yes'%}
+               Yes
+               {% else %}
+               No
+               {% endif %}
+   
+             </dd>
+             <dd class="nhsuk-summary-list__actions">
+               <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> concerns</span></a>
+             </dd>
+           </div>
 
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">

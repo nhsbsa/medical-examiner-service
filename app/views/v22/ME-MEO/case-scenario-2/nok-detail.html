@@ -660,7 +660,108 @@ Name of team member
 
 
 
+<hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
 
+
+
+
+
+
+<div class="nhsuk-form-group">
+
+  <fieldset class="nhsuk-fieldset" aria-describedby="recordAsConcern-hint">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+      <h1 class="nhsuk-fieldset__heading">
+        Do you want to record this as a concern?
+      </h1>
+    </legend>
+    <div class="nhsuk-hint" id="recordAsConcern-hint">
+      A medical examiner will review concerns before any action is taken.
+  </div>
+
+    <div class="nhsuk-radios nhsuk-radios--conditional">
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="concern-recorded-yes" name="concern-recorded" type="radio" value="concern-recorded-yes" aria-controls="conditional-contact-rec" aria-expanded="false" value="concern-recorded-yes">
+        <label class="nhsuk-label nhsuk-radios__label" for="concern-recorded-yes">
+          Yes
+        </label>
+      </div>
+
+      <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-rec">
+
+
+
+<div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend">
+            <h1 class="nhsuk-fieldset__heading">
+              Choose a concern type
+            </h1>
+          </legend>
+    
+          <div class="nhsuk-hint" id="contact-hint">
+            Select all that apply.
+          </div>
+    
+          <div class="nhsuk-checkboxes nhsuk-checkboxes--conditional">
+    
+            <div class="nhsuk-checkboxes__item">
+              <input class="nhsuk-checkboxes__input" id="case-review" name="concern-why2" type="checkbox" value="case-review">
+              <label class="nhsuk-label nhsuk-checkboxes__label" for="case-review">
+                Recommend case record review
+              </label>
+            </div>
+            
+            <div class="nhsuk-checkboxes__item">
+              <input class="nhsuk-checkboxes__input" id="case-clinical" name="concern-why2" type="checkbox" value="case-clinical">
+              <label class="nhsuk-label nhsuk-checkboxes__label" for="case-clinical">
+                Recommend clinical governance processes review
+              </label>
+            </div>
+    
+            
+            <div class="nhsuk-checkboxes__item">
+              <input class="nhsuk-checkboxes__input" id="patient-safety" name="concern-why2" type="checkbox" value="patient-safety">
+              <label class="nhsuk-label nhsuk-checkboxes__label" for="patient-safety">
+                Patient safety incident
+              </label>
+            </div>
+    
+      
+    
+            <div class="nhsuk-checkboxes__item">
+              <input class="nhsuk-checkboxes__input" id="pals-refer" name="concern-why2" type="checkbox" value="pals-refer">
+              <label class="nhsuk-label nhsuk-checkboxes__label" for="pals-refer">
+                Signposted to PALS
+              </label>
+            </div>
+    
+        
+    
+          </div>
+        </fieldset>
+        
+</div>
+        
+
+        
+
+      </div>
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="concern-recorded-no" name="concern-recorded" type="radio" value="concern-recorded-no">
+        <label class="nhsuk-label nhsuk-radios__label" for="concern-recorded-no">
+          No
+        </label>
+      </div>
+
+      
+
+    </div>
+  </fieldset>
+
+</div>
 
 
 

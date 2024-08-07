@@ -251,6 +251,55 @@ Case details
        Next of kin conversation completed<span class="nhsuk-u-visually-hidden">:</span>
      </h3>
      <p>{{ data['comms-details-nok'] }}</p>
+     
+     
+     
+     
+     {% if data['concern-recorded']=='concern-recorded-yes'%}
+     
+     
+     <div class="concerns-card">
+  
+      {% if data['concern-why2'].includes('case-review') %}
+      
+     <p><strong class="nhsuk-tag nhsuk-tag-blue">Recommend case record review</strong></p>
+    
+        
+      {% endif %}
+      
+      
+      {% if data['concern-why2'].includes('case-clinical') %}
+      
+     <p> <strong class="nhsuk-tag nhsuk-tag-blue">Recommend clinical governance processes review</strong></p>
+        
+      {% endif %}
+     
+     
+      {% if data['concern-why2'].includes('patient-safety') %}
+      
+     <p> <strong class="nhsuk-tag nhsuk-tag-blue">Patient safety incident</strong></p>
+     
+      {% endif %}
+     
+     
+      {% if data['concern-why2'].includes('pals-refer') %}
+     
+     <p><strong class="nhsuk-tag nhsuk-tag-blue">Signposted to PALS</strong></p>
+  
+      {% endif %}
+      
+      </div>
+     
+  
+    {% else %}
+    
+    
+  
+  
+  
+    {% endif %}   
+     
+     
    </div>
    
   
