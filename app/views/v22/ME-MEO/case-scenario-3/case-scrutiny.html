@@ -62,7 +62,7 @@ Case details
     
     <h1 class="nhsuk-heading-l mb40">
       Case scrutiny <span class="nhsuk-caption-m caption-progress">
-     <b>Progress:</b> 1 of 4 sections complete
+     <b>Progress:</b> 2 of 4 sections complete
     </span>
     </h1>
    <!-- <p class="header-status">Status: <strong class="nhsuk-tag nhsuk-tag--blue">In progress</strong></p>-->
@@ -70,15 +70,14 @@ Case details
     
     <div class="nhsuk-card">
       
-      
      <div class="nhs-card-heading">
         <h2 class="nhsuk-heading-m" id="deceased-persons-details-header">
-          <span class="section-main-title">Medical record notes</span>
+          <span class="section-main-title">Pre-scrutiny notes</span>
     
            <strong class="nhsuk-tag nhsuk-tag--green align-right">Complete</strong>
     
         </h2>
-        <p class="nhs-timestamp">Completed by Ibrahima Gakpo on 4 July 2024 at 2:21pm</p>
+        <p class="nhs-timestamp">Completed by Anita Heart on 5 August 2024 at 10:51am</p>
       </div>
 
       <div class="nhsuk-card__content">
@@ -100,11 +99,8 @@ Case details
   <div class="nhs-card-heading">
     <h2 class="nhsuk-heading-m" id="deceased-persons-details-header">
       <span class="section-main-title">Attending practitioner (AP) proposed cause of death</span>
-    {% if data['declaration2'] %}
-     <strong class="nhsuk-tag nhsuk-tag-green align-right">Complete</strong>
-     {% else %}
-     <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
-   {% endif %}
+      <strong class="nhsuk-tag nhsuk-tag--green align-right">Complete</strong>
+      <p class="nhs-timestamp">Completed by Jake Smith on 5 August 2024 at 1:40pm</p>
   </h2>
     
   </div>
@@ -113,27 +109,17 @@ Case details
     
   
   
-  {% if data['declaration2'] %}
+
 
 <!-- AP Details Section -->
 <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-0">
   <div class="nhsuk-summary-list__row">
-    
     <dt class="nhsuk-summary-list__key">
       AP who proposed cause of death
     </dt>
 
     <dd class="nhsuk-summary-list__value">
-      
-        {{ data['qapFirstNames'] }} {{ data['qapLastName'] }}
-      
-    </dd>
-    <dd class="nhsuk-summary-list__actions">
-      
-      <a href="ap-details">
-        Change<span class="nhsuk-u-visually-hidden"> cause of death summary</span>
-      </a>
-     
+        Adrian Mason
     </dd>
   </div>
 
@@ -144,17 +130,9 @@ Case details
     </dt>
   
     <dd class="nhsuk-summary-list__value">
-      
-        {{ data['contactBleepNumber'] }}
-
-              </dd>
-    <dd class="nhsuk-summary-list__actions">
-      
-      <a href="ap-details#contactBleepNumber">
-        Change<span class="nhsuk-u-visually-hidden"> cause of death summary</span>
-      </a>
-      
+        07787147345
     </dd>
+
   </div>
   
 
@@ -164,17 +142,9 @@ Case details
     </dt>
 
     <dd class="nhsuk-summary-list__value">
-      
-        {{ data['gmcNumber'] }}
-   
-              </dd>
-    <dd class="nhsuk-summary-list__actions">
-
-      <a href="ap-details#gmcNumber">
-        Change<span class="nhsuk-u-visually-hidden"> cause of death summary</span>
-      </a>
-      
+        4875567
     </dd>
+
   </div>
 
 </dl>
@@ -189,11 +159,7 @@ Case details
     <dd class="nhsuk-summary-list__value">
       {{ data['causeOfDeathSummary'] }}
     </dd>
-    <dd class="nhsuk-summary-list__actions">
-      <a href="ap-prop-cause-of-death#CauseOfDeathSummary">
-        Change<span class="nhsuk-u-visually-hidden"> cause of death summary</span>
-      </a>
-    </dd>
+
   </div>
 
 
@@ -205,11 +171,6 @@ Case details
       <dd class="nhsuk-summary-list__value">
         {{ data['causeOfDeath1a'] }}
       </dd>
-      <dd class="nhsuk-summary-list__actions">
-        <a href="ap-prop-cause-of-death#causeOfDeath1a">
-          Change<span class="nhsuk-u-visually-hidden"> 1(a) disease or condition directly leading to death</span>
-        </a>
-      </dd>
     </div>
 
     <div class="nhsuk-summary-list__row">
@@ -220,11 +181,6 @@ Case details
         {{ data['onsetInterval1a'] }}
          {{ data['onsetInterval1ab'] }}
       </dd>
-      <dd class="nhsuk-summary-list__actions">
-        <a href="ap-prop-cause-of-death#onsetInterval1a">
-          Change<span class="nhsuk-u-visually-hidden"> Approximate interval between onset of 1(a) and death</span>
-        </a>
-      </dd>
     </div>
 
     <div class="nhsuk-summary-list__row">
@@ -233,11 +189,6 @@ Case details
       </dt>
       <dd class="nhsuk-summary-list__value">
         {{ data['causeOfDeath1b'] }}
-      </dd>
-      <dd class="nhsuk-summary-list__actions">
-        <a href="ap-prop-cause-of-death#causeOfDeath1b">
-          Change<span class="nhsuk-u-visually-hidden"> 1(b) other disease or condition leading to 1(a)</span>
-        </a>
       </dd>
     </div>
 
@@ -249,11 +200,6 @@ Case details
         {{ data['onsetInterval1b'] }}
         {{ data['onsetInterval1bb'] }}
       </dd>
-      <dd class="nhsuk-summary-list__actions">
-        <a href="ap-prop-cause-of-death#onsetInterval1b">
-          Change<span class="nhsuk-u-visually-hidden"> Approximate interval between onset of 1(b) and death</span>
-        </a>
-      </dd>
     </div>
 
     <div class="nhsuk-summary-list__row">
@@ -262,11 +208,6 @@ Case details
       </dt>
       <dd class="nhsuk-summary-list__value">
         {{ data['causeOfDeath1c'] }}
-      </dd>
-      <dd class="nhsuk-summary-list__actions">
-        <a href="ap-prop-cause-of-death#causeOfDeath1c">
-          Change<span class="nhsuk-u-visually-hidden"> 1(c) other disease or condition leading to 1(b)</span>
-        </a>
       </dd>
     </div>
 
@@ -278,11 +219,6 @@ Case details
         {{ data['onsetInterval1c'] }}
         {{ data['onsetInterval1cb'] }}
       </dd>
-      <dd class="nhsuk-summary-list__actions">
-        <a href="ap-prop-cause-of-death#onsetInterval1c">
-          Change<span class="nhsuk-u-visually-hidden"> Approximate interval between onset of 1(c) and death</span>
-        </a>
-      </dd>
     </div>
 
     <div class="nhsuk-summary-list__row">
@@ -291,11 +227,6 @@ Case details
       </dt>
       <dd class="nhsuk-summary-list__value">
         {{ data['causeOfDeath2'] }}
-      </dd>
-      <dd class="nhsuk-summary-list__actions">
-        <a href="ap-prop-cause-of-death#causeOfDeath2">
-          Change<span class="nhsuk-u-visually-hidden"> 2 - Other significant conditions</span>
-        </a>
       </dd>
     </div>
 
@@ -307,11 +238,6 @@ Case details
         {{ data['onsetInterval2'] }}
          {{ data['onsetInterval2b'] }}
       </dd>
-      <dd class="nhsuk-summary-list__actions">
-        <a href="ap-prop-cause-of-death#onsetInterval2">
-          Change<span class="nhsuk-u-visually-hidden"> Approximate interval between onset of 2 and death</span>
-        </a>
-      </dd>
     </div>
 
   
@@ -319,15 +245,13 @@ Case details
 </dl>
 
 
+<div class="nav-flow">
+  <a href="not-testing" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+   Change details
+ </a>
+</div>
 
-{% else %}
-    <p>No details have been added for the AP proposed cause of death.</p>
-    <div class="nav-flow">
-      <a href="ap-prop-cause-of-death" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
-      Add AP proposed cause of death
-    </a>
-    </div>
-   {% endif %}
+
     
   </div>
 </div>
