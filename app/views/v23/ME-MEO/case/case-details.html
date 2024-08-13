@@ -99,13 +99,7 @@ Case details
 
 
       <div class="nhsuk-card__content">
-
-        
-
         <dl class="nhsuk-summary-list">
-
-          
-            
            <div class="nhsuk-summary-list__row">
              <dt class="nhsuk-summary-list__key">
                Name
@@ -141,16 +135,14 @@ Case details
                {{ data['requestForRapidRelease'] }}
              </dd>
            </div>
-          
-      
-
+        
           <div class="nav-flow">
             <a href="../../ME-MEO/create-new-case" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
               Change details
            </a>
          </div>
+
         </div>
-    
       </div>
 
 
@@ -272,14 +264,12 @@ Case details
           {% endif %}
 
           <div class="nav-flow">
-            <a href="#" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+            <a href="location-of-death-alt" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
               Change details
            </a>
          </div>
-
-
           
-          {% else %}
+      {% else %}
       
        <p>No details have been added for the location of death.</p>
         <div class="nav-flow">
@@ -308,7 +298,7 @@ Case details
       
       <h2 class="nhsuk-heading-m">
         <span class="section-main-title">Additional details about the deceased</span>
-        {% if data['hospital-death'] %}
+        {% if data['dobDay'] and data['dobMonth'] and data['dobYear'] %}
           <strong class="nhsuk-tag nhsuk-tag--green align-right">Complete</strong>
         {% else %}
           <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
@@ -316,7 +306,7 @@ Case details
       </h2>
 
        <!-- Add timestamp if complete -->
-      {% if data['hospital-death'] %}
+      {% if data['dobDay'] and data['dobMonth'] and data['dobYear'] %}
         <p class="nhs-timestamp">Completed by Ibrahima Gakpo on 4 July 2024 at 2:10pm</p>
       {% else %}
         <!-- No timestamp-->
@@ -327,7 +317,7 @@ Case details
     
     <div class="nhsuk-card__content">
 
-      {% if data['hospital-death'] %}
+      {% if data['dobDay'] and data['dobMonth'] and data['dobYear'] %}
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
           Name deceased also known as
@@ -414,7 +404,7 @@ Case details
     
 
           <div class="nav-flow">
-            <a href="#" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+            <a href="additional-details-2" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
               Change details
            </a>
          </div>
