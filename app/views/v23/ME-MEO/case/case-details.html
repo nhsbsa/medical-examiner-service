@@ -70,13 +70,13 @@ Case details
 
 
       {% if data['nok-first-name'] and data['hospital-death'] and data['assign-medical-examiner'] %}
-        <b>Progress:</b> 4 of 4 sections complete
+        <b>Progress:</b> 4 of 5 sections complete
       {% elif data['nok-first-name'] and data['hospital-death'] %}
-        <b>Progress:</b> 3 of 4 sections complete
+        <b>Progress:</b> 3 of 5 sections complete
       {% elif data['hospital-death'] %}
-        <b>Progress:</b> 2 of 4 sections complete
+        <b>Progress:</b> 2 of 5 sections complete
       {% else %}
-        <b>Progress:</b> 1 of 4 sections complete
+        <b>Progress:</b> 1 of 5 sections complete
       {% endif %}
      
     </span>
@@ -142,96 +142,7 @@ Case details
              </dd>
            </div>
           
-          
-          
-          <!-- ================================================== -->
-          <!-- ADDITIONAL DETAILS -->
-          <!-- ================================================== -->
-          
-          
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Name deceased also known as
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-            {{ data['knownAs'] }} 
-            </dd>
-          </div>
-          
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Date of birth
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-            {% if data['dobDay'] and data['dobMonth'] and data['dobYear'] %}
-                {{ data['dobDay'] }} / {{ data['dobMonth'] }} / {{ data['dobYear'] }}
-              {% else %}
-                15/11/1992
-              {% endif %}
-            </dd>
-          </div>
-          
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Home address
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-            {% if data['homeAddressKnown'] == 'yes' %}
-            {{ data['addressLine1'] }}<br>
-            {% if data['addressLine2'] %}{{ data['addressLine2'] }}<br>{% endif %}
-            {% if data['townOrCity'] %}{{ data['townOrCity'] }}<br>{% endif %}
-            {% if data['county'] %}{{ data['county'] }}<br>{% endif %}
-            {{ data['postCode'] }}
-            {% else %}
-            Not known
-            {% endif %}
-            </dd>
-          </div>
-          
-          {% if data['ref-NHSnumber'] %}
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                NHS number
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-              {{ data['ref-NHSnumber'] }} 
-              </dd>
-            </div>
-          {% endif %}
-          
-          {% if data['ref-RXRnumber'] %}
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                RXR number
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-              {{ data['ref-RXRnumber'] }} 
-              </dd>
-            </div>
-          {% endif %}
-          
-          {% if data['ref-patientrefnumber'] %}
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-              Other patient reference number
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-              {{ data['ref-patientrefnumber'] }} 
-              </dd>
-            </div>
-          {% endif %}
-          
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-            Deceased person's job
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-            {{ data['furtherOccupationInfo'] }}
-            </dd>
-          </div>
-          
-          
-          </dl>
+      
 
           <div class="nav-flow">
             <a href="../../ME-MEO/create-new-case" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
@@ -241,6 +152,9 @@ Case details
         </div>
     
       </div>
+
+
+
  
 
   <!-- ================================================== -->
@@ -379,6 +293,145 @@ Case details
     </div>
   </div>
 
+
+
+
+
+  <!-- ================================================== -->
+  <!-- ADDITIONAL DETAILS -->
+  <!-- ================================================== -->
+
+
+  <div class="nhsuk-card section-complete">
+      
+    <div class="nhs-card-heading">
+      
+      <h2 class="nhsuk-heading-m">
+        <span class="section-main-title">Additional details about the deceased</span>
+        {% if data['hospital-death'] %}
+          <strong class="nhsuk-tag nhsuk-tag--green align-right">Complete</strong>
+        {% else %}
+          <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
+        {% endif %}
+      </h2>
+
+       <!-- Add timestamp if complete -->
+      {% if data['hospital-death'] %}
+        <p class="nhs-timestamp">Completed by Ibrahima Gakpo on 4 July 2024 at 2:10pm</p>
+      {% else %}
+        <!-- No timestamp-->
+      {% endif %}
+    </div>
+
+
+    
+    <div class="nhsuk-card__content">
+
+      {% if data['hospital-death'] %}
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Name deceased also known as
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+        {{ data['knownAs'] }} 
+        </dd>
+      </div>
+      
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Date of birth
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+        {% if data['dobDay'] and data['dobMonth'] and data['dobYear'] %}
+            {{ data['dobDay'] }} / {{ data['dobMonth'] }} / {{ data['dobYear'] }}
+          {% else %}
+            15/11/1992
+          {% endif %}
+        </dd>
+      </div>
+      
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Home address
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+        {% if data['homeAddressKnown'] == 'yes' %}
+        {{ data['addressLine1'] }}<br>
+        {% if data['addressLine2'] %}{{ data['addressLine2'] }}<br>{% endif %}
+        {% if data['townOrCity'] %}{{ data['townOrCity'] }}<br>{% endif %}
+        {% if data['county'] %}{{ data['county'] }}<br>{% endif %}
+        {{ data['postCode'] }}
+        {% else %}
+        Not known
+        {% endif %}
+        </dd>
+      </div>
+      
+      {% if data['ref-NHSnumber'] %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            NHS number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+          {{ data['ref-NHSnumber'] }} 
+          </dd>
+        </div>
+      {% endif %}
+      
+      {% if data['ref-RXRnumber'] %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            RXR number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+          {{ data['ref-RXRnumber'] }} 
+          </dd>
+        </div>
+      {% endif %}
+      
+      {% if data['ref-patientrefnumber'] %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+          Other patient reference number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+          {{ data['ref-patientrefnumber'] }} 
+          </dd>
+        </div>
+      {% endif %}
+      
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+        Deceased person's job
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+        {{ data['furtherOccupationInfo'] }}
+        </dd>
+      </div>
+      
+      
+      </dl>
+    
+
+          <div class="nav-flow">
+            <a href="#" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+              Change details
+           </a>
+         </div>
+
+          {% else %}
+      
+       <p>No additional details about the deceased have been added.</p>
+        <div class="nav-flow">
+          <a href="additional-details-2" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+           Add additional details
+         </a>
+       </div>
+      
+      {% endif %}
+  
+    </div>
+  </div>
 
 
 
