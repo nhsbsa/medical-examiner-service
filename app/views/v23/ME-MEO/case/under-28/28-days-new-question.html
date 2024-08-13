@@ -1,0 +1,143 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      
+     <section class="key-details">
+       <ul>
+         <li>
+           <div class="patient-name">
+             <span class="p-name">Patient name:</span>
+             <h1>John Doe</h1>
+           </div>
+         </li>
+         <li>
+           <span>NHS number:</span>
+           <p>1234567890</p>
+         </li>
+         <li>
+           <span>Date of death:</span>
+           <p>12 July 2024</p>
+         </li>
+         <li>
+          <span>Case type:</span>
+           <p>Hospital</p>
+        </li>
+        <!-- <li>
+           <a href="#" class="nhsuk-button nhsuk-button--secondary mb0">Close case</a>
+         </li> -->
+       </ul>
+     </section>
+      
+    </div>
+  </div>
+
+
+
+
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {{ backLink({
+      "href": "javascript:history.back()",
+      "text": "Go back"
+      }) }}
+
+      {{ warningCallout({
+        "heading": "Important",
+        "HTML": "<p>Please read this page carefully because this question has changed recently.</p>"
+      }) }}
+
+
+        <h1 class="nhsuk-heading-l">
+            <span class="nhsuk-caption-m nhsuk-caption--bottom">
+                Deceased person's details
+            </span>
+            Was the death less than 28 days after the birth?
+        </h1>
+
+        <form action="28-days" method="post">
+
+                <div class="nhsuk-form-group">
+                    <div class="nhsuk-radios">
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="over28Yes" name="over-under-28" value="over"
+                                type="radio">
+                            <label class="nhsuk-label nhsuk-radios__label" for="over28Yes">
+                                Yes, the deceased was an infant less than 28 days old
+                            </label>
+                        </div>
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="under28No" name="over-under-28" value="under"
+                                type="radio">
+                            <label class="nhsuk-label nhsuk-radios__label" for="under28No">
+                                No, the deceased was an adult or child 28 days old or over
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <button class="nhsuk-button" type="submit">Save and continue</button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+{% block sideNav %}
+<div class="side-nav">
+  
+  
+ <!--<div class="case-type-details">
+   
+      
+<div class="nhsuk-back-link">
+
+  <a class="nhsuk-back-link__link" href="../open-cases2">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Back to case list</a>
+</div>
+
+  
+ </div>
+  
+  
+  <ul>
+    <div id="options" class="options">
+      <li><a class="active" href="case-timeline">Case timeline</a></li>
+      <li><a href="case-details">Case details</a></li>
+      <li><a href="case-scrutiny">Case scrutiny</a></li>
+      
+    </div>
+  </ul>
+-->
+    
+</div>
+{% endblock %}

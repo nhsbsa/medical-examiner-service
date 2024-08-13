@@ -1,0 +1,291 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+
+
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    
+    <section class="key-details">
+       <ul>
+         <li>
+           <div class="patient-name">
+             <span class="p-name">Patient name:</span>
+             <h1>Kathleen Stark</h1>
+           </div>
+         </li>
+         <li>
+           <span>NHS number:</span>
+           <p>123 456 789</p>
+         </li>
+         <li>
+           <span>Date of death:</span>
+           <p>2 July 2024</p>
+         </li>
+         <li>
+           <span>Case type:</span>
+           <p>Hospital</p>
+         </li>
+        <!-- <li>
+           <a href="#" class="nhsuk-button nhsuk-button--secondary mb0">Close case</a>
+         </li> -->
+       </ul>
+     </section>
+    
+  </div>
+</div>
+
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+
+
+{% from 'back-link/macro.njk' import backLink %}
+
+{{ backLink({
+"href": "javascript:history.back()",
+"text": "Go back"
+}) }}
+
+<h1 class="nhsuk-heading-l">
+  <span class="nhsuk-caption-l">
+      Case timeline
+  </span>
+  Add a note
+</h1>
+
+<form action="case-timeline" method="post">
+
+  <div class="nhsuk-form-group">
+      <label class="nhsuk-label nhsuk-u-width-two-thirds" for="detailsOfNote">
+          Enter note details
+      </label>            
+      <div class="nhsuk-hint nhsuk-character-count__message" id="detailsOfNoteMain-info">
+          <textarea class="nhsuk-textarea nhsuk-u-width-full minchar" id="detailsOfNote"
+              name="detailsOfNote" rows="10" maxlength="3000" aria-describedby="detailsOfNoteMain-hint"></textarea>
+              <div class="nhsuk-hint nhsuk-character-count__message rechar" id="charCount">
+              You can enter up to 3000 characters
+              </div>
+      </div>
+  </div>
+  
+  
+  
+  
+  <div class="nhsuk-form-group mt40">
+  
+    <fieldset class="nhsuk-fieldset" aria-describedby="example-hints-hint">
+      <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend">
+        <h1 class="nhsuk-fieldset__heading">
+          Do you want to mark this note as important?
+        </h1>
+      </legend>
+      
+      <div class="nhsuk-hint" id="example-hints-hint">
+You can mark a note as important to make sure other members of staff see it.
+      </div>
+
+  
+      <div class="nhsuk-radios">
+  
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input" id="urgent-note-yes" name="urgent-note" type="radio" value="urgent-note-yes">
+          <label class="nhsuk-label nhsuk-radios__label" for="urgent-note-yes">
+            Yes
+          </label>
+        </div>
+  
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input" id="urgent-note-no" name="urgent-note" type="radio" value="urgent-note-no">
+          <label class="nhsuk-label nhsuk-radios__label" for="urgent-note-no">
+            No
+          </label>
+        </div>
+  
+       
+  
+      </div>
+    </fieldset>
+  
+  </div>
+  
+  
+  <!--
+  
+  
+  <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+
+
+
+  
+  
+  <div class="nhsuk-form-group">
+  
+    <fieldset class="nhsuk-fieldset" aria-describedby="recordAsConcern-hint">
+      <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+        <h1 class="nhsuk-fieldset__heading">
+          Do you want to record this as a concern?
+        </h1>
+      </legend>
+      <div class="nhsuk-hint" id="recordAsConcern-hint">
+        A medical examiner will review concerns before any action is taken.
+    </div>
+
+      <div class="nhsuk-radios nhsuk-radios--conditional">
+  
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input" id="concern-recorded-yes2" name="concern-recorded2" type="radio" value="concern-recorded-yes2" aria-controls="conditional-contact-rec" aria-expanded="false" value="concern-recorded-yes2">
+          <label class="nhsuk-label nhsuk-radios__label" for="concern-recorded-yes2">
+            Yes
+          </label>
+        </div>
+  
+        <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-rec">
+  
+  
+  
+  <div class="nhsuk-form-group">
+          <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend">
+              <h1 class="nhsuk-fieldset__heading">
+                Choose a concern type
+              </h1>
+            </legend>
+      
+            <div class="nhsuk-hint" id="contact-hint">
+              Select all that apply.
+            </div>
+      
+            <div class="nhsuk-checkboxes nhsuk-checkboxes--conditional">
+      
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="case-review3" name="concern-why3" type="checkbox" value="case-review3">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="case-review3">
+                  Recommend case record review
+                </label>
+              </div>
+              
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="case-clinical3" name="concern-why3" type="checkbox" value="case-clinical3">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="case-clinical3">
+                  Recommend clinical governance processes review
+                </label>
+              </div>
+      
+              
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="patient-safety3" name="concern-why3" type="checkbox" value="patient-safety3">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="patient-safety3">
+                  Patient safety incident
+                </label>
+              </div>
+      
+        
+      
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="pals-refer4" name="concern-why4" type="checkbox" value="pals-refer4">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="pals-refer4">
+                  Signposted to PALS
+                </label>
+              </div>
+      
+          
+      
+            </div>
+          </fieldset>
+          
+  </div>
+          
+    
+          
+  
+        </div>
+  
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input" id="concern-recorded-no2" name="concern-recorded2" type="radio" value="concern-recorded-no2">
+          <label class="nhsuk-label nhsuk-radios__label" for="concern-recorded-no2">
+            No
+          </label>
+        </div>
+  
+        
+  
+      </div>
+    </fieldset>
+  
+  </div>-->
+  
+  
+  <div class="nav-flow mt40">
+
+  <button class="nhsuk-button" type="submit">
+      Save and continue
+  </button>
+  </div>
+</form>
+
+
+
+  </div>
+</div>
+
+{% endblock %}
+
+
+
+
+{% block sideNav %}
+<div class="side-nav">
+  
+  
+ <!--<div class="case-type-details">
+   
+      
+<div class="nhsuk-back-link">
+
+  <a class="nhsuk-back-link__link" href="../open-cases2">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Back to case list</a>
+</div>
+
+  
+ </div>
+  
+  
+  <ul>
+    <div id="options" class="options">
+      <li><a class="active" href="case-timeline">Case timeline</a></li>
+      <li><a href="case-details">Case details</a></li>
+      <li><a href="case-scrutiny">Case scrutiny</a></li>
+      
+    </div>
+  </ul>
+-->
+    
+</div>
+{% endblock %}
