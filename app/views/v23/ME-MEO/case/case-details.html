@@ -69,9 +69,11 @@ Case details
       Case details <span class="nhsuk-caption-m caption-progress">
 
 
-      {% if data['nok-first-name'] and data['hospital-death'] and data['assign-medical-examiner'] %}
+      {% if data['dobDay'] and data['nok-first-name'] and data['hospital-death'] and data['assign-medical-examiner'] %}
+        <b>Progress:</b> 5 of 5 sections complete
+      {% elif data['nok-first-name'] and data['dobDay'] and data['hospital-death'] %}
         <b>Progress:</b> 4 of 5 sections complete
-      {% elif data['nok-first-name'] and data['hospital-death'] %}
+      {% elif data['dobDay'] and data['hospital-death'] %}
         <b>Progress:</b> 3 of 5 sections complete
       {% elif data['hospital-death'] %}
         <b>Progress:</b> 2 of 5 sections complete
