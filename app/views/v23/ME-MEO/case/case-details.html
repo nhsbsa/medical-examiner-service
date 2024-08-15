@@ -182,87 +182,79 @@ Case details
     <div class="nhsuk-card__content">
       {% if data['hospital-death'] %}
 
+
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Did the deceased person die in hospital?
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['hospital-death'] }}
+          </dd>
+        </div>
+
       {% if data['hospital-death'] == 'Yes' %}
-          <!-- Hospital Acute -->
-          <dl class="nhsuk-summary-list">
-            
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Did the deceased person die in hospital?
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  Yes
-                </dd>
-              </div>
-              
+          <!-- Hospital Acute -->       
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
                   Hospital
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  Royal Victoria Infirmary, Queen Victoria Rd, Newcastle upon Tyne, NE1 4LP
+                  {{ data['hospital-address-lookup'] }}
                 </dd>
               </div>
-              
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
                   Location details
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  Ward 2B
+                  {{ data['locationDetails'] }}
                 </dd>
               </div>
-              
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
                   Date of admission
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  {{ data['doaDay'] }}/{{ data['doaMonth'] }}/{{ data['doaYear'] }}
+                  {{ data['doaDay'] }} <span class="convert-month">{{ data['doaMonth'] }}</span> {{ data['doaYear'] }}
                 </dd>
               </div>
-          
-            <!--  <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Time of admission
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  {{ data['todHourAdmissionCreate'] }}:{{ data['todMinuteAdmissionCreate'] }}
-                </dd>
-              </div>
-
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Admission details
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                {{ data['admissionDetails'] }}
-              </dd>
-            </div>-->
-
-          </dl>
+   
           {% else %}
 
           <!-- Community or non-acute setting -->
-          <dl class="nhsuk-summary-list">
+        
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Location of death
+                Do you know the address of where the death took place?
               </dt>
               <dd class="nhsuk-summary-list__value">
-                Community or non-acute setting
+                {{ data['address-of-death'] }}
               </dd>
             </div>
             
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Location details
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                Same as home address
-              </dd>
-            </div>
+            {% if data['address-of-death'] == 'Yes' %}
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Address of death
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['address-of-death-known'] }}
+                  </dd>
+                </div>
+            {% else %}
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Where approximately did the death take place?
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['unknown-address-details'] }}
+                  </dd>
+                </div>
+            {% endif %}
+
           </dl>
+
           {% endif %}
 
           <div class="nav-flow">
@@ -271,7 +263,7 @@ Case details
            </a>
          </div>
           
-      {% else %}
+        {% else %}
       
        <p>No details have been added for the location of death.</p>
         <div class="nav-flow">
@@ -400,9 +392,7 @@ Case details
         {{ data['furtherOccupationInfo'] }}
         </dd>
       </div>
-      
-      
-      </dl>
+    </dl>
     
 
           <div class="nav-flow">
