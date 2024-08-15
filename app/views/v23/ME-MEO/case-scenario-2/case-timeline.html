@@ -57,8 +57,10 @@ Case details
 
 
 
+
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
+
 
 <h1 class="nhsuk-heading-l mb30">Case timeline</h1>
 
@@ -66,7 +68,8 @@ Case details
   <p>Case concerns can be raised when recording a communication or note.</p>
 </div>-->
 
-<p><a href="record-event" class="nhsuk-button">Add a communication</a>
+<div class="timeline-nav">
+  <p><a href="record-event" class="nhsuk-button">Add a communication</a>
 
 <a href="record-note" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
    Add a note
@@ -75,53 +78,12 @@ Case details
 </p>
 
 
-
-
-<section class="timeline-filter">
-  <h3 class="nhsuk-heading-s mb0">Filter by:</h3>
-  <ul>
-    <li><a href="case-timeline" class="active">All 
-      
-      {% if data['timeline-event'] %}
-      (<b>13</b>)
-      {% else %}
-       (<b>12</b>)
-       {% endif %} 
-
-     </a></li>
-    <li><a href="case-timeline-comm">Communications 
-      
-      {% if data['timeline-event'] %}
-      <span class="nhs-notification">4</span>
-      {% else %}
-      <span class="nhs-notification">3</span>
-       {% endif %} 
-    
-    </a></li>
-    <li><a href="case-timeline-note">Notes 
-      
-      {% if data['detailsOfNote'] %}
-      <span class="nhs-notification">4</span>
-      {% else %}
-       <span class="nhs-notification">3</span>
-       {% endif %} 
-      
-      </a></li>
-    <li><a href="case-timeline-concern">Concerns 
-      
-      {% if data['concern-recorded']=='concern-recorded-yes'%}
-     <span class="nhs-notification">1</span>
-     {% else %}
-     (<b>0</b>)
-     {% endif %} 
-     
-     </a></li>
-    <li><a href="case-timeline-mile">Case progress (<b>6</b>)</a></li>
-  </ul>
-</section>
+</div>
 
   </div>
 </div>
+
+
 
 
 <div class="nhsuk-grid-row">
@@ -132,9 +94,12 @@ Case details
 
 
 <div class="nhs-timeline">
+  
+  
+  
 
 
-{% if data['timeline-event']=='event-comm'%}
+{% if data['timeline-event']=='event-comm'%}q
 
 
 <div class="nhs-timeline__item">
@@ -311,7 +276,7 @@ Case details
    
    </div>
    
-   <p class="nhs-timeline__byline">Added by User on <time datetime="2019-06-14T14:01:00.000Z">6 August 2024 at 12:00pm</time></p>
+   <p class="nhs-timeline__byline">Added on <time datetime="2019-06-14T14:01:00.000Z">6 August 2024 at 12:00pm</time></p>
      
    </div>
    
@@ -429,7 +394,7 @@ Case details
   </div>
   
   
-  <p class="nhs-timeline__byline">Added by User on <time datetime="2019-06-14T14:01:00.000Z">6 August 2024 at 12:00pm</time></p>
+  <p class="nhs-timeline__byline">Added on <time datetime="2019-06-14T14:01:00.000Z">6 August 2024 at 12:00pm</time></p>
      
    </div>
    
@@ -537,7 +502,7 @@ Case details
   </div>
   
   
-  <p class="nhs-timeline__byline">Added by User on <time datetime="2019-06-14T14:01:00.000Z">6 July 2024 at 12:00pm</time></p>
+  <p class="nhs-timeline__byline">Added on <time datetime="2019-06-14T14:01:00.000Z">6 July 2024 at 12:00pm</time></p>
   
 </div>
 
@@ -545,6 +510,94 @@ Case details
 
 
 {% endif %}
+
+
+
+
+<div class="nhs-timeline__item">
+ 
+   <div class="nhs-timeline__header">
+
+   <h2 class="nhs-timeline__title">
+     
+      Phone conversation with Mary Todd (Next of kin)
+   </h2>
+    
+    
+   
+
+   </div>
+ 
+   <div class="nhs-timeline__description">    
+     
+    
+     <div class="nhsuk-warning-callout callout-blue">
+     <h3 class="nhsuk-warning-callout__label">
+       Concerns raised<span class="nhsuk-u-visually-hidden">:</span>
+     </h3>
+    <p>Please can an ME try and ring the next of kin after 4pm today, medical explanation for cause of death needed.</p>
+    
+    
+    <div class="concerns-card">
+   
+
+
+     
+     <p><strong class="nhsuk-tag nhsuk-tag-blue">Signposted to PALS</strong></p>
+   
+   
+      
+      </div>
+    
+   </div>
+
+  </div>
+  
+  
+  <p class="nhs-timeline__byline">Added on <time datetime="2019-06-14T14:01:00.000Z">6 August 2024 at 12:00pm</time></p>
+     
+   </div>
+
+
+
+<div class="nhs-timeline__item">
+ 
+   <div class="nhs-timeline__header">
+
+   <h2 class="nhs-timeline__title">
+     
+      Phone conversation with Mary Todd (Next of kin)
+   </h2>
+
+   </div>
+ 
+   <div class="nhs-timeline__description">    
+
+<div class="nhsuk-warning-callout callout-green">
+   <h3 class="nhsuk-warning-callout__label">
+     Next of kin conversation completed<span class="nhsuk-u-visually-hidden">:</span>
+   </h3>
+  <p>Please can an ME try and ring the next of kin after 4pm today, medical explanation for cause of death needed.</p>
+
+
+
+ 
+ </div>
+ 
+</div>
+ 
+ <p class="nhs-timeline__byline">Added on <time datetime="2019-06-14T14:01:00.000Z">6 August 2024 at 12:00pm</time></p>
+   
+ 
+</div>
+ 
+
+
+
+
+
+
+
 
 
 
@@ -566,105 +619,6 @@ Case details
 
 
 
-<div class="nhs-timeline__item">
-  
-  <div class="nhs-timeline__header">
-    <h2 class="nhs-timeline__title">Phone conversation with Mary Todd (Next of kin)</h2>
-  </div>
-
-  <div class="nhs-timeline__description">    
-    <p>2nd attempt at contacting next of kin to discuss cause of death was unsuccessful.</p>
-  </div>
-  <p class="nhs-timeline__byline">by Anita Heart on <time datetime="2019-06-14T14:01:00.000Z">5 August 2024 at 14:30pm</time></p>
-</div>
-
-
-
-<div class="nhs-timeline__item">
-  
-  <div class="nhs-timeline__header">
-    <h2 class="nhs-timeline__title">Note added</h2>
-  </div>
-
-  <div class="nhs-timeline__description">    
-    <p>Consultant has also provided extra notes from the ward added to pre-scrutiny notes.</p>
-  </div>
-  <p class="nhs-timeline__byline">by Anita Heart on <time datetime="2019-06-14T14:01:00.000Z">5 August 2024 at 14:19pm</time></p>
-</div>
-
-
-
-
-<div class="nhs-timeline__item">
-
-  <div class="nhs-timeline__header">
-    <h2 class="nhs-timeline__title">
-     Pre-scrutiny notes updated
-    </h2>
-    <p class="nhs-timeline__byline">by Anita Heart on <time datetime="2019-06-14T14:01:00.000Z">5 August 2024 at 14:17pm</time></p>
-  </div>
-
-</div>
-
-
-
-<div class="nhs-timeline__item">
-  
-  <div class="nhs-timeline__header">
-    <h2 class="nhs-timeline__title">Phone conversation with Billy Fagan (Consultant)</h2>
-  </div>
-
-  <div class="nhs-timeline__description">    
-    <p>Tried to get in contact with consultant to discuss cause of death but no response.</p>
-  </div>
-  <p class="nhs-timeline__byline">by Anita Heart on <time datetime="2019-06-14T14:01:00.000Z">5 August 2024 at 12:45pm</time></p>
-</div>
-
-
-
-<div class="nhs-timeline__item">
-  
-  <div class="nhs-timeline__header">
-    <h2 class="nhs-timeline__title">Important note added</h2>
-  </div>
-
-  <div class="nhsuk-warning-callout">
-    <h3 class="nhsuk-warning-callout__label">
-      Important<span class="nhsuk-u-visually-hidden">:</span>
-    </h3>
-    <p>Patient notes missing from July &ndash; December 2023 which is needed to progress the case.</p>
-  
-    </div>
-<p class="nhs-timeline__byline">by Anita Heart on <time datetime="2019-06-14T14:01:00.000Z">5 August 2024 at 12:15pm</time></p>
-</div>
-
-
-
-
-<div class="nhs-timeline__item">
-  
-  <div class="nhs-timeline__header">
-    <h2 class="nhs-timeline__title">Phone conversation with Mary Todd (Next of kin)</h2>
-  </div>
-
-  <div class="nhs-timeline__description">    
-    <p>1st attempt at contacting next of kin to discuss cause of death was unsuccessful.</p>
-  </div>
-  <p class="nhs-timeline__byline">by Anita Heart on <time datetime="2019-06-14T14:01:00.000Z">5 August 2024 at 12:05pm</time></p>
-</div>
-
-
-<div class="nhs-timeline__item">
-
-  <div class="nhs-timeline__header">
-    <h2 class="nhs-timeline__title">
-    Pre-scrutiny notes completed
-    </h2>
-    <p class="nhs-timeline__byline">by Anita Heart on <time datetime="2019-06-14T14:01:00.000Z">5 August 2024 at 10:48am</time></p>
-  </div>
-</div>
-
-
 
 <div class="nhs-timeline__item">
 
@@ -678,26 +632,6 @@ Case details
 
 
 
-<div class="nhs-timeline__item">
-
-  <div class="nhs-timeline__header">
-    <h2 class="nhs-timeline__title">
-      Location of death completed
-    </h2>
-    <p class="nhs-timeline__byline">by Anita Heart on <time datetime="2019-06-14T14:01:00.000Z">5 August 2024 at 10:33am</time></p>
-  </div>
-</div>
-
-
-<div class="nhs-timeline__item">
-
-  <div class="nhs-timeline__header">
-    <h2 class="nhs-timeline__title">
-      Deceased person's details completed
-    </h2>
-    <p class="nhs-timeline__byline">by Anita Heart on <time datetime="2019-06-14T14:01:00.000Z">5 August 2024 at 10:20am</time></p>
-  </div>
-</div>
 
 
 
