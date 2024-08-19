@@ -758,7 +758,8 @@ p {
 
 
 .concerns-card {
-  margin-top: 20px;
+  margin-top: 30px;
+
   p {
     margin: 5px 0 0 0;
     padding-bottom: 10px;
@@ -806,6 +807,14 @@ p {
       border-color: $color_nhsuk-blue;
       .nhsuk-warning-callout__label {
         background: $color_nhsuk-blue;
+        color: $color_nhsuk-white;
+      }
+    }
+    &.callout-grey {
+      background: rgba($color_nhsuk-grey-3, 0.08);
+      border-color: $color_nhsuk-grey-3;
+      .nhsuk-warning-callout__label {
+        background: $color_nhsuk-grey-3;
         color: $color_nhsuk-white;
       }
     }
