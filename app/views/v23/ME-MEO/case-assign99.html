@@ -1,0 +1,153 @@
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - edit the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Create new case
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+
+
+
+
+
+{% from 'back-link/macro.njk' import backLink %}
+
+{{ backLink({
+"href": "javascript:history.back()",
+"text": "Go back"
+}) }}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-two-thirds">
+    
+    
+    <form action="case-scenario-4/case-timeline" method="post">
+    
+    
+    <div class="nhsuk-form-group">
+    
+      <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+          <h1 class="nhsuk-fieldset__heading">
+            <span class="nhsuk-caption-l nhsuk-caption--bottom">
+              Create new case
+            </span>
+            Do you want to assign someone to this case?
+          </h1>
+        </legend>
+
+        <div class="nhsuk-radios nhsuk-radios--conditional">
+    
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="contact-1" name="contact" type="radio" value="email" aria-controls="conditional-contact-1" aria-expanded="false">
+            <label class="nhsuk-label nhsuk-radios__label" for="contact-1">
+              Yes
+            </label>
+          </div>
+    
+          <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-1">
+    
+            <div class="nhsuk-form-group">
+                 <h2 class="nhsuk-label-wrapper">
+                   <label class="nhsuk-label nhsuk-label" for="assign-medical-examiner">
+                     Medical examiner
+                   </label>
+                   <div class="nhsuk-hint" id="contact-hint">
+                     Enter initials
+                   </div>
+                 </h2>
+                 <input class="nhsuk-input nhsuk-input--width-5" id="assign-medical-examiner" name="assign-medical-examiner"
+                   type="text" value="{{ data['assign-medical-examiner'] }}">
+               </div>
+               <div class="nhsuk-form-group">
+                 <h2 class="nhsuk-label-wrapper">
+                   <label class="nhsuk-label nhsuk-label" for="assign-medical-examiner-officer">
+                     Medical examiner office
+                   </label>
+                   <div class="nhsuk-hint" id="contact-hint">
+                     Enter initials
+                   </div>
+                 </h2>
+                 <input class="nhsuk-input nhsuk-input--width-5" id="assign-medical-examiner-officer"
+                   name="assign-medical-examiner-officer" type="text" value="{{ data['assign-medical-examiner-officer'] }}">
+               </div>
+            
+    
+          </div>
+    
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" aria-controls="conditional-contact-2" aria-expanded="false">
+            <label class="nhsuk-label nhsuk-radios__label" for="contact-2">
+              No
+            </label>
+          </div>
+    
+
+    
+        </div>
+      </fieldset>
+      
+      
+      <div class="nav-flow">
+        <button class="nhsuk-button" type="submit">
+          Save and continue
+        </button>
+        </div>
+           
+    
+    </div>
+    
+    
+    
+    
+    </form>
+    
+
+  </div>
+</div>
+{% endblock %}
+
+
+{% block sideNav %}
+<div class="side-nav">
+  
+  
+ <!--<div class="case-type-details">
+   
+      
+<div class="nhsuk-back-link">
+
+  <a class="nhsuk-back-link__link" href="../open-cases2">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Back to case list</a>
+</div>
+
+  
+ </div>
+  
+  
+  <ul>
+    <div id="options" class="options">
+      <li><a class="active" href="case-timeline">Case timeline</a></li>
+      <li><a href="case-details">Case details</a></li>
+      <li><a href="case-scrutiny">Case scrutiny</a></li>
+      
+    </div>
+  </ul>
+-->
+    
+</div>
+{% endblock %}
