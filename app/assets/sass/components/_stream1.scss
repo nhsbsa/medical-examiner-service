@@ -837,3 +837,28 @@ p {
  }
  margin-bottom: 30px;
 }
+
+
+
+.action-raised {
+  border-left: 4px solid $color_nhsuk-yellow;
+  padding: 0 0 5px 10px;
+  .alert {
+    display: inline-block;
+    background: $color_nhsuk-yellow;
+    border-radius: 50px;
+    min-width: 30px;
+    padding: 2px 0;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 3px;
+    color: #000;
+  }
+  .alert-text {
+    font-weight: bold;
+    margin: 5px 0 0 0;
+    font-size: 17px;
+    //color: $color_nhsuk-grey-1;
+  }
+}

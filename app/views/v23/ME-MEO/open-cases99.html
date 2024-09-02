@@ -43,34 +43,20 @@ Open cases
     <section class="timeline-filter">
       <h3 class="nhsuk-heading-s mb0">Filter by:</h3>
       <ul>
-        <li><a href="case-timeline" class="active">All cases
+        <li><a href="#" class="active">All cases
           
           {% if data['timeline-event'] %}
-          (<b>6</b>)
+          (<b>21</b>)
           {% else %}
-           (<b>5</b>)
+           (<b>20</b>)
            {% endif %} 
     
          </a></li>
-        <li><a href="case-timeline-comm">Urgent cases
-          
-          {% if data['timeline-event'] %}
-          <span class="nhs-notification">4</span>
-          {% else %}
-          <span class="nhs-notification">3</span>
-           {% endif %} 
-        
-        </a></li>
+        <li><a href="urgent-cases">Urgent cases (<b>4</b>)</a></li>
 
-        <li><a href="case-timeline-note">Re-opened cases 
-          
-          {% if data['detailsOfNote'] %}
-          <span class="nhs-notification">4</span>
-          {% else %}
-           <span class="nhs-notification">3</span>
-           {% endif %} 
-          
-          </a></li>
+        <li><a href="reopen-cases">Re-opened cases (<b>1</b>)</a></li>
+        
+        <li><a href="timeline-alerts">Timeline alerts (<b>1</b>)</a></li>
         
         
       </ul>
@@ -80,11 +66,12 @@ Open cases
     <table class="nhsuk-table mt20 nhsuk-table-clickable main-table" id="sortable">
       <thead class="nhsuk-table__head">
         <tr class="nhsuk-table__row">
-          <th class="nhsuk-table__header" scope="col">Details</th>
+          <th class="nhsuk-table__header" scope="col">Case details</th>
           <th class="nhsuk-table__header" scope="col">Date of death</th>
+          <th class="nhsuk-table__header" scope="col">Assigned to</th>
           <th class="nhsuk-table__header" scope="col">Pre-scrutiny</th>
-          <th class="nhsuk-table__header" scope="col">ME scrutiny</th>
-          <th class="nhsuk-table__header fixed-side" scope="col">Assigned to</th>
+          <th class="nhsuk-table__header" scope="col">Scrutiny</th>
+          <th class="nhsuk-table__header fixed-side" scope="col">Case type</th>
         </tr>
       </thead>
       <tbody class="nhsuk-table__body">
@@ -121,61 +108,27 @@ Open cases
           <td class="nhsuk-table__cell">
             {{ data['dodDayCreate'] }} <span class="convert-month">{{ data['dodMonthCreate'] }}</span> {{ data['dodYearCreate'] }}
           </td>
-         <td class="nhsuk-table__cell">
-           <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
-         </td>
-         <td class="nhsuk-table__cell">
-           <strong class="nhsuk-tag nhsuk-tag-blue">In progress</strong>
-         </td>
+      
          <td class="nhsuk-table__cell">
            <p class="td-first">IG (MEO)</p>
            <p class="td-first">JVD (ME)</p>
          </td>
+         <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-blue">In progress</strong>
+          </td>
+         
+         <td class="nhsuk-table__cell">
+            Normal
+          </td>
         </tr>
            
         {% endif %}
 
-        <tr class="nhsuk-table__row">
-          <td class="nhsuk-table__cell">
-            <a href="case-scenario-3/case-timeline">Nicola Swift</a>
-            <p class="td-first">NHS: 423 876 287</p>
-          </td>
-          <td class="nhsuk-table__cell">
-            August 2024
-          </td>
-         <td class="nhsuk-table__cell">
-           <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
-         </td>
-         <td class="nhsuk-table__cell">
-           <strong class="nhsuk-tag nhsuk-tag-blue">In progress</strong>
-         </td>
-         <td class="nhsuk-table__cell">
-           <p class="td-first">IG (MEO)</p>
-           <p class="td-first">BH (ME)</p>
-         </td>
-        </tr>
-
-
-        <tr class="nhsuk-table__row">
-          <td class="nhsuk-table__cell">
-            <a href="case-scenario-2/case-timeline">Kathleen Stark</a>
-            <p class="td-first">NHS: 423 876 287</p>
-          
-          </td>
-          <td class="nhsuk-table__cell">
-           5 August 2024
-          </td>
-         <td class="nhsuk-table__cell">
-           <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
-         </td>
-         <td class="nhsuk-table__cell">
-           <strong class="nhsuk-tag nhsuk-tag-blue">In progress</strong>
-         </td>
-         <td class="nhsuk-table__cell">
-           <p class="td-first">AH (MEO)</p>
-           <p class="td-first">BH (ME)</p>
-         </td>
-        </tr>
+  
+        
         
         <tr class="nhsuk-table__row">
           <td class="nhsuk-table__cell">
@@ -185,17 +138,101 @@ Open cases
           <td class="nhsuk-table__cell">
             22 March 2024
           </td>
-          <td class="nhsuk-table__cell">
-            <strong class="nhsuk-tag nhsuk-tag-blue">In progress</strong>
-          </td>
-          <td class="nhsuk-table__cell">
-            <strong class="nhsuk-tag nhsuk-tag-blue">In progress</strong>
-          </td>
+          
           <td class="nhsuk-table__cell">
             <p class="td-first">FF (MEO)</p>
             <p class="td-first">TS (ME)</p>
           </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-grey">Not started</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-grey">Not started</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            Normal
+          </td>
         </tr>
+        
+        
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="#">Nicola Swift</a>
+            <p class="td-first">NHS: 423 876 287</p>
+          </td>
+          <td class="nhsuk-table__cell">
+            August 2024
+          </td>
+         
+         <td class="nhsuk-table__cell">
+           <p class="td-first">IG (MEO)</p>
+           <p class="td-first">BH (ME)</p>
+         </td>
+         <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-blue">In progress</strong>
+          </td>
+         
+         <td class="nhsuk-table__cell">
+           Urgent
+         </td>
+        </tr>
+        
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="#">Bayley Flair-Dupree</a>
+            <p class="td-first">NHS: 423 876 287</p>
+          </td>
+          <td class="nhsuk-table__cell">
+            August 2024
+          </td>
+         
+         <td class="nhsuk-table__cell">
+           <p class="td-first">IG (MEO)</p>
+           <p class="td-first">BH (ME)</p>
+         </td>
+         <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-grey">Not started</strong>
+          </td>
+         <td class="nhsuk-table__cell">
+           Normal
+         </td>
+        </tr>
+
+
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <div class="action-raised">
+              <a href="case-scenario-5/case-timeline">Steven Firmino</a>
+              <p class="td-first">NHS: 423 876 287</p>
+              <p class="alert-text"><span class="alert">2</span> timeline alerts</p>
+            </div>
+          </td>
+          <td class="nhsuk-table__cell">
+           5 August 2024
+          </td>
+         
+         <td class="nhsuk-table__cell">
+           <p class="td-first">AH (MEO)</p>
+           <p class="td-first">BH (ME)</p>
+         </td>
+         <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-blue">In progress</strong>
+          </td>
+         <td class="nhsuk-table__cell">
+           Normal
+         </td>
+        </tr>
+        
+       
         
         <tr class="nhsuk-table__row">
           <td class="nhsuk-table__cell">
@@ -205,15 +242,19 @@ Open cases
           <td class="nhsuk-table__cell">
             3 February 2024
           </td>
-          <td class="nhsuk-table__cell">
-           <strong class="nhsuk-tag nhsuk-tag-blue">In progress</strong>
-          </td>
-          <td class="nhsuk-table__cell">
-            <strong class="nhsuk-tag nhsuk-tag-grey">Not started</strong>
-          </td>
+          
           <td class="nhsuk-table__cell">         
             <p class="td-first">PP (MEO)</p>
             <p class="td-first">LO (ME)</p>
+          </td>
+          <td class="nhsuk-table__cell">
+             <strong class="nhsuk-tag nhsuk-tag-blue">In progress</strong>
+            </td>
+            <td class="nhsuk-table__cell">
+              <strong class="nhsuk-tag nhsuk-tag-grey">Not started</strong>
+            </td>
+          <td class="nhsuk-table__cell">
+            Normal
           </td>
         </tr>
         
@@ -225,17 +266,373 @@ Open cases
           <td class="nhsuk-table__cell">
             19 January 2024
           </td>
-         <td class="nhsuk-table__cell">
-           <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
-         </td>
-         <td class="nhsuk-table__cell">
-           <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
-         </td>
+         
          <td class="nhsuk-table__cell">        
            <p class="td-first">RVD (MEO)</p>
            <p class="td-first">NK (ME)</p>
          </td>
+         <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+         <td class="nhsuk-table__cell">
+           Normal
+         </td>
         </tr>
+        
+        
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="#">Natalya Johannsen</a>
+            <p class="td-first">NHS: 423 876 287</p>
+          </td>
+          <td class="nhsuk-table__cell">
+            August 2024
+          </td>
+         
+         <td class="nhsuk-table__cell">
+           <p class="td-first">IG (MEO)</p>
+           <p class="td-first">BH (ME)</p>
+         </td>
+         <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-blue">In progress</strong>
+          </td>
+         <td class="nhsuk-table__cell">
+           Normal
+         </td>
+        </tr>
+        
+        
+        
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="#">Alan Hansen</a>
+            <p class="td-first">NHS: 123 456 999</p>
+          </td>
+          <td class="nhsuk-table__cell">
+            19 January 2024
+          </td>
+         
+         <td class="nhsuk-table__cell">        
+           <p class="td-first">RVD (MEO)</p>
+           <p class="td-first">NK (ME)</p>
+         </td>
+         <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+         <td class="nhsuk-table__cell">
+           Re-opened
+         </td>
+        </tr>
+        
+        
+        
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="#">Steve Nicol</a>
+            <p class="td-first">NHS: 123 456 999</p>
+          </td>
+          <td class="nhsuk-table__cell">
+            19 January 2024
+          </td>
+         
+         <td class="nhsuk-table__cell">        
+           <p class="td-first">RVD (MEO)</p>
+           <p class="td-first">NK (ME)</p>
+         </td>
+         <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+         <td class="nhsuk-table__cell">
+           Normal
+         </td>
+        </tr>
+        
+        
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="#">Ronald Whelan</a>
+            <p class="td-first">NHS: 123 456 999</p>
+          </td>
+          <td class="nhsuk-table__cell">
+            19 January 2024
+          </td>
+         
+         <td class="nhsuk-table__cell">        
+           <p class="td-first">RVD (MEO)</p>
+           <p class="td-first">NK (ME)</p>
+         </td>
+         <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+         <td class="nhsuk-table__cell">
+           Normal
+         </td>
+        </tr>
+        
+        
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="#">Katarina Johnson</a>
+            <p class="td-first">NHS: 123 456 999</p>
+          </td>
+          <td class="nhsuk-table__cell">
+            19 January 2024
+          </td>
+         
+         <td class="nhsuk-table__cell">        
+           <p class="td-first">RVD (MEO)</p>
+           <p class="td-first">NK (ME)</p>
+         </td>
+         <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+         <td class="nhsuk-table__cell">
+           Normal
+         </td>
+        </tr>
+        
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="#">Jeffrey Johnson</a>
+            <p class="td-first">NHS: 123 456 999</p>
+          </td>
+          <td class="nhsuk-table__cell">
+            19 January 2024
+          </td>
+         
+         <td class="nhsuk-table__cell">        
+           <p class="td-first">RVD (MEO)</p>
+           <p class="td-first">NK (ME)</p>
+         </td>
+         <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+         <td class="nhsuk-table__cell">
+           Normal
+         </td>
+        </tr>
+        
+        
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="#">Mollie Pimblett</a>
+            <p class="td-first">NHS: 123 456 999</p>
+          </td>
+          <td class="nhsuk-table__cell">
+            19 January 2024
+          </td>
+         
+         <td class="nhsuk-table__cell">        
+           <p class="td-first">RVD (MEO)</p>
+           <p class="td-first">NK (ME)</p>
+         </td>
+         <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+         <td class="nhsuk-table__cell">
+           Urgent
+         </td>
+        </tr>
+        
+        
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="#">Bernie Diaz</a>
+            <p class="td-first">NHS: 123 456 999</p>
+          </td>
+          <td class="nhsuk-table__cell">
+            19 January 2024
+          </td>
+        
+         <td class="nhsuk-table__cell">        
+           <p class="td-first">RVD (MEO)</p>
+           <p class="td-first">NK (ME)</p>
+         </td>
+         <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+         <td class="nhsuk-table__cell">
+           Normal
+         </td>
+        </tr>
+        
+        
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="#">Levi Hilton</a>
+            <p class="td-first">NHS: 123 456 999</p>
+          </td>
+          <td class="nhsuk-table__cell">
+            19 January 2024
+          </td>
+         
+         <td class="nhsuk-table__cell">        
+           <p class="td-first">RVD (MEO)</p>
+           <p class="td-first">NK (ME)</p>
+         </td>
+         <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+         <td class="nhsuk-table__cell">
+           Normal
+         </td>
+        </tr>
+        
+        
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="#">Tiffany Stratton</a>
+            <p class="td-first">NHS: 123 456 999</p>
+          </td>
+          <td class="nhsuk-table__cell">
+            19 January 2024
+          </td>
+         
+         <td class="nhsuk-table__cell">        
+           <p class="td-first">RVD (MEO)</p>
+           <p class="td-first">NK (ME)</p>
+         </td>
+         <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+         <td class="nhsuk-table__cell">
+           Urgent
+         </td>
+        </tr>
+        
+        
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="#">Alex Murphy</a>
+            <p class="td-first">NHS: 123 456 999</p>
+          </td>
+          <td class="nhsuk-table__cell">
+            19 January 2024
+          </td>
+         
+         <td class="nhsuk-table__cell">        
+           <p class="td-first">RVD (MEO)</p>
+           <p class="td-first">NK (ME)</p>
+         </td>
+         <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+         <td class="nhsuk-table__cell">
+           Normal
+         </td>
+        </tr>
+        
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="#">Paddy McCann</a>
+            <p class="td-first">NHS: 123 456 999</p>
+          </td>
+          <td class="nhsuk-table__cell">
+            19 January 2024
+          </td>
+         
+         <td class="nhsuk-table__cell">        
+           <p class="td-first">RVD (MEO)</p>
+           <p class="td-first">NK (ME)</p>
+         </td>
+         <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+         <td class="nhsuk-table__cell">
+           Normal
+         </td>
+        </tr>
+        
+        
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="#">Georgia Hedge</a>
+            <p class="td-first">NHS: 123 456 999</p>
+          </td>
+          <td class="nhsuk-table__cell">
+            19 January 2024
+          </td>
+         
+         <td class="nhsuk-table__cell">        
+           <p class="td-first">RVD (MEO)</p>
+           <p class="td-first">NK (ME)</p>
+         </td>
+         <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+         <td class="nhsuk-table__cell">
+           Normal
+         </td>
+        </tr>
+        
+        
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="#">William Butcher</a>
+            <p class="td-first">NHS: 123 456 999</p>
+          </td>
+          <td class="nhsuk-table__cell">
+            19 January 2024
+          </td>
+         
+         <td class="nhsuk-table__cell">        
+           <p class="td-first">RVD (MEO)</p>
+           <p class="td-first">NK (ME)</p>
+         </td>
+         
+         <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+         <td class="nhsuk-table__cell">
+           Urgent
+         </td>
+        </tr>
+        
        
       </tbody>
     </table>
@@ -253,16 +650,10 @@ Open cases
       <ul>
         <div id="options" class="options">
           <li>
-            <a class="active" href="open-cases2">Open cases</a>
-            <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag" style="border-radius: 15px; color:	#005eb8; border:none">
-              {% if data['deceased-first-name'] %}
-                  6
-              {% else %}
-                  5
-              {% endif %}
-            </strong>
+            <a class="active" href="open-cases2">Open cases (20)</a>
+           
           </li>
-          <li><a href="#">Coroner referrals</a></li>
+          <li><a href="coroner-ref">Coroner referrals (2)</a></li>
           <li><a href="#">Closed cases</a></li>
           <li><a href="#">Reporting</a></li>
         </div>
