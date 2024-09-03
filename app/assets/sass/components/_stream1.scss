@@ -410,7 +410,7 @@ overflow: hidden;
 position: relative;
 
 &:before {
-  background-color: #000;
+  background-color: $color_nhsuk-grey-1;
   content: "";
   height: 100%;
   left: 0;
@@ -434,7 +434,7 @@ padding-left: 30px;
 position: relative;
 
 &:before {
-  background-color: #000;
+  background-color: $color_nhsuk-grey-1;
   content: "";
   height: 5px;
   left: 0;
