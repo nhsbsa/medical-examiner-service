@@ -24,31 +24,31 @@ Case details
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
     
-  <section class="key-details">
-     <ul>
-       <li>
-         <div class="patient-name">
-           <span class="p-name">Patient name:</span>
-           <h1>Roberto Gerrard</h1>
-         </div>
-       </li>
-       <li>
-         <span>NHS number:</span>
-         <p>123 456 789</p>
-       </li>
-       <li>
-         <span>Date of death:</span>
-         <p>5 August 2024</p>
-       </li>
-       <li>
-         <span>Case type:</span>
-         <p>Hospital</p>
-       </li>
-      <!-- <li>
-         <a href="#" class="nhsuk-button nhsuk-button--secondary mb0">Close case</a>
-       </li> -->
-     </ul>
-   </section>
+ <section class="key-details">
+   <ul>
+     <li>
+       <div class="patient-name">
+         <span class="p-name">Patient name:</span>
+         <h1>Steven Firmino</h1>
+       </div>
+     </li>
+     <li>
+       <span>NHS number:</span>
+       <p>423 876 287</p>
+     </li>
+     <li>
+       <span>Date of death:</span>
+       <p>4 September 2024</p>
+     </li>
+     <!--<li>
+       <span>Case type:</span>
+       <p>Hospital</p>
+     </li>-->
+    <!-- <li>
+       <a href="#" class="nhsuk-button nhsuk-button--secondary mb0">Close case</a>
+     </li> -->
+   </ul>
+ </section>
     
   </div>
 </div>
@@ -61,8 +61,8 @@ Case details
     
     
     <h1 class="nhsuk-heading-l mb40">
-      Medical examiner scrutiny <span class="nhsuk-caption-m caption-progress">
-     <b>Progress:</b> 0 of 3 sections complete
+      Scrutiny <span class="nhsuk-caption-m caption-progress">
+     <b>Progress:</b> 1 of 3 sections complete
     </span>
     </h1>
    <!-- <p class="header-status">Status: <strong class="nhsuk-tag nhsuk-tag--blue">In progress</strong></p>-->
@@ -70,14 +70,14 @@ Case details
    
    
    
-   <!--<details class="nhsuk-details nhsuk-expander">
+   <details class="nhsuk-details nhsuk-expander">
      <summary class="nhsuk-details__summary">
        <span class="nhsuk-details__summary-text">
        Pre-scrutiny notes
        </span>
      </summary>
      <div class="nhsuk-details__text">
-       <p class="nhs-timestamp">Added by Anita Heart on 5 August at 14:17pm</p>
+       <p class="nhs-timestamp">Updated by Anita Heart on 4 September 2024 at 13:10pm</p>
        <p class="mt30">PMH: Angina, Hypertension, Ulcerative Colitis, IHD/MI Kathleen self discharged 01.05.2024 after treatment for Ulcerative Colitis flare up.</p>
        
        <p> Returned 06.05.2024 due to concerns from family re increasing lethargy and low in mood/energy. Increased bowel frequency and red blood noted on wiping. Reduced appetite. Family concern re Weight loss. Attended SDEC 08.05.2024 as per ED Referral. Confused. Aching in abdo. Opening bowels - very watery. CRP 71, hb 96. Working diagnosis - UC Flare vs Infectious cause.</p>
@@ -87,11 +87,11 @@ Case details
        </p>
    
      </div>
-   </details>-->
+   </details>
    
    
+   <br>
    
-    
   
   
 
@@ -103,7 +103,7 @@ Case details
     {% if data['declaration2'] %}
      <strong class="nhsuk-tag nhsuk-tag-green align-right">Complete</strong>
      {% else %}
-     <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
+     <strong class="nhsuk-tag nhsuk-tag-grey align-right">Not started</strong>
    {% endif %}
   </h2>
     
@@ -341,11 +341,10 @@ Case details
       
       <h2 class="nhsuk-heading-m" id="deceased-persons-details-header">
         <span class="section-main-title">Medical examiner's independent review</span>
-      {% if data['reviewConfirmed'] %}
-       <strong class="nhsuk-tag nhsuk-tag--green align-right">Complete</strong>
-       {% else %}
-       <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
-     {% endif %}
+      
+       <strong class="nhsuk-tag nhsuk-tag-green align-right">Complete</strong>
+       <p class="nhs-timestamp">Added by Bobby Henderson on 4 September 2024 at 15:10pm</p>
+       
     </h2>
     
     </div>
@@ -358,15 +357,7 @@ Case details
   <!-- ================================================== -->
 
 
-    
-    
 
-  
-  
-  {% if data['reviewConfirmed'] %}
-    
-    
-    
     <dl class="nhsuk-summary-list">
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
@@ -486,23 +477,11 @@ Case details
     
     
     <div class="nav-flow">
-      <a href="record-mer" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+      <a href="not-testing" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
       Change details
      </a>
    </div>
 
-    
-    
-    {% else %}
-  
-    <p>No details have been added.</p>
-    <div class="nav-flow">
-      <a href="record-mer" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
-       Add medical examiner's independent review
-     </a>
-   </div>
-   
-   {% endif %}
 
   
     </div>
@@ -520,7 +499,7 @@ Case details
      {% if data['ap-discuss'] %}
       <strong class="nhsuk-tag nhsuk-tag--green align-right">Complete</strong>
       {% else %}
-      <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
+      <strong class="nhsuk-tag nhsuk-tag-grey align-right">Not started</strong>
     {% endif %}
     </h2>
     
@@ -681,7 +660,7 @@ Case details
           
     <div class="nhsuk-back-link">
     
-      <a class="nhsuk-back-link__link" href="../open-cases2">
+      <a class="nhsuk-back-link__link" href="../open-cases99">
         <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
           <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
         </svg>
@@ -696,8 +675,8 @@ Case details
       <div id="options" class="options">
         <li><a href="case-timeline">Case timeline</a></li>
         <li><a href="case-details">Case details</a></li>
-        <li><a href="pre-scrutiny">Pre-scrutiny</a></li>
-        <li><a class="active" href="me-scrutiny">ME scrutiny</a></li>
+        <!--<li><a href="pre-scrutiny">Pre-scrutiny</a></li>-->
+        <li><a class="active" href="me-scrutiny">Scrutiny</a></li>
         
         
       </div>

@@ -45,18 +45,18 @@ Open cases
       <ul>
         <li><a href="open-cases99">All cases
           
-          {% if data['timeline-event'] %}
-          (<b>21</b>)
-          {% else %}
-           (<b>20</b>)
-           {% endif %} 
+         {% if data['deceased-first-name'] %}
+         (<b>21</b>)
+         {% else %}
+          (<b>20</b>)
+          {% endif %} 
     
          </a></li>
         <li><a href="#" class="active">Urgent cases (<b>4</b>)</a></li>
 
         <li><a href="reopen-cases">Re-opened cases (<b>1</b>)</a></li>
         
-        <li><a href="timeline-alerts">Timeline alerts (<b>1</b>)</a></li>
+        <li><a href="timeline-alerts">Case alerts (<b>4</b>)</a></li>
         
         
       </ul>
@@ -66,10 +66,10 @@ Open cases
     <table class="nhsuk-table mt20 nhsuk-table-clickable main-table" id="sortable">
       <thead class="nhsuk-table__head">
         <tr class="nhsuk-table__row">
-          <th class="nhsuk-table__header" scope="col">Case details</th>
+          <th class="nhsuk-table__header" scope="col">Details</th>
           <th class="nhsuk-table__header" scope="col">Date of death</th>
           <th class="nhsuk-table__header" scope="col">Assigned to</th>
-          <th class="nhsuk-table__header" scope="col">Pre-scrutiny</th>
+          <th class="nhsuk-table__header" scope="col">Case details</th>
           <th class="nhsuk-table__header" scope="col">ME scrutiny</th>
           <th class="nhsuk-table__header fixed-side" scope="col">Case type</th>
         </tr>
@@ -85,7 +85,7 @@ Open cases
             <p class="td-first">NHS: 423 876 287</p>
           </td>
           <td class="nhsuk-table__cell">
-            August 2024
+            2 August 2024
           </td>
          
          <td class="nhsuk-table__cell">
@@ -123,7 +123,7 @@ Open cases
             <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
           </td>
           <td class="nhsuk-table__cell">
-            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          <strong class="nhsuk-tag nhsuk-tag-blue">In progress</strong>
           </td>
          <td class="nhsuk-table__cell">
            Urgent
@@ -150,7 +150,7 @@ Open cases
             <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
           </td>
           <td class="nhsuk-table__cell">
-            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+            <strong class="nhsuk-tag nhsuk-tag-blue">In progress</strong>
           </td>
          <td class="nhsuk-table__cell">
            Urgent
@@ -178,7 +178,7 @@ Open cases
             <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
           </td>
           <td class="nhsuk-table__cell">
-            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+            <strong class="nhsuk-tag nhsuk-tag-blue">In progress</strong>
           </td>
          <td class="nhsuk-table__cell">
            Urgent
@@ -202,7 +202,11 @@ Open cases
       <ul>
         <div id="options" class="options">
           <li>
-            <a class="active" href="open-cases2">Open cases (20)</a>
+            <a class="active" href="open-cases2">Open cases {% if data['deceased-first-name'] %}
+               (21)
+               {% else %}
+                (20)
+                {% endif %} </a>
            
           </li>
           <li><a href="coroner-ref">Coroner referrals (2)</a></li>

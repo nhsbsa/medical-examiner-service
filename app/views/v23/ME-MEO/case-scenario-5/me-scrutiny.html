@@ -25,31 +25,30 @@ Case details
   <div class="nhsuk-grid-column-full">
     
   <section class="key-details">
-     <ul>
-       <li>
-         <div class="patient-name">
-           <span class="p-name">Patient name:</span>
-           <h1>Roberto Gerrard</h1>
-         </div>
-       </li>
-       <li>
-         <span>NHS number:</span>
-         <p>123 456 789</p>
-       </li>
-       <li>
-         <span>Date of death:</span>
-         <p>5 August 2024</p>
-       </li>
-       <li>
-         <span>Case type:</span>
-         <p>Hospital</p>
-       </li>
-      <!-- <li>
-         <a href="#" class="nhsuk-button nhsuk-button--secondary mb0">Close case</a>
-       </li> -->
-     </ul>
-   </section>
-    
+    <ul>
+      <li>
+        <div class="patient-name">
+          <span class="p-name">Patient name:</span>
+          <h1>{{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}</h1>
+        </div>
+      </li>
+      <li>
+        <span>NHS number:</span>
+        <p>{{ data['ref-NHSnumber'] }}</p>
+      </li>
+      <li>
+        <span>Date of death:</span>
+        <p>{{ data['dodDayCreate'] }} September {{ data['dodYearCreate'] }}</p>
+      </li>
+      <!--<li>
+        <span>Case type:</span>
+        <p>Hospital</p>
+      </li>-->
+     <!-- <li>
+        <a href="#" class="nhsuk-button nhsuk-button--secondary mb0">Close case</a>
+      </li> -->
+    </ul>
+  </section>
   </div>
 </div>
 
@@ -103,7 +102,7 @@ Case details
     {% if data['declaration2'] %}
      <strong class="nhsuk-tag nhsuk-tag-green align-right">Complete</strong>
      {% else %}
-     <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
+     <strong class="nhsuk-tag nhsuk-tag-grey align-right">Not started</strong>
    {% endif %}
   </h2>
     
@@ -344,7 +343,7 @@ Case details
       {% if data['reviewConfirmed'] %}
        <strong class="nhsuk-tag nhsuk-tag--green align-right">Complete</strong>
        {% else %}
-       <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
+       <strong class="nhsuk-tag nhsuk-tag-grey align-right">Not started</strong>
      {% endif %}
     </h2>
     
@@ -486,7 +485,7 @@ Case details
     
     
     <div class="nav-flow">
-      <a href="record-mer" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+      <a href="not-testing" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
       Change details
      </a>
    </div>
@@ -497,7 +496,7 @@ Case details
   
     <p>No details have been added.</p>
     <div class="nav-flow">
-      <a href="record-mer" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+      <a href="not-testing" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
        Add medical examiner's independent review
      </a>
    </div>
@@ -520,7 +519,7 @@ Case details
      {% if data['ap-discuss'] %}
       <strong class="nhsuk-tag nhsuk-tag--green align-right">Complete</strong>
       {% else %}
-      <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
+      <strong class="nhsuk-tag nhsuk-tag-grey align-right">Not started</strong>
     {% endif %}
     </h2>
     
@@ -696,7 +695,7 @@ Case details
       <div id="options" class="options">
         <li><a href="case-timeline">Case timeline</a></li>
         <li><a href="case-details">Case details</a></li>
-        <li><a href="pre-scrutiny">Pre-scrutiny</a></li>
+        <!--<li><a href="pre-scrutiny">Pre-scrutiny</a></li>-->
         <li><a class="active" href="me-scrutiny">Scrutiny</a></li>
         
         
