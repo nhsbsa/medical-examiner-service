@@ -411,7 +411,7 @@ position: relative;
 
 &:before {
   background-color: #000
-  content: "";
+  
   height: 100%;
   left: 0;
   position: absolute;
@@ -435,7 +435,7 @@ position: relative;
 
 &:before {
   background-color: #000;
-  content: "";
+ 
   height: 5px;
   left: 0;
   position: absolute;
@@ -859,6 +859,5 @@ p {
     font-weight: bold;
     margin: 5px 0 0 0;
     font-size: 17px;
-    //color: $color_nhsuk-grey-1;
   }
 }
