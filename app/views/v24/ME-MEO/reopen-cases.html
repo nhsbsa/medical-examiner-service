@@ -1,0 +1,135 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Open cases
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+
+<div class="nhsuk-grid-row">
+  
+  <div class="nhsuk-grid-column-full">
+    
+    
+    <h1 class="nhsuk-heading-l">
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">
+        Royal Infirmary, Newcastle
+    </span>
+
+ Re-opened cases
+      
+    </h1>
+    
+    
+    <div class="nav-flow"><a href="create-new-case99" class="nhsuk-button"> Create new case</a></div>
+    
+    
+    
+    
+    <section class="timeline-filter">
+      <h3 class="nhsuk-heading-s mb0">Filter by:</h3>
+      <ul>
+        <li><a href="open-cases99">All cases
+          
+          {% if data['deceased-first-name'] %}
+          (<b>23</b>)
+          {% else %}
+           (<b>22</b>)
+           {% endif %} 
+    
+         </a></li>
+        <li><a href="urgent-cases">Urgent cases (<b>4</b>)</a></li>
+
+        <li><a href="#" class="active">Re-opened cases (<b>1</b>)</a></li>
+        <li><a href="timeline-alerts">Case alerts (<b>4</b>)</a></li>
+        
+        
+      </ul>
+    </section>
+
+    
+    <table class="nhsuk-table mt20 nhsuk-table-clickable main-table" id="sortable">
+      <thead class="nhsuk-table__head">
+        <tr class="nhsuk-table__row">
+          <th class="nhsuk-table__header" scope="col">Details</th>
+          <th class="nhsuk-table__header" scope="col">Date of death</th>
+          <th class="nhsuk-table__header" scope="col">Assigned to</th>
+          <th class="nhsuk-table__header" scope="col">Case details</th>
+          <th class="nhsuk-table__header" scope="col">Scrutiny</th>
+          <th class="nhsuk-table__header fixed-side" scope="col">Case type</th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+      
+        
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="#">Alan Hansen</a>
+            <p class="td-first">NHS: 123 456 999</p>
+          </td>
+          <td class="nhsuk-table__cell">
+            19 January 2024
+          </td>
+         
+         <td class="nhsuk-table__cell">        
+           <p class="td-first">RVD (MEO)</p>
+           <p class="td-first">NK (ME)</p>
+         </td>
+         <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag-green">Complete</strong>
+          </td>
+         <td class="nhsuk-table__cell">
+           Re-opened
+         </td>
+        </tr>
+        
+        
+       
+      </tbody>
+    </table>
+    
+ 
+   
+   
+  </div>
+</div>
+
+{% endblock %}
+{% block sideNav %}
+
+    <div class="side-nav">
+      <ul>
+        <div id="options" class="options">
+          <li>
+            <a class="active" href="open-cases2">Open cases {% if data['deceased-first-name'] %}
+               (23)
+               {% else %}
+                (22)
+                {% endif %} </a>
+           
+          </li>
+          <li><a href="coroner-ref">Coroner referrals (2)</a></li>
+          <li><a href="#">Closed cases</a></li>
+          <li><a href="#">Reporting</a></li>
+        </div>
+      </ul>
+    </div>
+
+{% endblock %}

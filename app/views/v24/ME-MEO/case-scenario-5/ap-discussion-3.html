@@ -1,0 +1,142 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-full-width.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+        
+
+        <div class="nhsuk-grid-column-three-quarters">
+          
+          {% from 'back-link/macro.njk' import backLink %}
+  
+          {{ backLink({
+          "href": "javascript:history.back()",
+          "text": "Go back"
+          }) }}
+
+<h1 class="nhsuk-heading-l mb40">
+  <span class="nhsuk-caption-l nhsuk-caption--bottom">
+     Discussion with the AP about the cause of death
+   </span>
+ Check discussion details</h1>
+
+          
+        <dl class="nhsuk-summary-list nhsuk-!-margin-bottom-9">
+           <div class="nhsuk-summary-list__row">
+             <dt class="nhsuk-summary-list__key">
+               Name of AP
+             </dt>
+             <dd class="nhsuk-summary-list__value">
+               {{ data['qapFirstNames'] }} {{ data['qapLastName'] }}
+             </dd>
+             <dd class="nhsuk-summary-list__actions">
+               <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> communication with</span></a>
+             </dd>
+           </div>
+
+           
+           <div class="nhsuk-summary-list__row">
+             <dt class="nhsuk-summary-list__key">
+               Date and time
+             </dt>
+             <dd class="nhsuk-summary-list__value">
+               11 June 2024
+             </dd>
+             <dd class="nhsuk-summary-list__actions">
+               <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> date and time</span></a>
+             </dd>
+           </div>
+           <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Details
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['example-ap-discussion'] }}
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> Details</span></a>
+              </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                The cause of death used on the MCCD:
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {% if data['cod-mccd'] %}
+                {% if data['cod-mccd'].includes('cod-mccd-1') %}
+                
+                The attending practitioner's
+                  
+                {% endif %}
+                
+                
+                {% if data['cod-mccd'].includes('cod-mccd-2') %}
+                
+                The medical examiner's
+                  
+                {% endif %}
+               
+               
+                {% if data['cod-mccd'].includes('cod-mccd-3') %}
+                
+                A different COD agreed on by AP and ME
+               
+                {% endif %}
+               
+               
+                {% if data['cod-mccd'].includes('cod-mccd-4') %}
+                
+                The coroner is being notified about this case
+        
+                {% endif %}
+                
+              
+                {% endif %}
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> Details</span></a>
+              </dd>
+            </div>
+            
+            
+            
+           
+            
+            
+          
+           
+         </dl>
+         
+           
+            <div class="nav-flow">
+              <a href="case-scrutiny" class="nhsuk-button" data-module="nhsuk-button">
+              Confirm details &ndash; add discussion
+            </a>
+            </div>
+
+        </div>
+    </div>
+
+    {% endblock %}

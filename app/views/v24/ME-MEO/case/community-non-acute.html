@@ -1,0 +1,143 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-full-width.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+        {% from 'back-link/macro.njk' import backLink %}
+
+        {{ backLink({
+        "href": "javascript:history.back()",
+        "text": "Go back"
+        }) }}
+
+        <h1>
+            <span class="nhsuk-caption-m nhsuk-caption--bottom">
+                Location of death - {{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}
+            </span>
+            Community or non-acute setting
+        </h1>
+
+        <form action="community-non-acute" method="post">
+
+            <div class="nhsuk-form-group">
+                <fieldset class="nhsuk-fieldset">
+                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l nhsuk-u-visually-hidden">
+                        Location of death
+                    </legend>
+                    <div class="nhsuk-radios nhsuk-radios--conditional">
+
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="sameAsHomeAddress" name="addressLocationType"
+                                type="radio" value="same-as-home">
+                            <label class="nhsuk-label nhsuk-radios__label" for="sameAsHomeAddress">
+                                Same as home address
+                            </label>
+                        </div>
+
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="otherAddress" name="addressLocationType" type="radio"
+                                value="other-address" aria-controls="conditional-otherAddress" aria-expanded="false">
+                            <label class="nhsuk-label nhsuk-radios__label" for="otherAddress">
+                                Other address or organisation
+                            </label>
+                        </div>
+
+                        <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden"
+                            id="conditional-otherAddress">
+                            <fieldset class="nhsuk-fieldset">
+                                <legend
+                                    class="nhsuk-fieldset__legend nhsuk-fieldset__heading--l nhsuk-u-visually-hidden">
+                                    <strong> Other address or organisation </strong>
+                                </legend>
+                                <div class="nhsuk-form-group">
+                                    <label class="nhsuk-label nhsuk-u-width-one-half" for="addressLine1">
+                                        Address line 1 <span class="nhsuk-u-visually-hidden">line 1 of 2</span>
+                                    </label>
+                                    <input class="nhsuk-input nhsuk-u-width-one-half" id="addressLine1"
+                                        name="otherAddressLine1" type="text">
+                                </div>
+                                <div class="nhsuk-form-group">
+                                    <label class="nhsuk-label nhsuk-u-width-one-half" for="addressLine2">
+                                        Address line 2 (optional) <span class="nhsuk-u-visually-hidden">line 2 of
+                                            2</span>
+                                    </label>
+                                    <input class="nhsuk-input nhsuk-u-width-one-half" id="addressLine2"
+                                        name="otherAddressLine2" type="text">
+                                </div>
+                                <div class="nhsuk-form-group">
+                                    <label class="nhsuk-label nhsuk-u-width-one-half" for="townOrCity">
+                                        Town or city <span class="optional-span"> (optional) </span>
+                                    </label>
+                                    <input class="nhsuk-input nhsuk-u-width-one-half" id="townOrCity"
+                                        name="otherTownOrCity" type="text">
+                                </div>
+                                <div class="nhsuk-form-group">
+                                    <label class="nhsuk-label nhsuk-u-width-one-half" for="county">
+                                        County <span class="optional-span"> (optional) </span>
+                                    </label>
+                                    <input class="nhsuk-input nhsuk-u-width-one-half" id="county" name="otherCounty"
+                                        type="text">
+                                </div>
+                                <div class="nhsuk-form-group">
+                                    <label class="nhsuk-label nhsuk-input--width-10" for="postCode">
+                                        Postcode
+                                    </label>
+                                    <input class="nhsuk-input nhsuk-input--width-10" id="postCode" name="otherPostode"
+                                        type="text">
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="noSpecificAddress" name="addressLocationType"
+                                type="radio" value="no-specific-address" aria-controls="conditional-noSpecificAddress"
+                                aria-expanded="false">
+                            <label class="nhsuk-label nhsuk-radios__label" for="noSpecificAddress">
+                                Location with no specific address
+                            </label>
+                        </div>
+                        <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden"
+                            id="conditional-noSpecificAddress">
+                            <div class="nhsuk-form-group">
+                                <label class="nhsuk-label nhsuk-u-width-one-half" for="nonSpecificAddressDetails">
+                                    Enter details
+                                </label>
+                                <input class="nhsuk-input nhsuk-u-width-one-half" id="nonSpecificAddressDetails"
+                                    name="nonSpecificAddressDetails" type="text">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+            <button class="nhsuk-button" id="save-and-continue-button" type="submit">
+                Save and continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,242 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Open cases
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+
+<div class="nhsuk-grid-row">
+  
+  <div class="nhsuk-grid-column-full">
+    
+    
+    <h1 class="nhsuk-heading-l">
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">
+        Royal Infirmary, Newcastle
+    </span>
+
+      {% if data['deceased-first-name'] %}
+          Open cases (6)
+      {% else %}
+          Open cases (5)
+      {% endif %}
+      
+    </h1>
+    
+    
+    <div class="nav-flow"><a href="create-new-case" class="nhsuk-button"> Create new case</a></div>
+
+    
+    <table class="nhsuk-table mt20 nhsuk-table-clickable main-table" id="sortable">
+      <thead class="nhsuk-table__head">
+        <tr class="nhsuk-table__row">
+          <th class="nhsuk-table__header" scope="col">Details</th>
+          <th class="nhsuk-table__header" scope="col">Date of death</th>
+          <th class="nhsuk-table__header" scope="col">Case details</th>
+          <th class="nhsuk-table__header" scope="col">Scrutiny</th>
+          <th class="nhsuk-table__header fixed-side" scope="col">Assigned to</th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+       <!-- <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <div class="rapid-release">
+            <a href="case-scenario-1/case-details">Mary Todd</a>
+            <p class="td-first">NHS: 123 456 999</p>
+            <p class="td-third">Urgent release</p>
+            </div>
+          </td>
+          <td class="nhsuk-table__cell">
+            12 May 2024
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag--green">Complete</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag--blue">In progress</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            <p class="td-first">IG (MEO)</p>
+            <p class="td-first">JVD (ME)</p>
+          </td>
+        </tr> -->
+
+        {% if data['deceased-first-name'] %}
+
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="case/case-timeline">{{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}</a>
+            <p class="td-first">NHS: {{ data['ref-NHSnumber'] }} </p>
+          </td>
+          <td class="nhsuk-table__cell">
+            {{ data['dodDayCreate'] }} <span class="convert-month">{{ data['dodMonthCreate'] }}</span> {{ data['dodYearCreate'] }}
+          </td>
+         <td class="nhsuk-table__cell">
+           <strong class="nhsuk-tag nhsuk-tag--green">Complete</strong>
+         </td>
+         <td class="nhsuk-table__cell">
+           <strong class="nhsuk-tag nhsuk-tag--blue">In progress</strong>
+         </td>
+         <td class="nhsuk-table__cell">
+           <p class="td-first">IG (MEO)</p>
+           <p class="td-first">JVD (ME)</p>
+         </td>
+        </tr>
+           
+        {% endif %}
+
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="case-scenario-3/case-timeline">Nicola Swift</a>
+            <p class="td-first">NHS: 423 876 287</p>
+          </td>
+          <td class="nhsuk-table__cell">
+            2 August 2024
+          </td>
+         <td class="nhsuk-table__cell">
+           <strong class="nhsuk-tag nhsuk-tag--green">Complete</strong>
+         </td>
+         <td class="nhsuk-table__cell">
+           <strong class="nhsuk-tag nhsuk-tag--blue">In progress</strong>
+         </td>
+         <td class="nhsuk-table__cell">
+           <p class="td-first">IG (MEO)</p>
+           <p class="td-first">BH (ME)</p>
+         </td>
+        </tr>
+
+
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="case-scenario-2/case-timeline">Kathleen Stark</a>
+            <p class="td-first">NHS: 423 876 287</p>
+          </td>
+          <td class="nhsuk-table__cell">
+           5 August 2024
+          </td>
+         <td class="nhsuk-table__cell">
+           <strong class="nhsuk-tag nhsuk-tag--green">Complete</strong>
+         </td>
+         <td class="nhsuk-table__cell">
+           <strong class="nhsuk-tag nhsuk-tag--blue">In progress</strong>
+         </td>
+         <td class="nhsuk-table__cell">
+           <p class="td-first">AH (MEO)</p>
+           <p class="td-first">BH (ME)</p>
+         </td>
+        </tr>
+        
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="#">Roberto Gerrard</a>
+            <p class="td-first">NHS: 123 456 999</p>
+          </td>
+          <td class="nhsuk-table__cell">
+            22 March 2024
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag--blue">In progress</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag--blue">In progress</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            <p class="td-first">FF (MEO)</p>
+            <p class="td-first">TS (ME)</p>
+          </td>
+        </tr>
+        
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="#">Bart Jackson</a>
+            <p class="td-first">NHS: 123 456 999</p>
+          </td>
+          <td class="nhsuk-table__cell">
+            3 February 2024
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag--grey">Not started</strong>
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong class="nhsuk-tag nhsuk-tag--grey">Not started</strong>
+          </td>
+          <td class="nhsuk-table__cell">         
+            <p class="td-first">PP (MEO)</p>
+            <p class="td-first">LO (ME)</p>
+          </td>
+        </tr>
+        
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <a href="#">Dominic Gravenberch Jr.</a>
+            <p class="td-first">NHS: 123 456 999</p>
+          </td>
+          <td class="nhsuk-table__cell">
+            19 January 2024
+          </td>
+         <td class="nhsuk-table__cell">
+           <strong class="nhsuk-tag nhsuk-tag--green">Complete</strong>
+         </td>
+         <td class="nhsuk-table__cell">
+           <strong class="nhsuk-tag nhsuk-tag--green">Complete</strong>
+         </td>
+         <td class="nhsuk-table__cell">        
+           <p class="td-first">RVD (MEO)</p>
+           <p class="td-first">NK (ME)</p>
+         </td>
+        </tr>
+       
+      </tbody>
+    </table>
+    
+ 
+    
+   
+  </div>
+</div>
+
+{% endblock %}
+{% block sideNav %}
+
+    <div class="side-nav">
+      <ul>
+        <div id="options" class="options">
+          <li>
+            <a class="active" href="open-cases2">Open cases</a>
+            <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag" style="border-radius: 15px; color:	#005eb8; border:none">
+              {% if data['deceased-first-name'] %}
+                  6
+              {% else %}
+                  5
+              {% endif %}
+            </strong>
+          </li>
+          <li>
+            <a href="#">Closed cases</a>
+            <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag" style="border-radius: 15px; color:	#fff; background-color: #005eb8; border:none">0</strong>
+          </li>
+          <li>
+            <a href="#">Reopened cases</a>
+            <strong class="nhsuk-tag nhsuk-tag--white side-nav-tag" style="border-radius: 15px; color:	#fff; background-color: #005eb8; border:none">2</strong>
+          </li>
+          <li><a href="#">Reporting</a></li>
+        </div>
+      </ul>
+    </div>
+
+{% endblock %}

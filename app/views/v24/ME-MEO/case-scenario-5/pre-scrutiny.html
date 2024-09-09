@@ -1,0 +1,259 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+
+
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    
+  <section class="key-details">
+    <ul>
+      <li>
+        <div class="patient-name">
+          <span class="p-name">Patient name:</span>
+          <h1>{{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}</h1>
+        </div>
+      </li>
+      <li>
+        <span>NHS number:</span>
+        <p>{{ data['ref-NHSnumber'] }}</p>
+      </li>
+      <li>
+        <span>Date of death:</span>
+        <p>{{ data['dodDayCreate'] }} September {{ data['dodYearCreate'] }}</p>
+      </li>
+      <!--<li>
+        <span>Case type:</span>
+        <p>Hospital</p>
+      </li>-->
+     <!-- <li>
+        <a href="#" class="nhsuk-button nhsuk-button--secondary mb0">Close case</a>
+      </li> -->
+    </ul>
+  </section>
+    
+  </div>
+</div>
+
+
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+    
+    <h1 class="nhsuk-heading-l mb40">
+  Pre-scrutiny <span class="nhsuk-caption-m caption-progress">
+ <b>Progress:</b> 0 of 4 sections complete
+</span>
+</h1> 
+
+    
+    
+   <div class="nhsuk-card">
+     
+     
+     <div class="nhs-card-heading">
+       
+       
+       <h2 class="nhsuk-heading-m">
+          
+          <span class="section-main-title">Next of kin details </span>
+
+         <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
+        
+        </h2>
+        
+       
+     </div>
+ 
+   
+     <div class="nhsuk-card__content">
+   
+
+ <p>No details have been added for the next of kin.</p>
+       
+       <div class="nav-flow">
+         <a href="not-testing" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+          Add next of kin details
+        </a>
+      </div>
+       
+      
+ 
+     </div>
+   </div>
+   
+   
+   
+   <div class="nhsuk-card">
+     
+     <div class="nhs-card-heading">
+       
+       <h2 class="nhsuk-heading-m">
+         
+         <span class="section-main-title">Location of death</span> 
+      
+        <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
+        
+       </h2>
+       
+
+       
+     </div>
+     
+     
+     <div class="nhsuk-card__content">
+
+ 
+      <p>No details have been added for the location of death.</p>
+        
+        <div class="nav-flow">
+          <a href="not-testing" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+           Add location of death details
+         </a>
+       </div>
+ 
+ 
+     </div>
+   </div>
+   
+   
+   
+   
+   
+   <div class="nhsuk-card">
+      
+      
+      <div class="nhs-card-heading">
+        
+        
+        <h2 class="nhsuk-heading-m">
+           
+           <span class="section-main-title">Additional details </span>
+ 
+          <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
+         
+         </h2>
+         
+        
+      </div>
+  
+    
+      <div class="nhsuk-card__content">
+    
+ 
+  <p>No additional details have been added.</p>
+        
+        <div class="nav-flow">
+          <a href="not-testing" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+           Add additional details
+         </a>
+       </div>
+        
+       
+  
+      </div>
+    </div>
+    
+    
+    
+    <div class="nhsuk-card">
+      
+      
+      <div class="nhs-card-heading">
+        
+        
+        <h2 class="nhsuk-heading-m">
+           
+           <span class="section-main-title">Pre-scrutiny notes </span>
+ 
+          <strong class="nhsuk-tag nhsuk-tag--grey align-right">Not started</strong>
+         
+         </h2>
+         
+        
+      </div>
+  
+    
+      <div class="nhsuk-card__content">
+    
+ 
+  <p>No pre-scrutiny notes have been added.</p>
+        
+        <div class="nav-flow">
+          <a href="not-testing" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+           Add pre-scrutiny notes
+         </a>
+       </div>
+        
+       
+  
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+</div>
+
+{% endblock %}
+
+
+
+
+{% block sideNav %}
+<div class="side-nav">
+  
+  
+ <div class="case-type-details">
+   
+      
+<div class="nhsuk-back-link">
+
+  <a class="nhsuk-back-link__link" href="../open-cases99">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Back to case list</a>
+</div>
+
+  
+ </div>
+  
+  
+  <ul>
+    <div id="options" class="options">
+      <li><a href="case-timeline">Case timeline</a></li>
+      <li><a href="case-details">Case details</a></li>
+      <li><a href="pre-scrutiny" class="active">Pre-scrutiny</a></li>
+      <li><a href="me-scrutiny">Scrutiny</a></li>
+      
+     
+    </div>
+  </ul>
+  
+    
+</div>
+{% endblock %}

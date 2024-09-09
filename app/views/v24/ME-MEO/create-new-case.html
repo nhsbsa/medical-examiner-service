@@ -1,0 +1,247 @@
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - edit the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Create new case
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+
+
+{% if data['deceased-first-name'] %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      
+    <section class="key-details">
+      <ul>
+        <li>
+          <div class="patient-name">
+            <span class="p-name">Patient name:</span>
+            <h1>{{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}</h1>
+          </div>
+        </li>
+        <li>
+          <span>NHS number:</span>
+          <p>{{ data['ref-NHSnumber'] }} </p>
+        </li>
+        <li>
+          <span>Date of death:</span>
+          <p>{{ data['dodDayCreate'] }} <span class="convert-month" style="display:inline">{{ data['dodMonthCreate'] }}</span> {{ data['dodYearCreate'] }}</p>
+        </li>
+        <li>
+          <span>Case type:</span>
+          {% if data['hospital-death'] %}
+            <p>Hospital</p>
+          {% endif %}
+        </li>
+        <!-- <li>
+          <a href="#" class="nhsuk-button nhsuk-button--secondary mb0">Close case</a>
+        </li> -->
+      </ul>
+    </section>
+      
+    </div>
+  </div>
+{% endif %}
+
+
+
+
+{% from 'back-link/macro.njk' import backLink %}
+
+{{ backLink({
+"href": "javascript:history.back()",
+"text": "Go back"
+}) }}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-two-thirds">
+
+    
+    <h1 class="nhsuk-heading-l mb40">
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">
+        Create new case
+      </span>
+      Deceased person's details</h1>
+
+
+    <form action="case/case-details" method="post">
+
+      <div class="nhsuk-form-group">
+        <label class="nhsuk-label nhsuk-u-width-one-half" for="firstNames">
+          First name(s)
+        </label>
+        <input class="nhsuk-input nhsuk-u-width-one-half" id="firstNames" name="deceased-first-name" type="text"
+        value="{{ data['deceased-first-name'] }}">
+      </div>
+      <div class="nhsuk-form-group">
+        <label class="nhsuk-label nhsuk-u-width-one-half" for="lastName">
+          Last name
+        </label>
+        <input class="nhsuk-input nhsuk-u-width-one-half" id="lastName" name="deceased-last-name" type="text" value="{{ data['deceased-last-name'] }}">
+      </div>
+
+
+
+
+      <h2 class="nhsuk-heading-m mt40" id="date-time-death-header">Date and time death was verified</h2>
+
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="dateOfDeath-hint" role="group">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+            Date of death
+          </legend>
+          <div class="nhsuk-hint" id="dateOfDeath-hint">
+            For example, 15 3 2021
+          </div>
+          <div class="nhsuk-date-input" id="dateOfDeath">
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="dateOfDeath-day">
+                  Day
+                </label>
+                <!-- value="" matches the name attribute on the <input> using nunjucks example {{ data['name-attribute-value'] }} -->
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dateOfDeath-day"
+                  name="dodDayCreate" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['dodDayCreate'] }}">
+              </div>
+            </div>
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="dateOfDeath-dodMonth">
+                  Month
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dateOfDeath-dodMonth"
+                  name="dodMonthCreate" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['dodMonthCreate'] }}">
+              </div>
+            </div>
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="dateOfDeath-dodYear">
+                  Year
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="dateOfDeath-dodYear"
+                  name="dodYearCreate" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['dodYearCreate'] }}">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="timeOfDeath-hint" role="group">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+            Time of death
+          </legend>
+          <div class="nhsuk-hint" id="timeOfDeath-hint">
+            Use 24 hour format. For example, 16 23
+          </div>
+          <div class="nhsuk-date-input" id="timeOfDeath">
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="timeOfDeath-hour">
+                  Hour
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="timeOfDeath-hour"
+                  name="todHourCreate" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['todHourCreate'] }}">
+              </div>
+            </div>
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="timeOfDeath-todMinute">
+                  Minutes
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="timeOfDeath-todMinute"
+                  name="todMinuteCreate" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['todMinuteCreate'] }}">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading-l">
+            Request for urgent release?
+          </legend>
+          <div class="nhsuk-hint nhsuk-u-reading-width" id="requestForRapidRelease-hint">
+            Urgent release means the deceased person needs to be released quickly. For example, the family wishes to arrange a funeral as soon as possible after death for religious reasons.
+          </div>
+          <div class="nhsuk-radios">
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="requestForRapidRelease" name="requestForRapidRelease" type="radio"
+                value="Yes">
+              <label class="nhsuk-label nhsuk-radios__label" for="requestForRapidRelease">
+                Yes
+              </label>
+            </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="requestForRapidRelease-no" name="requestForRapidRelease"
+                type="radio" value="No">
+              <label class="nhsuk-label nhsuk-radios__label" for="requestForRapidRelease-no">
+                No
+              </label>
+            </div>
+
+          </div>
+        </fieldset>
+      </div>
+
+
+     
+
+      <div class="nav-flow">
+      <button class="nhsuk-button" type="submit">
+        Save and continue
+      </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+{% endblock %}
+
+
+{% block sideNav %}
+<div class="side-nav">
+  
+  
+ <!--<div class="case-type-details">
+   
+      
+<div class="nhsuk-back-link">
+
+  <a class="nhsuk-back-link__link" href="../open-cases2">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Back to case list</a>
+</div>
+
+  
+ </div>
+  
+  
+  <ul>
+    <div id="options" class="options">
+      <li><a class="active" href="case-timeline">Case timeline</a></li>
+      <li><a href="case-details">Case details</a></li>
+      <li><a href="case-scrutiny">Case scrutiny</a></li>
+      
+    </div>
+  </ul>
+-->
+    
+</div>
+{% endblock %}

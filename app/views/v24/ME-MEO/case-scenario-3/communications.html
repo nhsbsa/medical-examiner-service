@@ -1,0 +1,291 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-admin-interface.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+Case details
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-full">
+    <h1 class="nhsuk-heading-l mb40">Communications</h1>
+    
+
+     
+     <div class="nav-flow">
+        <a href="record-communication" class="nhsuk-button" data-module="nhsuk-button">
+        Record a communication
+      </a>
+      </div>
+     
+     
+     
+     <h2 class="nhsuk-heading-m mt30 mb10">Timeline of communications for this case</h2>
+    
+     <div class="nhsuk-card">
+       <div class="nhsuk-card__content">
+     
+     
+     
+     <div class="nhs-timeline">
+       
+
+       {% if data['concern-recorded'] %}
+       
+       <div class="nhs-timeline__item">
+     
+         <div class="nhs-timeline__header">
+           <h2 class="nhs-timeline__title">
+             
+             {% if data['comms-type'] %}
+       
+             {% if data['comms-type'].includes('phone-call') %}
+             
+             Phone conversation
+               
+             {% endif %}
+             
+             
+             {% if data['comms-type'].includes('in-person') %}
+             
+             In-person conversation
+               
+             {% endif %}
+            
+            
+             {% if data['comms-type'].includes('email-comm') %}
+             
+             Email conversation
+            
+             {% endif %}
+            
+            
+             {% if data['comms-type'].includes('text-comm') %}
+             
+             Text message conversation
+   
+             {% endif %}
+            
+       
+           {% else %}
+           No comms selected
+           {% endif %} 
+           with {{ data['contactFirstNames'] }} ({{ data['contactRole'] }}) 
+             
+           
+      
+            {% if data['concern-recorded'].includes('concern-recorded-yes') %}
+            
+            <strong class="nhsuk-tag nhsuk-tag-red">Concern recorded</strong></h2>
+  
+            
+          {% else %}
+ 
+          {% endif %} 
+             
+             
+             
+             
+           <p class="nhs-timeline__byline">Added by Alexander Mac Allister on <time datetime="2019-06-14T14:01:00.000Z">14 June 2019 at 2:01pm</time></p>
+         </div>
+ 
+     
+         <div class="nhs-timeline__description">
+           <h4>Details</h4>
+           
+           
+           
+           {% if data['comms-type'] %}
+     
+           {% if data['comms-type'].includes('phone-call') %}
+           
+           <p class="mt20">{{ data['comms-details-1'] }}</p>
+             
+           {% endif %}
+           
+           
+           {% if data['comms-type'].includes('in-person') %}
+           
+           <p class="mt20">{{ data['comms-details-2'] }}</p>
+             
+           {% endif %}
+          
+          
+           {% if data['comms-type'].includes('email-comm') %}
+           
+           <p class="mt20">{{ data['comms-details-3'] }}</p>
+          
+           {% endif %}
+          
+          
+           {% if data['comms-type'].includes('text-comm') %}
+          
+           <p class="mt20">{{ data['comms-details-4'] }}</p>
+ 
+           {% endif %}
+          
+     
+         {% else %}
+         <p>No comms selected.</p>
+         {% endif %}
+           
+           
+           
+         </div>
+     
+       </div>
+       {% else %}
+       {% endif %}
+       
+       
+       
+       {% if data['nok-conversation'] %}
+        
+        <div class="nhs-timeline__item">
+      
+          <div class="nhs-timeline__header">
+            <h2 class="nhs-timeline__title">
+              
+              Phone conversation with {{ data['nok-first-name'] }} {{ data['nok-last-name'] }} ({{ data['nok-relationship'] }})
+              
+             <strong class="nhsuk-tag nhsuk-tag-blue">Main contact</strong></h2>
+
+            <p class="nhs-timeline__byline">Added by Ibrahima Gakpo on <time datetime="2019-06-14T14:01:00.000Z">14 June 2019 at 2:01pm</time></p>
+          </div>
+  
+      
+          <div class="nhs-timeline__description">
+            <h4>Details</h4>
+
+            <p class="mt20">{{ data['nok-conversation'] }}</p>
+          
+          </div>
+      
+        </div>
+        {% else %}
+        {% endif %}
+        
+        
+        <div class="nhs-timeline__item">
+      
+          <div class="nhs-timeline__header">
+            <h2 class="nhs-timeline__title">
+              
+              
+              Phone conversation with Moira Jones (sister) <strong class="nhsuk-tag nhsuk-tag-blue">Main contact</strong></h2></h2>
+   
+        
+              
+            <p class="nhs-timeline__byline">Added by Ibrahima Gakpo on <time datetime="2019-06-14T14:01:00.000Z">14 April 2024 at 2:01pm</time></p>
+          </div>
+  
+      
+          <div class="nhs-timeline__description">
+            <h4>Details</h4>
+            
+  
+            <p class="mt20"> Sister has informed us her sister had learning difficulties.
+              Will need to follow up with her GP on the impact on cause of death.
+              Has given GP phone number: 07941733824</p>
+  
+              
+            
+            
+          </div>
+      
+        </div>
+       
+       
+       
+       </div>
+     </div>
+     </div>
+
+  
+  </div>
+</div>
+
+{% endblock %}
+
+{% block sideNav %}
+
+
+<div class="side-nav">
+    
+    
+   <div class="case-type-details">
+     
+        
+  <div class="nhsuk-back-link">
+  
+    <a class="nhsuk-back-link__link" href="../open-cases">
+      <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+        <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+      </svg>
+      Back to case list</a>
+  </div>
+     
+     
+     <!--<p class="deceased-name">Name of deceased:</p>-->
+    <h3 class="nhsuk-heading-s mt0">Kathleen Stark</h3>
+    <strong class="nhsuk-tag nhsuk-tag-blue">
+      Routine
+    </strong>
+    
+   </div>
+    
+    
+    <ul>
+      <div id="options" class="options mt40">
+        <li><a href="case-details">Case details</a></li>
+        <li><a href="case-scrutiny">Case scrutiny</a></li>
+        <li><a class="active" href="communications">Communications
+        {% if data['comms-type'] %}
+          
+            (<b>3</b>)
+
+          {% elif data['nok-conversation'] %}
+          
+        (<b>2</b>)
+          {% else %}
+          (<b>1</b>)
+          {% endif %}
+        </a></li>
+        <li><a href="notes">Case notes
+          {% if data['detailsOfNote'] %}
+          (<b>1</b>)
+        {% else %}
+  
+        {% endif %}
+        </a></li>
+         <li><a href="concerns">Case concerns 
+            {% if data['concern-why'] %}
+            (<b>1</b>)
+          {% else %}
+    
+          {% endif %}</a>
+        </li>
+         <li><a href="coroner-notification">Coroner notification</a></li>
+      </div>
+    </ul>
+    
+      
+  </div>
+
+
+
+{% endblock %}
