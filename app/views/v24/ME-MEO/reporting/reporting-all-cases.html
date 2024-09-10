@@ -15,9 +15,7 @@
 Reporting
 {% endblock %}
 
-{% block breadcrumbs %}
-<p class="nhsuk-u-margin-bottom-2 nhsuk-u-margin-top-3">Royal Infirmary, Newcastle</p>
-{% endblock %}
+
 
 <!-- Your page content goes inside the content block -->
 <!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
@@ -48,8 +46,8 @@ Reporting
 
       <section class="timeline-filter">
         <ul>
-          <li><a href="reporting-all-cases" class="active">All cases (1450)</a></li>
-          <li><a href="reporting-acute">Acute (<b>750</b>)</a></li>
+          <li><a href="reporting-all-cases" class="active">All cases (1,453)</a></li>
+          <li><a href="reporting-acute">Acute (<b>753</b>)</a></li>
           <li><a href="reporting-community">Community (<b>700</b>)</a></li>
         </ul>
       </section>
@@ -59,9 +57,9 @@ Reporting
 
             <div class="high-level-info">
                 <ul>
-                  <li>Number of cases: <span>1450</span></li>
-                  <li>Scrutinised cases: <span>1391</span></li>
-                  <li>Cases completed (3 days): <span>1200</span></li>
+                  <li>Number of cases: <span>1,453</span></li>
+                  <li>Scrutinised cases: <span>1,392</span></li>
+                  <li>Cases completed (3 days): <span>1,202</span></li>
                   <li>Cases not completed (3 days): <span>91</span></li>
                 </ul>
               </div>
@@ -83,7 +81,7 @@ Reporting
   <details class="nhsuk-details nhsuk-expander">
     <summary class="nhsuk-details__summary">
       <span class="nhsuk-details__summary-text">
-        Adult deaths <span>(1446)</span>
+        Adult deaths <span>(1,367)</span>
       </span>
     </summary>
     <div class="nhsuk-details__text">
@@ -98,7 +96,7 @@ Reporting
             <tbody class="nhsuk-table__body">
               <tr role="row" class="nhsuk-table__row">
                 <th class="nhsuk-table__cell">Adult cases &ndash; coroner not notified</th>
-                <td class="nhsuk-table__cell ">1391</td>
+                <td class="nhsuk-table__cell ">1,391</td>
               </tr>
               <tr role="row" class="nhsuk-table__row">
                 <th class="nhsuk-table__cell">Adult cases &ndash; coroner notified</th>
@@ -124,7 +122,7 @@ Reporting
   <details class="nhsuk-details nhsuk-expander">
     <summary class="nhsuk-details__summary">
       <span class="nhsuk-details__summary-text">
-       Child deaths <span>(59)</span>
+       Child deaths <span>(86)</span>
       </span>
     </summary>
     <div class="nhsuk-details__text">
@@ -420,28 +418,24 @@ Reporting
 {% endblock %}
 
 {% block sideNav %}
-  <!-- IF user has selected to Reopen a case then change the numbering -->
-  {% if data['reopen-this-case'] == 'yes' %}
-    <div class="side-nav">
-      <ul>
-        <div id="options" class="options">
-          <li><a href="open-cases">Open cases 3</a></li>
-          <li><a href="closed-cases">Closed cases 0</a></li>
-          <li><a href="reopened-cases">Reopened cases 2</a></li>
-          <li><a class="active" href="reporting">Reporting</a></li>
-        </div>
-      </ul>
+<div class="side-nav">
+  <ul>
+    <div id="options" class="options">
+      <li>
+        <a class="active" href="#">Open cases
+           {% if data['deceased-first-name'] %}
+           (23)
+           {% else %}
+            (22)
+            {% endif %} 
+        </a>
+       
+      </li>
+      <li><a href="coroner-ref">Coroner referrals (2)</a></li>
+      <li><a href="#">Closed cases</a></li>
+      <li><a href="reporting2-start">Reporting</a></li>
     </div>
-  {% else %}
-    <div class="side-nav">
-      <ul>
-        <div id="options" class="options">
-          <li><a href="open-cases">Open cases 3</a></li>
-          <li><a href="closed-cases">Closed cases 1</a></li>
-          <li><a href="reopened-cases">Reopened cases 1</a></li>
-          <li><a class="active" href="reporting">Reporting</a></li>
-        </div>
-      </ul>
-    </div>
-  {% endif %}
+  </ul>
+</div>
+
 {% endblock %}

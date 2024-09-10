@@ -15,9 +15,7 @@
 Reporting
 {% endblock %}
 
-{% block breadcrumbs %}
-<p class="nhsuk-u-margin-bottom-2 nhsuk-u-margin-top-3">Royal Infirmary, Newcastle</p>
-{% endblock %}
+
 
 <!-- Your page content goes inside the content block -->
 <!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
@@ -28,9 +26,12 @@ Reporting
     <div class="nhsuk-grid-column-one-half">
   
       
-        <h1 class="nhsuk-u-margin-bottom-4">
-            Reporting
-        </h1>
+      <h1 class="nhsuk-heading-l">
+        <span class="nhsuk-caption-l nhsuk-caption--bottom">
+          Royal Infirmary, Newcastle
+      </span>
+        Reporting
+      </h1>
     </div>
     
     
@@ -45,10 +46,29 @@ Reporting
       </p>
       
       
-    
+      {{ select({
+        id: "select-1",
+        name: "select-1",
+        classes: "nhsuk-input--width-20",
+        label: {
+          text: "Choose reporting year"
+        },
+        items: [
+          {
+            value: 2023,
+            text: "2023",
+            selected: true
+          },
+          {
+            value: 2024,
+            text: "2024",
+            disabled: true
+          }
+        ]
+      }) }}
         
         
-        <h3 class="nhsuk-heading-s">2023</h3>
+        <h3 class="nhsuk-heading-m">2023</h3>
         
        
 <ul class="nhsuk-grid-row nhsuk-card-group heading-break-report">
@@ -57,11 +77,11 @@ Reporting
     <div class="nhsuk-card nhsuk-card--clickable">
       <div class="nhsuk-card__content nhsuk-card__content--primary">
         <h2 class="nhsuk-card__heading nhsuk-heading-s mb0">
-          <a class="nhsuk-card__link" href="reporting2">Quarter 1</a>
+          <a class="nhsuk-card__link" href="reporting-all-cases">Quarter 1</a>
         </h2>
         
         
-        <h3 class="nhsuk-heading-s case-total">1,450 <span>cases</span></h3>
+        <h3 class="nhsuk-heading-s case-total">1,453 <span>cases</span></h3>
         
         <p class="nhsuk-card__description report-desc">January &ndash; March 2023</p>
 
@@ -282,28 +302,23 @@ Reporting
 {% endblock %}
 
 {% block sideNav %}
-  <!-- IF user has selected to Reopen a case then change the numbering -->
-  {% if data['reopen-this-case'] == 'yes' %}
-    <div class="side-nav">
-      <ul>
-        <div id="options" class="options">
-          <li><a href="open-cases">Open cases 3</a></li>
-          <li><a href="closed-cases">Closed cases 0</a></li>
-          <li><a href="reopened-cases">Reopened cases 2</a></li>
-          <li><a class="active" href="reporting">Reporting</a></li>
-        </div>
-      </ul>
+<div class="side-nav">
+  <ul>
+    <div id="options" class="options">
+      <li>
+        <a class="active" href="#">Open cases
+           {% if data['deceased-first-name'] %}
+           (23)
+           {% else %}
+            (22)
+            {% endif %} 
+        </a>
+       
+      </li>
+      <li><a href="coroner-ref">Coroner referrals (2)</a></li>
+      <li><a href="#">Closed cases</a></li>
+      <li><a href="reporting2-start">Reporting</a></li>
     </div>
-  {% else %}
-    <div class="side-nav">
-      <ul>
-        <div id="options" class="options">
-          <li><a href="open-cases">Open cases 3</a></li>
-          <li><a href="closed-cases">Closed cases 1</a></li>
-          <li><a href="reopened-cases">Reopened cases 1</a></li>
-          <li><a class="active" href="reporting">Reporting</a></li>
-        </div>
-      </ul>
-    </div>
-  {% endif %}
+  </ul>
+</div>
 {% endblock %}
