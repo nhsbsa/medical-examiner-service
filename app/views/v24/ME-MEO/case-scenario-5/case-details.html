@@ -234,7 +234,7 @@ Case details
 
        <!-- Add timestamp if complete -->
        {% if data['nok-first-name'] %}
-        <p class="nhs-timestamp">Added by Anita Heart on 5 August 2024 at 10:41am</p>
+        <p class="nhs-timestamp">Completed by Anita Heart on 5 August 2024 at 10:41am</p>
        {% else %}
         <!-- No timestamp-->
        {% endif %}
@@ -368,30 +368,119 @@ Case details
    <div class="nhsuk-card">
      
      <div class="nhs-card-heading">
-       
-       <h2 class="nhsuk-heading-m">
-         
-         <span class="section-main-title">Location of death</span> 
-      
-        <strong class="nhsuk-tag nhsuk-tag-grey align-right">Not started</strong>
-        
-       </h2>
-       
+        <h2 class="nhsuk-heading-m">
+          <span class="section-main-title">Location of death</span>
+          {% if data['hospital-death'] %}
+            <strong class="nhsuk-tag nhsuk-tag-green align-right">Complete</strong>
+          {% else %}
+            <strong class="nhsuk-tag nhsuk-tag-grey align-right">Not started</strong>
+          {% endif %}
+        </h2>
 
-       
+          <!-- Add timestamp if complete -->
+          {% if data['hospital-death'] %}
+          <p class="nhs-timestamp">Completed by Anita Heart on 5 August 2024 at 11:15am</p>
+          {% else %}
+          <!-- No timestamp-->
+          {% endif %}
      </div>
      
      
      <div class="nhsuk-card__content">
 
- 
-      <p>No details have been added for the location of death.</p>
+      {% if data['hospital-death'] %}
+
+
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Did the deceased person die in hospital?
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['hospital-death'] }}
+          </dd>
+        </div>
+
+      {% if data['hospital-death'] == 'Yes' %}
+          <!-- Hospital Acute -->       
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Hospital
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['hospital-address-lookup'] }}
+                </dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Location details
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['locationDetails'] }}
+                </dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Date of admission
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['doaDay'] }} <span class="convert-month">{{ data['doaMonth'] }}</span> {{ data['doaYear'] }}
+                </dd>
+              </div>
+   
+          {% else %}
+
+          <!-- Community or non-acute setting -->
         
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Do you know the address of where the death took place?
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['address-of-death'] }}
+              </dd>
+            </div>
+            
+            {% if data['address-of-death'] == 'Yes' %}
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Address of death
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['address-of-death-known'] }}
+                  </dd>
+                </div>
+            {% else %}
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Where approximately did the death take place?
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    {{ data['unknown-address-details'] }}
+                  </dd>
+                </div>
+            {% endif %}
+
+          </dl>
+
+          {% endif %}
+
+          <div class="nav-flow">
+            <a href="location-of-death-alt" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+              Change details
+           </a>
+         </div>
+          
+        {% else %}
+      
+       <p>No details have been added for the location of death.</p>
         <div class="nav-flow">
           <a href="location-of-death-alt" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
-           Add location of death details
+           Add details for the location of death
          </a>
        </div>
+      
+      {% endif %}
  
  
      </div>
