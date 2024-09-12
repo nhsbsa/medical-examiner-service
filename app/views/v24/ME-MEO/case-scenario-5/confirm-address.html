@@ -59,6 +59,7 @@ Case details
 
 
 
+
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
         {% from 'back-link/macro.njk' import backLink %}
@@ -68,36 +69,27 @@ Case details
         "text": "Go back"
         }) }}
 
-   
         
-        
-        <form action="select-another-address" method="post">
+        <form action="case-details" method="post">
         
             <span class="nhsuk-caption-m nhsuk-caption--bottom">
                 Location of death
              </span>
-            
-             <fieldset class="nhsuk-fieldset">
-                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l ">
-                    <h1 class="govuk-fieldset__heading nhsuk-heading-l">
-                        What is the postcode of where the death took place?
-                    </h1>
-                </legend>
+             <h1 class="nhsuk-heading-l">
+               Confirm address
+             </h1>
 
-                  {{ input({
-                    "label": {
-                      "text": "Postcode"
-                    },
-                    "id": "example",
-                    "name": "example",
-                    "classes": "nhsuk-input--width-10"
-                  }) }}
 
-            </fieldset>
+              <div class="nhsuk-inset-text">
+                <span class="nhsuk-u-visually-hidden">Information: </span>
+                <p>505, Spen Lane, Leeds, LS16 6HL</p>
+              </div>
 
             <button class="nhsuk-button" id="save-and-continue-button" type="submit">
-              Find address
-          </button>
+                Use this address
+            </button>
+
+            <p><a href="location-death-hospital">Select a different address</a></p>
 
             <p><a href="location-death-hospital">Enter address manually</a></p>
             
@@ -107,8 +99,4 @@ Case details
 
 {% endblock %}
 
-{% block sideNav %}
-<div class="side-nav">
-    
-</div>
-{% endblock %}
+

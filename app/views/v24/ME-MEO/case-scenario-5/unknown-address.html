@@ -15,16 +15,13 @@
 Case details
 {% endblock %}
 
-<!-- Breadcrumb goes inside the beforeContent block -->
-{% block beforeContent %}
-{% endblock %}
+
 
 <!-- Your page content goes inside the content block -->
 <!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
 {% block content %}
 
 
-<!-- KEY DETAILS BAR -->
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
     
@@ -44,7 +41,7 @@ Case details
          <span>Date of death:</span>
          <p>{{ data['dodDayCreate'] }} <span class="convert-month" style="display:inline">{{ data['dodMonthCreate'] }}</span> {{ data['dodYearCreate'] }}</p>
        </li>
-
+    
       <!-- <li>
          <a href="#" class="nhsuk-button nhsuk-button--secondary mb0">Close case</a>
        </li> -->
@@ -57,10 +54,8 @@ Case details
 
 
 
-
-
 <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-three-quarters">
+    <div class="nhsuk-grid-column-full">
         {% from 'back-link/macro.njk' import backLink %}
 
         {{ backLink({
@@ -68,47 +63,76 @@ Case details
         "text": "Go back"
         }) }}
 
-   
+
+         <!-- Permanent destruction redirect -->
+         {% if data['address-of-death'] == 'Yes' %}
+         <script>
+             window.location.href = 'another-location-postcode'
+         </script>
+         {% endif %}
+
         
-        
-        <form action="select-another-address" method="post">
+        <form action="case-details" method="post">
         
             <span class="nhsuk-caption-m nhsuk-caption--bottom">
                 Location of death
              </span>
-            
-             <fieldset class="nhsuk-fieldset">
-                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l ">
-                    <h1 class="govuk-fieldset__heading nhsuk-heading-l">
-                        What is the postcode of where the death took place?
-                    </h1>
-                </legend>
 
-                  {{ input({
-                    "label": {
-                      "text": "Postcode"
-                    },
-                    "id": "example",
-                    "name": "example",
-                    "classes": "nhsuk-input--width-10"
-                  }) }}
+             <h1 class="nhsuk-heading-l mb40">
+              Where approximately did the death take place?
+             </h1>
+              
 
-            </fieldset>
+              {{ textarea({
+                "name": "unknown-address-details",
+                "id": "unknown-address-details",
+                classes: "nhsuk-u-width-one-half",
+                "label": {
+                  "text": "Enter details"
+                },
+                "hint": {
+                  "text": "For example, in Castle Park, Bingley near the fountain"
+                }
+              }) }}
 
-            <button class="nhsuk-button" id="save-and-continue-button" type="submit">
-              Find address
-          </button>
-
-            <p><a href="location-death-hospital">Enter address manually</a></p>
-            
+              <button class="nhsuk-button" type="submit">
+                Save and continue
+            </button>
         </form>
     </div>
 </div>
 
 {% endblock %}
 
+
 {% block sideNav %}
 <div class="side-nav">
+  
+ <!--<div class="case-type-details">
+   
+      
+<div class="nhsuk-back-link">
+
+  <a class="nhsuk-back-link__link" href="../open-cases2">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Back to case list</a>
+</div>
+
+  
+ </div>
+  
+  
+  <ul>
+    <div id="options" class="options">
+      <li><a class="active" href="case-timeline">Case timeline</a></li>
+      <li><a href="case-details">Case details</a></li>
+      <li><a href="case-scrutiny">Case scrutiny</a></li>
+      
+    </div>
+  </ul>
+-->
     
 </div>
 {% endblock %}

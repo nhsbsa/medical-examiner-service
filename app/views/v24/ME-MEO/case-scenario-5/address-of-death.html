@@ -15,9 +15,7 @@
 Case details
 {% endblock %}
 
-<!-- Breadcrumb goes inside the beforeContent block -->
-{% block beforeContent %}
-{% endblock %}
+
 
 <!-- Your page content goes inside the content block -->
 <!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
@@ -44,7 +42,7 @@ Case details
          <span>Date of death:</span>
          <p>{{ data['dodDayCreate'] }} <span class="convert-month" style="display:inline">{{ data['dodMonthCreate'] }}</span> {{ data['dodYearCreate'] }}</p>
        </li>
-
+    
       <!-- <li>
          <a href="#" class="nhsuk-button nhsuk-button--secondary mb0">Close case</a>
        </li> -->
@@ -56,11 +54,8 @@ Case details
 
 
 
-
-
-
 <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-three-quarters">
+    <div class="nhsuk-grid-column-full">
         {% from 'back-link/macro.njk' import backLink %}
 
         {{ backLink({
@@ -68,44 +63,43 @@ Case details
         "text": "Go back"
         }) }}
 
-   
         
-        
-        <form action="select-another-address" method="post">
+        <form action="unknown-address" method="post">
         
             <span class="nhsuk-caption-m nhsuk-caption--bottom">
                 Location of death
              </span>
-            
-             <fieldset class="nhsuk-fieldset">
-                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l ">
-                    <h1 class="govuk-fieldset__heading nhsuk-heading-l">
-                        What is the postcode of where the death took place?
-                    </h1>
-                </legend>
+            {{ radios({
+                "idPrefix": "address-of-death",
+                "name": "address-of-death",
+                "fieldset": {
+                  "legend": {
+                    "text": "Do you know the address of where the death took place?",
+                    "classes": "nhsuk-fieldset__legend--l",
+                    "isPageHeading": true
+                  }
+                },
+                "items": [
+                  {
+                    "value": "Yes",
+                    "text": "Yes"
+                  },
+                  {
+                    "value": "No",
+                    "text": "No"
+                  }
+                ]
+              }) }}
 
-                  {{ input({
-                    "label": {
-                      "text": "Postcode"
-                    },
-                    "id": "example",
-                    "name": "example",
-                    "classes": "nhsuk-input--width-10"
-                  }) }}
-
-            </fieldset>
-
-            <button class="nhsuk-button" id="save-and-continue-button" type="submit">
-              Find address
-          </button>
-
-            <p><a href="location-death-hospital">Enter address manually</a></p>
-            
+              <button class="nhsuk-button" type="submit">
+                Save and continue
+            </button>
         </form>
     </div>
 </div>
 
 {% endblock %}
+
 
 {% block sideNav %}
 <div class="side-nav">

@@ -23,8 +23,6 @@ Case details
 <!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
 {% block content %}
 
-
-<!-- KEY DETAILS BAR -->
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
     
@@ -44,7 +42,7 @@ Case details
          <span>Date of death:</span>
          <p>{{ data['dodDayCreate'] }} <span class="convert-month" style="display:inline">{{ data['dodMonthCreate'] }}</span> {{ data['dodYearCreate'] }}</p>
        </li>
-
+  
       <!-- <li>
          <a href="#" class="nhsuk-button nhsuk-button--secondary mb0">Close case</a>
        </li> -->
@@ -53,11 +51,6 @@ Case details
     
   </div>
 </div>
-
-
-
-
-
 
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
@@ -68,38 +61,30 @@ Case details
         "text": "Go back"
         }) }}
 
-   
         
-        
-        <form action="select-another-address" method="post">
+        <form action="admission-details" method="post">
         
             <span class="nhsuk-caption-m nhsuk-caption--bottom">
                 Location of death
              </span>
-            
-             <fieldset class="nhsuk-fieldset">
-                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l ">
-                    <h1 class="govuk-fieldset__heading nhsuk-heading-l">
-                        What is the postcode of where the death took place?
-                    </h1>
-                </legend>
+             <h1 class="nhsuk-heading-l">
+               Confirm hospital address
+             </h1>
 
-                  {{ input({
-                    "label": {
-                      "text": "Postcode"
-                    },
-                    "id": "example",
-                    "name": "example",
-                    "classes": "nhsuk-input--width-10"
-                  }) }}
 
-            </fieldset>
+              <div class="nhsuk-inset-text">
+                <span class="nhsuk-u-visually-hidden">Information: </span>
+                
+                <p>Royal Victoria Infirmary, Queen Victoria Rd, Newcastle upon Tyne, NE1 4LP</p>
+              </div>
 
             <button class="nhsuk-button" id="save-and-continue-button" type="submit">
-              Find address
-          </button>
+                Use this address
+            </button>
 
-            <p><a href="location-death-hospital">Enter address manually</a></p>
+            <p><a href="select-hospital-address">Select a different address</a></p>
+
+            <p><a href="#">Enter address manually</a></p>
             
         </form>
     </div>
@@ -107,8 +92,38 @@ Case details
 
 {% endblock %}
 
+
+
 {% block sideNav %}
 <div class="side-nav">
+  
+  
+ <!--<div class="case-type-details">
+   
+      
+<div class="nhsuk-back-link">
+
+  <a class="nhsuk-back-link__link" href="../open-cases2">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Back to case list</a>
+</div>
+
+  
+ </div>
+  
+  
+  <ul>
+    <div id="options" class="options">
+      <li><a class="active" href="case-timeline">Case timeline</a></li>
+      <li><a href="case-details">Case details</a></li>
+      <li><a href="case-scrutiny">Case scrutiny</a></li>
+      
+    </div>
+  </ul>
+-->
     
 </div>
 {% endblock %}
+
