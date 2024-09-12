@@ -282,11 +282,6 @@ Case details
             <dd class="nhsuk-summary-list__value">
                 {{ data['nok-contact'] }}
             </dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="next-of-kin#nok-contact">
-                Change<span class="nhsuk-u-visually-hidden"> how are you contacting the next of kin?</span>
-              </a>
-            </dd>
           </div>
           
           {% if data['nok-contact'] == 'Phone' %}
@@ -297,11 +292,7 @@ Case details
               <dd class="nhsuk-summary-list__value">
                   {{ data['nok-phone'] }}
               </dd>
-              <dd class="nhsuk-summary-list__actions">
-                <a href="next-of-kin#nok-phone">
-                  Change<span class="nhsuk-u-visually-hidden"> phone number</span>
-                </a>
-              </dd>
+
             </div>
             
           {% elseif data['nok-contact'] == 'Email' %}
@@ -311,11 +302,6 @@ Case details
             </dt>
             <dd class="nhsuk-summary-list__value">
                 {{ data['nok-email'] }}
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="next-of-kin#nok-email">
-                Change<span class="nhsuk-u-visually-hidden"> email address</span>
-              </a>
             </dd>
           </div>
           
@@ -327,11 +313,6 @@ Case details
             <dd class="nhsuk-summary-list__value">
                 {{ data['nok-phone'] }}
             </dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="next-of-kin#nok-phone">
-                Change<span class="nhsuk-u-visually-hidden"> phone number</span>
-              </a>
-            </dd>
           </div>
           
           <div class="nhsuk-summary-list__row">
@@ -340,11 +321,6 @@ Case details
             </dt>
             <dd class="nhsuk-summary-list__value">
                 {{ data['nok-email'] }}
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="next-of-kin#nok-email">
-                Change<span class="nhsuk-u-visually-hidden"> email address</span>
-              </a>
             </dd>
           </div>
         {% endif %}
