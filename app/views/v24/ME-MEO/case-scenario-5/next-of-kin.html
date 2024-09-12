@@ -3,7 +3,7 @@
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
 <!-- Extends the layout from /views/layout.html -->
-{% extends 'layout-full-width.html' %}
+{% extends 'layout-admin-interface.html' %}
 <!--
   In /views/layout.html you can:
     - change the header and footer
@@ -15,13 +15,45 @@
 Next of kin details
 {% endblock %}
 
-<!-- Breadcrumb goes inside the beforeContent block -->
-{% block beforeContent %}
-{% endblock %}
 
 <!-- Your page content goes inside the content block -->
 <!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
 {% block content %}
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    
+   <section class="key-details">
+     <ul>
+       <li>
+         <div class="patient-name">
+           <span class="p-name">Patient name:</span>
+           <h1>{{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}</h1>
+         </div>
+       </li>
+       <li>
+         <span>NHS number:</span>
+         <p>{{ data['ref-NHSnumber'] }} </p>
+       </li>
+       <li>
+         <span>Date of death:</span>
+         <p>{{ data['dodDayCreate'] }} <span class="convert-month" style="display:inline">{{ data['dodMonthCreate'] }}</span> {{ data['dodYearCreate'] }}</p>
+       </li>
+       <li>
+        <span>Case type:</span>
+        {% if data['hospital-death'] %}
+         <p>Hospital</p>
+        {% endif %}
+      </li>
+      <!-- <li>
+         <a href="#" class="nhsuk-button nhsuk-button--secondary mb0">Close case</a>
+       </li> -->
+     </ul>
+   </section>
+    
+  </div>
+</div>
 
 <script type="text/javascript">
 function getCharCount(limit)
@@ -35,7 +67,7 @@ if (countRemains < 1) alert('');
 </script>
 
 <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-grid-column-three-quarters">
 
       {{ backLink({
       "href": "javascript:history.back()",
@@ -70,7 +102,18 @@ if (countRemains < 1) alert('');
                 </label>
                 <input class="nhsuk-input nhsuk-u-width-one-half " id="nok-relationship" name="nok-relationship" type="text" value="{{ data['nok-relationship'] }}">
             </div>
-
+            <!--<div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-u-width-one-half" for="nok-phone">
+                 Phone number
+              </label>
+              <input class="nhsuk-input nhsuk-u-width-one-half " id="nok-phone" name="nok-phone" type="text" value="{{ data['nok-phone'] }}">
+          </div>
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-u-width-one-half" for="nok-phone">
+               Email address
+            </label>
+            <input class="nhsuk-input nhsuk-u-width-one-half " id="nok-email" name="nok-email" type="text" value="{{ data['nok-email'] }}">
+          </div>-->
 
 
            
@@ -89,7 +132,7 @@ if (countRemains < 1) alert('');
             {{ input({
               id: "nok-phone",
               name: "nok-phone",
-              classes: "nhsuk-u-width-one-half",
+              classes: "nhsuk-input--width-20",
               label: {
                 text: "Enter phone number"
               }
@@ -124,7 +167,7 @@ if (countRemains < 1) alert('');
               ]
             }) }}
 
-
+            
 
 
               <div class="nhsuk-form-group">
@@ -138,15 +181,15 @@ if (countRemains < 1) alert('');
               </div>
 
 
-              <div class="nhsuk-form-group">
+              <!--<div class="nhsuk-form-group">
                 <label class="nhsuk-label nhsuk-u-width-two-thirds" for="nok-conversation">
-                 Enter details of conversation about the proposed cause of death with the next of kin
+                  Enter details about the conversation with the next of kin
                 </label>
                 <textarea class="nhsuk-textarea nhsuk-u-width-one-half minchar" id="nok-conversation" name="nok-conversation" rows="5" maxlength="3000" aria-describedby="admissionDetails-hint">{{ data['nok-conversation'] }}</textarea>
                     <div class="nhsuk-hint nhsuk-character-count__message rechar" id="nok-conversation">
                         You can enter up to 3000 characters
                     </div>
-              </div>
+              </div>-->
 
               
         
@@ -167,4 +210,38 @@ if (countRemains < 1) alert('');
 
 </div>
 
+{% endblock %}
+
+
+{% block sideNav %}
+<div class="side-nav">
+  
+  
+ <!--<div class="case-type-details">
+   
+      
+<div class="nhsuk-back-link">
+
+  <a class="nhsuk-back-link__link" href="../open-cases2">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Back to case list</a>
+</div>
+
+  
+ </div>
+  
+  
+  <ul>
+    <div id="options" class="options">
+      <li><a class="active" href="case-timeline">Case timeline</a></li>
+      <li><a href="case-details">Case details</a></li>
+      <li><a href="case-scrutiny">Case scrutiny</a></li>
+      
+    </div>
+  </ul>
+-->
+    
+</div>
 {% endblock %}

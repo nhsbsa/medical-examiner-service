@@ -223,32 +223,167 @@ Case details
      
      <div class="nhs-card-heading">
        
-       
        <h2 class="nhsuk-heading-m">
-          
-          <span class="section-main-title">Next of kin details </span>
+        <span class="section-main-title">Next of kin details</span>
+        {% if data['nok-first-name'] %}
+          <strong class="nhsuk-tag nhsuk-tag--green align-right">Complete</strong>
+        {% else %}
+          <strong class="nhsuk-tag nhsuk-tag-grey align-right">Not started</strong>
+        {% endif %}
+      </h2>
 
-         <strong class="nhsuk-tag nhsuk-tag-grey align-right">Not started</strong>
-        
+       <!-- Add timestamp if complete -->
+       {% if data['nok-first-name'] %}
+        <p class="nhs-timestamp">Completed by Ibrahima Gakpo on 4 July 2024 at 2:20pm</p>
+       {% else %}
+        <!-- No timestamp-->
+       {% endif %}
         </h2>
-        
-       
      </div>
  
    
      <div class="nhsuk-card__content">
-   
+         <!-- NEXT OF KIN DETAILS IF STATMENT FOR COMPLETE & DRAFT STATUS-->
+     {% if data['nok-first-name'] %}
 
- <p>No details have been added for the next of kin.</p>
-       
-       <div class="nav-flow">
-         <a href="not-testing" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
-          Add next of kin details
+        <dl class="nhsuk-summary-list">
+          
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+                Name
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['nok-first-name'] }} {{ data['nok-last-name'] }} 
+            </dd>
+          </div>
+          
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+                Relationship to the deceased person
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['nok-relationship'] }} 
+            </dd>
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+                Phone number
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+                {{ data['nok-phone'] }}
+            </dd>
+          </div>
+          
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+                How are you contacting the next of kin?
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+                {{ data['nok-contact'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="next-of-kin#nok-contact">
+                Change<span class="nhsuk-u-visually-hidden"> how are you contacting the next of kin?</span>
+              </a>
+            </dd>
+          </div>
+          
+          {% if data['nok-contact'] == 'Phone' %}
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                  Phone number
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                  {{ data['nok-phone'] }}
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="next-of-kin#nok-phone">
+                  Change<span class="nhsuk-u-visually-hidden"> phone number</span>
+                </a>
+              </dd>
+            </div>
+            
+          {% elseif data['nok-contact'] == 'Email' %}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+                Email address
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+                {{ data['nok-email'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="next-of-kin#nok-email">
+                Change<span class="nhsuk-u-visually-hidden"> email address</span>
+              </a>
+            </dd>
+          </div>
+          
+        {% elseif data['nok-contact'] == 'Phone' or 'Email' %}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+                Phone number
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+                {{ data['nok-phone'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="next-of-kin#nok-phone">
+                Change<span class="nhsuk-u-visually-hidden"> phone number</span>
+              </a>
+            </dd>
+          </div>
+          
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+                Email address
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+                {{ data['nok-email'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="next-of-kin#nok-email">
+                Change<span class="nhsuk-u-visually-hidden"> email address</span>
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+
+        
+        
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+                Notes for contacting the next of kin
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['nok-notes'] }} 
+            </dd>
+          </div>
+        
+        </dl>
+
+        <div class="nav-flow">
+          <a href="next-of-kin" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+            Change details
+          </a>
+        </div>
+        
+        {% else %}
+            
+          
+        
+        <p>No details have been added for the next of kin.</p>
+        <div class="nav-flow">
+          <a href="next-of-kin" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+          Add details for the next of kin
         </a>
       </div>
+
+      {% endif %}
+
+        
+   
        
-      
- 
      </div>
    </div>
    
