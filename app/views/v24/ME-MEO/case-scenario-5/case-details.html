@@ -585,37 +585,61 @@ Case details
     
     
     
+
+
+
     <div class="nhsuk-card">
-      
-      
+
       <div class="nhs-card-heading">
-        
-        
         <h2 class="nhsuk-heading-m">
-           
-           <span class="section-main-title">Pre-scrutiny notes </span>
- 
-          <strong class="nhsuk-tag nhsuk-tag-grey align-right">Not started</strong>
-         
+          <span class="section-main-title">Pre-scrutiny notes </span>
+          {% if data['noteText'] %}
+             <strong class="nhsuk-tag nhsuk-tag-green align-right">Complete</strong>
+           {% else %}
+             <strong class="nhsuk-tag nhsuk-tag-grey align-right">Not started</strong>
+           {% endif %}
          </h2>
-         
-        
+   
+          <!-- Add timestamp if complete -->
+          {% if data['noteText'] %}
+           <p class="nhs-timestamp">Completed by Anita Heart on 5 August 2024 at 12:30pm</p>
+          {% else %}
+           <!-- No timestamp-->
+          {% endif %}
       </div>
   
-    
+
       <div class="nhsuk-card__content">
-    
- 
-  <p>No pre-scrutiny notes have been added.</p>
-        
+        {% if data['noteText'] %}
+        <dl class="nhsuk-summary-list">
+          
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+                Medical record notes
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['noteText'] }}
+            </dd>
+          </div>
+        </dl>
+
         <div class="nav-flow">
           <a href="pre-scrutiny-note" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
-           Add pre-scrutiny notes
+            Change details
          </a>
        </div>
+
+       {% else %}
+
+          <p>No pre-scrutiny notes have been added.</p>
+          <div class="nav-flow">
+            <a href="pre-scrutiny-note" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+            Add pre-scrutiny notes
+          </a>
+          </div>
         
-       
-  
+        {% endif %}
+
       </div>
     </div>
   
@@ -626,7 +650,6 @@ Case details
 
 
   </div>
-
 </div>
 
 {% endblock %}
