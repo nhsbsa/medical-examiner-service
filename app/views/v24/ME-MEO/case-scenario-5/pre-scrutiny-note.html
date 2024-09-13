@@ -3,7 +3,7 @@
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
 <!-- Extends the layout from /views/layout.html -->
-{% extends 'layout-full-width.html' %}
+{% extends 'layout-admin-interface.html' %}
 <!-- 
   In /views/layout.html you can:
     - change the header and footer 
@@ -24,15 +24,39 @@ Case details
 {% block content %}
 
 <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-three-quarters">
-        {% from 'back-link/macro.njk' import backLink %}
+  <div class="nhsuk-grid-column-full">
+    
+    <section class="key-details">
+      <ul>
+        <li>
+          <div class="patient-name">
+            <span class="p-name">Patient name:</span>
+            <h1>{{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}</h1>
+          </div>
+        </li>
+        <li>
+          <span>NHS number:</span>
+          <p>{{ data['ref-NHSnumber'] }} </p>
+        </li>
+        <li>
+          <span>Date of death:</span>
+          <p>{{ data['dodDayCreate'] }} <span class="convert-month" style="display:inline">{{ data['dodMonthCreate'] }}</span> {{ data['dodYearCreate'] }}</p>
+        </li>
 
-        {{ backLink({
-        "href": "javascript:history.back()",
-        "text": "Go back"
-        }) }}
+      </ul>
+    </section>
+     
+   </div>
+ </div>
 
+<div class="nhsuk-grid-row">
+   <div class="nhsuk-grid-column-full">
+       {% from 'back-link/macro.njk' import backLink %}
 
+       {{ backLink({
+       "href": "javascript:history.back()",
+       "text": "Go back"
+       }) }}
         
 
         <form action="case-scrutiny" method="post">
@@ -54,11 +78,11 @@ Case details
 
 
 <div class="nhsuk-character-count" data-module="nhsuk-character-count" data-maxlength="2000">
-  <div class="nhsuk-form-group">
+  <div class="nhsuk-form-group nhsuk-u-width-one-half">
       <label class="nhsuk-label" for="noteText">
           Include all medical records and any registered concerns
       </label>
-      <div class="nhsuk-hint nhsuk-u-width-two-thirds" id="noteText-hint">
+      <div class="nhsuk-hint" id="noteText-hint">
           For example, previous medical, social, and drug histories, and details of; recent surgery or treatment,
           clinical investigations (CT, MRI, X-ray), falls, pressure sores (including grade), learning
           difficulties, end of life care documentation and DNAR, ongoing registered concerns.
@@ -83,5 +107,15 @@ Case details
 
     </div>
 </div>
+</div>
+{% endblock %}
 
+
+{% block sideNav %}
+<div class="side-nav">
+  
+  
+&nbsp;
+    
+</div>
 {% endblock %}
