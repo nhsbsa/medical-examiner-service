@@ -55,8 +55,8 @@ Scrutiny
     <h1 class="nhsuk-heading-l mb40">
       Scrutiny <span class="nhsuk-caption-m caption-progress">
 
-      {% if data['qapFirstNames'] and data['bnnnnn'] and data['nnnnn'] %}
-        <b>Progress:</b> 5 of 6 sections complete
+      {% if data['qapFirstNames'] and data['accessToRequestedDocumentation'] and data['ap-discuss'] %}
+        <b>Progress:</b> 3 of 3 sections complete
       {% elif data['qapFirstNames'] and data['accessToRequestedDocumentation'] %}
         <b>Progress:</b> 2 of 3 sections complete
       {% elif data['qapFirstNames'] %}
@@ -489,7 +489,7 @@ Scrutiny
     <h2 class="nhsuk-heading-m" id="deceased-persons-details-header">
       <span class="section-main-title">Discussion with the AP about the cause of death</span>
      {% if data['ap-discuss'] %}
-      <strong class="nhsuk-tag nhsuk-tag--green align-right">Complete</strong>
+      <strong class="nhsuk-tag nhsuk-tag-green align-right">Complete</strong>
       {% else %}
       <strong class="nhsuk-tag nhsuk-tag-grey align-right">Not started</strong>
     {% endif %}
@@ -583,6 +583,12 @@ Scrutiny
 
 </dl>
 
+<div class="nav-flow">
+  <a href="ap-discussion" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+  Change details
+ </a>
+</div>
+
 {% else %}
 
 <dl>
@@ -614,7 +620,7 @@ Scrutiny
   </dl>
   
   <div class="nav-flow">
-    <a href="not-testing" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+    <a href="ap-discussion" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
     Change details
    </a>
  </div>
@@ -626,7 +632,7 @@ Scrutiny
 
    <p>No details have been added.</p>
    <div class="nav-flow">
-     <a href="not-testing" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+     <a href="ap-discussion" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
       Add discussion with the AP about the cause of death
     </a>
   </div>
