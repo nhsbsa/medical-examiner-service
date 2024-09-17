@@ -564,6 +564,43 @@ Case details
 {% endif %}
 
 
+{% if data['ap-discuss'] %}
+  <div class="nhs-timeline__item">
+    <div class="nhs-timeline__header">
+      <h2 class="nhs-timeline__title">
+        Discussion with the AP about the cause of death completed
+      </h2>
+      <p class="nhs-timeline__byline">by Joseph Howson on 7 August 2024 at 1:23pm</p>
+    </div>
+  </div>
+{% endif %}
+
+
+
+{% if data['accessToRequestedDocumentation'] %}
+  <div class="nhs-timeline__item">
+    <div class="nhs-timeline__header">
+      <h2 class="nhs-timeline__title">
+        Medical examiner's independent review completed
+      </h2>
+      <p class="nhs-timeline__byline">by Joseph Howson on 7 August 2024 at 11:37am</p>
+    </div>
+  </div>
+{% endif %}
+
+
+{% if data['qapFirstNames'] %}
+  <div class="nhs-timeline__item">
+    <div class="nhs-timeline__header">
+      <h2 class="nhs-timeline__title">
+        Attending practitioner (AP) proposed cause of death completed
+      </h2>
+      <p class="nhs-timeline__byline">by Joseph Howson on 7 August 2024 at 10:41am</p>
+    </div>
+  </div>
+{% endif %}
+
+
 
 {% if data['noteText'] %}
 <div class="nhs-timeline__item">

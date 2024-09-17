@@ -82,6 +82,13 @@ Scrutiny
      <strong class="nhsuk-tag nhsuk-tag-grey align-right">Not started</strong>
    {% endif %}
   </h2>
+
+    <!-- Add timestamp if complete -->
+    {% if data['qapFirstNames'] %}
+      <p class="nhs-timestamp">Completed by Joseph Howson on 7 August 2024 at 10:41am</p>
+    {% else %}
+      <!-- No timestamp-->
+    {% endif %}
     
   </div>
   
@@ -329,6 +336,13 @@ Scrutiny
        <strong class="nhsuk-tag nhsuk-tag-grey align-right">Not started</strong>
      {% endif %}
     </h2>
+
+    <!-- Add timestamp if complete -->
+    {% if data['accessToRequestedDocumentation'] %}
+      <p class="nhs-timestamp">Completed by Joseph Howson on 7 August 2024 at 11:37am</p>
+    {% else %}
+      <!-- No timestamp-->
+    {% endif %}
     
     </div>
     
@@ -491,6 +505,13 @@ Scrutiny
       <strong class="nhsuk-tag nhsuk-tag-grey align-right">Not started</strong>
     {% endif %}
     </h2>
+
+    <!-- Add timestamp if complete -->
+    {% if data['ap-discuss'] %}
+      <p class="nhs-timestamp">Completed by Joseph Howson on 7 August 2024 at 1:23pm</p>
+    {% else %}
+      <!-- No timestamp-->
+    {% endif %}
     
   </div>
 
