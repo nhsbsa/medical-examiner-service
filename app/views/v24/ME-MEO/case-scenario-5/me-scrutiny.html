@@ -102,33 +102,39 @@ Scrutiny
     </dd>
   </div>
 
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Contact phone or bleep number
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-        {{ data['contactBleepNumber'] }}
-    </dd>
-  </div>
+
+  {% if data['contactBleepNumber'] %}
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Contact phone or bleep number
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+          {{ data['contactBleepNumber'] }}
+      </dd>
+    </div>
+  {% endif %}
   
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      GMC number
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-        {{ data['gmcNumber'] }}
-    </dd>
-  </div>
+  {% if data['gmcNumber'] %}
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        GMC number
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+          {{ data['gmcNumber'] }}
+      </dd>
+    </div>
+  {% endif %}
 
-
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Alternative contact method
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-        {{ data['gmcNumber'] }}
-    </dd>
-  </div>
+  {% if data['ap-alt-contact'] %}
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Alternative contact method
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+          {{ data['ap-alt-contact'] }}
+      </dd>
+    </div>
+  {% endif %}
 
 
   <div class="nhsuk-summary-list__row">
@@ -191,7 +197,6 @@ Scrutiny
       </dd>
     </div>
 
-
   {% endif %}
 
 
@@ -224,62 +229,68 @@ Scrutiny
       </dd>
     </div>
 
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        1(b) other disease or condition leading to 1(a)
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['causeOfDeath1b'] }}
-      </dd>
-    </div>
+    {% if data['causeOfDeath1b'] %}
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          1(b) other disease or condition leading to 1(a)
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['causeOfDeath1b'] }}
+        </dd>
+      </div>
 
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Approximate interval between onset of 1(b) and death
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['onsetInterval1b'] }}
-        {{ data['onsetInterval1bb'] }}
-      </dd>
-    </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Approximate interval between onset of 1(b) and death
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['onsetInterval1b'] }}
+          {{ data['onsetInterval1bb'] }}
+        </dd>
+      </div>
+    {% endif %}
 
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        1(c) other disease or condition leading to 1(b)
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['causeOfDeath1c'] }}
-      </dd>
-    </div>
+    {% if data['causeOfDeath1c'] %}
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          1(c) other disease or condition leading to 1(b)
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['causeOfDeath1c'] }}
+        </dd>
+      </div>
 
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Approximate interval between onset of 1(c) and death
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['onsetInterval1c'] }}
-        {{ data['onsetInterval1cb'] }}
-      </dd>
-    </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Approximate interval between onset of 1(c) and death
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['onsetInterval1c'] }}
+          {{ data['onsetInterval1cb'] }}
+        </dd>
+      </div>
+    {% endif %}
 
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        2 - Other significant conditions
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['causeOfDeath2'] }}
-      </dd>
-    </div>
+    {% if data['causeOfDeath2'] %}
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          2 - Other significant conditions
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['causeOfDeath2'] }}
+        </dd>
+      </div>
 
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Approximate interval between onset of 2 and death
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['onsetInterval2'] }}
-         {{ data['onsetInterval2b'] }}
-      </dd>
-    </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Approximate interval between onset of 2 and death
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data['onsetInterval2'] }}
+          {{ data['onsetInterval2b'] }}
+        </dd>
+      </div>
+    {% endif %}
 
     <div class="nav-flow">
       <a href="ap-prop-cause-of-death" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
