@@ -339,16 +339,10 @@ Scrutiny
   <!-- ME INDEPENDENT REVIEW -->
   <!-- ================================================== -->
 
-
-    
-    
-
-  
   
   {% if data['accessToRequestedDocumentation'] %}
     
-    
-    
+  
     <dl class="nhsuk-summary-list">
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
@@ -375,10 +369,7 @@ Scrutiny
         <dd class="nhsuk-summary-list__value">
           {{ data['reviewCauseOfDeathSummary'] }}
         </dd>
-
       </div>
-
-
 
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
@@ -387,7 +378,6 @@ Scrutiny
           <dd class="nhsuk-summary-list__value">
             {{ data['reviewCauseOfDeath1a'] }}
           </dd>
-
         </div>
 
         <div class="nhsuk-summary-list__row">
@@ -398,71 +388,67 @@ Scrutiny
             {{ data['reviewOnsetInterval1a'] }}
             {{ data['reviewOnsetInterval1ab'] }}
           </dd>
-
         </div>
 
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            1(b) other disease or condition leading to 1(a)
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data['reviewCauseOfDeath1b'] }}
-          </dd>
+        {% if data['reviewCauseOfDeath1b'] %}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              1(b) other disease or condition leading to 1(a)
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['reviewCauseOfDeath1b'] }}
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Approximate interval between onset of 1(b) and death
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['reviewOnsetInterval1b'] }}
+              {{ data['reviewOnsetInterval1bb'] }}
+            </dd>
+          </div>
+        {% endif %}
 
-        </div>
+        {% if data['reviewCauseOfDeath1c'] %}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              1(c) other disease or condition leading to 1(b)
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['reviewCauseOfDeath1c'] }}
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Approximate interval between onset of 1(c) and death
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['reviewOnsetInterval1c'] }}
+              {{ data['reviewOnsetInterval1cb'] }}
+            </dd>
+          </div>
+        {% endif %}
 
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Approximate interval between onset of 1(b) and death
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data['reviewOnsetInterval1b'] }}
-             {{ data['reviewOnsetInterval1bb'] }}
-          </dd>
-
-        </div>
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            1(c) other disease or condition leading to 1(b)
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data['reviewCauseOfDeath1c'] }}
-          </dd>
-
-        </div>
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Approximate interval between onset of 1(c) and death
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data['reviewOnsetInterval1c'] }}
-            {{ data['reviewOnsetInterval1cb'] }}
-          </dd>
-
-        </div>
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            2 - Other significant conditions
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data['reviewCauseOfDeath2'] }}
-          </dd>
-  
-        </div>
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Approximate interval between onset of 2 and death
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data['reviewOnsetInterval2'] }}
-            {{ data['reviewOnsetInterval2b'] }}
-          </dd>
-          
-        </div>
+        {% if data['reviewCauseOfDeath1c'] %}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              2 - Other significant conditions
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['reviewCauseOfDeath2'] }}
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Approximate interval between onset of 2 and death
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['reviewOnsetInterval2'] }}
+              {{ data['reviewOnsetInterval2b'] }}
+            </dd>
+          </div>
+        {% endif %}
 
     </dl>
     
@@ -536,7 +522,7 @@ Scrutiny
     Name of the AP who proposed the cause of death
   </dt>
   <dd class="nhsuk-summary-list__value">
-    {{ data['qapFirstNames'] }} {{ data['qapLastName'] }}
+    {{ data['qapFirstNames-prop'] }} {{ data['qapLastName-prop'] }}
   </dd>
   
 </div>
