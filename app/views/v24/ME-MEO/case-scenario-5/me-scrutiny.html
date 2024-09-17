@@ -552,10 +552,17 @@ Scrutiny
    Date of discussion
    </dt>
    <dd class="nhsuk-summary-list__value">
-    11 June 2024
+    {{ data['ap-discussion-day'] }} <span class="convert-month">{{ data['ap-discussion-month'] }}</span> {{ data['ap-discussion-year'] }}
    </dd>
-   
  </div>
+ <div class="nhsuk-summary-list__row">
+  <dt class="nhsuk-summary-list__key">
+  Time of discussion
+  </dt>
+  <dd class="nhsuk-summary-list__value">
+    {{ data['ap-discussion-time-hour'] }}:{{ data['ap-discussion-time-minutes'] }}
+  </dd>
+</div>
  <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">
     Enter details of the discussion
@@ -564,7 +571,7 @@ Scrutiny
       {{ data['example-ap-discussion'] }}
     </dd>
     
-  </div>
+</div>
 <div class="nhsuk-summary-list__row">
   <dt class="nhsuk-summary-list__key">
   
