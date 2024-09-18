@@ -3,7 +3,7 @@
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
 <!-- Extends the layout from /views/layout.html -->
-{% extends 'layout-full-width.html' %}
+{% extends 'layout-admin-interface.html' %}
 <!-- 
   In /views/layout.html you can:
     - change the header and footer 
@@ -15,9 +15,6 @@
 Case details
 {% endblock %}
 
-<!-- Breadcrumb goes inside the beforeContent block -->
-{% block beforeContent %}
-{% endblock %}
 
 <!-- Your page content goes inside the content block -->
 <!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
@@ -25,40 +22,71 @@ Case details
 
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
-        {% from 'back-link/macro.njk' import backLink %}
+      
+     <section class="key-details">
+       <ul>
+         <li>
+           <div class="patient-name">
+             <span class="p-name">Patient name:</span>
+             <h1>{{ data['deceased-first-name'] }} {{ data['deceased-last-name'] }}</h1>
+           </div>
+         </li>
+         <li>
+           <span>NHS number:</span>
+           <p>{{ data['ref-NHSnumber'] }} </p>
+         </li>
+         <li>
+           <span>Date of death:</span>
+           <p>{{ data['dodDayCreate'] }} <span class="convert-month" style="display:inline">{{ data['dodMonthCreate'] }}</span> {{ data['dodYearCreate'] }}</p>
+         </li>
+  
+       </ul>
+     </section>
+      
+    </div>
+  </div>
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
 
         {{ backLink({
-        "href": "javascript:history.back()",
-        "text": "Go back"
-        }) }}
+            "href": "javascript:history.back()",
+            "text": "Go back"
+            }) }}
+      
 
-        <h1>Close this case</h1>
 
         <form action="close-case" method="post">
 
             <div class="nhsuk-form-group">
                 <fieldset class="nhsuk-fieldset">
-                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__heading--m nhsuk-u-width-two-thirds">
+                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                      <h1 class="nhsuk-fieldset__heading">
                         Do you want to close this case?
+                      </h1>
                     </legend>
+                
                     <div class="nhsuk-radios">
-                        <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="closeCaseYes" name="closeCase" type="radio" value="yes">
-                            <label class="nhsuk-label nhsuk-radios__label" for="closeCaseYes">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="closeCaseNo" name="closeCase" type="radio" value="no">
-                            <label class="nhsuk-label nhsuk-radios__label" for="closeCaseNo">
-                                No
-                            </label>
-                        </div>
+                
+                      <div class="nhsuk-radios__item">
+                        <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
+                        <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+                          Yes, the case is complete
+                        </label>
+                      </div>
+                
+                      <div class="nhsuk-radios__item">
+                        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
+                        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+                          No
+                        </label>
+                      </div>
+                
                     </div>
-                </fieldset>
+                  </fieldset>
             </div>
             <button class="nhsuk-button" id="save-and-continue-button" type="submit">
-                Save and continue
+                Continue
             </button>
 
         </form>
@@ -66,4 +94,12 @@ Case details
     </div>
 </div>
 
+{% endblock %}
+
+{% block sideNav %}
+<div class="side-nav">
+  
+ &nbsp;
+    
+</div>
 {% endblock %}
