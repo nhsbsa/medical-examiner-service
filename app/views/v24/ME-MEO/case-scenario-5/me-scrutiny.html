@@ -42,7 +42,16 @@ Scrutiny
       </li>
     </ul>
   </section>
+
+
+  <!-- Close case button appears if all sections in case details and scrutiny are complete -->
+  <!-- NB In order to close a case a communication with the Next of Kin would have taken place, this communication would be added via the timeline and appear there -->
+  {% if data['noteText'] and data['dobDay'] and data['hospital-death'] and data['nok-first-name'] and data['qapFirstNames'] and data['accessToRequestedDocumentation'] and data['ap-discuss'] %}
+    <a class="nhsuk-button" href="close-case">Close this case</a>
+  {% endif %}
+
   </div>
+
 </div>
 
 
