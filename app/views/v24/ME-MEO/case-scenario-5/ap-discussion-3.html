@@ -78,10 +78,10 @@ Case details
           <dl class="nhsuk-summary-list nhsuk-!-margin-bottom-9">
              <div class="nhsuk-summary-list__row">
                <dt class="nhsuk-summary-list__key">
-                 Communication with
+                  AP who proposed the cause of death
                </dt>
                <dd class="nhsuk-summary-list__value">
-                 Ian
+                {{ data['qapFirstNames-prop'] }} {{ data['qapLastName-prop'] }}
                </dd>
                <dd class="nhsuk-summary-list__actions">
                  <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> communication with</span></a>
@@ -90,10 +90,10 @@ Case details
              
              <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Role
+                  Date of discussion
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  Family member
+                  {{ data['ap-discussion-day'] }} <span class="convert-month">{{ data['ap-discussion-month'] }}</span> {{ data['ap-discussion-year'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> role</span></a>
@@ -101,10 +101,10 @@ Case details
               </div>
              <div class="nhsuk-summary-list__row">
                <dt class="nhsuk-summary-list__key">
-                 Communication held with
+                Time of discussion
                </dt>
                <dd class="nhsuk-summary-list__value">
-                 Sarah Philips
+                {{ data['ap-discussion-time-hour'] }}:{{ data['ap-discussion-time-minutes'] }}
                </dd>
                <dd class="nhsuk-summary-list__actions">
                  <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> conversation held by</span></a>
@@ -112,10 +112,10 @@ Case details
              </div>
              <div class="nhsuk-summary-list__row">
                <dt class="nhsuk-summary-list__key">
-                 Date and time
+                 Details of discussion
                </dt>
                <dd class="nhsuk-summary-list__value">
-                 Yes
+                {{ data['example-ap-discussion'] }}
                </dd>
                <dd class="nhsuk-summary-list__actions">
                  <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> date and time</span></a>
@@ -123,38 +123,38 @@ Case details
              </div>
              <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                  Method
+                  The cause of death used on the MCCD will be
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                  Email
+                  {% if data['cod-mccd'] %}
+   
+                  {% if data['cod-mccd'].includes('cod-mccd-1') %}  
+                    The attending practitioner's
+                  {% endif %}
+                  
+                  
+                  {% if data['cod-mccd'].includes('cod-mccd-2') %}
+                  The Medical Examiner's
+                  {% endif %}
+                  
+                  {% if data['cod-mccd'].includes('cod-mccd-3') %}
+                   A different COD agreed on by AP and ME
+                   {% endif %}
+                   
+                   {% if data['cod-mccd'].includes('cod-mccd-4') %}
+                    The coroner is being notified about this case
+                    {% endif %}
+                  
+                  {% else %}
+                  
+                  {% endif %}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                   <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> method</span></a>
                 </dd>
               </div>
               
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Details
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  Email
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> details</span></a>
-                </dd>
-              </div>
-              <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Concern raised
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  Email
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                  <a class="nhsuk-link" href="#">Change<span class="nhsuk-visually-hidden"> concern raised</span></a>
-                </dd>
-              </div>
+             
              
            </dl>
            

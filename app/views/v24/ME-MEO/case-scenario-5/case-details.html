@@ -42,15 +42,14 @@ Case details
         <span>Date of death:</span>
         <p>{{ data['dodDayCreate'] }} September {{ data['dodYearCreate'] }}</p>
       </li>
-      <!--<li>
-        <span>Case type:</span>
-        <p>Hospital</p>
-      </li>-->
-     <!-- <li>
-        <a href="#" class="nhsuk-button nhsuk-button--secondary mb0">Close case</a>
-      </li> -->
     </ul>
   </section>
+
+  <!-- Close case button appears if all sections in case details and scrutiny are complete -->
+  <!-- NB. In order to close a case a communication with the Next of Kin would have taken place, this communication would be added via the timeline and appear there  -->
+  {% if data['noteText'] and data['dobDay'] and data['hospital-death'] and data['nok-first-name'] and data['qapFirstNames'] and data['accessToRequestedDocumentation'] and data['ap-discuss'] %}
+    <a class="nhsuk-button" href="close-case">Close this case</a>
+  {% endif %}
     
   </div>
 </div>
@@ -119,14 +118,6 @@ Case details
                 </dd>
               </div>
              
-             <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Date of birth
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                 {{ data['dodDayCreate'] }} {{ data['dodMonthCreate'] }} {{ data['dodYearCreate'] }}
-                </dd>
-              </div>
             
              <div class="nhsuk-summary-list__row">
                <dt class="nhsuk-summary-list__key">
@@ -252,7 +243,7 @@ Case details
        {% else %}
         <!-- No timestamp-->
        {% endif %}
-        </h2>
+      
      </div>
  
    

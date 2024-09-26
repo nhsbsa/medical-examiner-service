@@ -90,14 +90,14 @@ Case details
                 <label class="nhsuk-label nhsuk-u-width-one-half" for="qapFirstNames">
                     First name <!--of the AP who proposed the cause of death-->
                 </label>
-                <input class="nhsuk-input nhsuk-u-width-one-half" id="qapFirstNames" name="qapFirstNames" type="text">
+                <input class="nhsuk-input nhsuk-u-width-one-half" id="qapFirstNames" name="qapFirstNames" type="text" value="{{ data['qapFirstNames'] }}">
             </div>
 
             <div class="nhsuk-form-group">
                 <label class="nhsuk-label nhsuk-u-width-one-half" for="qapLastName">
                     Last name <!--of the AP who proposed the cause of death-->
                 </label>
-                <input class="nhsuk-input nhsuk-u-width-one-half" id="qapLastName" name="qapLastName" type="text">
+                <input class="nhsuk-input nhsuk-u-width-one-half" id="qapLastName" name="qapLastName" type="text" value="{{ data['qapLastName'] }}">
             </div>
             
             <div class="nhsuk-form-group">
@@ -115,10 +115,10 @@ Case details
           </div>
 
           <div class="nhsuk-form-group">
-            <label class="nhsuk-label nhsuk-u-width-one-half" for="gmcNumber">
+            <label class="nhsuk-label nhsuk-u-width-one-half" for="ap-alt-contact">
                 Alternative contact method <span class="optional-span">(optional)
             </label>
-            <input class="nhsuk-input nhsuk-u-width-one-half" id="gmcNumber" name="gmcNumber" type="text" value="{{ data['gmcNumber'] }}">
+            <input class="nhsuk-input nhsuk-u-width-one-half" id="ap-alt-contact" name="ap-alt-contact" type="text" value="{{ data['ap-alt-contact'] }}">
         </div>
 
 
